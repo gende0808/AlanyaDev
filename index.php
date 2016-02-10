@@ -7,7 +7,7 @@
 
 Grill Template
 
-http://www.templatemo.com/free-website-templates/417-grill test
+http://www.templatemo.com/free-website-templates/417-grill test2
 
 -->
 <head>
