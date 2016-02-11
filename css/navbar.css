@@ -6,7 +6,11 @@
   #nav-trigger span {
     display: inline-block;
     padding: 10px 30px;
-    background-color: #f78e21;
+  background: #af0000; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left top, #af0000, #ff3232); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom right, #af0000, #ff3232); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom right, #af0000, #ff3232); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom right, #af0000, #ff3232); /* Standard syntax */
     color: white;
     cursor: pointer;
     text-transform: uppercase; }
@@ -33,8 +37,12 @@ nav {
 
 nav#nav-main {
   width: 100% !important;
-  background-color: #f78e21;
-  padding: 10px 0; }
+  background: #af0000; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left top, #af0000, #ff3232); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom right, #af0000, #ff3232); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom right, #af0000, #ff3232); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom right, #af0000, #ff3232); /* Standard syntax */
+  padding: 10px; }
   nav#nav-main ul {
     list-style-type: none;
     margin: 0;
@@ -66,7 +74,7 @@ nav#nav-mobile {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    background-color: #f78e21; }
+    background-color: #ff3232; }
   nav#nav-mobile li {
     display: block;
     padding: 5px 0;

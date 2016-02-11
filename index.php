@@ -3,13 +3,6 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<!--
-
-Grill Template
-
-http://www.templatemo.com/free-website-templates/417-grill test2
-
--->
 <head>
     <meta charset="utf-8">
     <title>Alanya Krommenie</title>
@@ -52,30 +45,28 @@ http://www.templatemo.com/free-website-templates/417-grill test2
 <!--[if lt IE 7]>
 <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
 <![endif]-->
-<nav class="navbar navbar-static-top" id="positionfixed">
-    <div id="main">
+<nav id="positionfixed">
         <div class="container-fluid">
             <div id="nav-trigger">
                 <span>Menu</span>
             </div>
             <nav id="nav-main">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.php" class="hvr-float-shadow">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="Contact.html">Contact</a></li>
                     <li><a href="discounts.html">Acties</a></li>
                     <li><a href="menu.html">Menukaart</a></li>
-                    <li><a href="tel:0756409003"><span class="glyphicon glyphicon-earphone"></span> 075-6409003 </a></li>
-                    <li><a href="register.html">Registreer</a></li>
                     <li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>
+                    <li><a href="register.php">Registreer</a></li>
+                    <li><a href="tel:0756409003"><span class="glyphicon glyphicon-earphone"></span> 075-6409003 </a></li>   
                 </ul>
             </nav>
             <nav id="nav-mobile"></nav>
         </div>
-    </div><!-- #main -->
 
 </nav>
-<div id="wrapper">
+<div id="wrapper" style="padding-top: 3.2% !important;">
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <div class="panel panel-warning">
@@ -88,7 +79,7 @@ http://www.templatemo.com/free-website-templates/417-grill test2
                         <li>2. Panel content</li>
                         <li>3. Panel content</li>
                         <li>4. Panel content</li>
-                        <li><a href="shoppingcart.html">Bestelling afronden</a></li>
+                        <li><a href="shoppingcart.php">Bestelling afronden</a></li>
                     </ul>
                 </div>
             </div>
@@ -110,12 +101,11 @@ http://www.templatemo.com/free-website-templates/417-grill test2
         <div class="row">
             <div class="col-md-12">
                 <div class="logo" style="padding-top: 120px;">
-                    <center><img src="images/testlogo4.png"></center>
+                    <center><img src="images/testlogo2.png"></center>
                 </div>
             </div>
             <div class="col-md-12 heading-section">
                 <h2>Categorieën</h2>
-                <img src="images/under-heading.png" alt="" >
             </div>
         </div>
     </div>
@@ -280,7 +270,6 @@ http://www.templatemo.com/free-website-templates/417-grill test2
             <div class="col-md-12">
                 <div class="heading-section">
                     <h2>Free Website Templates</h2>
-                    <img src="images/under-heading.png" alt="" >
                 </div>
             </div>
         </div>
@@ -366,7 +355,6 @@ http://www.templatemo.com/free-website-templates/417-grill test2
             <div class="col-md-12">
                 <div class="heading-section">
                     <h2>What Customers Say</h2>
-                    <img src="images/under-heading.png" alt="" >
                 </div>
             </div>
         </div>
@@ -398,7 +386,8 @@ http://www.templatemo.com/free-website-templates/417-grill test2
             </div>
         </div>
     </div>
-</div>
+
+
 
 <footer>
     <div class="container">
