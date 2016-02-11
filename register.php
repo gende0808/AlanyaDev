@@ -73,7 +73,7 @@ http://www.templatemo.com/free-website-templates/417-grill
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="logo" style="padding-top: 120px;">
-                                    <center><img src="images/testlogo4.png"></center>
+                                    <center><img src="images/testlogo2.png"></center>
                                 </div>
                             </div>
                         </div>
