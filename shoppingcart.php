@@ -5,11 +5,12 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <!-- 
 
-Grill Template 
-
-http://www.templatemo.com/free-website-templates/417-grill
 
 -->
+<?PHP
+include_once "header.php";
+?>
+
     <head>
         <meta charset="utf-8">
         <title>Alanya Krommenie</title>
@@ -35,58 +36,12 @@ http://www.templatemo.com/free-website-templates/417-grill
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
         <![endif]-->
-        <nav class="navbar navbar-inverse navbar-static-top" id="positionfixed">
-  <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
- <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="index2.html">Home<span class="sr-only">(current)</span></a></li>
-        <li><a href="discounts.html">Acties</a></li>
-        <li><a href="menu.html">Menukaart</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">0756409003</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
-      </ul>
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-        </div>  
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-      <li><a href="tel:0756409003"><span class="glyphicon glyphicon-earphone"></span> 075-6409003 </a></li>
-        <li><a href="register.html">Registreer</a></li>
-        <li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>
-         
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
                 <div id="main-header">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="logo" style="padding-top: 120px;">
-                                    <center><img src="images/testlogo4.png"></center>
+                                <div class="logo">
+                                    <center><img src="images/testlogo2.png"></center>
                                 </div>
                             </div>
                         </div>

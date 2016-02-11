@@ -6,7 +6,10 @@
 
 <?PHP
 include_once "header.php";
+include_once "sideshoppinglist.php";
 ?>
+
+
 
 <head>
     <meta charset="utf-8">
@@ -51,37 +54,7 @@ include_once "header.php";
 </head>
 <body>
 
-<div id="wrapper">
-</nav>
-<div id="wrapper" style="padding-top: 3.2% !important;">
-    <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <div class="panel panel-danger">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Winkelwagen</h3>
-                </div>
-                <div class="panel-body">
-                    <ul>
-                        <li>1. Panel content</li>
-                        <li>2. Panel content</li>
-                        <li>3. Panel content</li>
-                        <li>4. Panel content</li>
-                        <li><a href="shoppingcart.html">Bestelling afronden</a></li>
-                    </ul>
-                </div>
-            </div>
-        </ul>
-    </div>
-    <div id="page-content-wrapper">
-        <div class="page-content">
-                <div class="row">
-                    <div class="col-md-12">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 <div id="main-header">
                 <div class="logo">
                     <center><img src="images/testlogo2.png"></center>
@@ -93,8 +66,6 @@ include_once "header.php";
         </div>
     </div>
 </div>
-</header>
-
 
 <div id="latest-blog">
     <div class="container">

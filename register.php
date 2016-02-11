@@ -38,42 +38,8 @@ http://www.templatemo.com/free-website-templates/417-grill
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
         <![endif]-->
-<div id="wrapper">
-  <div id="sidebar-wrapper">
-    <ul class="sidebar-nav">
-      <div class="panel panel-warning">
-  <div class="panel-heading">
-    <h3 class="panel-title">Winkelwagen</h3>
-  </div>
-  <div class="panel-body">
-		  <ul>
-		    <li>1. Panel content</li>
-		    <li>2. Panel content</li>
-		    <li>3. Panel content</li>
-		    <li>4. Panel content</li>
-		    <li><a href="shoppingcart.html">Bestelling afronden</a></li>
-		  </ul>
-  </div>
-</div>
-    </ul>
-  </div>
-  <div id="page-content-wrapper">
-    <div class="page-content">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-                <div id="main-header">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="logo" style="padding-top: 120px;">
-                                    <center><img src="images/testlogo4.png"></center>
+                                <div class="logo">
+                                    <center><img src="images/testlogo2.png"></center>
                                 </div>
                             </div>
                         </div>
