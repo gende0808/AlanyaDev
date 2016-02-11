@@ -26,6 +26,9 @@ include_once "header.php";
     <link rel="stylesheet" href="css/scrolltop.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/sidebar.css">
+        <link href="css/demo-page.css" rel="stylesheet" media="all">
+        <link href="css/hover.css" rel="stylesheet" media="all">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
 
     <script src="js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
     <script src="js/jquery-1.9.1.min.js"></script>
@@ -47,16 +50,13 @@ include_once "header.php";
 
 </head>
 <body>
-<!--[if lt IE 7]>
-<p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-<![endif]-->
 
 <div id="wrapper">
 </nav>
 <div id="wrapper" style="padding-top: 3.2% !important;">
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
-            <div class="panel panel-warning">
+            <div class="panel panel-danger">
                 <div class="panel-heading">
                     <h3 class="panel-title">Winkelwagen</h3>
                 </div>
@@ -74,7 +74,6 @@ include_once "header.php";
     </div>
     <div id="page-content-wrapper">
         <div class="page-content">
-            <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                     </div>
@@ -84,65 +83,18 @@ include_once "header.php";
     </div>
 </div>
 <div id="main-header">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="logo" style="padding-top: 120px;">
-                    <center><img src="images/testlogo4.png"></center>
+                <div class="logo">
+                    <center><img src="images/testlogo2.png"></center>
                 </div>
             </div>
             <div class="col-md-12 heading-section">
                 <h2>Categorieën</h2>
-                <img src="images/under-heading.png" alt="" >
             </div>
         </div>
     </div>
 </div>
 </header>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="padding-top: 15%;">
-    <div class="modal-dialog">
-        <div class="modal-content">
 
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title" id="myModalLabel">Log in</h4>
-            </div> <!-- /.modal-header -->
-
-            <div class="modal-body">
-                <form role="form">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="uLogin" placeholder="Gebruikersnaam">
-                            <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-user"></label>
-                        </div>
-                    </div> <!-- /.form-group -->
-
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input type="password" class="form-control" id="uPassword" placeholder="Wachtwoord">
-                            <label for="uPassword" class="input-group-addon orange glyphicon glyphicon-lock"></label>
-                        </div> <!-- /.input-group -->
-                    </div> <!-- /.form-group -->
-
-                    <p>Nog geen account? <a href="register.php">Registreer</a></p>
-                </form>
-
-            </div> <!-- /.modal-body -->
-
-            <div class="modal-footer">
-                <button class="form-control btn orange">Ok</button>
-
-                <div class="progress">
-                    <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="100" style="width: 0%;">
-                        <span class="sr-only">progress</span>
-                    </div>
-                </div>
-            </div> <!-- /.modal-footer -->
-
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<!-- /originalsliderplace -->
 
 <div id="latest-blog">
     <div class="container">
@@ -466,6 +418,7 @@ include_once "header.php";
             </p>
         </div>
 
+    </div>
     </div>
 
 </footer>

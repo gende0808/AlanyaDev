@@ -1383,3 +1383,10 @@ body {
   position: fixed;
   width: 100% !important;
 }
+
+.container-fluid {
+  padding-right: 0px!important;
+  padding-left: 0px!important;
+  margin-right: auto;
+  margin-left: auto;
+}
