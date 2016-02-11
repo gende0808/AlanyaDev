@@ -3,6 +3,11 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
+<?PHP
+include_once "header.php";
+?>
+
 <head>
     <meta charset="utf-8">
     <title>Alanya Krommenie</title>
@@ -45,26 +50,8 @@
 <!--[if lt IE 7]>
 <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
 <![endif]-->
-<nav id="positionfixed">
-        <div class="container-fluid">
-            <div id="nav-trigger">
-                <span>Menu</span>
-            </div>
-            <nav id="nav-main">
-                <ul>
-                    <li><a href="index.php" class="hvr-float-shadow">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="Contact.html">Contact</a></li>
-                    <li><a href="discounts.html">Acties</a></li>
-                    <li><a href="menu.html">Menukaart</a></li>
-                    <li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>
-                    <li><a href="register.php">Registreer</a></li>
-                    <li><a href="tel:0756409003"><span class="glyphicon glyphicon-earphone"></span> 075-6409003 </a></li>   
-                </ul>
-            </nav>
-            <nav id="nav-mobile"></nav>
-        </div>
 
+<div id="wrapper">
 </nav>
 <div id="wrapper" style="padding-top: 3.2% !important;">
     <div id="sidebar-wrapper">
@@ -79,7 +66,7 @@
                         <li>2. Panel content</li>
                         <li>3. Panel content</li>
                         <li>4. Panel content</li>
-                        <li><a href="shoppingcart.php">Bestelling afronden</a></li>
+                        <li><a href="shoppingcart.html">Bestelling afronden</a></li>
                     </ul>
                 </div>
             </div>
@@ -101,11 +88,12 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="logo" style="padding-top: 120px;">
-                    <center><img src="images/testlogo2.png"></center>
+                    <center><img src="images/testlogo4.png"></center>
                 </div>
             </div>
             <div class="col-md-12 heading-section">
                 <h2>Categorieën</h2>
+                <img src="images/under-heading.png" alt="" >
             </div>
         </div>
     </div>
@@ -136,7 +124,7 @@
                         </div> <!-- /.input-group -->
                     </div> <!-- /.form-group -->
 
-                    <p>Nog geen account? <a href="register.html">Registreer</a></p>
+                    <p>Nog geen account? <a href="register.php">Registreer</a></p>
                 </form>
 
             </div> <!-- /.modal-body -->
@@ -386,8 +374,7 @@
             </div>
         </div>
     </div>
-
-
+</div>
 
 <footer>
     <div class="container">
