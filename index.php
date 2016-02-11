@@ -65,7 +65,7 @@ http://www.templatemo.com/free-website-templates/417-grill test2
                     <li><a href="Contact.php">Contact</a></li>
                     <li><a href="discounts.php">Acties</a></li>
                     <li><a href="menu.php">Menukaart</a></li>
-                    <li><a href="tel:0756409003"><span class="glyphicon glyphicon-earphone"></span> 075-6409003 </a></li>
+                    <li><a><span class="glyphicon glyphicon-earphone"></span> 075-6409003 </a></li>
                     <li><a href="register.php">Registreer</a></li>
                     <li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>
                 </ul>
