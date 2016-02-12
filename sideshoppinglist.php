@@ -3,20 +3,13 @@
 <div id="wrapper">
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
-            <div class="panel panel-danger">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Winkelwagen</h3>
-                </div>
-                <div class="panel-body">
-                    <ul>
-                        <li>1. Panel content</li>
-                        <li>2. Panel content</li>
-                        <li>3. Panel content</li>
-                        <li>4. Panel content</li>
-                        <li><a href="shoppingcart.php">Bestelling afronden</a></li>
-                    </ul>
-                </div>
-            </div>
+            <ul class="list-group">
+                <li class="list-group-item"><h1 style="font-size: x-large;"><span class="glyphicon glyphicon-shopping-cart"></span> Winkelwagen</h1></li>
+                <li class="list-group-item"><span class="badge">1</span>Product 1</li>
+                <li class="list-group-item"><span class="badge">3</span>Product 2</li>
+                <li class="list-group-item"><span class="badge">1</span>Product 3</li>
+                <li class="list-group-item"><a href="shoppingcart.php">Bestelling afronden</a></li>
+            </ul>
         </ul>
     </div>
     <div id="page-content-wrapper">

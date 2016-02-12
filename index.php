@@ -57,6 +57,7 @@ include_once "sideshoppinglist.php";
 
 <div id="main-header">
                 <div class="logo">
+                    <hr>
                     <center><img src="images/testlogo2.png"></center>
                 </div>
             </div>

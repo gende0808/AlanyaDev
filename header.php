@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/scrolltop.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/sideshop.css">
         <link href="css/demo-page.css" rel="stylesheet" media="all">
         <link href="css/hover.css" rel="stylesheet" media="all">
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
@@ -39,6 +40,8 @@
     </script>
 
 </head>
+
+
 
 <nav class="navbar navbar-static-top" id="positionfixed">
     <div id="main">

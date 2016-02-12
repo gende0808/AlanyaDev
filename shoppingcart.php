@@ -41,6 +41,7 @@ include_once "header.php";
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="logo">
+                                    <hr>
                                     <center><img src="images/testlogo2.png"></center>
                                 </div>
                             </div>
