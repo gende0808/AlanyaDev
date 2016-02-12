@@ -61,37 +61,43 @@ http://www.templatemo.com/free-website-templates/417-grill
                 <form role="form">
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="text" class="form-control" id="uLogin" placeholder="E-mail">
                             <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-comment"></label>
+                            <input type="text" class="form-control" id="uLogin" placeholder="E-mail">
                         </div>
                     </div> <!-- /.form-group -->
 
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="text" class="form-control" id="uLogin" placeholder="Wachtwoord">
                             <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-lock"></label>
+                            <input type="text" class="form-control" id="uLogin" placeholder="Wachtwoord">
                         </div>
                     </div> <!-- /.form-group -->
 
                           <div class="form-group">
                         <div class="input-group">
-                            <input type="text" class="form-control" id="uLogin" placeholder="Adress">
-                            <input type="text" class="form-control" id="uLogin" placeholder="huisnummer">
                             <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-home"></label>
+                            <input type="text" class="form-control" id="uLogin" placeholder="Adress">
+                        </div>
+                    </div> <!-- /.form-group -->
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-home"></label>
+                            <input type="text" class="form-control" id="uLogin" placeholder="huisnummer">
                         </div>
                     </div> <!-- /.form-group -->
 
                           <div class="form-group">
                         <div class="input-group">
+                            <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-map-marker"></label>
                             <input type="text" class="form-control" id="uLogin" placeholder="Plaats">
-                            <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-flag"></label>
                         </div>
                     </div> <!-- /.form-group -->
 
                           <div class="form-group">
                         <div class="input-group">
-                            <input type="text" class="form-control" id="uLogin" placeholder="Telefoonnummer">
                             <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-earphone"></label>
+                            <input type="text" class="form-control" id="uLogin" placeholder="Telefoonnummer">
                         </div>
                     </div> <!-- /.form-group -->   
 

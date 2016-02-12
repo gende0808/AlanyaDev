@@ -1,6 +1,4 @@
 <div id="wrapper">
-</nav>
-<div id="wrapper">
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <ul class="list-group">

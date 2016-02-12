@@ -37,7 +37,8 @@
   }
   #wrapper.active {
     position: relative;
-    right: 250px;#wrapper {
+    right: 250px;
+  #wrapper {
   padding-right: 250px;
   transition: all 0.4s ease 0s;
 }
