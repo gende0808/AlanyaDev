@@ -31,6 +31,7 @@ http://www.templatemo.com/free-website-templates/417-grill
         <link rel="stylesheet" href="css/scrolltop.css">
         <link rel="stylesheet" href="css/navbar.css">
         <link rel="stylesheet" href="css/sidebar.css">
+        <link rel="stylesheet" href="css/border.css">
 
         <script src="js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
     </head>
@@ -62,42 +63,37 @@ http://www.templatemo.com/free-website-templates/417-grill
                     <div class="form-group">
                         <div class="input-group">
                             <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-comment"></label>
-                            <input type="text" class="form-control" id="uLogin" placeholder="E-mail">
+                            <input type="text" class="bordertest form-control" id="uLogin" placeholder="E-mail">
                         </div>
                     </div> <!-- /.form-group -->
 
                     <div class="form-group">
                         <div class="input-group">
                             <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-lock"></label>
-                            <input type="text" class="form-control" id="uLogin" placeholder="Wachtwoord">
+                            <input type="text" class="bordertest form-control" id="uLogin" placeholder="Wachtwoord">
                         </div>
                     </div> <!-- /.form-group -->
 
                           <div class="form-group">
                         <div class="input-group">
                             <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-home"></label>
-                            <input type="text" class="form-control" id="uLogin" placeholder="Adress">
+                            <input type="text" class="bordertest form-control" id="uLogin" placeholder="Adress" style="width: 70%;">
+                            <input type="text" class="bordertest form-control" id="uLogin" placeholder="Nr." style="width: 30%;">
                         </div>
                     </div> <!-- /.form-group -->
 
-                    <div class="form-group">
-                        <div class="input-group">
-                            <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-home"></label>
-                            <input type="text" class="form-control" id="uLogin" placeholder="huisnummer">
-                        </div>
-                    </div> <!-- /.form-group -->
 
                           <div class="form-group">
                         <div class="input-group">
                             <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-map-marker"></label>
-                            <input type="text" class="form-control" id="uLogin" placeholder="Plaats">
+                            <input type="text" class="bordertest form-control" id="uLogin" placeholder="Plaats">
                         </div>
                     </div> <!-- /.form-group -->
 
                           <div class="form-group">
                         <div class="input-group">
                             <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-earphone"></label>
-                            <input type="text" class="form-control" id="uLogin" placeholder="Telefoonnummer">
+                            <input type="text" class="bordertest form-control" id="uLogin" placeholder="Telefoonnummer">
                         </div>
                     </div> <!-- /.form-group -->   
 

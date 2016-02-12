@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/sidebar.css">
     <link rel="stylesheet" href="css/sideshop.css">
+    <link rel="stylesheet" href="css/border.css">
         <link href="css/demo-page.css" rel="stylesheet" media="all">
         <link href="css/hover.css" rel="stylesheet" media="all">
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
@@ -80,15 +81,15 @@
                 <form role="form">
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="text" class="form-control" id="uLogin" placeholder="Gebruikersnaam">
                             <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-user"></label>
+                            <input type="text" class="form-control" id="uLogin" placeholder="Gebruikersnaam">
                         </div>
                     </div> <!-- /.form-group -->
 
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="password" class="form-control" id="uPassword" placeholder="Wachtwoord">
                             <label for="uPassword" class="input-group-addon orange glyphicon glyphicon-lock"></label>
+                            <input type="password" class="form-control" id="uPassword" placeholder="Wachtwoord">
                         </div> <!-- /.input-group -->
                     </div> <!-- /.form-group -->
 
