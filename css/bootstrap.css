@@ -5117,6 +5117,7 @@ button.close {
   margin: 10px;
 }
 .modal-content {
+  top: 5%;
   position: relative;
   background-color: #fff;
   background-clip: padding-box;

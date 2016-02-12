@@ -41,7 +41,6 @@ http://www.templatemo.com/free-website-templates/417-grill
 
                                 <div class="logo">
                                     <hr>
-                                    <center><img src="images/testlogo2.png"></center>
                                 </div>
                             </div>
                         </div>
@@ -51,6 +50,7 @@ http://www.templatemo.com/free-website-templates/417-grill
 
 
     <div class="modal-dialog" style="width: 30%;">
+        <img src="images/testlogo2.png" style="width: 100%;">
         <div class="modal-content">
 
             <div class="modal-header">
