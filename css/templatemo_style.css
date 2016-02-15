@@ -1360,7 +1360,7 @@ body {
   background: linear-gradient(to left, #ebebeb, white);
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;      
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .jimbutton {

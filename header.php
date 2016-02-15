@@ -42,8 +42,6 @@
 
 </head>
 
-
-
 <nav class="navbar navbar-static-top" id="positionfixed">
     <div id="main">
         <div class="container-fluid">
