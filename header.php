@@ -1,4 +1,5 @@
 <head>
+    <?php header("Content-Type: text/html; charset=utf-8"); ?>
     <meta charset="utf-8">
     <title>Alanya Krommenie</title>
     <meta name="description" content="">
@@ -21,7 +22,6 @@
         <link href="css/demo-page.css" rel="stylesheet" media="all">
         <link href="css/hover.css" rel="stylesheet" media="all">
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
-
     <script src="js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
     <script src="js/jquery-1.9.1.min.js"></script>
     <script src="js/modernizr.custom.js"></script>
