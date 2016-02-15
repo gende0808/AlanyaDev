@@ -50,7 +50,7 @@
             </div>
             <nav id="nav-main">
                 <ul>
-                    <li><a href="index.php" class="hvr-float-shadow">Home</a></li>
+                    <li style="height: 40px; border-right: solid 0px #950025!important;"><a href="index.php" class="hvr-float-shadow" style="height: 40px;"><img src="images/alanyaforbanner3.png" style="padding-bottom: 10px;"></a></li>
                     <li><a href="about.php" class="hvr-float-shadow">About</a></li>
                     <li><a href="contact.php" class="hvr-float-shadow">Contact</a></li>
                     <li><a href="discounts.php" class="hvr-float-shadow">Acties</a></li>

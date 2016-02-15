@@ -17,7 +17,6 @@ include_once "sideshoppinglist.php";
                 <div class="slider-caption">
                 </div>
                 <hr>
-                <hr>
                 <div class="col-md-4">
                     </div>
                 <div class="col-md-4">
@@ -62,10 +61,9 @@ include_once "sideshoppinglist.php";
                     <div class="blog-content">
                         <div class="content-show">
                             <h4><a href="single-post.html">Special Houtskool Grill</a></h4>
-                            <span>09 Feb 2016</span>
                         </div>
                         <div class="content-hide">
-                            <p>Sed egestas tincidunt mollis. Suspendisse rhoncus vitae enim et faucibus. Ut dignissim nec arcu nec hendrerit. Sed arcu odio, sagittis vel diam in, malesuada malesuada risus. Aenean a sem leo. Nam ultricies dolor et mi tempor, non pulvinar felis sollicitudin.</p>
+                            <p>Proef nu de geweldige kanker met een vleugje extra kanker</p>
                         </div>
                     </div>
                 </div>
@@ -78,7 +76,6 @@ include_once "sideshoppinglist.php";
                     <div class="blog-content">
                         <div class="content-show">
                             <h4><a href="single-post.html">Italiaanse Pizza's</a></h4>
-                            <span>09 Feb 2016</span>
                         </div>
                         <div class="content-hide">
                             <p>Sed egestas tincidunt mollis. Suspendisse rhoncus vitae enim et faucibus. Ut dignissim nec arcu nec hendrerit. Sed arcu odio, sagittis vel diam in, malesuada malesuada risus. Aenean a sem leo. Nam ultricies dolor et mi tempor, non pulvinar felis sollicitudin.</p>
@@ -94,7 +91,6 @@ include_once "sideshoppinglist.php";
                     <div class="blog-content">
                         <div class="content-show">
                             <h4><a href="single-post.html">Broodjes &AMP; Dürüm</a></h4>
-                            <span>09 Feb 2016</span>
                         </div>
                         <div class="content-hide">
                             <p>Sed egestas tincidunt mollis. Suspendisse rhoncus vitae enim et faucibus. Ut dignissim nec arcu nec hendrerit. Sed arcu odio, sagittis vel diam in, malesuada malesuada risus. Aenean a sem leo. Nam ultricies dolor et mi tempor, non pulvinar felis sollicitudin.</p>
@@ -110,7 +106,6 @@ include_once "sideshoppinglist.php";
                     <div class="blog-content">
                         <div class="content-show">
                             <h4><a href="single-post.html">Healthy Food</a></h4>
-                            <span>25 Aug 2084</span>
                         </div>
                         <div class="content-hide">
                             <p>Sed egestas tincidunt mollis. Suspendisse rhoncus vitae enim et faucibus. Ut dignissim nec arcu nec hendrerit. Sed arcu odio, sagittis vel diam in, malesuada malesuada risus. Aenean a sem leo. Nam ultricies dolor et mi tempor, non pulvinar felis sollicitudin.</p>
@@ -126,7 +121,6 @@ include_once "sideshoppinglist.php";
                     <div class="blog-content">
                         <div class="content-show">
                             <h4><a href="single-post.html">Great Breakfast</a></h4>
-                            <span>17 Aug 2084</span>
                         </div>
                         <div class="content-hide">
                             <p>Sed egestas tincidunt mollis. Suspendisse rhoncus vitae enim et faucibus. Ut dignissim nec arcu nec hendrerit. Sed arcu odio, sagittis vel diam in, malesuada malesuada risus. Aenean a sem leo. Nam ultricies dolor et mi tempor, non pulvinar felis sollicitudin.</p>
@@ -142,7 +136,6 @@ include_once "sideshoppinglist.php";
                     <div class="blog-content">
                         <div class="content-show">
                             <h4><a href="single-post.html">Fresh Fruit Juice</a></h4>
-                            <span>12 Aug 2084</span>
                         </div>
                         <div class="content-hide">
                             <p>Sed egestas tincidunt mollis. Suspendisse rhoncus vitae enim et faucibus. Ut dignissim nec arcu nec hendrerit. Sed arcu odio, sagittis vel diam in, malesuada malesuada risus. Aenean a sem leo. Nam ultricies dolor et mi tempor, non pulvinar felis sollicitudin.</p>
@@ -159,7 +152,7 @@ include_once "sideshoppinglist.php";
         <div class="row">
             <div class="col-md-12">
                 <div class="heading-section">
-                    <h2>Free Website Templates</h2>
+                    <h2>Stappenplan</h2>
                 </div>
             </div>
         </div>
@@ -169,7 +162,7 @@ include_once "sideshoppinglist.php";
                     <div class="icon">
                         <i class="fa fa-pencil"></i>
                     </div>
-                    <h4>Make an order</h4>
+                    <h4>Geef ons geld</h4>
                     <p>Sed egestas tincidunt mollis. Suspendisse rhoncus vitae enim et faucibus. Ut dignissim nec arcu nec hendrerit. Sed arcu  sagittis vel diam in, malesuada malesuada risus. Aenean a sem leoneski.</p>
                 </div>
             </div>
@@ -178,7 +171,7 @@ include_once "sideshoppinglist.php";
                     <div class="icon">
                         <i class="fa fa-bullhorn"></i>
                     </div>
-                    <h4>Promotions</h4>
+                    <h4>Vreet je vol</h4>
                     <p>Sed egestas tincidunt mollis. Suspendisse rhoncus vitae enim et faucibus. Ut dignissim nec arcu nec hendrerit. Sed arcu  sagittis vel diam in, malesuada malesuada risus. Aenean a sem leoneski.</p>
                 </div>
             </div>
@@ -187,7 +180,7 @@ include_once "sideshoppinglist.php";
                     <div class="icon">
                         <i class="fa fa-bell"></i>
                     </div>
-                    <h4>Ready to Serve</h4>
+                    <h4>Gier het uit</h4>
                     <p>Sed egestas tincidunt mollis. Suspendisse rhoncus vitae enim et faucibus. Ut dignissim nec arcu nec hendrerit. Sed arcu  sagittis vel diam in, malesuada malesuada risus. Aenean a sem leoneski.</p>
                 </div>
             </div>
@@ -196,7 +189,7 @@ include_once "sideshoppinglist.php";
                     <div class="icon">
                         <i class="fa fa-heart"></i>
                     </div>
-                    <h4>Satisfaction</h4>
+                    <h4>Doe het opnieuw</h4>
                     <p>Sed egestas tincidunt mollis. Suspendisse rhoncus vitae enim et faucibus. Ut dignissim nec arcu nec hendrerit. Sed arcu  sagittis vel diam in, malesuada malesuada risus. Aenean a sem leoneski.</p>
                 </div>
             </div>
