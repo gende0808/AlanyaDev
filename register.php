@@ -76,7 +76,7 @@ http://www.templatemo.com/free-website-templates/417-grill
                           <div class="form-group">
                         <div class="input-group">
                             <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-home"></label>
-                            <input type="text" class="bordertest form-control" id="uLogin" placeholder="Adress" style="width: 70%;">
+                            <input type="text" class="bordertest form-control" id="uLogin" placeholder="Straatnaam" style="width: 70%;">
                             <input type="text" class="bordertest form-control" id="uLogin" placeholder="Nr." style="width: 30%;">
                         </div>
                     </div> <!-- /.form-group -->
@@ -96,7 +96,7 @@ http://www.templatemo.com/free-website-templates/417-grill
                         </div>
                     </div> <!-- /.form-group -->   
 
-                            <p>al een bestaand account? <a href="register.html">Login</a></p>
+                            <p>al een bestaand account? <a href="#" data-toggle="modal" data-target="#myModal" class="hvr-float-shadow">Login</a></p>
                 </form>
 
             </div> <!-- /.modal-body -->
@@ -145,7 +145,6 @@ http://www.templatemo.com/free-website-templates/417-grill
                             <div class="col-md-3">
                                 <div class="about">
                                     <h4 class="footer-title">About Grill</h4>
-                                    <p>Grill is free HTML5 template by <span class="blue">template</span><span class="green">mo</span> and it is a free responsive bootstrap layout that can be applied for any purpose.
                                     <br><br>Credit goes to <a rel="nofollow" href="http://unsplash.com">Unsplash</a> for photos used in this template. Nam commodo erat quis ligula placerat viverra.</p>
                                 </div>
                             </div>

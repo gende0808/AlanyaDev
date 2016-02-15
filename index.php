@@ -6,7 +6,7 @@
 
 <?PHP
 include_once "header.php";
-include_once "sideshoppinglist.php";
+// include_once "sideshoppinglist.php";
 ?>
 
 
