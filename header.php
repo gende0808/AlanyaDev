@@ -52,7 +52,7 @@
                 <ul>
                     <li><a href="index.php" class="hvr-float-shadow">Home</a></li>
                     <li><a href="about.php" class="hvr-float-shadow">About</a></li>
-                    <li><a href="Contact.php" class="hvr-float-shadow">Contact</a></li>
+                    <li><a href="contact.php" class="hvr-float-shadow">Contact</a></li>
                     <li><a href="discounts.php" class="hvr-float-shadow">Acties</a></li>
                     <li><a href="menu.php" class="hvr-float-shadow">Menukaart</a></li>
                     <li><a href="#" data-toggle="modal" data-target="#myModal" class="hvr-float-shadow">Login</a></li>
