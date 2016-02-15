@@ -24,8 +24,8 @@ include_once "header.php";
         <div class="testimonails-content">
             <p style="font-size: x-large"> Alanya Krommenie is de nieuwe vorm van uit eten, maar dan lekker thuis!</p><hr>
             <p> Daarbij zijn de woorden Lekker, Makkelijk en Hoge Kwaliteit onze drijfveren.<br><br>
-                Lekker, omdat de Chef van Alanya Krommenie natuurlijk alleen maar werkt met dagverse producten, groenten, eerste klas vlees én vers gemaakte frites. De Hoge Kwaliteit dus die je mag verwachten voor je geld.
-                Ons assortiment bestaat uit o.a. Voorgerechten, Grill gerechten, Gestoofde maaltijden, Saté gerechten, Broodjes en Durum, Vegetarische gerechten, Turkse deegwaren, Hollandse snacks en Italiaanse pizza’s.
+                Lekker, omdat de Chef van Alanya Krommenie natuurlijk alleen maar werkt met dagverse producten, groenten, eerste klas vlees Ã©n vers gemaakte frites. De Hoge Kwaliteit dus die je mag verwachten voor je geld.
+                Ons assortiment bestaat uit o.a. Voorgerechten, Grill gerechten, Gestoofde maaltijden, SatÃ© gerechten, Broodjes en Durum, Vegetarische gerechten, Turkse deegwaren, Hollandse snacks en Italiaanse pizzaâ€™s.
                 Zo is er altijd voor ieder wat wils, en kun je je hele maaltijd op 1 plek bestellen. Dat is wat wij nou bedoelen met Makkelijk.
                 Je kiest hier op je gemak alvast wat je wilt eten, je belt het door, en wij bezorgen het dan bij je thuis. Je kunt natuurlijk ook gezellig even langskomen om het te bestellen, even wachten en het dan zelf mee naar huis te nemen.
                 Wij kunnen ook de complete catering verzorgen voor bruiloften, personeels- en jubileumfeesten en vele andere gelegenheden.
@@ -121,7 +121,7 @@ include_once "header.php";
         </div>
         <div class="bottom-footer">
             <p>
-                        	<span>Copyright © 2016 <a href="#">Alanya Krommenie</a>
+                        	<span>Copyright Â© 2016 <a href="#">Alanya Krommenie</a>
                             | Design: <a rel="nofollow" href="http://www.templatemo.com" target="_parent"><span class="blue">template</span><span class="green">mo</span></a></span>
             </p>
         </div>
