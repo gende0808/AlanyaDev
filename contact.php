@@ -10,7 +10,6 @@ include_once "header.php";
 
 <body>
 
-
 <div id="main-header">
     <div class="logo">
         <hr>
