@@ -20,7 +20,7 @@ include_once "connection.php";
 
 <div class="row">
     <div class="col-md-2">
-        </div>
+    </div>
     <div class="col-md-8">
         <?php
         // Ascending Order
@@ -44,7 +44,7 @@ include_once "connection.php";
         }
 
         ?>
-        <form action="grill.php" method="post">
+        <form action="menu.php" method="post">
 
             <input type="submit" name="ASC" value="Ascending"><br><br>
             <input type="submit" name="DESC" value="Descending"><br><br>
@@ -69,8 +69,8 @@ include_once "connection.php";
         </form>
 
     </div>
-        <div class="col-md-2">
-        </div>
+    <div class="col-md-2">
+    </div>
 </div>
 
 
