@@ -1,82 +1,33 @@
 <footer>
     <div class="container">
         <div class="top-footer">
-            <div class="row">
-                <div class="col-md-9">
-                    <div class="subscribe-form">
-                        <span>Get in touch with us</span>
-                        <form method="get" class="subscribeForm">
-                            <input id="subscribe" type="text" />
-                            <input type="submit" id="submitButton" />
-                        </form>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="social-bottom">
-                        <span>Follow us:</span>
-                        <ul>
-                            <li><a href="#" class="fa fa-facebook"></a></li>
-                            <li><a href="#" class="fa fa-twitter"></a></li>
-                            <li><a href="#" class="fa fa-rss"></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="main-footer">
             <div class="row">
-                <div class="col-md-3">
-                    <div class="about">
-                        <h4 class="footer-title">About Grill</h4>
-                        <p>Grill is free HTML5 template by <span class="blue">template</span><span class="green">mo</span> and it is a free responsive bootstrap layout that can be applied for any purpose.
-                            <br><br>Credit goes to <a rel="nofollow" href="http://unsplash.com">Unsplash</a> for photos used in this template. Nam commodo erat quis ligula placerat viverra.</p>
+                <div class="col-md-4">
+                    <div class="About">
+                        <h4 class="footer-title">Over Alanya</h4>
+                        <p>
+                            Lekker, omdat de Chef van Alanya Krommenie natuurlijk alleen maar werkt met dagverse producten, groenten, eerste klas vlees én vers gemaakte frites. De Hoge Kwaliteit dus die je mag verwachten voor je geld.
+                        </p>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="shop-list">
-                        <h4 class="footer-title">Shop Categories</h4>
-                        <ul>
-                            <li><a href="#"><i class="fa fa-angle-right"></i>New Grill Menu</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i>Healthy Fresh Juices</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i>Spicy Delicious Meals</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i>Simple Italian Pizzas</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i>Pure Good Yogurts</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i>Ice-cream for kids</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="recent-posts">
-                        <h4 class="footer-title">Recent posts</h4>
-                        <div class="recent-post">
-                            <div class="recent-post-thumb">
-                                <img src="images/recent-post1.jpg" alt="">
-                            </div>
-                            <div class="recent-post-info">
-                                <h6><a href="#">Delicious and Healthy Menus</a></h6>
-                                <span>24/12/2084</span>
-                            </div>
-                        </div>
-                        <div class="recent-post">
-                            <div class="recent-post-thumb">
-                                <img src="images/recent-post2.jpg" alt="">
-                            </div>
-                            <div class="recent-post-info">
-                                <h6><a href="#">Simple and effective meals</a></h6>
-                                <span>18/12/2084</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
+
+                <div class="col-md-4">
                     <div class="more-info">
-                        <h4 class="footer-title">More info</h4>
-                        <p>Sed dignissim, diam id molestie faucibus, purus nisl pretium quam, in pulvinar velit massa id elit.</p>
+                        <h4 class="footer-title">Meer informatie</h4>
                         <ul>
-                            <li><i class="fa fa-phone"></i>010-020-0340</li>
-                            <li><i class="fa fa-globe"></i>123 Dagon Studio, Yakin Street, Digital Estate</li>
-                            <li><i class="fa fa-envelope"></i><a href="#">info@company.com</a></li>
+                            <li><i class="fa fa-phone"></i>075-6409003</li>
+                            <li><i class="fa fa-globe"></i>Padlaan 4, 1561 ZA te Krommenie</li>
+                            <li><i class="fa fa-envelope"></i><a href="#">info@alanya.nl</a></li>
                         </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="maps">
+                        <h4 class="footer-title">Locatie</h4>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19431.315526861035!2d4.769002524235564!3d52.49878833230879!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa50dc4a2ab27c24!2sAfhaalcentrum+Alanya!5e0!3m2!1snl!2snl!4v1455526449775" width="300px" height="250px" frameborder="0" style="border:0" allowfullscreen></iframe>
+
                     </div>
                 </div>
             </div>
@@ -84,7 +35,7 @@
         <div class="bottom-footer">
             <p>
                         	<span>Copyright © 2016 <a href="#">Alanya Krommenie</a>
-                            | Design: <a rel="nofollow" href="http://www.templatemo.com" target="_parent"><span class="blue">template</span><span class="green">mo</span></a></span>
+                            | Design: <a rel="nofollow"  target="_parent" href="www.jimebbelaar.com"><span class="blue">Alpha</span><span class="green">Insane</span></a></span>
             </p>
         </div>
 

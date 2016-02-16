@@ -13,6 +13,7 @@ include_once "sideshoppinglist.php";
 <div id="slider" style="height: 400px!important;">
     <div class="flexslider">
         <ul class="slides">
+            .
             <li>
                 <div class="slider-caption">
                 </div>
