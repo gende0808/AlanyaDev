@@ -98,13 +98,7 @@ include_once "footer.php";
 <i class="fa fa-2x fa-arrow-circle-up"></i>
   </span>
 </div>
-        <script src="js/vendor/jquery-1.11.0.min.js"></script>
-        <script src="js/vendor/jquery.gmap3.min.js"></script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
-        <script src="js/bootstrap.js"></script>
-        <script src="js/login.js"></script>
-        <script src="js/scrolltop.js"></script>
+
 
     </body>
 </html>

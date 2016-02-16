@@ -91,4 +91,31 @@
     </div>
     </div>
 
+    <script type="text/javascript" src="https://cdn.datatables.net/t/bs/jq-2.2.0,dt-1.10.11/datatables.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <script src="js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/vendor/jquery-1.11.0.min.js"></script>
+    <script src="js/vendor/jquery.gmap3.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/scrolltop.js"></script>
+
+    <script src="js/modernizr.custom.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#nav-mobile").html($("#nav-main").html());
+            $("#nav-trigger span").click(function(){
+                if ($("nav#nav-mobile ul").hasClass("expanded")) {
+                    $("nav#nav-mobile ul.expanded").removeClass("expanded").slideUp(250);
+                    $(this).removeClass("open");
+                } else {
+                    $("nav#nav-mobile ul").addClass("expanded").slideDown(250);
+                    $(this).addClass("open");
+                }
+            });
+        });
+    </script>
 </footer>
