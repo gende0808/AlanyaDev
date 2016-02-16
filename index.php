@@ -6,7 +6,7 @@
 
 <?PHP
 include_once "header.php";
-include_once "sideshoppinglist.php";
+//include_once "sideshoppinglist.php";
 ?>
 
 <body>
@@ -61,7 +61,7 @@ include_once "sideshoppinglist.php";
                     </div>
                     <div class="blog-content">
                         <div class="content-show">
-                            <h4><a href="single-post.html">Special Houtskool Grill</a></h4>
+                            <h4><a href="grill.php">Special Houtskool Grill</a></h4>
                         </div>
                         <div class="content-hide">
                             <p>Proef nu de geweldige kanker met een vleugje extra kanker</p>
