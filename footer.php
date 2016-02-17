@@ -38,8 +38,13 @@
                             | Design: <a rel="nofollow"  target="_parent" href="www.jimebbelaar.com"><span class="blue">Alpha</span><span class="green">Insane</span></a></span>
             </p>
         </div>
-
     </div>
+    </div>
+    <!-- The scroll to top feature -->
+    <div class="scroll-top-wrapper ">
+  <span class="scroll-top-inner">
+<i class="fa fa-2x fa-arrow-circle-up"></i>
+  </span>
     </div>
 
     <script type="text/javascript" src="https://cdn.datatables.net/t/bs/jq-2.2.0,dt-1.10.11/datatables.min.js"></script>
@@ -70,3 +75,5 @@
         });
     </script>
 </footer>
+</body>
+</html>

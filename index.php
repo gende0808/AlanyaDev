@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-
 <?PHP
 include_once "header.php";
-include_once "loginmodal.php";
 //include_once "sideshoppinglist.php";
 ?>
-
-<body>
-<div id="slider" style="height: 400px!important;">
+<div id="slider" style="height: 330px!important;">
     <div class="flexslider">
         <ul class="slides">
             .
@@ -42,6 +33,7 @@ include_once "loginmodal.php";
 </div>
 
 <div id="latest-blog">
+    <br>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -238,13 +230,3 @@ include_once "footer.php";
 // include_once "sideshoppinglist.php";
 ?>
 
-<!-- The scroll to top feature -->
-
-<div class="scroll-top-wrapper ">
-  <span class="scroll-top-inner">
-<i class="fa fa-2x fa-arrow-circle-up"></i>
-  </span>
-</div>
-
-</body>
-</html>

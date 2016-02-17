@@ -1,23 +1,10 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-
 <?PHP
 include_once "header.php";
 ?>
-
-<body>
-
-<div id="main-header">
     <div class="logo">
         <hr>
         <center><img src="images/testlogo2.png"></center>
     </div>
-</div>
-
-
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="testimonails-content">
@@ -38,14 +25,3 @@ include_once "header.php";
 include_once "footer.php";
 // include_once "sideshoppinglist.php";
 ?>
-
-<!-- The scroll to top feature -->
-<div class="scroll-top-wrapper ">
-  <span class="scroll-top-inner">
-<i class="fa fa-2x fa-arrow-circle-up"></i>
-  </span>
-</div>
-
-
-</body>
-</html>

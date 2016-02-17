@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html>
 <head>
     <?php header("Content-Type: text/html; charset=utf-8"); ?>
     <meta charset="utf-8">
@@ -24,7 +30,10 @@
     <link href="css/hover.css" rel="stylesheet" media="all">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/t/bs/jq-2.2.0,dt-1.10.11/datatables.min.css"/>
 </head>
-
+<body>
+<?php
+include_once "loginmodal.php";
+?>
 <nav class="navbar navbar-fixed-top">
             <div id="nav-trigger">
                 <span>Menu</span>
@@ -44,11 +53,5 @@
             <nav id="nav-mobile"></nav>
 </nav>
 
-<div class="container-fluid">
-
-<!-- /originalsliderplace -->
-
-<!--[if lt IE 7]>
-<p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-<![endif]-->
+<div class="container-fluid" style="margin-top: 70px;">
 
