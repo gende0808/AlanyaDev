@@ -6,6 +6,7 @@
 
 <?PHP
 include_once "header.php";
+include_once "loginmodal.php";
 //include_once "sideshoppinglist.php";
 ?>
 
@@ -37,14 +38,6 @@ include_once "header.php";
                 <img src="images/testslide1.png" alt="" />
             </li>
         </ul>
-    </div>
-</div>
-
-
-<div id="main-header">
-    <hr>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -237,6 +230,7 @@ include_once "header.php";
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <?PHP
