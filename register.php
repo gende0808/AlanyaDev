@@ -30,26 +30,26 @@ include_once "header.php";
             </div> <!-- /.modal-header -->
 
             <div class="modal-body">
-                <form role="form">
+                <form action="registersucces.php" method="post">
                     <div class="form-group">
                         <div class="input-group">
                             <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-comment"></label>
-                            <input type="text" class="bordertest form-control" id="uLogin" placeholder="E-mail">
+                            <input type="text" class="form-control" id="uLogin" placeholder="E-mail">
                         </div>
                     </div> <!-- /.form-group -->
 
                     <div class="form-group">
                         <div class="input-group">
                             <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-lock"></label>
-                            <input type="text" class="bordertest form-control" id="uLogin" placeholder="Wachtwoord">
+                            <input type="password" class="form-control" id="uLogin" placeholder="Wachtwoord">
                         </div>
                     </div> <!-- /.form-group -->
 
                           <div class="form-group">
                         <div class="input-group">
                             <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-home"></label>
-                            <input type="text" class="bordertest form-control" id="uLogin" placeholder="Straatnaam" style="width: 70%;">
-                            <input type="text" class="bordertest form-control" id="uLogin" placeholder="Nr." style="width: 30%;">
+                            <input type="text" class="form-control" id="uLogin" placeholder="Straatnaam" style="width: 70%;">
+                            <input type="text" class=" form-control" id="uLogin" placeholder="Nr." style="width: 30%;">
                         </div>
                     </div> <!-- /.form-group -->
 
@@ -57,32 +57,24 @@ include_once "header.php";
                           <div class="form-group">
                         <div class="input-group">
                             <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-map-marker"></label>
-                            <input type="text" class="bordertest form-control" id="uLogin" placeholder="Plaats">
+                            <input type="text" class="form-control" id="uLogin" placeholder="Plaats">
                         </div>
                     </div> <!-- /.form-group -->
 
                           <div class="form-group">
                         <div class="input-group">
                             <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-earphone"></label>
-                            <input type="text" class="bordertest form-control" id="uLogin" placeholder="Telefoonnummer">
+                            <input type="text" class="form-control" id="uLogin" placeholder="Telefoonnummer">
                         </div>
-                    </div> <!-- /.form-group -->   
+                    </div> <!-- /.form-group -->
 
                             <p>al een bestaand account? <a href="#" data-toggle="modal" data-target="#myModal" class="hvr-float-shadow">Login</a></p>
+                    <button class="form-control btn orange" style="color: white;" type="submit" value="submit">Registeren</button>
                 </form>
 
             </div> <!-- /.modal-body -->
 
-            <div class="modal-footer">
 
-                <button class="form-control btn orange" style="color: white;">Registeren</button>
-
-                <div class="progress">
-                    <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="100" style="width: 0%;">
-                        <span class="sr-only">progress</span>
-                    </div>
-                </div>
-            </div> <!-- /.modal-footer -->
 
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

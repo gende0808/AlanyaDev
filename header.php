@@ -37,10 +37,10 @@
             <nav id="nav-main">
                 <ul>
                     <li style="height: 40px; border-right: solid 0px #950025!important;"><a href="index.php" class="hvr-float-shadow" style="height: 40px;"><img src="images/alanyaforbanner3.png" style="padding-bottom: 10px;"></a></li>
-                    <li><a href="about.php" class="hvr-float-shadow">About</a></li>
-                    <li><a href="contact.php" class="hvr-float-shadow">Contact</a></li>
-                    <li><a href="discounts.php" class="hvr-float-shadow">Acties</a></li>
                     <li><a href="menu.php" class="hvr-float-shadow">Menukaart</a></li>
+                    <li><a href="discounts.php" class="hvr-float-shadow">Acties</a></li>
+                    <li><a href="contact.php" class="hvr-float-shadow">Contact</a></li>
+                    <li><a href="about.php" class="hvr-float-shadow">Over ons</a></li>
                     <li><a href="#" data-toggle="modal" data-target="#myModal" class="hvr-float-shadow">Login</a></li>
                     <li><a href="register.php" class="hvr-float-shadow">Registreer</a></li>
                     <li><a href="tel:0756409003" class="hvr-float-shadow"><span class="glyphicon glyphicon-earphone"></span> 075-6409003 </a></li>

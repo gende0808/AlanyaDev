@@ -21,7 +21,9 @@ include_once "header.php";
                 <div class="col-md-4">
                     </div>
                 <div class="col-md-4">
+                    <div class="logo">
                 <img src="images/testlogo2.png" alt=""/>
+                        </div>
                 </div>
             </li>
             <li>
