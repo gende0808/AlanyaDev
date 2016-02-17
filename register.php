@@ -51,7 +51,7 @@ error_reporting(E_ALL);
                     <div class="form-group">
                         <div class="input-group">
                             <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-lock"></label>
-                            <input type="text" class="form-control" name="password" placeholder="Wachtwoord">
+                            <input type="password" class="form-control" name="password" placeholder="Wachtwoord">
                         </div>
                     </div> <!-- /.form-group -->
 
