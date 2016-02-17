@@ -1,31 +1,23 @@
 <?PHP
 include_once "header.php";
-//include_once "sideshoppinglist.php";
+include_once "sideshoppinglist.php";
 ?>
-<div id="slider" style="height: 330px!important;">
+<div id="slider" style="height: 350px!important;">
     <div class="flexslider">
         <ul class="slides">
-            .
             <li>
                 <div class="slider-caption">
                 </div>
-                <hr>
-                <div class="col-md-4">
-                    </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-md-offset-4">
                     <div class="logo">
                 <img src="images/testlogo2.png" alt=""/>
-                        </div>
+                    </div>
                 </div>
             </li>
             <li>
-                <div class="slider-caption">
-                </div>
                 <img src="images/testslide2.png" alt="" />
             </li>
             <li>
-                <div class="slider-caption">
-                </div>
                 <img src="images/testslide1.png" alt="" />
             </li>
         </ul>
