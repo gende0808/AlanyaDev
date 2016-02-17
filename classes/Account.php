@@ -106,19 +106,15 @@ class Account implements CRUD{
     /**
      * @param mixed $usercity
      */
-    public function setUsercity($usercity)
-    {
-        if(empty($usercity)){
-            throw new InvalidArgumentException('Stad mag niet leeg zijn');
-        }
-        $this->usercity = $usercity;
-    }
 
     /**
      * @param mixed $usercityid
      */
     public function setUsercityid($usercityid)
     {
+        if(empty($usercityid)){
+           throw new InvalidArgumentException("Je hebt geen stad gekozen!");
+            }
         $this->usercityid = $usercityid;
     }
 
@@ -127,6 +123,9 @@ class Account implements CRUD{
      */
     public function setUserstreetname($userstreetname)
     {
+        if(empty($userstreetname)){
+            throw new InvalidArgumentException("Je hebt geen straat ingevoerd!");
+        }
         $this->userstreetname = $userstreetname;
     }
 
@@ -135,6 +134,9 @@ class Account implements CRUD{
      */
     public function setUserhousenumber($userhousenumber)
     {
+        if(empty($userhousenumber)){
+            throw new InvalidArgumentException("Je hebt geen huisnummer ingevoerd!");
+        }
         $this->userhousenumber = $userhousenumber;
     }
 
@@ -143,7 +145,11 @@ class Account implements CRUD{
      */
     public function setUseremail($useremail)
     {
-        $this->useremail = $useremail;
+        if(empty($useremail)){
+            throw new InvalidArgumentException("Je hebt geen email ingevoerd!");
+        }
+        $this->userhousenumber = $useremail;
+
     }
 
     /**
@@ -193,8 +199,6 @@ class Account implements CRUD{
     {
         $this->usernote = $usernote;
     }
-
-
 }
 
 
