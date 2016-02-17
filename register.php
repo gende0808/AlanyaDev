@@ -5,6 +5,13 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <?PHP
 include_once "header.php";
+include_once "interfaces/CRUD.php";
+include_once "classes/Account.php";
+include_once "connection.php";
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 ?>
 
     <body>
@@ -29,27 +36,30 @@ include_once "header.php";
                 <h4 class="modal-title" id="myModalLabel">Registreer</h4>
             </div> <!-- /.modal-header -->
 
+            <?PHP
+            ?>
+            <form method="post" role="form" action="registersucces.php">
             <div class="modal-body">
-                <form action="registersucces.php" method="post">
+                <form role="form">
                     <div class="form-group">
                         <div class="input-group">
                             <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-comment"></label>
-                            <input type="text" class="form-control" id="uLogin" placeholder="E-mail">
+                            <input type="text" class="form-control" name="email" placeholder="E-mail">
                         </div>
                     </div> <!-- /.form-group -->
 
                     <div class="form-group">
                         <div class="input-group">
                             <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-lock"></label>
-                            <input type="password" class="form-control" id="uLogin" placeholder="Wachtwoord">
+                            <input type="text" class="form-control" name="password" placeholder="Wachtwoord">
                         </div>
                     </div> <!-- /.form-group -->
 
                           <div class="form-group">
                         <div class="input-group">
                             <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-home"></label>
-                            <input type="text" class="form-control" id="uLogin" placeholder="Straatnaam" style="width: 70%;">
-                            <input type="text" class=" form-control" id="uLogin" placeholder="Nr." style="width: 30%;">
+                            <input type="text" class="form-control" name="street" placeholder="Straatnaam" style="width: 70%;">
+                            <input type="text" class="form-control" name="number" placeholder="Nr." style="width: 30%;">
                         </div>
                     </div> <!-- /.form-group -->
 
@@ -57,25 +67,21 @@ include_once "header.php";
                           <div class="form-group">
                         <div class="input-group">
                             <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-map-marker"></label>
-                            <input type="text" class="form-control" id="uLogin" placeholder="Plaats">
+                            <input type="text" class="form-control" name="city" placeholder="Plaats">
                         </div>
                     </div> <!-- /.form-group -->
 
                           <div class="form-group">
                         <div class="input-group">
                             <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-earphone"></label>
-                            <input type="text" class="form-control" id="uLogin" placeholder="Telefoonnummer">
+                            <input type="text" class="form-control" name="phone" placeholder="Telefoonnummer">
                         </div>
-                    </div> <!-- /.form-group -->
+                    </div> <!-- /.form-group -->   
 
                             <p>al een bestaand account? <a href="#" data-toggle="modal" data-target="#myModal" class="hvr-float-shadow">Login</a></p>
                     <button class="form-control btn orange" style="color: white;" type="submit" value="submit">Registeren</button>
                 </form>
-
             </div> <!-- /.modal-body -->
-
-
-
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 
@@ -94,3 +100,7 @@ include_once "footer.php";
 
     </body>
 </html>
+
+<?PHP
+
+?>

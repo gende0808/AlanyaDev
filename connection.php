@@ -1,10 +1,20 @@
 <?php
 
-function executeQuery($query)
+try
 {
-    $connect = mysqli_connect("localhost", "root", "", "alanya");
-    $result = mysqli_query($connect, $query);
-    return $result;
+    $DB_host = "localhost";
+    $DB_name = "alanya";
+    $DB_user = "root";
+    $DB_pass = "password";
+
+    $DB_con = new PDO("mysql:host={$DB_host};dbname={$DB_name}",$DB_user,$DB_pass);
+    $DB_con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
+catch(PDOException $e)
+{
+    echo $e->getMessage();
+}
+
+
 
 ?>
