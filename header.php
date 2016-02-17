@@ -66,7 +66,7 @@
                     <div class="form-group">
                         <div class="input-group">
                             <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-user"></label>
-                            <input type="text" class="form-control" id="uLogin" placeholder="Gebruikersnaam">
+                            <input type="text" class="form-control" id="uLogin" placeholder="E-mail">
                         </div>
                     </div> <!-- /.form-group -->
 
@@ -83,7 +83,7 @@
             </div> <!-- /.modal-body -->
 
             <div class="modal-footer">
-                <button class="form-control btn orange" style="color: white;">Ok</button>
+                <button class="form-control btn orange" style="color: white;">Login</button>
 
                 <div class="progress">
                     <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="100" style="width: 0%;">

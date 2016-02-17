@@ -12,8 +12,8 @@ include_once "header.php";
     <br>
     <br>
     <br>
-<center><h1>404 Pagina kon niet gevonden worden :(</h1></center><br>
-<center><h1>Deze pagina bestaat(nog) niet!</h1></center>
+<center><h1>Sorry, de pagina die u heeft aangevraagd bestaat niet.</h1></center><br>
+<center><h3>Misschien is de URL verkeerd gespeld of bestaat deze pagina niet meer.</h3></center>
 </div>
 </body>
 <?PHP
