@@ -42,6 +42,14 @@ include_once "printorder.php";
                     <table class="table table-condensed">
                         <thead>
                         <tr>
+                            <td><strong><p>Bestelling ID</p></strong></td>
+                            <td><strong><p>1</p></strong></td>
+                            <td
+                        </tr>
+
+                        </thead>
+                        <tbody>
+                        <tr>
                             <td><strong>Product Naam</strong></td>
                             <td class="text-center"><strong>Toevoegingen</strong></td>
                             <td class="text-center"><strong>Prijs</strong></td>
@@ -82,7 +90,7 @@ include_once "printorder.php";
                             <td class="highrow"></td>
                             <td class="emptyrow"></td>
                             <td class="emptyrow"></td>
-                            <td class="emptyrow text-center"><strong>Verzendkosten</strong></td>
+                            <td class="emptyrow text-center"><strong>Bezorgingskosten</strong></td>
                             <td class="emptyrow text-right">€0,-</td>
                         </tr>
                         <tr>
@@ -144,6 +152,14 @@ include_once "printorder.php";
                     <table class="table table-condensed">
                         <thead>
                         <tr>
+                            <td><strong><p>Bestelling ID</p></strong></td>
+                            <td><strong><p>2</p></strong></td>
+                            <td
+                        </tr>
+
+                        </thead>
+                        <tbody>
+                        <tr>
                             <td><strong>Product Naam</strong></td>
                             <td class="text-center"><strong>Toevoegingen</strong></td>
                             <td class="text-center"><strong>Prijs</strong></td>
@@ -184,7 +200,7 @@ include_once "printorder.php";
                             <td class="highrow"></td>
                             <td class="emptyrow"></td>
                             <td class="emptyrow"></td>
-                            <td class="emptyrow text-center"><strong>Verzendkosten</strong></td>
+                            <td class="emptyrow text-center"><strong>Bezorgingskosten</strong></td>
                             <td class="emptyrow text-right">€0,-</td>
                         </tr>
                         <tr>
@@ -197,11 +213,13 @@ include_once "printorder.php";
                         <tr>
                             <td class="emptyrow">
                                 <strong>
+                                    <p>Naam</p>
                                     <p>Adres</p>
                                     <p>Tel</p>
                                 </strong></td>
                             <td class="emptyrow">
                                 <strong>
+                                    <p>Boudewijn Bos</p>
                                     <p>Padlaan 9, Krommenie</p>
                                     <p>075-6874522</p>
                                 </strong></td>
@@ -231,13 +249,13 @@ include_once "printorder.php";
                                     </div>
                                 </strong>
                             </td>
+
                         </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-    </div>
 </div>
 </div>
 </div>
