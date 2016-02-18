@@ -43,7 +43,7 @@ include_once "sideshoppinglist.php";
                             <h4><a href="grill.php">Special Houtskool Grill</a></h4>
                         </div>
                         <div class="content-hide">
-                            <p>Proef nu de geweldige kanker met een vleugje extra kanker</p>
+                            <p>heeeul lekker</p>
                         </div>
                     </div>
                 </div>
