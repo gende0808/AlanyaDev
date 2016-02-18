@@ -148,7 +148,7 @@ class Account implements CRUD{
         if(empty($useremail)){
             throw new InvalidArgumentException("Je hebt geen email ingevoerd!");
         }
-        $this->userhousenumber = $useremail;
+        $this->useremail = $useremail;
 
     }
 
@@ -181,6 +181,12 @@ class Account implements CRUD{
      */
     public function setUserpassword($userpassword)
     {
+        if(empty($userpassword)){
+            throw new InvalidArgumentException("wachtwoord is leeg!");
+        }
+        if(strlen($userpassword) < 6 || strlen($userpassword) > 16){
+            throw new InvalidArgumentException("wachtwoord moet tussen de 6 en 16 karakters zijn!");
+        }
         $this->userpassword = $userpassword;
     }
 
@@ -189,6 +195,10 @@ class Account implements CRUD{
      */
     public function setUserphonenumber($userphonenumber)
     {
+        if(empty($userphonenumber))
+        {
+            throw new InvalidArgumentException("telefoonnummer is leeg");
+        }
         $this->userphonenumber = $userphonenumber;
     }
 
