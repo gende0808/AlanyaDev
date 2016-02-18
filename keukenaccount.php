@@ -1,3 +1,6 @@
+<?PHP
+include_once "printorder.php";
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -25,6 +28,7 @@
     <link rel="stylesheet" href="css/sidebar.css">
     <link rel="stylesheet" href="css/sideshop.css">
     <link rel="stylesheet" href="css/border.css">
+    <link rel="stylesheet" href="css/checkbox.css">
     <link href="css/demo-page.css" rel="stylesheet" media="all">
     <link href="css/hover.css" rel="stylesheet" media="all">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/t/bs/jq-2.2.0,dt-1.10.11/datatables.min.css"/>
@@ -102,6 +106,31 @@
                                     <p>075-6874522</p>
                                 </strong></td>
 
+                            <td class="emptyrow">
+                                <br>
+                                            <div class="alert alert-danger" role="alert">Deze bon is nog NIET afgedrukt!</div>
+                            </td>
+
+
+                            <td class="emptyrow">
+                                <strong>
+                                    <div class="searchable-container items col-lg-12">
+                                        <div class="info-block block-info clearfix">
+                                            <div class="square-box pull-left">
+                                            </div>
+                                            <div data-toggle="buttons" class="btn-group bizmoduleselect">
+                                                <label class="btn btn-default">
+                                                    <div class="bizcontent">
+                                                        <input type="checkbox" name="var_id[]" autocomplete="off" value="">
+                                                        <span class="glyphicon glyphicon-ok glyphicon-lg"></span>
+                                                        <h5>Selecteren</h5>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </strong>
+                            </td>
                         </tr>
                         </tbody>
                     </table>
@@ -176,6 +205,32 @@
                                     <p>Padlaan 9, Krommenie</p>
                                     <p>075-6874522</p>
                                 </strong></td>
+
+                            <td class="emptyrow">
+                                <br>
+                                            <div class="alert alert-success" role="alert">Deze bon is al WEL afgedrukt!</div>
+                            </td>
+
+
+                            <td class="emptyrow">
+                                <strong>
+                                    <div class="searchable-container items col-lg-12">
+                                        <div class="info-block block-info clearfix">
+                                            <div class="square-box pull-left">
+                                            </div>
+                                            <div data-toggle="buttons" class="btn-group bizmoduleselect">
+                                                <label class="btn btn-default">
+                                                    <div class="bizcontent">
+                                                        <input type="checkbox" name="var_id[]" autocomplete="off" value="">
+                                                        <span class="glyphicon glyphicon-ok glyphicon-lg"></span>
+                                                        <h5>Selecteren</h5>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </strong>
+                            </td>
                         </tr>
                         </tbody>
                     </table>
@@ -194,6 +249,32 @@
   </span>
 </div>
 
-
+<script type="text/javascript" src="https://cdn.datatables.net/t/bs/jq-2.2.0,dt-1.10.11/datatables.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
+<script src="js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/vendor/jquery-1.11.0.min.js"></script>
+<script src="js/vendor/jquery.gmap3.min.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/login.js"></script>
+<script src="js/scrolltop.js"></script>
+<script src="js/checkbox.js"></script>
+<script src="js/modernizr.custom.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#nav-mobile").html($("#nav-main").html());
+        $("#nav-trigger span").click(function(){
+            if ($("nav#nav-mobile ul").hasClass("expanded")) {
+                $("nav#nav-mobile ul.expanded").removeClass("expanded").slideUp(250);
+                $(this).removeClass("open");
+            } else {
+                $("nav#nav-mobile ul").addClass("expanded").slideDown(250);
+                $(this).addClass("open");
+            }
+        });
+    });
+</script>
 </body>
 </html>
