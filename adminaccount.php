@@ -69,7 +69,7 @@
                                 <td class="text-center">Pizza Hawaii</td>
                                 <td class="text-center">Ananas en Ham</td>
                                 <td class="text-right">€16,00</td>
-                                <td class="text-right"><a href="http://localhost/AlanyaDev/adminaccount.php">Verander</a></td>
+                                <td class="text-right"><a href="http://localhost/AlanyaDev/adminaccount.php">Wijzig</a></td>
                                 <td class="text-right"><a href="http://localhost/AlanyaDev/adminaccount.php">Verwijder</a></td>
                             </tr>
                             <tr>
@@ -78,7 +78,7 @@
                                 <td class="text-center">Pizza Salami</td>
                                 <td class="text-center">Salami en kaas</td>
                                 <td class="text-right">€14,00</td>
-                                <td class="text-right"><a href="http://localhost/AlanyaDev/adminaccount.php">Verander</a></td>
+                                <td class="text-right"><a href="http://localhost/AlanyaDev/adminaccount.php">Wijzig</a></td>
                                 <td class="text-right"><a href="http://localhost/AlanyaDev/adminaccount.php">Verwijder</a></td>
                             </tr>
                             <tr>
@@ -87,7 +87,7 @@
                                 <td class="text-center">Pizza margarita</td>
                                 <td class="text-center">Kaas</td>
                                 <td class="text-right">€9,00</td>
-                                <td class="text-right"><a href="http://localhost/AlanyaDev/adminaccount.php">Verander</a></td>
+                                <td class="text-right"><a href="http://localhost/AlanyaDev/adminaccount.php">Wijzig</a></td>
                                 <td class="text-right"><a href="http://localhost/AlanyaDev/adminaccount.php">Verwijder</a></td>
                             </tr>
                             </tbody>

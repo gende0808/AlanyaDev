@@ -17,14 +17,7 @@ include_once "printorder.php";
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/font-awesome.css">
-    <link rel="stylesheet" href="css/templatemo_style.css">
-    <link rel="stylesheet" href="css/templatemo_misc.css">
-    <link rel="stylesheet" href="css/flexslider.css">
-    <link rel="stylesheet" href="css/testimonails-slider.css">
-    <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="css/orange.css">
     <link rel="stylesheet" href="css/scrolltop.css">
-    <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/sidebar.css">
     <link rel="stylesheet" href="css/sideshop.css">
     <link rel="stylesheet" href="css/border.css">
@@ -83,21 +76,21 @@ include_once "printorder.php";
                             <td class="highrow"></td>
                             <td class="highrow"></td>
                             <td class="highrow"></td>
-                            <td class="highrow text-center"><strong>Sub totaal</strong></td>
+                            <td class="highrow"><strong>Sub totaal</strong></td>
                             <td class="highrow text-right">€32,-</td>
                         </tr>
                         <tr>
                             <td class="highrow"></td>
                             <td class="emptyrow"></td>
                             <td class="emptyrow"></td>
-                            <td class="emptyrow text-center"><strong>Bezorgingskosten</strong></td>
+                            <td class="emptyrow"><strong>Bezorgingskosten</strong></td>
                             <td class="emptyrow text-right">€0,-</td>
                         </tr>
                         <tr>
                             <td class="highrow"></td>
                             <td class="emptyrow"></td>
                             <td class="emptyrow"></td>
-                            <td class="emptyrow text-center"><strong>Totaal</strong></td>
+                            <td class="emptyrow"><strong>Totaal</strong></td>
                             <td class="emptyrow text-right">$32,-</td>
                         </tr>
                         <tr>
@@ -193,21 +186,21 @@ include_once "printorder.php";
                             <td class="highrow"></td>
                             <td class="highrow"></td>
                             <td class="highrow"></td>
-                            <td class="highrow text-center"><strong>Sub totaal</strong></td>
+                            <td class="highrow"><strong>Sub totaal</strong></td>
                             <td class="highrow text-right">€32,-</td>
                         </tr>
                         <tr>
                             <td class="highrow"></td>
                             <td class="emptyrow"></td>
                             <td class="emptyrow"></td>
-                            <td class="emptyrow text-center"><strong>Bezorgingskosten</strong></td>
+                            <td class="emptyrow"><strong>Bezorgingskosten</strong></td>
                             <td class="emptyrow text-right">€0,-</td>
                         </tr>
                         <tr>
                             <td class="highrow"></td>
                             <td class="emptyrow"></td>
                             <td class="emptyrow"></td>
-                            <td class="emptyrow text-center"><strong>Totaal</strong></td>
+                            <td class="emptyrow"><strong>Totaal</strong></td>
                             <td class="emptyrow text-right">$32,-</td>
                         </tr>
                         <tr>
@@ -275,24 +268,10 @@ include_once "printorder.php";
 <script src="js/vendor/jquery.gmap3.min.js"></script>
 <script src="js/plugins.js"></script>
 <script src="js/main.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/login.js"></script>
+<script src="js/bootstrap.js"></script>>
 <script src="js/scrolltop.js"></script>
 <script src="js/checkbox.js"></script>
 <script src="js/modernizr.custom.js"></script>
-<script>
-    $(document).ready(function(){
-        $("#nav-mobile").html($("#nav-main").html());
-        $("#nav-trigger span").click(function(){
-            if ($("nav#nav-mobile ul").hasClass("expanded")) {
-                $("nav#nav-mobile ul.expanded").removeClass("expanded").slideUp(250);
-                $(this).removeClass("open");
-            } else {
-                $("nav#nav-mobile ul").addClass("expanded").slideDown(250);
-                $(this).addClass("open");
-            }
-        });
-    });
-</script>
+
 </body>
 </html>

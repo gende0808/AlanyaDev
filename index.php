@@ -1,6 +1,5 @@
 <?PHP
 include_once "header.php";
-include_once "sideshoppinglist.php";
 ?>
 <div id="slider" style="height: 350px!important;">
     <div class="flexslider">
@@ -24,7 +23,7 @@ include_once "sideshoppinglist.php";
     </div>
 </div>
 
-<div id="latest-blog">
+<div id="catagories">
     <br>
     <div class="container">
         <div class="row">

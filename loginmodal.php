@@ -23,7 +23,7 @@
                         </div> <!-- /.input-group -->
                     </div> <!-- /.form-group -->
 
-                    <p>Nog geen account? <a href="register.php">Registreer</a></p>
+                    <p>Nog geen account? <a href="register.php">Registreren</a></p>
                 </form>
 
             </div> <!-- /.modal-body -->
