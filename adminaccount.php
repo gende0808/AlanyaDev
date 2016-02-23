@@ -29,6 +29,26 @@
     <link href="css/hover.css" rel="stylesheet" media="all">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/t/bs/jq-2.2.0,dt-1.10.11/datatables.min.css"/>
 </head>
+
+<nav class="navbar navbar-fixed-top">
+    <div id="nav-trigger">
+        <span>Menu</span>
+    </div>
+    <nav id="nav-main">
+        <ul>
+            <li style="height: 40px; border-right: solid 0px #950025!important;"><a href="index.php" class="hvr-float-shadow" style="height: 40px;"><img src="images/alanyaforbanner3.png" style="padding-bottom: 10px;"></a></li>
+            <li><a href="menu.php" class="hvr-float-shadow">Bestellingen</a></li>
+            <li><a href="discounts.php" class="hvr-float-shadow">Producten</a></li>
+            <li><a href="contact.php" class="hvr-float-shadow">Accounts</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#myModal" class="hvr-float-shadow">Log out</a></li>
+        </ul>
+    </nav>
+    <nav id="nav-mobile"></nav>
+</nav>
+
+<div class="container-fluid" style="margin-top: 70px;">
+
+
 <br>
 <div class="container">
     <div class="row">
