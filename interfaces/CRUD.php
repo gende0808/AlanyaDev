@@ -6,5 +6,4 @@ interface CRUD {
     function delete($id);
 }
 
-
 ?>

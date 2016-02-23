@@ -32,6 +32,8 @@
 <body>
 <?php
 include_once "loginmodal.php";
+include_once "connection.php";
+include_once "interfaces/CRUD.php";
 ?>
 <nav class="navbar navbar-fixed-top">
             <div id="nav-trigger">
