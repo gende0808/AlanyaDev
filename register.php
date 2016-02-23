@@ -29,7 +29,7 @@ error_reporting(E_ALL);
                     ?>
 
 
-
+                </div>
 
             <div class="modal-header">
 
