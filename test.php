@@ -5,15 +5,19 @@
 
 <?PHP
 
-include_once "classes/Product1.php";
+include_once "classes/Product.php";
 
-$product10 = new Product1($DB_con);
+$product = new Product($DB_con);
+$product->read(40);
+echo 'productnaam: '.$product->getProductname();
+echo "<br>";
+echo 'beschrijving: '.$product->getProductdescription();
+echo "<br>";
+echo 'prijs: '.$product->getProductprice();
+echo "<br>";
+echo 'number: '.$product->getProductnumber();
+echo "<br>";
 
-$product10->setproductnumber("100");
-$product10->setProductname("Cola");
-$product10->setProductdescription("Cola blikje");
-$product10->setProductprice("300.00");
-$product10->create();
 
 
 ?>

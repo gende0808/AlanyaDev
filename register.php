@@ -21,6 +21,7 @@ error_reporting(E_ALL);
                             $account->setUserstreetname(htmlspecialchars($_POST['street']));
                             $account->setUserhousenumber(htmlspecialchars($_POST['number']));
                             $account->setUserphonenumber(htmlspecialchars($_POST['phone']));
+                            $account->create();
                         } catch(Exception $e){
 
                             echo $e->getMessage();
