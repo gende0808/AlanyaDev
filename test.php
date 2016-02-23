@@ -7,11 +7,13 @@
 
 include_once "classes/Product1.php";
 
-$product10 = new Product1;
-$product14 = new Product1;
+$product10 = new Product1($DB_con);
 
-$product14->read(31);
-
+$product10->setproductnumber("100");
+$product10->setProductname("Cola");
+$product10->setProductdescription("Cola blikje");
+$product10->setProductprice("300.00");
+$product10->create();
 
 
 ?>
