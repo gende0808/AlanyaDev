@@ -7,9 +7,9 @@ include_once "header.php";
             <li>
                 <div class="slider-caption">
                 </div>
-                <div class="col-md-4 col-md-offset-4">
-                    <div class="logo">
-                <img src="images/testlogo2.png" alt=""/>
+                <div class="col-md-4 col-md-offset-4" >
+                    <div class="logo" >
+                <img src="images/testlogo2.png" style="height: 239px;width: 470px;margin-top: 20px;margin: auto;"/>
                     </div>
                 </div>
             </li>
