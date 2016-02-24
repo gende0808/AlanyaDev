@@ -27,8 +27,10 @@
     <link rel="stylesheet" href="css/border.css">
     <link href="css/demo-page.css" rel="stylesheet" media="all">
     <link href="css/hover.css" rel="stylesheet" media="all">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/t/bs/jq-2.2.0,dt-1.10.11/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
 </head>
+
+
 <body>
 <?php
 include_once "loginmodal.php";
@@ -36,23 +38,23 @@ include_once "connection.php";
 include_once "interfaces/CRUD.php";
 ?>
 <nav class="navbar navbar-fixed-top">
-            <div id="nav-trigger">
-                <span>Menu</span>
-            </div>
-            <nav id="nav-main">
-                <ul>
-                    <li style="height: 40px; border-right: solid 0px #950025!important;"><a href="index.php" class="hvr-float-shadow" style="height: 40px;"><img src="images/alanyaforbanner3.png" style="padding-bottom: 10px;"></a></li>
-                    <li><a href="menu.php" class="hvr-float-shadow">Menukaart</a></li>
-                    <li><a href="discounts.php" class="hvr-float-shadow">Acties</a></li>
-                    <li><a href="contact.php" class="hvr-float-shadow">Contact</a></li>
-                    <li><a href="about.php" class="hvr-float-shadow">Over ons</a></li>
-                    <li><a href="tel:0756409003" class="hvr-float-shadow"><span class="glyphicon glyphicon-earphone"></span> 075-6409003 </a></li>
-                    <li><a href="shoppingcart.php" class="hvr-float-shadow"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
-                    <li><a href="#" data-toggle="modal" data-target="#myModal" class="hvr-float-shadow">Inloggen</a></li>
-                    <li><a href="register.php" class="hvr-float-shadow">Registreren</a></li>
-                </ul>
-            </nav>
-            <nav id="nav-mobile"></nav>
+    <div id="nav-trigger">
+        <span>Menu</span>
+    </div>
+    <nav id="nav-main">
+        <ul>
+            <li style="height: 40px; border-right: solid 0px #950025!important;"><a href="index.php" class="hvr-float-shadow" style="height: 40px;"><img src="images/alanyaforbanner3.png" style="padding-bottom: 10px;"></a></li>
+            <li><a href="menu.php" class="hvr-float-shadow">Menukaart</a></li>
+            <li><a href="discounts.php" class="hvr-float-shadow">Acties</a></li>
+            <li><a href="contact.php" class="hvr-float-shadow">Contact</a></li>
+            <li><a href="about.php" class="hvr-float-shadow">Over ons</a></li>
+            <li><a href="tel:0756409003" class="hvr-float-shadow"><span class="glyphicon glyphicon-earphone"></span> 075-6409003 </a></li>
+            <li><a href="shoppingcart.php" class="hvr-float-shadow"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+            <li><a href="#" data-toggle="modal" data-target="#myModal" class="hvr-float-shadow">Inloggen</a></li>
+            <li><a href="register.php" class="hvr-float-shadow">Registreren</a></li>
+        </ul>
+    </nav>
+    <nav id="nav-mobile"></nav>
 </nav>
 
 <div class="container-fluid" style="margin-top: 70px;">

@@ -205,8 +205,6 @@ include_once "footer.php";
 <i class="fa fa-2x fa-arrow-circle-up"></i>
   </span>
 </div>
-
         <script src="js/vendor/jquery.gmap3.min.js"></script>
-
     </body>
 </html>

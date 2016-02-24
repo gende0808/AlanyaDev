@@ -47,6 +47,7 @@
   </span>
     </div>
 
+
     <script type="text/javascript" src="https://cdn.datatables.net/t/bs/jq-2.2.0,dt-1.10.11/datatables.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
     <script src="js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
@@ -59,7 +60,6 @@
     <script src="js/login.js"></script>
     <script src="js/scrolltop.js"></script>
     <script src="js/modernizr.custom.js"></script>
-    <script src="js/datatable.js"></script>
     <script>
         $(document).ready(function(){
             $("#nav-mobile").html($("#nav-main").html());
@@ -72,6 +72,13 @@
                     $(this).addClass("open");
                 }
             });
+        });
+    </script>
+
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#testTable').dataTable();
         });
     </script>
 </footer>

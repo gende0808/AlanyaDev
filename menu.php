@@ -10,14 +10,18 @@ include_once "connection.php";
 <?php
 
 echo "<table id='testTable' class='table table-striped table-hover table-responsive'>";
-echo "<tr>
+echo "
+    <thead>
+        <tr>
             <th class='text-center'>Categorie</th>
             <th class='text-center'>Nummer</th>
             <th class='text-center'>Product</th>
             <th class='text-center'>Omschrijving</th>
             <th class='text-center'>Prijs (€)</th>
-      </tr>";
+        </tr>
+     </thead>";
 
+"<tbody>";
 class TableRows extends RecursiveIteratorIterator {
     function __construct($it) {
         parent::__construct($it, self::LEAVES_ONLY);
@@ -35,7 +39,6 @@ class TableRows extends RecursiveIteratorIterator {
         echo "</tr>" . "\n";
     }
 }
-
 
 try {;
     $stmt = $DB_con->prepare("SELECT categorie.categorieNaam, product.productNummer, product.productNaam,
@@ -56,6 +59,7 @@ catch(PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
 $conn = null;
+"</tbody>";
 echo "</table>";
 
 ?>

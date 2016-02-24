@@ -9,7 +9,7 @@ include_once "header.php";
                 </div>
                 <div class="col-md-4 col-md-offset-4" >
                     <div class="logo" >
-                <img src="images/testlogo2.png" style="height: 239px;width: 470px;margin-top: 20px;margin: auto;"/>
+                <img src="images/testlogo2.png" style="height: 250px;width: 400px;margin-top: 20px;margin: auto;"/>
                     </div>
                 </div>
             </li>
