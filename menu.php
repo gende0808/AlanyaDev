@@ -1,72 +1,51 @@
 <?PHP
 include_once "header.php";
-include_once "sideshoppinglist.php";
 include_once "connection.php";
 ?>
 
-<div id="main-header">
-    <div class="logo">
-        <hr>
-        <center><img src="images/testlogo2.png"></center>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-2">
-    </div>
-    <div class="col-md-8">
+<div class="container text-center">
+    <img src="images/testlogo2.png">
+    <div class="col-md-8 col-md-offset-3 text-center">
         <?php
-        // Ascending Order
-        if(isset($_POST['ASC']))
-        {
-            $asc_query = "SELECT * FROM product ORDER BY ProductPrijs ASC";
-            $result = executeQuery($asc_query);
-        }
 
-// Descending Order
-        elseif (isset ($_POST['DESC']))
-        {
-            $desc_query = "SELECT * FROM product ORDER BY ProductPrijs DESC";
-            $result = executeQuery($desc_query);
-        }
+echo "<table style='border: solid 1px black;' class='table-striped'>";
+echo "<tr><th>Product nummer</th><th>Product naam</th><th>Product omschrijving</th></tr>";
 
-// Default Order
-        else {
-            $default_query = "SELECT * FROM product";
-            $result = executeQuery($default_query);
-        }
+class TableRows extends RecursiveIteratorIterator {
+    function __construct($it) {
+        parent::__construct($it, self::LEAVES_ONLY);
+    }
 
-        ?>
-        <form action="menu.php" method="post">
+    function current() {
+        return "<td style='width: 150px; border: 1px solid black;'>" . parent::current(). "</td>";
+    }
 
-            <input type="submit" name="ASC" value="Ascending"><br><br>
-            <input type="submit" name="DESC" value="Descending"><br><br>
+    function beginChildren() {
+        echo "<tr>";
+    }
 
-            <table class="table table-striped table-hover table-responsive">
-                <tr>
-                    <th>Nummer</th>
-                    <th>Product</th>
-                    <th>Omschrijving</th>
-                    <th>Prijs</th>
-                </tr>
-                <!-- populate table from mysql database -->
-                <?php while ($row = mysqli_fetch_array($result)):?>
-                    <tr>
-                        <td><?php echo $row[1];?></td>
-                        <td><?php echo $row[2];?></td>
-                        <td><?php echo $row[3];?></td>
-                        <td>€<?php echo $row[4];?></td>
-                    </tr>
-                <?php endwhile;?>
-            </table>
-        </form>
+    function endChildren() {
+        echo "</tr>" . "\n";
+    }
+}
 
-    </div>
-    <div class="col-md-2">
-    </div>
-</div>
 
-<?PHP
+try {;
+    $stmt = $DB_con->prepare("SELECT productNummer, productNaam, productOmschrijving FROM product");
+    $stmt->execute();
+
+    // set the resulting array to associative
+    $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+    foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
+        echo $v;
+    }
+}
+catch(PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
+$conn = null;
+echo "</table>";
+
+
 include_once "footer.php";
-// include_once "sideshoppinglist.php";
-?>

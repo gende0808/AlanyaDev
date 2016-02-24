@@ -9,6 +9,7 @@
 -->
 <?PHP
 include_once "header.php";
+include_once "ordersucces.php";
 ?>
 
     <head>
@@ -171,7 +172,7 @@ include_once "header.php";
                         <td>   </td>
                         <td>   </td>
                         <td>   </td>
-                        <td><h3>Total</h3></td>
+                        <td><h3>Totaal</h3></td>
                         <td class="text-right"><h3><strong>€31,00</strong></h3></td>
                     </tr>
                     <tr>
@@ -183,7 +184,7 @@ include_once "header.php";
                             <span class="glyphicon glyphicon-shopping-cart"></span> Terug naar het menu
                         </button></td>
                         <td>
-                        <button type="button" class="btn btn-success">
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#OrderSuccesModal">
                             Afrekenen <span class="glyphicon glyphicon-play"></span>
                         </button></td>
                     </tr>
