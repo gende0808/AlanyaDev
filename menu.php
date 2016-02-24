@@ -5,11 +5,18 @@ include_once "connection.php";
 
 <div class="container text-center">
     <img src="images/testlogo2.png">
-    <div class="col-md-8 col-md-offset-3 text-center">
-        <?php
+    <div class="col-md-8 col-md-offset-2 text-center">
 
-echo "<table style='border: solid 1px black;' class='table-striped'>";
-echo "<tr><th>Product nummer</th><th>Product naam</th><th>Product omschrijving</th></tr>";
+<?php
+
+echo "<table id='testTable' class='table table-striped table-hover table-responsive'>";
+echo "<tr>
+            <th class='text-center'>Categorie</th>
+            <th class='text-center'>Nummer</th>
+            <th class='text-center'>Product</th>
+            <th class='text-center'>Omschrijving</th>
+            <th class='text-center'>Prijs (€)</th>
+      </tr>";
 
 class TableRows extends RecursiveIteratorIterator {
     function __construct($it) {
@@ -17,7 +24,7 @@ class TableRows extends RecursiveIteratorIterator {
     }
 
     function current() {
-        return "<td style='width: 150px; border: 1px solid black;'>" . parent::current(). "</td>";
+        return "<td style='width: 150px;'>" . parent::current(). "</td>";
     }
 
     function beginChildren() {
@@ -31,7 +38,11 @@ class TableRows extends RecursiveIteratorIterator {
 
 
 try {;
-    $stmt = $DB_con->prepare("SELECT productNummer, productNaam, productOmschrijving FROM product");
+    $stmt = $DB_con->prepare("SELECT categorie.categorieNaam, product.productNummer, product.productNaam,
+                         product.productOmschrijving, product.productPrijs
+                         FROM product
+                         INNER JOIN categorie ON categorie.categorieID = product.categorieID
+                         ORDER BY categorieNaam");
     $stmt->execute();
 
     // set the resulting array to associative
@@ -47,5 +58,10 @@ catch(PDOException $e) {
 $conn = null;
 echo "</table>";
 
+?>
+ </div>
+</div>
 
+<?php
 include_once "footer.php";
+?>

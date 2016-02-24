@@ -58,8 +58,8 @@
     <script src="js/bootstrap.js"></script>
     <script src="js/login.js"></script>
     <script src="js/scrolltop.js"></script>
-
     <script src="js/modernizr.custom.js"></script>
+    <script src="js/datatable.js"></script>
     <script>
         $(document).ready(function(){
             $("#nav-mobile").html($("#nav-main").html());
