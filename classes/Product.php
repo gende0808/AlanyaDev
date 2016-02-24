@@ -25,6 +25,16 @@ class Product implements CRUD
      */
     private $productprice;
 
+    /**
+     * @var int
+     */
+    private $categoryid;
+
+    /**
+     * @var
+     */
+    private $productinfo = array();
+
     public function __construct($dbconnection)
     {
         $this->db = $dbconnection;
@@ -33,12 +43,13 @@ class Product implements CRUD
     public function create()
     {
         try {
-            $stmt = $this->db->prepare("INSERT INTO product(productNummer,productNaam,productOmschrijving,productPrijs)
-                                    VALUES(:prodnr, :prodname, :proddescription, :prodprice)");
+            $stmt = $this->db->prepare("INSERT INTO product(productNummer,productNaam,productOmschrijving,productPrijs, categorieID)
+                                    VALUES(:prodnr, :prodname, :proddescription, :prodprice, :catid)");
             $stmt->bindparam(":prodnr", $this->productnumber);
             $stmt->bindparam(":prodname", $this->productname);
             $stmt->bindparam(":proddescription", $this->productdescription);
             $stmt->bindparam(":prodprice", $this->productprice);
+            $stmt->bindparam(":catid", $this->categoryid);
             $stmt->execute();
 
         } catch (PDOException $e) {
@@ -53,13 +64,14 @@ class Product implements CRUD
         }
 
         try {
-            $stmt = $this->db->prepare("SELECT id,productNummer,productNaam,productOmschrijving,productPrijs FROM product WHERE id=" . $id);
+            $stmt = $this->db->prepare("SELECT id,productNummer,productNaam,productOmschrijving,productPrijs,categorieID FROM product WHERE id=" . $id);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             $this->productnumber = $result['productNummer'];
             $this->productname = $result['productNaam'];
             $this->productdescription = $result['productOmschrijving'];
             $this->productprice = $result['productPrijs'];
+            $this->categoryid = $result['categorieID'];
             $this->id = $result['id'];
         } catch (PDOException $e) {
             echo "Database-error: " . $e->getMessage();
@@ -77,11 +89,13 @@ class Product implements CRUD
                                                            productNaam = :prodname,
                                                            productOmschrijving = :proddescription,
                                                            productPrijs = :prodprice
-                                                           WHERE id=" . $id);
+                                                           categorieID = :catid;
+                                                           WHERE id=".$id);
             $stmt->bindparam(":prodnr", $this->productnumber);
             $stmt->bindparam(":prodname", $this->productname);
             $stmt->bindparam(":proddescription", $this->productdescription);
             $stmt->bindparam(":prodprice", $this->productprice);
+            $stmt->bindparam(":catid", $this->categoryid);
             $stmt->execute();
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -90,7 +104,7 @@ class Product implements CRUD
 
     public function delete($id)
     {
-
+        //TODO create delete function
     }
 
     /**
@@ -187,6 +201,24 @@ class Product implements CRUD
         }
         $this->productname = $productname;
     }
+
+    /**
+     * @return int
+     */
+    public function getCategoryid()
+    {
+        return $this->categoryid;
+    }
+
+    /**
+     * @param int $categoryid
+     */
+    public function setCategoryid($categoryid)
+    {
+        //moet nog error handling in zodat er gecheckt wordt of dit een int is, niet leeg is etc.
+        $this->categoryid = $categoryid;
+    }
+
 
 
 }
