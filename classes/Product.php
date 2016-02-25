@@ -104,7 +104,9 @@ class Product implements CRUD
 
     public function delete($id)
     {
-        //TODO create delete function
+        $stmt = $this->db->prepare("DELETE FROM product WHERE id= :productid");
+        $stmt->bindParam(':productid', $id, PDO::PARAM_INT);
+        $stmt->execute();
     }
 
     /**

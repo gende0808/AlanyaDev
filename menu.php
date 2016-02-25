@@ -1,70 +1,74 @@
 <?PHP
 include_once "header.php";
 include_once "connection.php";
+include_once "classes/ProductList.php";
+include_once "classes/Product.php";
+include_once "classes/Category.php";
+include_once "classes/CategoryList.php";
 ?>
+    <div class="container text-center">
+        <img src="images/testlogo2.png">
+        <?PHP
 
-<div class="container text-center">
-    <img src="images/testlogo2.png">
-    <div class="col-md-8 col-md-offset-2 text-center">
+        try {
 
-<?php
+            $categorylist = new CategoryList($DB_con); //er wordt een nieuwe categorie lijst aangemaakt
+            echo '<form action="" method="get">';
+            foreach ($categorylist->getcategories() as $category) { //hij haalt alle categoriën op in een array.
+                echo '<button name="catID" value="' . $category['categorieID'] . '">' . $category['categorieNaam'] . '</button>';
+                //hierboven worden simpele buttons geprint waarvan in de post de ID word meegegeven maar de waarde in de knop is de categorieNaam.
+            }
+            echo '</form>';
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
 
-echo "<table id='testTable' class='table table-striped table-hover table-responsive'>";
-echo "
+        ?>
+        <div class="col-md-8 col-md-offset-2 text-center">
+
+            <?php
+
+            echo "<table id='testTable' class='table table-striped table-hover table-responsive'>";
+            echo "
     <thead>
         <tr>
-            <th class='text-center'>Categorie</th>
-            <th class='text-center'>Nummer</th>
-            <th class='text-center'>Product</th>
+            <th class='text-center'>ProductNummer</th>
+            <th class='text-center'>Productnaam</th>
             <th class='text-center'>Omschrijving</th>
             <th class='text-center'>Prijs (€)</th>
         </tr>
      </thead>";
 
-"<tbody>";
-class TableRows extends RecursiveIteratorIterator {
-    function __construct($it) {
-        parent::__construct($it, self::LEAVES_ONLY);
-    }
+            echo "<tbody>";
+            // __________________________________
+            try {
 
-    function current() {
-        return "<td style='width: 150px;'>" . parent::current(). "</td>";
-    }
+                if (!isset($_GET['catID'])) {
+                    $category_ID = 1; //als er geen $_GET['catid'] is meegegeven is catid standaard 1
+                } else {
+                    $category_ID = $_GET['catID'];
+                }
+                $productlist = new ProductList($DB_con, $category_ID); // //de post word meegegeven
+                $listofproducts = $productlist->getlistofproducts(); //hiermee word een array opgehaald waarin producten met hun waarden zitten
+                foreach ($listofproducts as $product) { //in deze foreach loopt hij over ieder individueel product en print hij de waarden in die array
+                    echo "<tr>";
+                    echo "<td style='width: 150px;'>" . $product['productNummer'] . "</td>";
+                    echo "<td style='width: 150px;'>" . $product['productNaam'] . "</td>";
+                    echo "<td style='width: 150px;'>" . $product['productOmschrijving'] . "</td>";
+                    echo "<td style='width: 150px;'>" . $product['productPrijs'] . "</td>";
+                    echo "</tr>";
+                    echo "\n";
+                };
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+            ?>
+            </tbody>
+            </table>
 
-    function beginChildren() {
-        echo "<tr>";
-    }
+        </div>
+    </div>
 
-    function endChildren() {
-        echo "</tr>" . "\n";
-    }
-}
-
-try {;
-    $stmt = $DB_con->prepare("SELECT categorie.categorieNaam, product.productNummer, product.productNaam,
-                         product.productOmschrijving, product.productPrijs
-                         FROM product
-                         INNER JOIN categorie ON categorie.categorieID = product.categorieID
-                         ORDER BY categorieNaam");
-    $stmt->execute();
-
-    // set the resulting array to associative
-    $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-
-    foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
-        echo $v;
-    }
-}
-catch(PDOException $e) {
-    echo "Error: " . $e->getMessage();
-}
-$conn = null;
-"</tbody>";
-echo "</table>";
-
-?>
- </div>
-</div>
 
 <?php
 include_once "footer.php";
