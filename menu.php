@@ -10,6 +10,7 @@ include_once "classes/CategoryList.php";
         <img src="images/testlogo2.png">
         <?PHP
 
+
         try {
 
             $categorylist = new CategoryList($DB_con); //er wordt een nieuwe categorie lijst aangemaakt
