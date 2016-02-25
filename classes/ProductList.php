@@ -20,19 +20,7 @@ class ProductList
         if (!is_numeric($categoryID)) {
             throw new InvalidArgumentException("CategorieID was niet geldig ingevoerd!");
         }
-        if ($categoryID === null) {
-            try {
-                $stmt = $this->db->prepare("SELECT * FROM product ORDER BY `productNummer` ");
-                $stmt->execute();
-                while ($result = $stmt->fetch(PDO::FETCH_ASSOC))
-                {
-                    $this->listofproducts[] = $result;
-                }
 
-            } catch (PDOException $e) {
-                echo $e->getMessage();
-            }
-        }
         if (is_numeric($categoryID)) {
             try {
                 $stmt = $this->db->prepare("SELECT * FROM product WHERE categorieID= :catid ORDER BY `productNummer`");
