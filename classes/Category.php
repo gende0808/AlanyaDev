@@ -50,7 +50,7 @@ class Category implements CRUD
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             $this->id = $result['categorieID'];
             $this->catname = $result['categorieNaam'];
-            $this->catdescription = $result['categorieID'];
+            $this->catdescription = $result['categorieOmschrijving'];
             $this->discountID = $result['actieID'];
         } catch (PDOException $e) {
             echo "Database-error: " . $e->getMessage();

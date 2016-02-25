@@ -2,7 +2,10 @@
 
 class CategoryList
 {
-    private $listofids = array();
+    /**
+     * @var array
+     */
+    private $listofcategories = array();
     /**
      * @var PDO
      */
@@ -13,10 +16,11 @@ class CategoryList
         $this->db = $dbconnection; // moet nog error handling bij
 
         try {
-            $stmt = $this->db->prepare("SELECT categorieID FROM categorie");
+            $stmt = $this->db->prepare("SELECT * FROM `categorie` ORDER BY `categorieID`");
             $stmt->execute();
-            while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $this->listofids[] = $result['categorieID'];
+            while ($result = $stmt->fetch(PDO::FETCH_ASSOC))
+            {
+                $this->listofcategories[] = $result;
             }
 
         } catch (PDOException $e) {
@@ -26,15 +30,9 @@ class CategoryList
 
     }
 
-    function returnbuttons()
+    function getcategories()
     {
-        $return = "";
-        $category = new Category($this->db);
-        foreach ($this->listofids as $id) {
-            $category->read($id);
-            $return.='<form action="" method="post"><button name="categorieID" value="' . $category->getcatID() . '">' . $category->getcatname() . '</button></form>';
-        }
-        return $return;
+        return $this->listofcategories;
     }
 
 
