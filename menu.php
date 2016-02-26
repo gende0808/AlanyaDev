@@ -53,10 +53,10 @@ include_once "classes/CategoryList.php";
                 $listofproducts = $productlist->getlistofproducts(); //hiermee word een array opgehaald waarin producten met hun waarden zitten
                 foreach ($listofproducts as $product) { //in deze foreach loopt hij over ieder individueel product en print hij de waarden in die array
                     echo "<tr>";
-                    echo "<td style='width: 150px;'>" . $product['productNummer'] . "</td>";
-                    echo "<td style='width: 150px;'>" . $product['productNaam'] . "</td>";
-                    echo "<td style='width: 150px;'>" . $product['productOmschrijving'] . "</td>";
-                    echo "<td style='width: 150px;'>" . $product['productPrijs'] . "</td>";
+                    echo "<td style='width: 150px;'>" . $product->getProductnumber() . "</td>";
+                    echo "<td style='width: 150px;'>" . $product->getProductname() . "</td>";
+                    echo "<td style='width: 150px;'>" . $product->getProductdescription() . "</td>";
+                    echo "<td style='width: 150px;'>" . $product->getProductPrice() . "</td>";
                     echo "</tr>";
                     echo "\n";
                 };

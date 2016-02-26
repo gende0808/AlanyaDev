@@ -1,5 +1,5 @@
 <?php
-
+//uitzoeken wat mysql aankan qua queries.
 class ProductList
 {
     /**
@@ -16,7 +16,6 @@ class ProductList
 
         $this->db = $dbconnection; // moet nog error handling bij
 
-
         if (!is_numeric($categoryID)) {
             throw new InvalidArgumentException("CategorieID was niet geldig ingevoerd!");
         }
@@ -28,8 +27,9 @@ class ProductList
                 $stmt->execute();
                 while ($result = $stmt->fetch(PDO::FETCH_ASSOC))
                 {
-                    $this->listofproducts[] = $result;
+                    $this->listofproducts[] = new Product($this->db, $result['id']);
                 }
+
 
             } catch (PDOException $e) {
                 echo $e->getMessage();

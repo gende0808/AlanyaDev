@@ -35,9 +35,15 @@ class Product implements CRUD
      */
     private $productinfo = array();
 
-    public function __construct($dbconnection)
+    private $productid;
+
+    public function __construct($dbconnection, $productID="")
     {
         $this->db = $dbconnection;
+
+        if (is_numeric($productID)){
+            $this->read($productID);
+        }
     }
 
     public function create()
@@ -108,6 +114,16 @@ class Product implements CRUD
         $stmt->bindParam(':productid', $id, PDO::PARAM_INT);
         $stmt->execute();
     }
+
+    public function getProductid()
+    {
+        return $this->productid;
+    }
+    public function setProductid($productid)
+    {
+        $this->productid = $productid;
+    }
+
 
     /**
      * @return int
