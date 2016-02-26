@@ -39,7 +39,7 @@ include_once "header.php";
                     </div>
                     <div class="blog-content">
                         <div class="content-show">
-                            <h4><a href="grill.php">Special Houtskool Grill</a></h4>
+                            <h4><a href="menu.php?catID=2">Special Houtskool Grill</a></h4>
                         </div>
                         <div class="content-hide">
                             <p>heeeul lekker</p>

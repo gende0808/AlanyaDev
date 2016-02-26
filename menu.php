@@ -6,17 +6,18 @@ include_once "classes/Product.php";
 include_once "classes/Category.php";
 include_once "classes/CategoryList.php";
 ?>
+
     <div class="container text-center">
         <img src="images/testlogo2.png">
+        <div class="col-md-8 col-md-offset-2 text-center">
         <?PHP
-
 
         try {
 
             $categorylist = new CategoryList($DB_con); //er wordt een nieuwe categorie lijst aangemaakt
             echo '<form action="" method="get">';
             foreach ($categorylist->getcategories() as $category) { //hij haalt alle categoriën op in een array.
-                echo '<button name="catID" value="' . $category['categorieID'] . '">' . $category['categorieNaam'] . '</button>';
+                echo '<button name="catID" class="myButton" value="' . $category['categorieID'] . '">' . $category['categorieNaam'] . '</button>';
                 //hierboven worden simpele buttons geprint waarvan in de post de ID word meegegeven maar de waarde in de knop is de categorieNaam.
             }
             echo '</form>';
@@ -25,7 +26,7 @@ include_once "classes/CategoryList.php";
         }
 
         ?>
-        <div class="col-md-8 col-md-offset-2 text-center">
+            <br>
 
             <?php
 
@@ -36,7 +37,7 @@ include_once "classes/CategoryList.php";
             <th class='text-center'>ProductNummer</th>
             <th class='text-center'>Productnaam</th>
             <th class='text-center'>Omschrijving</th>
-            <th class='text-center'>Prijs (€)</th>
+            <th class='text-center'>Prijs</th>
         </tr>
      </thead>";
 
@@ -67,6 +68,8 @@ include_once "classes/CategoryList.php";
             ?>
             </tbody>
             </table>
+
+            <a href="shoppingcart.php" class="myButton2" style="width: 50%!important; height: 100px!important;"><span class="glyphicon glyphicon-shopping-cart"> Winkelwagen</span></a>
 
         </div>
     </div>

@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="css/orange.css">
     <link rel="stylesheet" href="css/scrolltop.css">
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/menubuttons.css"
     <link rel="stylesheet" href="css/sidebar.css">
     <link rel="stylesheet" href="css/sideshop.css">
     <link rel="stylesheet" href="css/border.css">
