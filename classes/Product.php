@@ -1,8 +1,14 @@
 <?php
 
+/**
+ * Class Product
+ */
 class Product implements CRUD
 {
 
+    /**
+     * @var
+     */
     private $id;
     /**
      * @var PDO
@@ -35,8 +41,15 @@ class Product implements CRUD
      */
     private $productinfo = array();
 
+    /**
+     * @var
+     */
     private $productid;
 
+    /**
+     * @param $dbconnection
+     * @param string $productID
+     */
     public function __construct($dbconnection, $productID="")
     {
         $this->db = $dbconnection;
@@ -46,6 +59,9 @@ class Product implements CRUD
         }
     }
 
+    /**
+     *
+     */
     public function create()
     {
         try {
@@ -63,6 +79,9 @@ class Product implements CRUD
         }
     }
 
+    /**
+     * @param $id
+     */
     public function read($id)
     {
         if (empty($id)) {
@@ -85,6 +104,9 @@ class Product implements CRUD
 
     }
 
+    /**
+     * @param $id
+     */
     public function update($id)
     {
         if (!is_numeric($id)) {
@@ -108,6 +130,9 @@ class Product implements CRUD
         }
     }
 
+    /**
+     * @param $id
+     */
     public function delete($id)
     {
         $stmt = $this->db->prepare("DELETE FROM product WHERE id= :productid");
@@ -115,10 +140,17 @@ class Product implements CRUD
         $stmt->execute();
     }
 
+    /**
+     * @return int
+     */
     public function getProductid()
     {
         return $this->productid;
     }
+
+    /**
+     * @param $productid
+     */
     public function setProductid($productid)
     {
         $this->productid = $productid;
@@ -149,7 +181,7 @@ class Product implements CRUD
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getProductprice()
     {

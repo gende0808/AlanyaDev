@@ -1,5 +1,8 @@
 <?php
 //uitzoeken wat mysql aankan qua queries.
+/**
+ * Class ProductList
+ */
 class ProductList
 {
     /**
@@ -11,6 +14,10 @@ class ProductList
      */
     private $db;
 
+    /**
+     * @param $dbconnection
+     * @param int $categoryID
+     */
     function __construct($dbconnection, $categoryID = 1)
     {
 
@@ -38,11 +45,17 @@ class ProductList
         }
     }
 
+    /**
+     * @return Product[]
+     */
     function getlistofproducts()
     {
         return $this->listofproducts;
     }
 
+    /**
+     * @return array
+     */
     function getids()
     {
         return $this->listofproducts;

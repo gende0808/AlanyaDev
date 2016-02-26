@@ -51,6 +51,7 @@ include_once "classes/CategoryList.php";
                 }
                 $productlist = new ProductList($DB_con, $category_ID); // //de post word meegegeven
                 $listofproducts = $productlist->getlistofproducts(); //hiermee word een array opgehaald waarin producten met hun waarden zitten
+
                 foreach ($listofproducts as $product) { //in deze foreach loopt hij over ieder individueel product en print hij de waarden in die array
                     echo "<tr>";
                     echo "<td style='width: 150px;'>" . $product->getProductnumber() . "</td>";
