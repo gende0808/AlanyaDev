@@ -145,7 +145,7 @@ class Product implements CRUD
      */
     public function getProductid()
     {
-        return $this->productid;
+        return $this->id;
     }
 
     /**
@@ -186,8 +186,12 @@ class Product implements CRUD
     public function getProductprice()
     {
         return $this->productprice;
-
     }
+    public function getProductpriceformatted()
+    {
+        return '€ '.str_replace('.',',',$this->productprice);
+    }
+
 
     /**
      * @param mixed $productprice
