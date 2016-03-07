@@ -103,6 +103,7 @@ include_once "ordersucces.php";
                         <th>Product</th>
                         <th>Aantal</th>
                         <th class="text-center">Prijs</th>
+                        <th class="text-center">Keuze</th>
                         <th class="text-center">Toevoeging</th>
                         <th class="text-center">Totaal</th>
                         <th> </th>
@@ -113,16 +114,19 @@ include_once "ordersucces.php";
                         <td class="col-sm-8 col-md-6">
                         <div class="media">
                             <div class="media-body">
-                                <h4 class="media-heading">Pizza Hawaii</h4>
+                                <h4 class="media-heading">Pizza Hawaii (Tomaat, kaas, ham, ananas)</h4>
                                 <h5 class="media-heading"> Categorie <a href="#">Italliaanse pizza's</a></h5>
-                                <span>Omschrijving:</span><strong> Ananas en Ham</strong>
+                                <span>Omschrijving:</span><strong> Tomaat, kaas, ham, ananas</strong>
                                 <h5 class=""><span>Toevoeging:</span><strong> N.v.t</strong></h5>
                             </div>
                         </div></td>
-                        <td class="col-sm-1 col-md-1" style="text-align: center">
+                        <td class="col-sm-1 col-md-1">
                         <input type="email" class="form-control" id="exampleInputEmail1" value="3">
                         </td>
                         <td class="col-sm-1 col-md-1 text-center"><strong>€7,00</strong></td>
+                        <td class="col-sm-6 col-md-6 text-center">
+                            <input type="text" class="form-control" placeholder="Eventuele aanpassingen? Voer dit hier in!" aria-describedby="basic-addon1">
+                        </td>
                         <td class="col-sm-1 col-md-1 text-center"><strong>€0,00</strong></td>
                         <td class="col-sm-1 col-md-1 text-center"><strong>€21,00</strong></td>
                         <td class="col-sm-1 col-md-1">
@@ -145,7 +149,22 @@ include_once "ordersucces.php";
                             <input type="email" class="form-control" id="exampleInputEmail1" value="2">
                         </td>
                         <td class="col-sm-1 col-md-1 text-center"><strong>€4,00</strong></td>
-                        <td class="col-sm-1 col-md-1 text-center"><strong>€2,00</strong></td>
+                        <td class="col-sm-1 col-md-1 text-center">
+                            <input type="text" class="form-control" placeholder="Eventuele aanpassingen? Voer dit hier in!" aria-describedby="basic-addon1">
+                        </td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong>
+                                <div class="dropdown">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        Geen
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <li><a href="#">Extra vlees + €1</a></li>
+                                        <li><a href="#">Tomaat + €0,50</a></li>
+                                        <li><a href="#">Komkommer + €0,50</a></li>
+                                    </ul>
+                                </div>
+                            </strong></td>
                         <td class="col-sm-1 col-md-1 text-center"><strong>€10,00</strong></td>
                         <td class="col-sm-1 col-md-1">
                             <button type="button" class="btn btn-danger">
@@ -181,7 +200,7 @@ include_once "ordersucces.php";
                         <td>   </td>
                         <td>
                         <button type="button" class="btn btn-default">
-                            <span class="glyphicon glyphicon-shopping-cart"></span> <a href="menu.php">Terug naar het menu</a>
+                            <span class="glyphicon glyphicon-shopping-cart"></span> <a href="menu.php" style="color: black"> Terug naar het menu</a>
                         </button></td>
                         <td>
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#OrderSuccesModal">
