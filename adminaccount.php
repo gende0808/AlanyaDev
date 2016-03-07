@@ -1,129 +1,108 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-
-
-
 <?PHP
-include_once "interfaces/CRUD.php";
-include_once "classes/Product.php";
+include_once "header.php";
+include_once "connection.php";
 include_once "classes/ProductList.php";
+include_once "classes/Product.php";
 include_once "classes/Category.php";
 include_once "classes/CategoryList.php";
 
+
+if (isset($_GET['productid']) && isset($_GET['delete'])) {
+    $delete = $_GET['delete'];
+    $productid = $_GET['productid'];
+    if ($delete == "true") {
+        try {
+            $productdeletion = new Product($DB_con);
+            $productdeletion->delete($productid);
+        } catch (Exception $e) {
+            echo "this went wrong: " . $e->getMessage();
+        }
+
+    }
+}
+
+
 ?>
-<head>
-    <?php header("Content-Type: text/html; charset=utf-8"); ?>
-    <meta charset="utf-8">
-    <title>Alanya Krommenie</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/font-awesome.css">
-    <link rel="stylesheet" href="css/templatemo_style.css">
-    <link rel="stylesheet" href="css/templatemo_misc.css">
-    <link rel="stylesheet" href="css/flexslider.css">
-    <link rel="stylesheet" href="css/testimonails-slider.css">
-    <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="css/orange.css">
-    <link rel="stylesheet" href="css/scrolltop.css">
-    <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/sidebar.css">
-    <link rel="stylesheet" href="css/sideshop.css">
-    <link rel="stylesheet" href="css/border.css">
-    <link href="css/demo-page.css" rel="stylesheet" media="all">
-    <link href="css/hover.css" rel="stylesheet" media="all">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/t/bs/jq-2.2.0,dt-1.10.11/datatables.min.css"/>
-</head>
-
-<nav class="navbar navbar-fixed-top">
-    <div id="nav-trigger">
-        <span>Menu</span>
-    </div>
-    <nav id="nav-main">
-        <ul>
-            <li style="height: 40px; border-right: solid 0px #950025!important;"><a href="index.php" class="hvr-float-shadow" style="height: 40px;"><img src="images/alanyaforbanner3.png" style="padding-bottom: 10px;"></a></li>
-            <li><a href="menu.php" class="hvr-float-shadow">Bestellingen</a></li>
-            <li><a href="discounts.php" class="hvr-float-shadow">Producten</a></li>
-            <li><a href="contact.php" class="hvr-float-shadow">Accounts</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#myModal" class="hvr-float-shadow">Log out</a></li>
-        </ul>
-    </nav>
-    <nav id="nav-mobile"></nav>
-</nav>
-
-<div class="container-fluid" style="margin-top: 70px;">
 
 
-<br>
-<div class="container">
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Zoek product" style="border:1px solid lightgrey">
-            </div><!-- /input-group -->
-        </div><!-- /.col-lg-6 -->
-        <div class="col-lg-6" >
-            <div class="input-group" style="float: right; margin-top: 25px">
-                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-plus"></span> Voeg product toe</button>
-            </div><!-- /input-group -->
-        </div><!-- /.col-lg-6 -->
-    </div><!-- /.row -->
-</div>
-<br>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="table-responsive">
-                        <table class="table table-condensed">
-                            <thead>
-                            <tr>
-                                <td><strong>Product ID</strong></td>
-                                <td class="text-center"><strong>ProductNummer</strong></td>
-                                <td class="text-center"><strong>ProductNaam</strong></td>
-                                <td class="text-center"><strong>ProductOmschrijving</strong></td>
-                                <td class="text-right"><strong>Prijs</strong></td>
-                                <td class="text-right"><strong>Optie</strong></td>
-                            </tr>
-                            </thead>
-                            <tbody>
+<div class="container text-center" style="margin-top: 50px;">
+    <?PHP
+     include_once "modals/product_toevoegen.php";
+    ?>
+    <div class="col-md-12 col-md-offset-0 text-center" style="margin-top: 50px">
+        <!-- Heb hier een margin top ingegooid zodat er niets onder de header verdwijnt. TODO margin bottom op header! -->
+        <?PHP
+        //TODO _________________________________________________________________________________________________________
 
-                            <tr>
+        try {
 
-                                <td>1</td>
-                                <td class="text-center">1</td>
-                                <td class="text-center">Pizza Hawaii</td>
-                                <td class="text-center">Ananas en Ham</td>
-                                <td class="text-right">€16,00</td>
-                                <td class="text-right"><a href="http://localhost/AlanyaDev/adminaccount.php">Wijzig</a></td>
-                                <td class="text-right"><a href="http://localhost/AlanyaDev/adminaccount.php">Verwijder</a></td>
+            $categorylist = new CategoryList($DB_con); //er wordt een nieuwe categorie lijst aangemaakt
+            ?>
 
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+            <?PHP
+            echo '<div class="col-md-12 col-md-offset-0 text-center">';
+            foreach ($categorylist->getcategories() as $category) { //hij haalt alle categoriën op in een array.
+                echo '<button name="catID" onclick="showProducts(this.value)" class="myButton" value="' . $category['categorieID'] . '">' . $category['categorieNaam'] . '</button>';
+                //hierboven worden simpele buttons geprint waarvan in de post de ID word meegegeven maar de waarde in de knop is de categorieNaam.
+            }
+            echo '</div>';
 
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+        //TODO _________________________________________________________________________________________________________
+        ?>
 
-        </div>
+        <input type="text" id="search" placeholder="Zoeken..." class="col-md-4 col-md-offset-0 search_box"
+               onkeyup="doSearch()"/>
+        <button class="btn btn-default btn-lg col-md-3 col-md-offset-5" data-toggle="modal" data-target="#myModalNorm"
+                style="margin-top: 25px"> <span class="glyphicon glyphicon-plus"></span> Product toevoegen
+        </button>
+        <table id="producttable" class='table table-striped table-hover table-responsive'>
+            <thead>
+            <tr>
+                <th class='text-center'>ProductNummer</th>
+                <th class='text-center'>Productnaam</th>
+                <th class='text-center'>ProductOmschrijving</th>
+                <th class='text-center'>ProductPrijs</th>
+                <th class='text-center'>Optie</th>
+                <th class='text-center'>verwijderen</th>
+            </tr>
+            </thead>
+            <tbody id="tablecontainer">
+            </tbody>
+        </table>
     </div>
 </div>
-</div>
-
-<!-- The scroll to top feature -->
-<div class="scroll-top-wrapper ">
-  <span class="scroll-top-inner">
-<i class="fa fa-2x fa-arrow-circle-up"></i>
-  </span>
-</div>
 
 
-</body>
-</html>
+<script src="js/custom.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/t/bs/jq-2.2.0,dt-1.10.11/datatables.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
+<script src="js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/vendor/jquery-1.11.0.min.js"></script>
+<script src="js/vendor/jquery.gmap3.min.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/login.js"></script>
+<script src="js/scrolltop.js"></script>
+<script src="js/modernizr.custom.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#nav-mobile").html($("#nav-main").html());
+        $("#nav-trigger span").click(function () {
+            if ($("nav#nav-mobile ul").hasClass("expanded")) {
+                $("nav#nav-mobile ul.expanded").removeClass("expanded").slideUp(250);
+                $(this).removeClass("open");
+            } else {
+                $("nav#nav-mobile ul").addClass("expanded").slideDown(250);
+                $(this).addClass("open");
+            }
+        });
+    });
+</script>
+
+
+<script type="text/javascript" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>

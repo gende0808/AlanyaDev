@@ -11,8 +11,6 @@ include_once "../interfaces/CRUD.php";
 include_once "../classes/ProductList.php";
 include_once "../classes/Product.php";
 
-$functioncall = "weet je zeker dat je dit product wil verwijderen?";
-
 
 // __________________________________
 try {
@@ -33,7 +31,7 @@ try {
         echo "<td style='width: 150px;'>" . $product->getProductdescription() . "</td>";
         echo "<td style='width: 150px;'>" . $product->getProductpriceformatted() . "</td>";
         echo "<td style='width: 150px;'><a href='http://www.google.nl'>wijzigen</a></td>";
-        echo "<td style='width: 150px;'><a href='test.php?productid=" . $product->getProductid() . "&delete=true'".
+        echo "<td style='width: 150px;'><a href='adminaccount.php?productid=" . $product->getProductid() . "&delete=true'".
             'onclick="return confirm('."'weet je zeker dat je ".$product->getProductname()." wilt verwijderen?'".')"' .">verwijder</a></td>";
         echo "</tr>";
         echo "\n";
