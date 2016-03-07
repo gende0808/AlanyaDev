@@ -181,7 +181,7 @@ include_once "ordersucces.php";
                         <td>   </td>
                         <td>
                         <button type="button" class="btn btn-default">
-                            <span class="glyphicon glyphicon-shopping-cart"></span> Terug naar het menu
+                            <span class="glyphicon glyphicon-shopping-cart"></span> <a href="menu.php">Terug naar het menu</a>
                         </button></td>
                         <td>
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#OrderSuccesModal">
