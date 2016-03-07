@@ -23,7 +23,6 @@ function scrollToTop() {
 	offsetTop = offset.top;
 	$('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
 }
-
 	$('#testTable').DataTable();
 });
 

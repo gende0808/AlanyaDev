@@ -35,7 +35,7 @@
         <div class="bottom-footer">
             <p>
                         	<span>Copyright © 2016 <a href="#">Alanya Krommenie</a>
-                            | Design: <a rel="nofollow"  target="_parent" href="www.jimebbelaar.com"><span class="blue">Alpha</span><span class="green">Insane</span></a></span>
+                            | Design: <a rel="nofollow"  target="_parent" href="http://www.jimebbelaar.com"><span class="blue">Alpha</span><span class="green">Insane</span></a></span>
             </p>
         </div>
     </div>

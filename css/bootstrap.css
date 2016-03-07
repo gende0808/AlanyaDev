@@ -5190,6 +5190,10 @@ button.close {
     width: 300px;
   }
 }
+.modal-large {
+  width: 80%; /* respsonsive width */
+  margin-left:-40%; /* width/2) */
+}
 @media (min-width: 992px) {
   .modal-lg {
     width: 900px;

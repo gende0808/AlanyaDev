@@ -4,6 +4,16 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 
+
+
+<?PHP
+include_once "interfaces/CRUD.php";
+include_once "classes/Product.php";
+include_once "classes/ProductList.php";
+include_once "classes/Category.php";
+include_once "classes/CategoryList.php";
+
+?>
 <head>
     <?php header("Content-Type: text/html; charset=utf-8"); ?>
     <meta charset="utf-8">
@@ -83,7 +93,9 @@
                             </tr>
                             </thead>
                             <tbody>
+
                             <tr>
+
                                 <td>1</td>
                                 <td class="text-center">1</td>
                                 <td class="text-center">Pizza Hawaii</td>
@@ -91,24 +103,7 @@
                                 <td class="text-right">€16,00</td>
                                 <td class="text-right"><a href="http://localhost/AlanyaDev/adminaccount.php">Wijzig</a></td>
                                 <td class="text-right"><a href="http://localhost/AlanyaDev/adminaccount.php">Verwijder</a></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td class="text-center">2</td>
-                                <td class="text-center">Pizza Salami</td>
-                                <td class="text-center">Salami en kaas</td>
-                                <td class="text-right">€14,00</td>
-                                <td class="text-right"><a href="http://localhost/AlanyaDev/adminaccount.php">Wijzig</a></td>
-                                <td class="text-right"><a href="http://localhost/AlanyaDev/adminaccount.php">Verwijder</a></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td class="text-center">3</td>
-                                <td class="text-center">Pizza margarita</td>
-                                <td class="text-center">Kaas</td>
-                                <td class="text-right">€9,00</td>
-                                <td class="text-right"><a href="http://localhost/AlanyaDev/adminaccount.php">Wijzig</a></td>
-                                <td class="text-right"><a href="http://localhost/AlanyaDev/adminaccount.php">Verwijder</a></td>
+
                             </tr>
                             </tbody>
                         </table>

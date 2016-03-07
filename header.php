@@ -5,6 +5,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <html>
 <head>
+
+
     <?php header("Content-Type: text/html; charset=utf-8"); ?>
     <meta charset="utf-8">
     <title>Alanya Krommenie</title>

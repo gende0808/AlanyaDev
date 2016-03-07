@@ -7,6 +7,8 @@ include_once "classes/Category.php";
 include_once "classes/CategoryList.php";
 ?>
 
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
     <div class="container text-center">
         <img src="images/testlogo2.png">
         <div class="col-md-8 col-md-offset-2 text-center">
@@ -58,7 +60,7 @@ include_once "classes/CategoryList.php";
                     echo "<td style='width: 150px;'>" . $product->getProductnumber() . "</td>";
                     echo "<td style='width: 150px;'>" . $product->getProductname() . "</td>";
                     echo "<td style='width: 150px;'>" . $product->getProductdescription() . "</td>";
-                    echo "<td style='width: 150px;'>" . $product->getProductPrice() . "</td>";
+                    echo "<td style='width: 150px;'>" . $product->getProductPriceformatted() . "</td>";
                     echo "</tr>";
                     echo "\n";
                 };
