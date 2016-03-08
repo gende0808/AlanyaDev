@@ -11,10 +11,6 @@ class City implements CRUD
      */
     private $id;
     /**
-     * @var
-     */
-    private $oldid;
-    /**
      * @var PDO
      */
     private $db;
