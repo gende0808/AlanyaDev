@@ -1,8 +1,8 @@
 <?PHP
 include_once "header.php";
-
 include_once "classes/Account.php";
-include_once "connection.php";
+include_once "classes/City.php";
+include_once "classes/CityList.php";
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -91,7 +91,17 @@ error_reporting(E_ALL);
                             <div class="input-group">
                                 <label for="uLogin"
                                        class="input-group-addon orange glyphicon glyphicon-map-marker"></label>
-                                <input type="text" class="form-control" name="city" placeholder="Plaats">
+                                <select class="form-control" name="city">
+                                    <option value="" selected disabled><b>Woonplaats</b></option>
+                                    <?PHP
+                                    $listofcities = (new CityList($DB_con))->getlistofcities();
+                                    foreach($listofcities as $city){
+                                        echo "<option value='".$city->getCityid()."'>".$city->getCityname()."</option>";
+                                    }
+                                    ?>
+
+                                </select>
+                                <p style="font-family: 'Open Sans', sans-serif">Helaas bezorgen wij niet buiten deze steden.</p>
                             </div>
                         </div>
                         <!-- /.form-group -->
