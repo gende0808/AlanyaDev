@@ -61,12 +61,12 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
         <table id="producttable" class='table table-striped table-hover table-responsive'>
             <thead>
             <tr>
-                <th class='text-center'>ProductNummer</th>
-                <th class='text-center'>Productnaam</th>
-                <th class='text-center'>ProductOmschrijving</th>
-                <th class='text-center'>ProductPrijs</th>
+                <th class='text-center'>Product nummer</th>
+                <th class='text-center'>Product naam</th>
+                <th class='text-center'>Product omschrijving</th>
+                <th class='text-center'>Product prijs</th>
                 <th class='text-center'>Optie</th>
-                <th class='text-center'>verwijderen</th>
+                <th class='text-center'>Verwijderen</th>
             </tr>
             </thead>
             <tbody id="tablecontainer">
