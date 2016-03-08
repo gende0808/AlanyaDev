@@ -20,7 +20,7 @@ class CategoryList
             $stmt->execute();
             while ($result = $stmt->fetch(PDO::FETCH_ASSOC))
             {
-                $this->listofcategories[] = $result;
+                $this->listofcategories[] = new Category($this->db, $result['categorieID']);
             }
 
         } catch (PDOException $e) {
@@ -29,6 +29,10 @@ class CategoryList
 
 
     }
+
+    /**
+     * @return Category[]
+     */
 
     function getcategories()
     {

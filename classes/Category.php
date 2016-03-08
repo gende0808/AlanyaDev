@@ -22,9 +22,13 @@ class Category implements CRUD
      */
     private $db;
 
-    public function __construct($dbconnection)
+    public function __construct($dbconnection, $id="")
     {
         $this->db = $dbconnection;
+        if ($id != "" && is_numeric($id)){
+            $this->read($id);
+        }
+
     }
 
 

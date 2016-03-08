@@ -122,7 +122,7 @@ class City implements CRUD
     }
 
     /**
-     * @param $productid
+     * @param $cityid
      */
     public function setCityid($cityid)
     {
@@ -146,7 +146,7 @@ class City implements CRUD
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getCityname()
     {
@@ -154,7 +154,7 @@ class City implements CRUD
     }
 
     /**
-     * @param int $productnumber
+     * @param int $city
      */
     public function setCityname($city)
     {
@@ -175,6 +175,10 @@ class City implements CRUD
     {
         return $this->deliverycost;
     }
+
+    /**
+     * @param $deliverycost
+     */
     public function setAdditionalcost($deliverycost)
     {
         $this->deliverycost = $deliverycost;
