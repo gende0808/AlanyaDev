@@ -32,9 +32,13 @@ class City implements CRUD
      * @param $dbconnection
      * @param string $productID
      */
-    public function __construct($dbconnection)
+    public function __construct($dbconnection, $id="")
     {
         $this->db = $dbconnection;
+        if(!empty($id) && is_numeric($id)){
+            $this->read($id);
+        }
+
     }
 
     /**
@@ -91,11 +95,11 @@ class City implements CRUD
             $stmt = $this->db->prepare("UPDATE plaats SET  plaatsID = :cityid,
                                                            plaatsNaam = :cityname,
                                                            extraKosten = :delivery
-                                                           WHERE plaatsID= :oldid");
+                                                           WHERE plaatsID= :plaatsid");
             $stmt->bindparam(":cityid", $this->id);
             $stmt->bindparam(":cityname", $this->city);
             $stmt->bindparam(":delivery", $this->deliverycost);
-            $stmt->bindparam(":oldid", $this->oldid);
+            $stmt->bindparam(":plaatsid", $id);
 
             $stmt->execute();
         } catch (PDOException $e) {
@@ -127,22 +131,6 @@ class City implements CRUD
     public function setCityid($cityid)
     {
         $this->id = $cityid;
-    }
-
-    /**
-     * @return int
-     */
-    public function getOldid()
-    {
-        return $this->oldid;
-    }
-
-    /**
-     * @param $productid
-     */
-    public function setOldid($oldid)
-    {
-        $this->oldid = $oldid;
     }
 
     /**
