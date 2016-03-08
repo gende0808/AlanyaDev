@@ -32,9 +32,9 @@ function showProducts(str) {
 
     }
 }function showProductsMenu(str) {
-    if (str == "") {
 
-        str = 1;
+
+    if (str == "") {
 
         if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -111,3 +111,8 @@ function doSearch() {
             targetTable.rows.item(rowIndex).style.display = 'table-row';
     }
     }
+window.onload = function() {
+    showProductsMenu(1);
+};
+
+

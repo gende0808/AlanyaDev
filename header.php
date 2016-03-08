@@ -6,7 +6,6 @@
 <html>
 <head>
 
-
     <?php header("Content-Type: text/html; charset=utf-8"); ?>
     <meta charset="utf-8">
     <title>Alanya Krommenie</title>
@@ -33,8 +32,8 @@
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
 </head>
 
+<body onload="showProducts(1);">
 
-<body>
 <?php
 include_once "loginmodal.php";
 include_once "connection.php";

@@ -7,9 +7,16 @@ include_once "connection.php";
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-?>  <div class="modal-dialog" style="width: 30%;">
-        <img src="images/testlogo2.png" style="width: 100%;">
-        <div class="modal-content">
+?>
+<div class="logo">
+    <hr>
+    <center><img src="images/testlogo2.png"></center>
+</div>
+
+<div class="col-md-8 col-md-offset-2">
+<div class="modal-dialog text-center">
+    <br>
+        <div class="modal-content text-center">
 
                 <div class="panel-heading">
                     <?PHP
@@ -109,7 +116,8 @@ error_reporting(E_ALL);
         </div>
         <!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
-
+</div>
+</div>
 <?PHP
 include_once "footer.php";
 // include_once "sideshoppinglist.php";
