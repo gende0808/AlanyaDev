@@ -21,10 +21,14 @@ if(!empty($_POST)) {
         $account->setUsercityid(htmlspecialchars($_POST['city']));
         $account->setUserphonenumber(htmlspecialchars($_POST['phone']));
         $account->create();
+
+        echo "<h1>Er is een eenmalige activatiecode naar uw E-mail adres gestuurd.</h1>";
+        echo "<h2>Na de activatie kunt u meteen door met uw bestelling.</h2>";
     } catch(PDOException $e){
-        echo "This went wrong: ".$e->getMessage();
+        echo "Het volgende is fout gegaan: ".$e->getMessage();
+    }
     }
 
-    }
 
+include_once "footer.php";
 ?>

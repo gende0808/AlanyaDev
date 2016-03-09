@@ -61,15 +61,18 @@ error_reporting(E_ALL);
                         <div class="form-group">
                             <div class="input-group">
                                 <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-lock"></label>
-                                <input type="password" class="form-control" name="password" placeholder="Wachtwoord">
+                                <input type="password" class="form-control" name="wachtwoord1" id="wachtwoord1"
+                                       placeholder="Wachtwoord">
                             </div>
                         </div>
                         <!-- /.form-group -->
                         <div class="form-group">
                             <div class="input-group">
                                 <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-lock"></label>
-                                <input type="password" class="form-control" name="password2"
+                                <input type="password" class="form-control" name="wachtwoord2" id="wachtwoord2"
+                                       onkeyup="checkPass(); return false;"
                                        placeholder="verifieer Wachtwoord">
+                                <span id="confirmMessage" class="confirmMessage"></span>
                             </div>
                         </div>
                         <!-- /.form-group -->

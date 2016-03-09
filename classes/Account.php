@@ -80,7 +80,7 @@ class Account implements CRUD{
             $stmt->execute();
 
             } catch(PDOException $e){
-            echo "er is iets misgegaan!"." ".$e->getMessage();
+            echo "er is iets misgegaan met de verbinding van de server!";
         }
     }
     public function read($id){
@@ -98,7 +98,7 @@ class Account implements CRUD{
     public function setUserid($userid)
     {
         if(!is_numeric($userid)){
-            throw new InvalidArgumentException('userID is not numeric!');
+            throw new InvalidArgumentException('userID is niet numeriek!');
         }
         $this->userid = $userid;
     }

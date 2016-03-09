@@ -1,6 +1,31 @@
 /**
  * Created by Gregory on 28-2-2016.
  */
+
+//onderstaande functie kan gebruikt worden om te kijken of twee wachtwoorden overeenkomen.
+String.prototype.isEmpty = function() {
+    return (this.length === 0 || !this.trim());
+};
+
+function checkPass()
+{
+    var pass1 = document.getElementById('wachtwoord1');
+    var pass2 = document.getElementById('wachtwoord2');
+    var message = document.getElementById('confirmMessage');
+    var goodColor = "#66cc66";
+    var badColor = "#ff6666";
+    if(pass1.value == pass2.value){
+        pass2.style.backgroundColor = goodColor;
+        message.style.color = goodColor;
+        message.innerHTML = "Wachtwoorden komen overeen!"
+    }else{
+        pass2.style.backgroundColor = badColor;
+        message.style.color = badColor;
+        message.innerHTML = "Wachtwoorden komen niet overeen, heeft u een typfout gemaakt?"
+    }
+}
+
+
 // onderstaande functie is voor het verzenden van een request naar tabledata.php met ajax om producten op te halen.
 
 function showProducts(str) {
