@@ -136,8 +136,6 @@ function doSearch() {
             targetTable.rows.item(rowIndex).style.display = 'table-row';
     }
     }
-window.onload = function() {
-    showProductsMenu(1);
-};
+
 
 

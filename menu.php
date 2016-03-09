@@ -67,10 +67,10 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
         </table>
     </div>
 </div>
-
 <?php
 include_once "footer.php";
 ?>
+<script src="js/menushowcat.js"></script>
 
 
 

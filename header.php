@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
 </head>
 
-<body onload="showProducts(1);">
+<body>
 
 <?php
 include_once "loginmodal.php";
