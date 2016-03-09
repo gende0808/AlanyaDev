@@ -27,7 +27,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
 
 <div class="container text-center" style="margin-top: 50px;">
     <?PHP
-     include_once "modals/product_toevoegen.php";
+     include_once "modals/product_toevoegen_modal.php";
     ?>
     <div class="col-md-12 col-md-offset-0 text-center" style="margin-top: 50px">
         <!-- Heb hier een margin top ingegooid zodat er niets onder de header verdwijnt. TODO margin bottom op header! -->
