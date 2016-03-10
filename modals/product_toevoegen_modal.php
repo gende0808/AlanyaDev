@@ -5,8 +5,10 @@ include_once "classes/Category.php";
 
 ?>
 
+
 <div class="modal fade modal-dialog-" id="myModalNorm" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="col-md-4 col-md-offset-4">
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- Modal Header -->
@@ -25,28 +27,30 @@ include_once "classes/Category.php";
             <div class="modal-body">
                 <form action="product_toevoegen.php" method="post" class="form-horizontal" role="form">
                     <div class="form-group">
-                        <label class="control-label col-sm-4 marg" for="Productnummer">Product nummer:</label>
+                        <label class="control-label col-sm-4 marg" for="Productnummer">Nummer:</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" name="Productnummer" placeholder="productnummer invullen">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-4 marg" for="Productnaam">Product naam:</label>
+                        <label class="control-label col-sm-4 marg" for="Productnaam">Naam:</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" name="Productnaam" placeholder="productnaam invullen">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-4 marg" for="Productomschrijving">Product omschrijving:</label>
-                        <div class="col-sm-8">
+                        <label class="control-label col-sm-4 marg" for="Productomschrijving">Omschrijving:</label>
+                        <div class="col-sm-4">
                             <input type="text" class="form-control" name="Productomschrijving" placeholder="productomschrijving invullen">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-4 marg" for="Productprijs">Prijs product:</label>
-                        <div class="col-sm-8">
+                        <label class="control-label col-sm-4 marg" for="Productprijs">Prijs:</label>
+                        <div class="col-sm-4">
                             <input type="text" class="form-control" name="Producteuro" placeholder="Euro">
-                            <input type="text" class="form-control" name="Productcent" placeholder="Cent">
+                        </div>
+                        <div class="col-sm-4">
+                        <input type="text" class="form-control" name="Productcent" placeholder="Cent">
                         </div>
                     </div>
 
@@ -67,7 +71,7 @@ include_once "classes/Category.php";
                     </div>
                 </div>
             </div>
-            <div class="text-right">
+            <div>
                 <div class="form-group">
                     <br><br>
                     <button type="button" class="btn btn-default"
@@ -86,6 +90,7 @@ include_once "classes/Category.php";
         <div class="modal-footer">
 
         </div>
+    </div>
     </div>
 </div>
 

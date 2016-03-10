@@ -1,4 +1,5 @@
 <div class="modal fade" id="myModalAdded" tabindex="-1" role="dialog" aria-labelledby="myModalAddedLabel" aria-hidden="true" style="padding-top: 15%;">
+    <div class="col-md-4 col-md-offset-4">
     <div class="modal-dialog">
         <div class="modal-content">
 
@@ -16,4 +17,5 @@
 
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
+    </div>
 </div><!-- /.modal -->

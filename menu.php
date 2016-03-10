@@ -49,9 +49,14 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
         //TODO _________________________________________________________________________________________________________
         ?>
 
-        <input type="text" id="search" placeholder="Zoeken..." class="col-md-4 col-md-offset-0 search_box"
+
+        <div class="col-md-12" style="margin-top: 5%">
+            <img src="images/grillcat1.png">
+
+        <input type="text" id="search" placeholder="Zoeken..." class="col-md-12 col-md-offset-0 search_box"
                onkeyup="doSearch()"/>
-        </button>
+        <!-- Hier moet een text komen te staan over dat het product aangepasdt kan worden in de winkelwagen. TODO margin bottom op header! -->
+
         <table id="producttable" class='table table-striped table-hover table-responsive'>
             <thead>
             <tr>
@@ -65,6 +70,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
             <tbody id="tablecontainermenu">
             </tbody>
         </table>
+    </div>
     </div>
 </div>
 <?php

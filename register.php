@@ -13,7 +13,7 @@ error_reporting(E_ALL);
     <center><img src="images/testlogo2.png"></center>
 </div>
 
-<div class="col-md-8 col-md-offset-2">
+<div class="col-md-4 col-md-offset-4">
 <div class="modal-dialog text-center">
     <br>
         <div class="modal-content text-center">
@@ -104,10 +104,10 @@ error_reporting(E_ALL);
                                     ?>
 
                                 </select>
-                                <p style="font-family: 'Open Sans', sans-serif">Helaas bezorgen wij niet buiten deze steden.</p>
                             </div>
                         </div>
                         <!-- /.form-group -->
+                        <p style="font-family: 'Open Sans', sans-serif">Helaas bezorgen wij niet buiten de weergegeve steden.</p>
 
                         <div class="form-group">
                             <div class="input-group">
