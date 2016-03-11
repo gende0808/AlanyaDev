@@ -80,7 +80,7 @@ class Account implements CRUD{
             $stmt->execute();
 
             } catch(PDOException $e){
-            echo "er is iets misgegaan met de verbinding van de server!";
+            echo "er is iets misgegaan met de verbinding van de server!".$e->getMessage();
         }
     }
     public function read($id){

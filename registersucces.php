@@ -16,6 +16,8 @@ if(!empty($_POST)) {
         $account = new Account($DB_con);
         $account->setUseremail(htmlspecialchars($_POST['email']));
         $account->setUserpassword(htmlspecialchars($_POST['password']));
+        $account->setUserfirstname(htmlspecialchars($_POST['firstname']));
+        $account->setUserlastname(htmlspecialchars($_POST['lastname']));
         $account->setUserstreetname(htmlspecialchars($_POST['street']));
         $account->setUserhousenumber(htmlspecialchars($_POST['number']));
         $account->setUsercityid(htmlspecialchars($_POST['city']));

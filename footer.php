@@ -80,7 +80,8 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#testTable').dataTable();
-        });
+
+        } );
     </script>
 </footer>
 </body>

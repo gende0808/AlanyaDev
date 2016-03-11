@@ -31,9 +31,9 @@ try {
         echo "<td style='width: 150px;'>" . $product->getProductname() . "</td>";
         echo "<td style='width: 150px;'>" . $product->getProductdescription() . "</td>";
         echo "<td style='width: 150px;'>" . $product->getProductpriceformatted() . "</td>";
-        echo "<td style='width: 150px;'><a href='http://www.google.nl'>wijzigen</a></td>";
+        echo "<td data-toggle=\"modal\" data-target=\"#myModalNorm\" style='width: 150px;'><a href='#'>Wijzigen</a></td>";
         echo "<td style='width: 150px;'><a href='adminaccount.php?productid=" . $product->getProductid() . "&delete=true'".
-            'onclick="return confirm('."'weet je zeker dat je ".$product->getProductname()." wilt verwijderen?'".')"' .">verwijder</a></td>";
+            'onclick="return confirm('."'weet je zeker dat je ".$product->getProductname()." wilt verwijderen?'".')"' .">Verwijderen</a></td>";
         echo "</tr>";
         echo "\n";
     };

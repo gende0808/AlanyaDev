@@ -53,7 +53,7 @@ function showProducts(str) {
         };
         xmlhttp.open("GET", "adminaccount/tabledata.php?catID=" + str, true);
         xmlhttp.send();
-
+//Ajax admin account 
 
     }
 }function showProductsMenu(str) {

@@ -24,7 +24,10 @@ error_reporting(E_ALL);
                         try {
                             $account = new Account($DB_con);
                             $account->setUseremail(htmlspecialchars($_POST['email']));
-                            $account->setUserpassword(htmlspecialchars($_POST['password']));
+                            $account->setUserfirstname(htmlspecialchars($_POST['firstname']));
+                            $account->setUserlastname(htmlspecialchars($_POST['lastname']));
+                            $account->setUsercityid(htmlspecialchars($_POST['city']));
+                            $account->setUserpassword(htmlspecialchars($_POST['wachtwoord1']));
                             $account->setUserstreetname(htmlspecialchars($_POST['street']));
                             $account->setUserhousenumber(htmlspecialchars($_POST['number']));
                             $account->setUserphonenumber(htmlspecialchars($_POST['phone']));
@@ -79,6 +82,18 @@ error_reporting(E_ALL);
 
                         <div class="form-group">
                             <div class="input-group">
+                                <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-user"></label>
+                                <input type="text" class="form-control" name="firstname" placeholder="Voornaam"
+                                       style="width: 50%;">
+
+                                <input type="text" class="form-control" name="lastname" placeholder="Achternaam."
+                                       style="width: 50%;">
+                            </div>
+                        </div>
+                        <!-- /.form-group -->
+
+                        <div class="form-group">
+                            <div class="input-group">
                                 <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-home"></label>
                                 <input type="text" class="form-control" name="street" placeholder="Straatnaam"
                                        style="width: 70%;">
@@ -120,11 +135,15 @@ error_reporting(E_ALL);
 
                         <p>al een bestaand account? <a href="#" data-toggle="modal" data-target="#myModal"
                                                        class="hvr-float-shadow">Login</a></p>
-                        <button class="form-control btn orange" style="color: white;" type="submit" value="submit">
+
+                        <button class="form-control btn orange" style="color: white;" type="submit" value="submit" ">
                             Registeren
                         </button>
+
                     </form>
                 </div>
+
+
                 <!-- /.modal-body -->
         </div>
         <!-- /.modal-content -->
@@ -135,3 +154,9 @@ error_reporting(E_ALL);
 include_once "footer.php";
 // include_once "sideshoppinglist.php";
 ?>
+
+<script>
+
+
+
+</script>
