@@ -41,7 +41,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
             <?PHP
             echo '<div class="col-md-12 col-md-offset-0 text-center">';
             foreach ($categorylist->getcategories() as $category) { //hij haalt alle categoriën op in een array.
-                echo '<button name="catID" onclick="showProductsMenu(this.value)" class="myButton" id="'. $category->getcatID() .'" value="' . $category->getcatID() . '">' . $category->getcatname() . '</button>';
+                echo '<button name="catID" onclick="showProductsMenu(this.value); ShowIMG('.$category->getcatID().')" class="myButton" value="' . $category->getcatID() . '">' . $category->getcatname() . '</button>';
                 //hierboven worden simpele buttons geprint waarvan in de post de ID word meegegeven maar de waarde in de knop is de categorieNaam.
             }
             echo '</div>';
@@ -77,16 +77,3 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
 include_once "footer.php";
 ?>
 <script src="js/menushowcat.js"></script>
-<script src="js/showimg.js"></script>
-
-
-
-<script type='text/javascript'>
-    var elem = document.createElement('img');
-    elem.src = 'images/cat1.png';
-    document.getElementById('placehere').appendChild(elem);
-</script>
-
-
-
-

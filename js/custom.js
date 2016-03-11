@@ -2,6 +2,16 @@
  * Created by Gregory on 28-2-2016.
  */
 
+function ShowIMG(waarde){
+    $( document ).ready(function() {
+            $("#placehere img:last-child").remove();
+            $('#placehere').prepend('<img id="cat'+waarde+'" src="images/cat'+waarde+'.png" />');
+    })
+}
+
+
+
+
 //onderstaande functie kan gebruikt worden om te kijken of twee wachtwoorden overeenkomen.
 String.prototype.isEmpty = function() {
     return (this.length === 0 || !this.trim());
