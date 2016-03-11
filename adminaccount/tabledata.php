@@ -21,6 +21,8 @@ try {
     } else {
         $category_ID = $_GET['catID'];
     }
+
+
     $productlist = new ProductList($DB_con, $category_ID); // //de post word meegegeven
     $listofproducts = $productlist->getlistofproducts(); //hiermee word een array opgehaald waarin producten met hun waarden zitten
 

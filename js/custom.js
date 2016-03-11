@@ -28,7 +28,7 @@ function checkPass()
 
 // onderstaande functie is voor het verzenden van een request naar tabledata.php met ajax om producten op te halen.
 
-function showProducts(str) {
+    function showProducts(str) {
     if (str == "") {
         document.getElementById("tablecontainer").innerHTML = "";
         return;

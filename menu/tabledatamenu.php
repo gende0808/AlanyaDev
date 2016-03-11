@@ -8,6 +8,7 @@
 
 include_once "../connection.php";
 include_once "../interfaces/CRUD.php";
+include_once "../classes/Category.php";
 include_once "../classes/ProductList.php";
 include_once "../classes/Product.php";
 include_once "../productAdded.php";
@@ -21,6 +22,14 @@ try {
     } else {
         $category_ID = $_GET['catID'];
     }
+    $imgcategory = new Category($DB_con, $category_ID);
+    echo "
+    <script type='text/javascript'>
+        var elem = document.createElement('img');
+        elem.src = 'images/cat1.png';
+        document.getElementById('placehere').appendChild(elem);
+    </script>
+";
     $productlist = new ProductList($DB_con, $category_ID); // //de post word meegegeven
     $listofproducts = $productlist->getlistofproducts(); //hiermee word een array opgehaald waarin producten met hun waarden zitten
 
@@ -40,4 +49,6 @@ try {
 } catch (Exception $e) {
     echo $e->getMessage();
 }
+
 ?>
+

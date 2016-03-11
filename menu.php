@@ -51,7 +51,10 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
 
 
         <div class="col-md-12" style="margin-top: 5%">
-            <img src="images/grillcat1.png">
+            <div id="placehere">
+
+            </div>
+        </div>
 
         <input type="text" id="search" placeholder="Zoeken..." class="col-md-12 col-md-offset-0 search_box"
                onkeyup="doSearch()"/>
@@ -77,6 +80,8 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
 include_once "footer.php";
 ?>
 <script src="js/menushowcat.js"></script>
+
+
 
 
 
