@@ -8,6 +8,7 @@
 
 include_once "../connection.php";
 include_once "../interfaces/CRUD.php";
+include_once "../classes/Category.php";
 include_once "../classes/ProductList.php";
 include_once "../classes/Product.php";
 include_once "../productAdded.php";
@@ -21,7 +22,7 @@ try {
     } else {
         $category_ID = $_GET['catID'];
     }
-
+    $imgcategory = new Category($DB_con, $category_ID);
 
     $productlist = new ProductList($DB_con, $category_ID); // //de post word meegegeven
     $listofproducts = $productlist->getlistofproducts(); //hiermee word een array opgehaald waarin producten met hun waarden zitten
@@ -33,13 +34,17 @@ try {
         echo "<td style='width: 150px;'>" . $product->getProductname() . "</td>";
         echo "<td style='width: 150px;'>" . $product->getProductdescription() . "</td>";
         echo "<td style='width: 150px;'>" . $product->getProductpriceformatted() . "</td>";
-        echo "<td data-toggle=\"modal\" data-target=\"#myModalNorm\" style='width: 150px;'><a href='#'>Wijzigen</a></td>";
-        echo "<td style='width: 150px;'><a href='adminaccount.php?productid=" . $product->getProductid() . "&delete=true'".
-            'onclick="return confirm('."'weet je zeker dat je ".$product->getProductname()." wilt verwijderen?'".')"' .">Verwijderen</a></td>";
+        echo "<td style='width: 150px;'>
+<a href=\"#\" data-toggle=\"modal\" data-target=\"#myModalAdded\" class=\"hvr-pulse\"><span class=\"glyphicon glyphicon-plus\"></span> Bestellen</a>
+</td>";
         echo "</tr>";
         echo "\n";
     };
 } catch (Exception $e) {
     echo $e->getMessage();
 }
+
 ?>
+
+
+

@@ -1,5 +1,11 @@
 <?PHP
-include_once "printorder.php";
+include_once "header2.php";
+//include_once "printorder.php";
+include_once "classes/Bestelling.php";
+include_once "classes/BestellingList.php";
+
+
+
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -26,6 +32,30 @@ include_once "printorder.php";
     <link href="css/hover.css" rel="stylesheet" media="all">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/t/bs/jq-2.2.0,dt-1.10.11/datatables.min.css"/>
 </head>
+
+<?PHP
+//TODO _________________________________________________________________________________________________________
+
+try {
+
+    $orderlist = new OrderList($DB_con); //er wordt een nieuwe categorie lijst aangemaakt
+    ?>
+
+    <?PHP
+    echo '<div class="col-md-12 col-md-offset-0 text-center">';
+    foreach ($orderlist->getlistoforders() as $order) { //hij haalt alle bestellingen op in een array.
+        echo "<br><br><br><br><br>";
+        echo $order->getBestellingid();
+        //hierboven worden simpele buttons geprint waarvan in de post de ID word meegegeven maar de waarde in de knop is de categorieNaam.
+    }
+    echo '</div>';
+
+} catch (Exception $e) {
+    echo $e->getMessage();
+}
+//TODO _________________________________________________________________________________________________________
+?>
+
 <div class="container">
 <div class="row">
     <div class="col-md-10">
@@ -34,6 +64,7 @@ include_once "printorder.php";
                 <div class="table-responsive">
                     <table class="table table-condensed">
                         <thead>
+
                         <tr>
                             <td><strong><p>Bestelling ID</p></strong></td>
                             <td><strong><p>1</p></strong></td>

@@ -1,11 +1,11 @@
 <?php
 
-class CategoryList
+class DiscountList
 {
     /**
      * @var array
      */
-    private $listofcategories = array();
+    private $listofdiscounts = array();
     /**
      * @var PDO
      */
@@ -15,29 +15,29 @@ class CategoryList
     {
         $this->db = $dbconnection; // moet nog error handling bij
 
-        try {
-            $stmt = $this->db->prepare("SELECT * FROM `categorie` ORDER BY `categorieID`");
+        try
+        {
+            $stmt = $this->db->prepare("SELECT actieID FROM actie");
             $stmt->execute();
             while ($result = $stmt->fetch(PDO::FETCH_ASSOC))
             {
-                $this->listofcategories[] = new Category($this->db, $result['categorieID']);
+                $this->listofdiscounts[] = new Discount($this->db, $result['actieID']);
             }
 
-        } catch (PDOException $e) {
+        }
+        catch (PDOException $e)
+        {
             echo $e->getMessage();
         }
-
 
     }
 
     /**
-     * @return Category[]
+     * @return 
      */
-
-    function getcategories()
+    function getlistofdiscounts()
     {
-        return $this->listofcategories;
+        return $this->listofdiscounts;
     }
-
 
 }

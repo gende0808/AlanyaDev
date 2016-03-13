@@ -18,13 +18,21 @@ class Category implements CRUD
      */
     private $discountID;
     /**
+     * @var string
+     */
+    private $catimg;
+    /**
      * @var PDO
      */
     private $db;
 
-    public function __construct($dbconnection)
+    public function __construct($dbconnection, $id="")
     {
         $this->db = $dbconnection;
+        if ($id != "" && is_numeric($id)){
+            $this->read($id);
+        }
+
     }
 
 
@@ -44,7 +52,7 @@ class Category implements CRUD
         }
 
         try {
-            $stmt = $this->db->prepare("SELECT categorieID,categorieNaam,categorieOmschrijving,actieID FROM categorie WHERE categorieID= :catid");
+            $stmt = $this->db->prepare("SELECT categorieID,categorieNaam,categorieOmschrijving,actieID,CatIMG FROM categorie WHERE categorieID= :catid");
             $stmt->bindParam(':catid', $id, PDO::PARAM_INT);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -52,6 +60,7 @@ class Category implements CRUD
             $this->catname = $result['categorieNaam'];
             $this->catdescription = $result['categorieOmschrijving'];
             $this->discountID = $result['actieID'];
+            $this->catimg = $result['CatIMG'];
         } catch (PDOException $e) {
             echo "Database-error: " . $e->getMessage();
         }
@@ -73,6 +82,14 @@ class Category implements CRUD
     function getcatname()
     {
         return $this->catname;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCatimg()
+    {
+        return $this->catimg;
     }
 
 

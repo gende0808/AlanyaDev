@@ -54,7 +54,7 @@ include_once "header.php";
                     </div>
                     <div class="blog-content">
                         <div class="content-show">
-                            <h4><a href="single-post.html">Italiaanse Pizza's</a></h4>
+                            <h4><a href="menu.php?catID=1">Italiaanse Pizza's</a></h4>
                         </div>
                         <div class="content-hide">
                             <p>Sed egestas tincidunt mollis. Suspendisse rhoncus vitae enim et faucibus. Ut dignissim nec arcu nec hendrerit. Sed arcu odio, sagittis vel diam in, malesuada malesuada risus. Aenean a sem leo. Nam ultricies dolor et mi tempor, non pulvinar felis sollicitudin.</p>

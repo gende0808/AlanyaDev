@@ -1,15 +1,22 @@
 <?PHP
 include_once "header.php";
-
 include_once "classes/Account.php";
-include_once "connection.php";
+include_once "classes/City.php";
+include_once "classes/CityList.php";
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-?>  <div class="modal-dialog" style="width: 30%;">
-        <img src="images/testlogo2.png" style="width: 100%;">
-        <div class="modal-content">
+?>
+<div class="logo">
+    <hr>
+    <center><img src="images/testlogo2.png"></center>
+</div>
+
+<div class="col-md-4 col-md-offset-4">
+<div class="modal-dialog text-center">
+    <br>
+        <div class="modal-content text-center">
 
                 <div class="panel-heading">
                     <?PHP
@@ -17,7 +24,10 @@ error_reporting(E_ALL);
                         try {
                             $account = new Account($DB_con);
                             $account->setUseremail(htmlspecialchars($_POST['email']));
-                            $account->setUserpassword(htmlspecialchars($_POST['password']));
+                            $account->setUserfirstname(htmlspecialchars($_POST['firstname']));
+                            $account->setUserlastname(htmlspecialchars($_POST['lastname']));
+                            $account->setUsercityid(htmlspecialchars($_POST['city']));
+                            $account->setUserpassword(htmlspecialchars($_POST['wachtwoord1']));
                             $account->setUserstreetname(htmlspecialchars($_POST['street']));
                             $account->setUserhousenumber(htmlspecialchars($_POST['number']));
                             $account->setUserphonenumber(htmlspecialchars($_POST['phone']));
@@ -54,15 +64,30 @@ error_reporting(E_ALL);
                         <div class="form-group">
                             <div class="input-group">
                                 <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-lock"></label>
-                                <input type="password" class="form-control" name="password" placeholder="Wachtwoord">
+                                <input type="password" class="form-control" name="wachtwoord1" id="wachtwoord1"
+                                       placeholder="Wachtwoord">
                             </div>
                         </div>
                         <!-- /.form-group -->
                         <div class="form-group">
                             <div class="input-group">
                                 <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-lock"></label>
-                                <input type="password" class="form-control" name="password2"
+                                <input type="password" class="form-control" name="wachtwoord2" id="wachtwoord2"
+                                       onkeyup="checkPass(); return false;"
                                        placeholder="verifieer Wachtwoord">
+                                <span id="confirmMessage" class="confirmMessage"></span>
+                            </div>
+                        </div>
+                        <!-- /.form-group -->
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-user"></label>
+                                <input type="text" class="form-control" name="firstname" placeholder="Voornaam"
+                                       style="width: 50%;">
+
+                                <input type="text" class="form-control" name="lastname" placeholder="Achternaam."
+                                       style="width: 50%;">
                             </div>
                         </div>
                         <!-- /.form-group -->
@@ -84,10 +109,20 @@ error_reporting(E_ALL);
                             <div class="input-group">
                                 <label for="uLogin"
                                        class="input-group-addon orange glyphicon glyphicon-map-marker"></label>
-                                <input type="text" class="form-control" name="city" placeholder="Plaats">
+                                <select class="form-control" name="city">
+                                    <option value="" selected disabled><b>Woonplaats</b></option>
+                                    <?PHP
+                                    $listofcities = (new CityList($DB_con))->getlistofcities();
+                                    foreach($listofcities as $city){
+                                        echo "<option value='".$city->getCityid()."'>".$city->getCityname()."</option>";
+                                    }
+                                    ?>
+
+                                </select>
                             </div>
                         </div>
                         <!-- /.form-group -->
+                        <p style="font-family: 'Open Sans', sans-serif">Helaas bezorgen wij niet buiten de weergegeve steden.</p>
 
                         <div class="form-group">
                             <div class="input-group">
@@ -100,17 +135,28 @@ error_reporting(E_ALL);
 
                         <p>al een bestaand account? <a href="#" data-toggle="modal" data-target="#myModal"
                                                        class="hvr-float-shadow">Login</a></p>
-                        <button class="form-control btn orange" style="color: white;" type="submit" value="submit">
+
+                        <button class="form-control btn orange" style="color: white;" type="submit" value="submit" ">
                             Registeren
                         </button>
+
                     </form>
                 </div>
+
+
                 <!-- /.modal-body -->
         </div>
         <!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
-
+</div>
+</div>
 <?PHP
 include_once "footer.php";
 // include_once "sideshoppinglist.php";
 ?>
+
+<script>
+
+
+
+</script>

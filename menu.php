@@ -5,78 +5,75 @@ include_once "classes/ProductList.php";
 include_once "classes/Product.php";
 include_once "classes/Category.php";
 include_once "classes/CategoryList.php";
+
+
+if (isset($_GET['productid']) && isset($_GET['delete'])) {
+    $delete = $_GET['delete'];
+    $productid = $_GET['productid'];
+    if ($delete == "true") {
+        try {
+            $productdeletion = new Product($DB_con);
+            $productdeletion->delete($productid);
+        } catch (Exception $e) {
+            echo "this went wrong: " . $e->getMessage();
+        }
+
+    }
+}
+
 ?>
 
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-
-    <div class="container text-center">
-        <img src="images/testlogo2.png">
-        <div class="col-md-8 col-md-offset-2 text-center">
+<div class="container text-center" style="margin-top: 50px;">
+    <div class="col-md-12 col-md-offset-0 text-center" style="margin-top: 50px">
+        <div class="col-md-12 col-md-offset-0 text-center">
+            <div id="placehere" style="margin-bottom: 5%">
+            </div>
+        </div>
+        <!-- Heb hier een margin top ingegooid zodat er niets onder de header verdwijnt. TODO margin bottom op header! -->
         <?PHP
+        //TODO _________________________________________________________________________________________________________
 
         try {
 
             $categorylist = new CategoryList($DB_con); //er wordt een nieuwe categorie lijst aangemaakt
-            echo '<form action="" method="get">';
+            ?>
+
+            <?PHP
+            echo '<div class="col-md-12 col-md-offset-0 text-center">';
             foreach ($categorylist->getcategories() as $category) { //hij haalt alle categoriën op in een array.
-                echo '<button name="catID" class="myButton" value="' . $category['categorieID'] . '">' . $category['categorieNaam'] . '</button>';
+                echo '<button name="catID" onclick="showProductsMenu(this.value); ShowIMG('.$category->getcatID().')" class="myButton" value="' . $category->getcatID() . '">' . $category->getcatname() . '</button>';
                 //hierboven worden simpele buttons geprint waarvan in de post de ID word meegegeven maar de waarde in de knop is de categorieNaam.
             }
-            echo '</form>';
+            echo '</div>';
+
         } catch (Exception $e) {
             echo $e->getMessage();
         }
-
+        //TODO _________________________________________________________________________________________________________
         ?>
-            <br>
 
-            <?php
 
-            echo "<table id='testTable' class='table table-striped table-hover table-responsive'>";
-            echo "
-    <thead>
-        <tr>
-            <th class='text-center'>ProductNummer</th>
-            <th class='text-center'>Productnaam</th>
-            <th class='text-center'>Omschrijving</th>
-            <th class='text-center'>Prijs</th>
-        </tr>
-     </thead>";
+        <input type="text" id="search" placeholder="Zoeken..." class="col-md-12 col-md-offset-0 search_box"
+               onkeyup="doSearch()"/>
+        <!-- Hier moet een text komen te staan over dat het product aangepasdt kan worden in de winkelwagen. TODO margin bottom op header! -->
 
-            echo "<tbody>";
-            // __________________________________
-            try {
-
-                if (!isset($_GET['catID'])) {
-                    $category_ID = 1; //als er geen $_GET['catid'] is meegegeven is catid standaard 1
-                } else {
-                    $category_ID = $_GET['catID'];
-                }
-                $productlist = new ProductList($DB_con, $category_ID); // //de post word meegegeven
-                $listofproducts = $productlist->getlistofproducts(); //hiermee word een array opgehaald waarin producten met hun waarden zitten
-
-                foreach ($listofproducts as $product) { //in deze foreach loopt hij over ieder individueel product en print hij de waarden in die array
-                    echo "<tr>";
-                    echo "<td style='width: 150px;'>" . $product->getProductnumber() . "</td>";
-                    echo "<td style='width: 150px;'>" . $product->getProductname() . "</td>";
-                    echo "<td style='width: 150px;'>" . $product->getProductdescription() . "</td>";
-                    echo "<td style='width: 150px;'>" . $product->getProductPriceformatted() . "</td>";
-                    echo "</tr>";
-                    echo "\n";
-                };
-            } catch (Exception $e) {
-                echo $e->getMessage();
-            }
-            ?>
+        <table id="producttable" class='table table-striped table-hover table-responsive'>
+            <thead>
+            <tr>
+                <th class='text-center'>Nummer</th>
+                <th class='text-center'>Product</th>
+                <th class='text-center'>Omschrijving</th>
+                <th class='text-center'>Prijs</th>
+                <th class='text-center'><span class="glyphicon glyphicon-shopping-cart"></span> Toevoegen</th>
+            </tr>
+            </thead>
+            <tbody id="tablecontainermenu">
             </tbody>
-            </table>
-
-            <a href="shoppingcart.php" class="myButton2" style="width: 50%!important; height: 100px!important;"><span class="glyphicon glyphicon-shopping-cart"> Winkelwagen</span></a>
-
-        </div>
+        </table>
     </div>
-
-
+    </div>
+</div>
 <?php
 include_once "footer.php";
 ?>
+<script src="js/menushowcat.js"></script>

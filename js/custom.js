@@ -1,9 +1,44 @@
 /**
  * Created by Gregory on 28-2-2016.
  */
+
+function ShowIMG(waarde){
+    $( document ).ready(function() {
+            $("#placehere img:last-child").remove();
+            $('#placehere').prepend('<img id="cat'+waarde+'" src="images/cat'+waarde+'.png" />');
+    })
+}
+
+
+
+
+//onderstaande functie kan gebruikt worden om te kijken of twee wachtwoorden overeenkomen.
+String.prototype.isEmpty = function() {
+    return (this.length === 0 || !this.trim());
+};
+
+function checkPass()
+{
+    var pass1 = document.getElementById('wachtwoord1');
+    var pass2 = document.getElementById('wachtwoord2');
+    var message = document.getElementById('confirmMessage');
+    var goodColor = "#66cc66";
+    var badColor = "#ff6666";
+    if(pass1.value == pass2.value){
+        pass2.style.backgroundColor = goodColor;
+        message.style.color = goodColor;
+        message.innerHTML = "Wachtwoorden komen overeen!"
+    }else{
+        pass2.style.backgroundColor = badColor;
+        message.style.color = badColor;
+        message.innerHTML = "Wachtwoorden komen niet overeen, heeft u een typfout gemaakt?"
+    }
+}
+
+
 // onderstaande functie is voor het verzenden van een request naar tabledata.php met ajax om producten op te halen.
 
-function showProducts(str) {
+    function showProducts(str) {
     if (str == "") {
         document.getElementById("tablecontainer").innerHTML = "";
         return;
@@ -27,6 +62,56 @@ function showProducts(str) {
             }
         };
         xmlhttp.open("GET", "adminaccount/tabledata.php?catID=" + str, true);
+        xmlhttp.send();
+//Ajax admin account 
+
+    }
+}function showProductsMenu(str) {
+
+
+    if (str == "") {
+
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("tablecontainermenu").innerHTML = xmlhttp.responseText;
+                var oTable = $('tablecontainermenu').dataTable({"sPaginationType": "full_numbers"});
+                var rows = oTable.fnGetNodes();
+                {
+                    oTable.fnUpdate('X', rows[i], 4);
+                }
+            }
+        };
+        xmlhttp.open("GET", "menu/tabledatamenu.php?catID=" + str, true);
+        xmlhttp.send();
+
+
+    } else {
+
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("tablecontainermenu").innerHTML = xmlhttp.responseText;
+                var oTable = $('tablecontainermenu').dataTable({"sPaginationType": "full_numbers"});
+                var rows = oTable.fnGetNodes();
+                {
+                    oTable.fnUpdate('X', rows[i], 4);
+                }
+            }
+        };
+        xmlhttp.open("GET", "menu/tabledatamenu.php?catID=" + str, true);
         xmlhttp.send();
 
 
@@ -61,3 +146,6 @@ function doSearch() {
             targetTable.rows.item(rowIndex).style.display = 'table-row';
     }
     }
+
+
+
