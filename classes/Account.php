@@ -62,8 +62,13 @@ class Account implements CRUD{
 
 
 
-    public function __construct($dbconnection){
+    public function __construct($dbconnection, $id=""){
+
         $this->db = $dbconnection;
+        if ($id != "" && is_numeric($id)){
+            $this->read($id);
+        }
+
     }
 
     public function create(){
@@ -84,7 +89,26 @@ class Account implements CRUD{
         }
     }
     public function read($id){
+        if (empty($id)) {
+            throw new InvalidArgumentException('Id is leeg!');
+        }
+        if(!is_numeric($id))
+        {
+            throw new InvalidArgumentException("Id is geen getal!");
+        }
 
+        try {
+            $stmt = $this->db->prepare("SELECT categorieID,categorieNaam,categorieOmschrijving,actieID FROM categorie WHERE categorieID= :catid");
+            $stmt->bindParam(':catid', $id, PDO::PARAM_INT);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $this->id = $result['categorieID'];
+            $this->catname = $result['categorieNaam'];
+            $this->catdescription = $result['categorieOmschrijving'];
+            $this->discountID = $result['actieID'];
+        } catch (PDOException $e) {
+            echo "Database-error: " . $e->getMessage();
+        }
     }
     public function update($id){
 
@@ -209,6 +233,104 @@ class Account implements CRUD{
     {
         $this->usernote = $usernote;
     }
+
+    /**
+     * @return string
+     */
+    public function getUsernote()
+    {
+        return $this->usernote;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUserphonenumber()
+    {
+        return $this->userphonenumber;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUserpassword()
+    {
+        return $this->userpassword;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUserlevel()
+    {
+        return $this->userlevel;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUserlastname()
+    {
+        return $this->userlastname;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUserfirstname()
+    {
+        return $this->userfirstname;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUseremail()
+    {
+        return $this->useremail;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUserhousenumber()
+    {
+        return $this->userhousenumber;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUserstreetname()
+    {
+        return $this->userstreetname;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUsercityid()
+    {
+        return $this->usercityid;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUsercity()
+    {
+        return $this->usercity;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUserid()
+    {
+        return $this->userid;
+    }
+
+
 }
 
 
