@@ -1,8 +1,8 @@
 <?PHP
 include_once "header2.php";
 //include_once "printorder.php";
-include_once "classes/Bestelling.php";
-include_once "classes/BestellingList.php";
+// include_once "classes/Bestelling.php";
+//include_once "classes/BestellingList.php";
 
 
 
@@ -13,41 +13,23 @@ include_once "classes/BestellingList.php";
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 
-<head>
-    <?php header("Content-Type: text/html; charset=utf-8"); ?>
-    <meta charset="utf-8">
-    <title>Alanya Krommenie</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/font-awesome.css">
-    <link rel="stylesheet" href="css/scrolltop.css">
-    <link rel="stylesheet" href="css/sidebar.css">
-    <link rel="stylesheet" href="css/sideshop.css">
-    <link rel="stylesheet" href="css/border.css">
-    <link rel="stylesheet" href="css/checkbox.css">
-    <link href="css/demo-page.css" rel="stylesheet" media="all">
-    <link href="css/hover.css" rel="stylesheet" media="all">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/t/bs/jq-2.2.0,dt-1.10.11/datatables.min.css"/>
-</head>
+
 
 <?PHP
 //TODO _________________________________________________________________________________________________________
 
 try {
 
-    $orderlist = new OrderList($DB_con); //er wordt een nieuwe categorie lijst aangemaakt
+    //$orderlist = new OrderList($DB_con); //er wordt een nieuwe categorie lijst aangemaakt
     ?>
 
     <?PHP
     echo '<div class="col-md-12 col-md-offset-0 text-center">';
-    foreach ($orderlist->getlistoforders() as $order) { //hij haalt alle bestellingen op in een array.
-        echo "<br><br><br><br><br>";
-        echo $order->getBestellingid();
+    //foreach ($orderlist->getlistoforders() as $order) { //hij haalt alle bestellingen op in een array.
+      //  echo "<br><br><br><br><br>";
+        //echo $order->getBestellingid();
         //hierboven worden simpele buttons geprint waarvan in de post de ID word meegegeven maar de waarde in de knop is de categorieNaam.
-    }
+   // }
     echo '</div>';
 
 } catch (Exception $e) {
