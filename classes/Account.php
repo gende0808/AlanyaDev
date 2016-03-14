@@ -59,6 +59,10 @@ class Account implements CRUD{
      * @var PDO
      */
     private $db;
+    /**
+     * @var array
+     */
+    private $user_info = array();
 
 
 
