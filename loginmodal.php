@@ -24,18 +24,11 @@
                         </div> <!-- /.input-group -->
                     </div> <!-- /.form-group -->
                     <p>Nog geen account? <a href="register.php">Registreren</a></p>
-
+                    <button class="form-control btn orange" type="submit" style="color: white;">Login</button>
+                </form>
             </div> <!-- /.modal-body -->
 
-            <div class="modal-footer">
-                <button class="form-control btn orange" type="submit" style="color: white;">Login</button>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="100" style="width: 0%;">
-                        <span class="sr-only">progress</span>
-                    </div>
-                </div>
-            </div> <!-- /.modal-footer -->
-            </form>
+
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
