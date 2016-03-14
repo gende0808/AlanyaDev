@@ -83,7 +83,6 @@ class Account implements CRUD{
             $stmt->bindparam(":password", $this->userpassword);
             $stmt->bindparam(":userlevel", $this->userlevel);
             $stmt->execute();
-
             } catch(PDOException $e){
             echo "er is iets misgegaan met de verbinding van de server!".$e->getMessage();
         }
@@ -98,14 +97,33 @@ class Account implements CRUD{
         }
 
         try {
-            $stmt = $this->db->prepare("SELECT categorieID,categorieNaam,categorieOmschrijving,actieID FROM categorie WHERE categorieID= :catid");
-            $stmt->bindParam(':catid', $id, PDO::PARAM_INT);
+            $stmt = $this->db->prepare("SELECT userID,
+                                               userPlaatsID,
+                                               userStraatnaam,
+                                               userToevoeging,
+                                               userTelefoonnummer,
+                                               userPassword,
+                                               userLevel,
+                                               userVoornaam,
+                                               userAchternaam,
+                                               userEmail,
+                                               userHuisnummer
+                                                FROM account WHERE userID= :userid");
+            $stmt->bindParam(':userid', $id, PDO::PARAM_INT);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            $this->id = $result['categorieID'];
-            $this->catname = $result['categorieNaam'];
-            $this->catdescription = $result['categorieOmschrijving'];
-            $this->discountID = $result['actieID'];
+            $this->userid = $result['userID'];
+            $this->usercity = $result['userStraatnaam'];
+            $this->usercityid = $result['userPlaatsID'];
+            $this->userstreetname = $result['userStraatnaam'];
+            $this->userhousenumber = $result['userHuisnummer'];
+            $this->useremail = $result['userEmail'];
+            $this->userfirstname = $result['userVoornaam'];
+            $this->userlastname = $result['userAchternaam'];
+            $this->userlevel = $result['userLevel'];
+            $this->userpassword = $result['userPassword'];
+            $this->userphonenumber = $result['userTelefoonnummer'];
+            $this->usernote = $result['userToevoeging'];
         } catch (PDOException $e) {
             echo "Database-error: " . $e->getMessage();
         }

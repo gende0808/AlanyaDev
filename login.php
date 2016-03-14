@@ -11,8 +11,6 @@ include_once "classes/Account.php";
         {
                 $account = new Account($DB_con,2);
                 echo $account->getUseremail();
-
-                return "Goed";
         }
         catch(PDOException $e)
         {
