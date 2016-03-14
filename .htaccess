@@ -1,2 +1,5 @@
-ErrorDocument 404 /AlanyaDev/error.php
-
+ErrorDocument 400 http://localhost/alanyadev/error/400.php
+ErrorDocument 401 http://localhost/alanyadev/error/401.php
+ErrorDocument 403 http://localhost/alanyadev/error/403.php
+ErrorDocument 404 http://localhost/alanyadev/error/404.php
+ErrorDocument 500 http://localhost/alanyadev/error/500.php
