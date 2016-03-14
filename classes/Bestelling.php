@@ -66,7 +66,6 @@ class Order implements CRUD{
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             $this->bestellingid = $result['bestellingID'];
-            $this-> = $result['categorieNaam'];
             $this->catdescription = $result['categorieOmschrijving'];
             $this->discountID = $result['actieID'];
         } catch (PDOException $e) {

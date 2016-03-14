@@ -1,6 +1,6 @@
 <?PHP
 include_once "header2.php";
-//include_once "printorder.php";
+include_once "printorder.php";
 include_once "classes/Bestelling.php";
 include_once "classes/BestellingList.php";
 

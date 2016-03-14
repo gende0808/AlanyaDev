@@ -23,6 +23,37 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
 
 ?>
 
+<style type="text/css">
+    .button-0 {
+        position: relative;
+        padding: 5px 30px;
+        margin: 0px 5px 5px 0px;
+
+        border-radius: 10px;
+        font-family: 'Helvetica', cursive;
+        font-size: 25px;
+        color: #FFF;
+        text-decoration: none;
+        background-color: #fe1a00;
+        border-bottom: 5px solid #ce0100;
+        text-shadow: 0px -2px #2980B9;
+        /* Animation */
+        transition: all 0.1s;
+        -webkit-transition: all 0.1s;
+    }
+
+    .button-0:hover,
+    .button-0:focus {
+        text-decoration: none;
+        color: #fff;
+    }
+
+    .button-0:active {
+        transform: translate(0px,5px);
+        -webkit-transform: translate(0px,5px);
+        border-bottom: 1px solid;
+    }
+</style>
 <div class="container text-center" style="margin-top: 50px;">
     <div class="col-md-12 col-md-offset-0 text-center" style="margin-top: 50px">
         <div class="col-md-12 col-md-offset-0 text-center">
@@ -41,7 +72,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
             <?PHP
             echo '<div class="col-md-12 col-md-offset-0 text-center">';
             foreach ($categorylist->getcategories() as $category) { //hij haalt alle categoriën op in een array.
-                echo '<button name="catID" onclick="showProductsMenu(this.value); ShowIMG('.$category->getcatID().')" class="myButton" value="' . $category->getcatID() . '">' . $category->getcatname() . '</button>';
+                echo '<button name="catID" onclick="showProductsMenu(this.value); ShowIMG('.$category->getcatID().')" class="button-0" value="' . $category->getcatID() . '">' . $category->getcatname() . '</button>';
                 //hierboven worden simpele buttons geprint waarvan in de post de ID word meegegeven maar de waarde in de knop is de categorieNaam.
             }
             echo '</div>';
