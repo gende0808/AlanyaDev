@@ -123,7 +123,7 @@ error_reporting(E_ALL);
 <!--                            </div>-->
 <!--                        </div>-->
                         <!-- /.form-group -->
-                        <p style="font-family: 'Open Sans', sans-serif">Helaas bezorgen wij niet buiten de weergegeve steden.</p>
+                        <p style="font-family: 'Open Sans', sans-serif">helaas bezorgen wij niet buiten de weergegeve steden.</p>
 
                         <div class="form-group">
                             <div class="input-group">
