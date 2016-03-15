@@ -141,25 +141,7 @@ error_reporting(E_ALL);
                             Registeren
                         </button>
                     </form>
-
-                    <script type="text/javascript" language="javascript">
-                        function checkform()
-                        {
-                            var f = document.forms["theform"].elements;
-                            var cansubmit = true;
-
-                            for (var i = 0; i < f.length; i++) {
-                                if (f[i].value.length == 0) cansubmit = false;
-                            }
-
-                            document.getElementById('test').disabled = !cansubmit;
-                        }
-                    </script>
-
                 </div>
-
-
-
 
                 <!-- /.modal-body -->
         </div>
@@ -172,8 +154,16 @@ include_once "footer.php";
 // include_once "sideshoppinglist.php";
 ?>
 
-<script>
+<script type="text/javascript" language="javascript">
+    function checkform()
+    {
+        var f = document.forms["theform"].elements;
+        var cansubmit = true;
 
+        for (var i = 0; i < f.length; i++) {
+            if (f[i].value.length == 0) cansubmit = false;
+        }
 
-
+        document.getElementById('test').disabled = !cansubmit;
+    }
 </script>
