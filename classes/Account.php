@@ -63,7 +63,15 @@ class Account implements CRUD{
      * @var array
      */
     private $user_info = array();
+    /**
+     * @var string
+     */
+    private $verificationcode;
 
+    /**
+     * @var string
+     */
+    private $userstatus;
 
 
     public function __construct($dbconnection, $id=""){
@@ -77,8 +85,8 @@ class Account implements CRUD{
 
     public function create(){
         try {
-            $stmt = $this->db->prepare("INSERT INTO account(userEmail,userPlaatsID,userStraatnaam,userHuisnummer,userTelefoonnummer,userPassword,userLevel)
-                                    VALUES(:mail, :cityid, :street, :streetnr, :phone, :password, :userlevel)");
+            $stmt = $this->db->prepare("INSERT INTO account(userEmail,userPlaatsID,userStraatnaam,userHuisnummer,userTelefoonnummer,userPassword,userLevel,tokenCode,userStatus)
+                                    VALUES(:mail, :cityid, :street, :streetnr, :phone, :password, :userlevel, :token, :status)");
             $stmt->bindparam(":mail", $this->useremail);
             $stmt->bindparam(":cityid", $this->usercityid);
             $stmt->bindparam(":street", $this->userstreetname);
@@ -86,6 +94,8 @@ class Account implements CRUD{
             $stmt->bindparam(":phone", $this->userphonenumber);
             $stmt->bindparam(":password", $this->userpassword);
             $stmt->bindparam(":userlevel", $this->userlevel);
+            $stmt->bindparam(":token", $this->verificationcode);
+            $stmt->bindparam(":status", $this->userstatus);
             $stmt->execute();
             } catch(PDOException $e){
             echo "er is iets misgegaan met de verbinding van de server!".$e->getMessage();
@@ -111,7 +121,8 @@ class Account implements CRUD{
                                                userVoornaam,
                                                userAchternaam,
                                                userEmail,
-                                               userHuisnummer
+                                               userHuisnummer,
+                                               tokenCode
                                                 FROM account WHERE userID= :userid");
             $stmt->bindParam(':userid', $id, PDO::PARAM_INT);
             $stmt->execute();
@@ -128,6 +139,7 @@ class Account implements CRUD{
             $this->userpassword = $result['userPassword'];
             $this->userphonenumber = $result['userTelefoonnummer'];
             $this->usernote = $result['userToevoeging'];
+            $this->verificationcode = $result['tokenCode'];
         } catch (PDOException $e) {
             echo "Database-error: " . $e->getMessage();
         }
@@ -137,6 +149,10 @@ class Account implements CRUD{
     }
     public function delete($id){
 
+    }
+
+    public function updateUserStatus(){
+        $stmt = $this->db->prepare
     }
     /**
      * @param mixed $userid
@@ -303,6 +319,10 @@ class Account implements CRUD{
     {
         return $this->userfirstname;
     }
+    public function getUserfullname()
+    {
+        return $this->userfirstname.' '.$this->userlastname;
+    }
 
     /**
      * @return string
@@ -351,6 +371,23 @@ class Account implements CRUD{
     {
         return $this->userid;
     }
+    public function setToken(){
+        $secret = md5(uniqid(rand()));
+        $this->verificationcode = $secret;
+
+    }
+
+    public function getToken()
+    {
+        return $this->verificationcode;
+    }
+    public function getstatus(){
+        return $this->userstatus;
+    }
+    public function setstatus($status){
+        $this->userstatus = $status;
+    }
+
 
 
 }

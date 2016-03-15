@@ -1,4 +1,5 @@
 <?PHP
+session_start();
 include_once "header.php";
 include_once "classes/Account.php";
 include_once "classes/City.php";
@@ -7,6 +8,8 @@ include_once "classes/CityList.php";
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
+
 ?>
 <div class="logo">
     <hr>
@@ -20,6 +23,9 @@ error_reporting(E_ALL);
 
                 <div class="panel-heading">
                     <?PHP
+                    $subject = "Alanya Registratie";
+
+
                     if(!empty($_POST)) {
                         try {
                             $account = new Account($DB_con);
@@ -31,11 +37,54 @@ error_reporting(E_ALL);
                             $account->setUserstreetname(htmlspecialchars($_POST['street']));
                             $account->setUserhousenumber(htmlspecialchars($_POST['number']));
                             $account->setUserphonenumber(htmlspecialchars($_POST['phone']));
+                            $account->setstatus("N");
+                            $account->setToken();
                             $account->create();
-                        } catch(Exception $e){
+
+                            $tempemail = $account->getUseremail();
+                            try {
+                                $query = $DB_con->prepare("SELECT userID FROM account WHERE userEmail= :mailadres");
+                                $query->bindParam(':mailadres', $tempemail);
+                                $query->execute();
+                                $resultaat = $query->fetch(PDO::FETCH_ASSOC);
+                                $gebruikersID = $resultaat['userID'];
+                            } catch (PDOException $e) {
+                                echo "Database-error: " . $e->getMessage();
+                            }
+
+                            $message = "
+						Hallo ".$account->getUserfullname().",
+						<br /><br />
+						Welkom bij Alanya-Krommenie!<br/>
+						To complete your registration  please , just click following link<br/>
+						<br /><br />
+						<a href='http://localhost/alanyaDev/verify.php?id=".$gebruikersID."&code=".$account->getToken()."'>Click HERE to Activate :)</a>
+						<br /><br />
+						Thanks,";
+
+                            require_once('mailer/class.phpmailer.php');
+                            $mail = new PHPMailer();
+                            $mail->IsSMTP();
+                            $mail->SMTPDebug = 0;
+                            $mail->SMTPAuth = true;
+                            $mail->SMTPSecure = "ssl";
+                            $mail->Host = "smtp.gmail.com";
+                            $mail->Port = 465;
+                            $mail->AddAddress($account->getUseremail());
+                            $mail->Username = "alanyatester@gmail.com";
+                            $mail->Password = "alanyatest";
+                            $mail->SetFrom('your_gmail_id_here@gmail.com', 'Coding Cage');
+                            $mail->AddReplyTo("your_gmail_id_here@gmail.com", "Coding Cage");
+                            $mail->Subject = $subject;
+                            $mail->MsgHTML($message);
+                            $mail->Send();
+
+    } catch(Exception $e){
 
                             echo $e->getMessage();
                         }
+
+
                     }
                     ?>
 
