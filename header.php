@@ -3,7 +3,7 @@ $test = "";
 $mand = "";
 
 
-    if(true)
+    if(false)
     {
         $test = "<li class='dropdown'><a class='dropdown-toggle' data-toggle='dropdown' href='#'>Mijn account<span class='caret'></span></a>
         <ul class='dropdown-menu'>
