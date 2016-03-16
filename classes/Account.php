@@ -62,8 +62,22 @@ class Account implements CRUD{
     /**
      * @var array
      */
-    private $user_info = array();
+    private $user_info;
+    /**
+     * @var string
+     */
+    private $verificationcode;
 
+    /**
+     * @var string
+     */
+    private $userstatus;
+
+
+    /**
+     * @param $dbconnection
+     * @param string $id
+     */
 
 
     public function __construct($dbconnection, $id=""){
@@ -77,8 +91,8 @@ class Account implements CRUD{
 
     public function create(){
         try {
-            $stmt = $this->db->prepare("INSERT INTO account(userEmail,userPlaatsID,userStraatnaam,userHuisnummer,userTelefoonnummer,userPassword,userLevel)
-                                    VALUES(:mail, :cityid, :street, :streetnr, :phone, :password, :userlevel)");
+            $stmt = $this->db->prepare("INSERT INTO account(userEmail,userPlaatsID,userStraatnaam,userHuisnummer,userTelefoonnummer,userPassword,userLevel,tokenCode,userStatus)
+                                    VALUES(:mail, :cityid, :street, :streetnr, :phone, :password, :userlevel, :token, :status)");
             $stmt->bindparam(":mail", $this->useremail);
             $stmt->bindparam(":cityid", $this->usercityid);
             $stmt->bindparam(":street", $this->userstreetname);
@@ -86,6 +100,8 @@ class Account implements CRUD{
             $stmt->bindparam(":phone", $this->userphonenumber);
             $stmt->bindparam(":password", $this->userpassword);
             $stmt->bindparam(":userlevel", $this->userlevel);
+            $stmt->bindparam(":token", $this->verificationcode);
+            $stmt->bindparam(":status", $this->userstatus);
             $stmt->execute();
             } catch(PDOException $e){
             echo "er is iets misgegaan met de verbinding van de server!".$e->getMessage();
@@ -111,23 +127,25 @@ class Account implements CRUD{
                                                userVoornaam,
                                                userAchternaam,
                                                userEmail,
-                                               userHuisnummer
+                                               userHuisnummer,
+                                               tokenCode
                                                 FROM account WHERE userID= :userid");
             $stmt->bindParam(':userid', $id, PDO::PARAM_INT);
             $stmt->execute();
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            $this->userid = $result['userID'];
-            $this->usercity = $result['userStraatnaam'];
-            $this->usercityid = $result['userPlaatsID'];
-            $this->userstreetname = $result['userStraatnaam'];
-            $this->userhousenumber = $result['userHuisnummer'];
-            $this->useremail = $result['userEmail'];
-            $this->userfirstname = $result['userVoornaam'];
-            $this->userlastname = $result['userAchternaam'];
-            $this->userlevel = $result['userLevel'];
-            $this->userpassword = $result['userPassword'];
-            $this->userphonenumber = $result['userTelefoonnummer'];
-            $this->usernote = $result['userToevoeging'];
+            $this->user_info = $stmt->fetch(PDO::FETCH_ASSOC);
+            $this->userid = $this->user_info['userID'];
+            $this->usercity = $this->user_info['userStraatnaam'];
+            $this->usercityid = $this->user_info['userPlaatsID'];
+            $this->userstreetname = $this->user_info['userStraatnaam'];
+            $this->userhousenumber = $this->user_info['userHuisnummer'];
+            $this->useremail = $this->user_info['userEmail'];
+            $this->userfirstname = $this->user_info['userVoornaam'];
+            $this->userlastname = $this->user_info['userAchternaam'];
+            $this->userlevel = $this->user_info['userLevel'];
+            $this->userpassword = $this->user_info['userPassword'];
+            $this->userphonenumber = $this->user_info['userTelefoonnummer'];
+            $this->usernote = $this->user_info['userToevoeging'];
+            $this->verificationcode = $this->user_info['tokenCode'];
         } catch (PDOException $e) {
             echo "Database-error: " . $e->getMessage();
         }
@@ -137,6 +155,10 @@ class Account implements CRUD{
     }
     public function delete($id){
 
+    }
+
+    public function updateUserStatus(){
+        //$stmt = $this->db->prepare
     }
     /**
      * @param mixed $userid
@@ -303,6 +325,10 @@ class Account implements CRUD{
     {
         return $this->userfirstname;
     }
+    public function getUserfullname()
+    {
+        return $this->userfirstname.' '.$this->userlastname;
+    }
 
     /**
      * @return string
@@ -351,7 +377,26 @@ class Account implements CRUD{
     {
         return $this->userid;
     }
+    public function setToken(){
+        $secret = md5(uniqid(rand()));
+        $this->verificationcode = $secret;
 
+    }
+
+    public function getToken()
+    {
+        return $this->verificationcode;
+    }
+    public function getstatus(){
+        return $this->userstatus;
+    }
+    public function setstatus($status){
+        $this->userstatus = $status;
+    }
+
+    public function getUserInfo(){
+        return $this->user_info;
+    }
 
 }
 
