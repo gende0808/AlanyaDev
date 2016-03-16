@@ -62,7 +62,7 @@ class Account implements CRUD{
     /**
      * @var array
      */
-    private $user_info = array();
+    private $user_info;
     /**
      * @var string
      */
@@ -72,6 +72,12 @@ class Account implements CRUD{
      * @var string
      */
     private $userstatus;
+
+
+    /**
+     * @param $dbconnection
+     * @param string $id
+     */
 
 
     public function __construct($dbconnection, $id=""){
@@ -126,20 +132,20 @@ class Account implements CRUD{
                                                 FROM account WHERE userID= :userid");
             $stmt->bindParam(':userid', $id, PDO::PARAM_INT);
             $stmt->execute();
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            $this->userid = $result['userID'];
-            $this->usercity = $result['userStraatnaam'];
-            $this->usercityid = $result['userPlaatsID'];
-            $this->userstreetname = $result['userStraatnaam'];
-            $this->userhousenumber = $result['userHuisnummer'];
-            $this->useremail = $result['userEmail'];
-            $this->userfirstname = $result['userVoornaam'];
-            $this->userlastname = $result['userAchternaam'];
-            $this->userlevel = $result['userLevel'];
-            $this->userpassword = $result['userPassword'];
-            $this->userphonenumber = $result['userTelefoonnummer'];
-            $this->usernote = $result['userToevoeging'];
-            $this->verificationcode = $result['tokenCode'];
+            $this->user_info = $stmt->fetch(PDO::FETCH_ASSOC);
+            $this->userid = $this->user_info['userID'];
+            $this->usercity = $this->user_info['userStraatnaam'];
+            $this->usercityid = $this->user_info['userPlaatsID'];
+            $this->userstreetname = $this->user_info['userStraatnaam'];
+            $this->userhousenumber = $this->user_info['userHuisnummer'];
+            $this->useremail = $this->user_info['userEmail'];
+            $this->userfirstname = $this->user_info['userVoornaam'];
+            $this->userlastname = $this->user_info['userAchternaam'];
+            $this->userlevel = $this->user_info['userLevel'];
+            $this->userpassword = $this->user_info['userPassword'];
+            $this->userphonenumber = $this->user_info['userTelefoonnummer'];
+            $this->usernote = $this->user_info['userToevoeging'];
+            $this->verificationcode = $this->user_info['tokenCode'];
         } catch (PDOException $e) {
             echo "Database-error: " . $e->getMessage();
         }
@@ -152,7 +158,7 @@ class Account implements CRUD{
     }
 
     public function updateUserStatus(){
-        $stmt = $this->db->prepare
+        //$stmt = $this->db->prepare
     }
     /**
      * @param mixed $userid
@@ -388,7 +394,9 @@ class Account implements CRUD{
         $this->userstatus = $status;
     }
 
-
+    public function getUserInfo(){
+        return $this->user_info;
+    }
 
 }
 
