@@ -86,6 +86,21 @@ nav#nav-mobile {
     color: white;
     padding: 10px 30px; }
 
+.dropdown-menu {
+  background-color: #f3f3f3;
+  margin-top: 9px!important;
+}
+
+.dropdown-menu .hello{
+
+  border-radius: 5px;
+  border-bottom: solid 1px lightgrey;
+}
+
+.dropdown-menu .hello:hover{
+  background-color: aliceblue;
+}
+
 
 /* =Sections
 -------------------------------------------------------------- */

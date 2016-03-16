@@ -1,3 +1,27 @@
+<?php
+$test = "";
+$mand = "";
+
+
+    if(true)
+    {
+        $test = "<li class='dropdown'><a class='dropdown-toggle' data-toggle='dropdown' href='#'>Mijn account<span class='caret'></span></a>
+        <ul class='dropdown-menu'>
+          <div class='hello'><a href='#' style='color: black'>Profiel</a></div>
+          <div class='hello'><a href='#' style='color: black'>Uitloggen</a></div>
+        </ul>
+      </li>";
+
+    }
+    else
+    {
+        $test = " <li><a href='#' data-toggle='modal' data-target='#myModal' class='hvr-float-shadow'>Inloggen</a></li>
+                <li><a href='register.php' class='hvr-float-shadow'>Registreren</a></li>";
+    }
+
+
+?>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -52,8 +76,11 @@ include_once "interfaces/CRUD.php";
             <li><a href="about.php" class="hvr-float-shadow">Over ons</a></li>
             <li><a href="tel:0756409003" class="hvr-float-shadow"><span class="glyphicon glyphicon-earphone"></span> 075-6409003 </a></li>
             <li><a href="shoppingcart.php" class="hvr-float-shadow"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
-            <li><a href="#" data-toggle="modal" data-target="#myModal" class="hvr-float-shadow">Inloggen</a></li>
-            <li><a href="register.php" class="hvr-float-shadow">Registreren</a></li>
+            <?php
+            echo $test;
+
+            ?>
+
         </ul>
     </nav>
     <nav id="nav-mobile"></nav>
