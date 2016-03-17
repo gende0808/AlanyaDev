@@ -599,7 +599,8 @@ input, textarea {
   font-style: italic;
   font-weight: 300;
   color: #aaa;
-  outline: none; 
+  outline: none;
+  margin-top: 0px!important;
 }
 
 textarea {
