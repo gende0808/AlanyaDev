@@ -126,7 +126,7 @@ error_reporting(E_ALL);
                                 <label for="uLogin"
                                        class="input-group-addon orange glyphicon glyphicon-comment"></label>
                                 <input type="text" onKeyup="checkform()" class="form-control" name="email"
-                                       placeholder="E-mail" style="border:1px solid lightgrey;">
+                                       placeholder="E-mail">
 
                             </div>
                         </div>
@@ -139,19 +139,12 @@ error_reporting(E_ALL);
                                 <input type="password" onKeyup="checkform()" class="form-control" name="wachtwoord1"
                                        id="wachtwoord1"
                                        placeholder="Wachtwoord">
-                            </div>
-                        </div>
-                        <!-- /.form-group -->
-                        <div class="form-group">
-                            <div class="input-group">
-                                <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-lock"></label>
                                 <input type="password" onkeyup="checkform(); checkPass(); return false;"
                                        class="form-control" name="wachtwoord2" id="wachtwoord2"
                                        placeholder="verifieer Wachtwoord">
                                 <span id="confirmMessage" class="confirmMessage"></span>
                             </div>
                         </div>
-                        <!-- /.form-group -->
 
                         <div class="form-group">
                             <div class="input-group">
@@ -177,9 +170,12 @@ error_reporting(E_ALL);
                                 <input type="text" onKeyup="checkform()" class="form-control" name="number"
                                        placeholder="Nr."
                                        style="width: 30%;">
+                                <input type="text" onKeyup="checkform()" class="form-control" name="number"
+                                       placeholder="Toevoeging adres">
                             </div>
                         </div>
                         <!-- /.form-group -->
+                        <br>
 
 
                         <div class="form-group">
