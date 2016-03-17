@@ -73,6 +73,11 @@ class Account implements CRUD{
      */
     private $userstatus;
 
+    /**
+     * @var string
+     */
+    private $useraddition;
+
 
     /**
      * @param $dbconnection
@@ -138,6 +143,7 @@ class Account implements CRUD{
             $this->usercityid = $this->user_info['userPlaatsID'];
             $this->userstreetname = $this->user_info['userStraatnaam'];
             $this->userhousenumber = $this->user_info['userHuisnummer'];
+            $this->useraddition = $this->user_info['userToevoeging'];
             $this->useremail = $this->user_info['userEmail'];
             $this->userfirstname = $this->user_info['userVoornaam'];
             $this->userlastname = $this->user_info['userAchternaam'];
@@ -369,6 +375,24 @@ class Account implements CRUD{
     {
         return $this->usercity;
     }
+
+    /**
+     * @return string
+     */
+    public function getUseraddition()
+    {
+        return $this->useraddition;
+    }
+
+    /**
+     * @return string
+     */
+
+    public function setUseraddition($useraddition)
+    {
+        $this->useraddition = $useraddition;
+    }
+
 
     /**
      * @return int

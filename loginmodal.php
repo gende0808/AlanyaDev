@@ -24,7 +24,7 @@
                         </div> <!-- /.input-group -->
                     </div> <!-- /.form-group -->
                     <p>Nog geen account? <a href="register.php">Registreren</a></p>
-                    <button class="form-control btn orange" id="test" type="submit"  style="color: white;" disabled="false">Login</button>
+                    <button class="form-control btn orange" id="test" type="submit"  style="color: white;">Login</button>
                 </form>
             </div> <!-- /.modal-body -->
 
@@ -34,16 +34,3 @@
 </div><!-- /.modal -->
 </div>
 
-<script type="text/javascript" language="javascript">
-    function checkform()
-    {
-        var f = document.forms["theform"].elements;
-        var cansubmit = true;
-
-        for (var i = 0; i < f.length; i++) {
-            if (f[i].value.length == 0) cansubmit = false;
-        }
-
-        document.getElementById('test').disabled = !cansubmit;
-    }
-</script>

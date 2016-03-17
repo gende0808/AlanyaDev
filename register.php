@@ -12,9 +12,8 @@ error_reporting(E_ALL);
 
 
 ?>
-<div class="logo">
-    <hr>
-    <center><img src="images/testlogo2.png"></center>
+<div class="logo text-center">
+   <img src="images/testlogo2.png">
 </div>
 
 <div class="col-md-4 col-md-offset-4">
@@ -121,7 +120,7 @@ error_reporting(E_ALL);
             <form name="theform" method="post" role="form" action="register.php">
                 <div class="modal-body">
                     <form role="form">
-                        <div class="form-group">
+                        <div class="form-group bord">
                             <div class="input-group">
                                 <label for="uLogin"
                                        class="input-group-addon orange glyphicon glyphicon-comment"></label>
@@ -133,7 +132,7 @@ error_reporting(E_ALL);
 
                         <!-- /.form-group -->
 
-                        <div class="form-group">
+                        <div class="form-group bord">
                             <div class="input-group">
                                 <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-lock"></label>
                                 <input type="password" onKeyup="checkform()" class="form-control" name="wachtwoord1"
@@ -146,21 +145,18 @@ error_reporting(E_ALL);
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group bord">
                             <div class="input-group">
                                 <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-user"></label>
                                 <input type="text" onKeyup="checkform()" class="form-control" name="firstname"
-                                       placeholder="Voornaam"
-                                       style="width: 50%;">
-
+                                       placeholder="Voornaam">
                                 <input type="text" onKeyup="checkform()" class="form-control" name="lastname"
-                                       placeholder="Achternaam."
-                                       style="width: 50%;">
+                                       placeholder="Achternaam">
                             </div>
                         </div>
                         <!-- /.form-group -->
 
-                        <div class="form-group">
+                        <div class="form-group bord">
                             <div class="input-group">
                                 <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-home"></label>
                                 <input type="text" onKeyup="checkform()" class="form-control" name="street"
@@ -170,7 +166,7 @@ error_reporting(E_ALL);
                                 <input type="text" onKeyup="checkform()" class="form-control" name="number"
                                        placeholder="Nr."
                                        style="width: 30%;">
-                                <input type="text" onKeyup="checkform()" class="form-control" name="number"
+                                <input type="text" onKeyup="checkform()" class="form-control" name="userToevoeging"
                                        placeholder="Toevoeging adres">
                             </div>
                         </div>
@@ -198,7 +194,7 @@ error_reporting(E_ALL);
                         <p style="font-family: 'Open Sans', sans-serif">helaas bezorgen wij niet buiten de weergegeve
                             steden.</p>
 
-                        <div class="form-group">
+                        <div class="form-group bord">
                             <div class="input-group">
                                 <label for="uLogin"
                                        class="input-group-addon orange glyphicon glyphicon-earphone"></label>

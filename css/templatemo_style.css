@@ -1393,3 +1393,7 @@ body {
 .marg {
   margin-top: 25px!important;
 }
+
+.bord {
+  border:1px solid lightgrey;
+}

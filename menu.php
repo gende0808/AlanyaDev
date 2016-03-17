@@ -54,6 +54,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
         border-bottom: 1px solid;
     }
 </style>
+
 <div class="container text-center" style="margin-top: 50px;">
     <div class="col-md-12 col-md-offset-0 text-center" style="margin-top: 50px">
         <div class="col-md-12 col-md-offset-0 text-center">
