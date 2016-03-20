@@ -4,7 +4,6 @@ include_once "header.php";
 
 <div id="main-header">
     <div class="logo">
-        <hr>
         <center><img src="images/testlogo2.png"></center>
     </div>
 </div>
@@ -12,7 +11,7 @@ include_once "header.php";
 <div class="row">
     <div class="col-md-4 col-md-offset-4">
         <div class="testimonails-content">
-            <p style="font-size: x-large"> Alanya Krommenie is de nieuwe vorm van uit eten, maar dan lekker thuis!</p><hr>
+            <p style="font-size: x-large"> Alanya Krommenie is de nieuwe vorm van uit eten, maar dan lekker thuis!</p>
             <p>     Je kunt je bestellingen doorgeven via telefoonnummer 075-640 90 03.<br><br>
 
                 Alanya Krommenie is elke dag geopend vanaf 11:00 uur tot 21:00 uur en op donderdag tot en met zondag tot 22:00 uur. (pizza's elke dag vanaf 16.oo uur)<br><br>

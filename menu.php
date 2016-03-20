@@ -58,7 +58,13 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
 <div class="container text-center" style="margin-top: 50px;">
     <div class="col-md-12 col-md-offset-0 text-center" style="margin-top: 50px">
         <div class="col-md-12 col-md-offset-0 text-center">
-            <div id="placehere" style="margin-bottom: 5%">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li>
+                            <div id="placehere" style="margin-bottom: 5%">
+                            </div>
+                        </li>
+                    </ul>
             </div>
         </div>
         <!-- Heb hier een margin top ingegooid zodat er niets onder de header verdwijnt. TODO margin bottom op header! -->
@@ -73,7 +79,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
             <?PHP
             echo '<div class="col-md-12 col-md-offset-0 text-center">';
             foreach ($categorylist->getcategories() as $category) { //hij haalt alle categoriën op in een array.
-                echo '<button name="catID" onclick="showProductsMenu(this.value); ShowIMG('.$category->getcatID().')" class="button-0" value="' . $category->getcatID() . '">' . $category->getcatname() . '</button>';
+                echo '<button name="catID" onclick="showProductsMenu(this.value); ShowIMG('.$category->getcatID().')" class="myButton" value="' . $category->getcatID() . '">' . $category->getcatname() . '</button>';
                 //hierboven worden simpele buttons geprint waarvan in de post de ID word meegegeven maar de waarde in de knop is de categorieNaam.
             }
             echo '</div>';

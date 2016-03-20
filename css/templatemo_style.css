@@ -9,12 +9,12 @@ http://www.templatemo.com/free-website-templates/417-grill
 /*-- Basic --*/
 a {
   text-decoration: none;
-  color: #ff3232;
+  color: #FF3333;
 }
 
 a:hover {
   text-decoration: none;
-  color: #ff3232;
+  color: #FF3333;
 }
 
 .blue {
@@ -105,7 +105,7 @@ p {
 }
 
 .main-menu a:hover {
-  color: #ff3232;
+  color: #FF3333;
 }
 
 .search-box {
@@ -184,7 +184,7 @@ p {
 }
 
 .timeline-thumb:hover {
-  border-color: #ff3232;
+  border-color: #FF3333;
 }
 
 .timeline-thumb .thumb img {
@@ -223,7 +223,7 @@ p {
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   font-weight: 300;
-  color: #ff3232;
+  color: #FF3333;
 }
 
 /*-- End Timeline --*/
@@ -280,7 +280,7 @@ p {
 }
 
 .author-caption a:hover {
-  background-color: #ff3232;
+  background-color: #FF3333;
   color: #fff;
 }
 
@@ -299,7 +299,7 @@ p {
 }
 
 .author-details span {
-  color: #ff3232;
+  color: #FF3333;
   text-transform: uppercase;
 }
 
@@ -363,7 +363,7 @@ p {
 
 
 #filters span:hover {
-  color: #ff3232;
+  color: #FF3333;
   transition: all 0.3s ease-in;
 }
 
@@ -372,7 +372,7 @@ p {
 }
 
 .label-text a:hover {
-  color: #ff3232;
+  color: #FF3333;
 }
 
 .label-text h3 {
@@ -389,7 +389,7 @@ p {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   display: block;
-  color: #ff3232
+  color: #FF3333
 }
 
 .portfolio-thumb img {
@@ -413,7 +413,7 @@ p {
   margin-left: -18px;
   margin-top: -18px;
   background-color: rgba(0,0,0, 0.1);
-  border: 1px solid #ff3232;
+  border: 1px solid #FF3333;
   width: 80px;
   height: 80px;
   line-height: 80px;
@@ -433,7 +433,7 @@ p {
   text-align: center;
   font-size: 13px;
   width: 100%;
-  color: #ff3232;
+  color: #FF3333;
   font-weight: 300;
 }
 
@@ -478,7 +478,7 @@ p {
 }
 
 .pagination a:hover {
-  background-color: #ff3232;
+  background-color: #FF3333;
 }
 
 /*- End Products --*/
@@ -503,7 +503,7 @@ p {
 .product-title span {
   display: inline-block;
   font-size: 13px;
-  color: #ff3232;
+  color: #FF3333;
 } 
 
 .product-content a {
@@ -556,7 +556,7 @@ p {
 
 .comment-body span {
   font-size: 14px;
-  color: #ff3232;
+  color: #FF3333;
 }
 
 .comment-body p {
@@ -567,7 +567,7 @@ p {
   text-transform: uppercase;
   font-size: 14px;
   color: #fff;
-  background-color: #ff3232;
+  background-color: #FF3333;
   width: 80px;
   height: 30px;
   line-height: 30px;
@@ -623,7 +623,7 @@ textarea {
   height: 35px;
   line-height: 30px;
   text-align: center;
-  background-color: #ff3232; 
+  background-color: #FF3333; 
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   font-style: normal;
@@ -639,7 +639,7 @@ textarea {
   height: 35px;
   line-height: 30px;
   text-align: center;
-  background-color: #ff3232; 
+  background-color: #FF3333; 
   color: #fff;
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
@@ -686,7 +686,7 @@ textarea {
 }
 
 .info i {
-  color: #ff3232;
+  color: #FF3333;
   margin-right: 10px;
   font-size: 18px;
 }
@@ -703,7 +703,7 @@ textarea {
   font-weight: 700;
   color: #fff;
   text-transform: uppercase;
-  background-color: #ff3232;
+  background-color: #FF3333;
   margin-top: 0px;
   padding: 9px 15px 9px 15px;
 }
@@ -723,7 +723,7 @@ textarea {
 .archives-list i {
   font-size: 16px;
   margin-right: 5px;
-  color: #ff3232;
+  color: #FF3333;
 }
 
 .archives-list a {
@@ -733,7 +733,7 @@ textarea {
 }
 
 .archives-list a:hover {
-  color: #ff3232;
+  color: #FF3333;
 }
 
 .recent-post {
@@ -770,13 +770,13 @@ textarea {
 }
 
 .recent-post-info a:hover {
-  color: #ff3232;
+  color: #FF3333;
 }
 
 .recent-post-info span {
   font-family: 'Open Sans', sans-serif;
   font-size: 13px;
-  color: #ff3232;
+  color: #FF3333;
 }
 
 .flickr-images {
@@ -790,7 +790,7 @@ textarea {
 }
 
 .flickr-images img:hover {
-  border: 3px solid #ff3232;
+  border: 3px solid #FF3333;
   transition: all 0.1s ease-in;
   cursor: pointer;
 }
@@ -821,7 +821,7 @@ textarea {
   font-size: 48px;
   padding-bottom: 10px;
   font-weight: 500;
-  color: #ff3232;
+  color: #FF3333;
   text-transform: uppercase;
 }
 
@@ -836,7 +836,7 @@ textarea {
   margin-top: 20px;
   text-decoration: none;
   display: inline-block;
-  background-color: #ff3232;
+  background-color: #FF3333;
   width: 200px;
   height: 40px;
   text-align: center;
@@ -861,8 +861,8 @@ textarea {
 
 .icon i {
   border-radius: 50%;
-  border: 20px solid #ff3232;
-  color: #ff3232;
+  border: 20px solid #FF3333;
+  color: #FF3333;
   font-size: 28px;
   line-height: 80px;
   width: 120px;
@@ -919,7 +919,7 @@ textarea {
 }
 
 .content-show span {
-  color: #ff3232;
+  color: #FF3333;
 }
 
 .content-hide {
@@ -964,7 +964,7 @@ textarea {
 
 footer {
   background-color: #f3f3f3;
-  border-top: 4px solid #ff3232;
+  border-top: 4px solid #FF3333;
   margin-top: 120px;
 }
 
@@ -1004,7 +1004,7 @@ footer {
 }
 
 .social-bottom a:hover {
-  background-color: #ff3232;
+  background-color: #FF3333;
   color: #fff;
 }
 
@@ -1077,7 +1077,7 @@ footer {
 .shop-list i {
   font-size: 16px;
   margin-right: 5px;
-  color: #ff3232;
+  color: #FF3333;
 }
 
 .shop-list a {
@@ -1087,7 +1087,7 @@ footer {
 }
 
 .shop-list a:hover {
-  color: #ff3232;
+  color: #FF3333;
 }
 
 .recent-post {
@@ -1119,13 +1119,13 @@ footer {
 }
 
 .recent-post-info a:hover {
-  color: #ff3232;
+  color: #FF3333;
 }
 
 .recent-post-info span {
   font-family: 'Open Sans', sans-serif;
   font-size: 13px;
-  color: #ff3232;
+  color: #FF3333;
 }
 
 .more-info p {
@@ -1146,7 +1146,7 @@ footer {
 }
 
 .more-info i {
-  color: #ff3232;
+  color: #FF3333;
   margin-right: 10px;
   font-size: 18px;
 }
@@ -1352,22 +1352,11 @@ footer {
 
 /*--- END RESPONSIVE ---*/
 
-body {
-  background: #76b852; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #76b852, #8DC26F);
-  background: -moz-linear-gradient(right, #76b852, #8DC26F);
-  background: -o-linear-gradient(right, #ebebeb, white);
-  background: linear-gradient(to left, #ebebeb, white);
-  font-family: "Roboto", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 .jimbutton {
   font-family: "Roboto", sans-serif !important;
   text-transform: uppercase !important;
   outline: 0 !important;
-  background: #ff3232; !important;
+  background: #FF3333; !important;
   width: 30% !important;
   border: 0 !important;
   padding: 15px !important;
@@ -1396,4 +1385,8 @@ body {
 
 .bord {
   border:1px solid lightgrey;
+}
+
+footer { 
+  background-image: url(../images/footertest.png);;
 }

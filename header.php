@@ -56,7 +56,7 @@ $mand = "";
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
 </head>
 
-<body>
+<body background="images/bgtestnew3.png">
 
 <?php
 include_once "loginmodal.php";

@@ -2,13 +2,12 @@
 include_once "header.php";
 ?>
     <div class="logo">
-        <hr>
         <center><img src="images/testlogo2.png"></center>
     </div>
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="testimonails-content">
-                    <p style="font-size: x-large"> Alanya Krommenie is de nieuwe vorm van uit eten, maar dan lekker thuis!</p><hr>
+                    <p style="font-size: x-large"> Alanya Krommenie is de nieuwe vorm van uit eten, maar dan lekker thuis!</p>
                <p> Daarbij zijn de woorden Lekker, Makkelijk en Hoge Kwaliteit onze drijfveren.<br><br>
                 Lekker, omdat de Chef van Alanya Krommenie natuurlijk alleen maar werkt met dagverse producten, groenten, eerste klas vlees én vers gemaakte frites. De Hoge Kwaliteit dus die je mag verwachten voor je geld.
                 Ons assortiment bestaat uit o.a. Voorgerechten, Grill gerechten, Gestoofde maaltijden, Saté gerechten, Broodjes en Durum, Vegetarische gerechten, Turkse deegwaren, Hollandse snacks en Italiaanse pizza’s.

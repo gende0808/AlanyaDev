@@ -5,15 +5,6 @@ include_once "header.php";
     <div class="flexslider">
         <ul class="slides">
             <li>
-                <div class="slider-caption">
-                </div>
-                <div class="col-md-4 col-md-offset-4" >
-                    <div class="logo" >
-                <img src="images/testlogo2.png" style="height: 250px;width: 400px;margin-top: 20px;margin: auto;"/>
-                    </div>
-                </div>
-            </li>
-            <li>
                 <img src="images/testslide2.png" alt="" />
             </li>
             <li>
