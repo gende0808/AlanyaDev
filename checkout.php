@@ -1,5 +1,9 @@
 <?PHP
 include_once "header.php";
+include_once "classes/Account.php";
+include_once "classes/City.php";
+include_once "classes/CityList.php";
+include_once "classes/AccountList.php";
 ?>
 <div class="logo">
     <center><img src="images/testlogo2.png"></center>
