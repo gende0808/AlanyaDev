@@ -5,8 +5,8 @@ include_once "header.php";
         <center><img src="images/testlogo2.png"></center>
     </div>
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="testimonails-content">
+            <div class="col-md-4 col-md-offset-4">
+                <div>
                     <p style="font-size: x-large"> Alanya Krommenie is de nieuwe vorm van uit eten, maar dan lekker thuis!</p>
                <p> Daarbij zijn de woorden Lekker, Makkelijk en Hoge Kwaliteit onze drijfveren.<br><br>
                 Lekker, omdat de Chef van Alanya Krommenie natuurlijk alleen maar werkt met dagverse producten, groenten, eerste klas vlees én vers gemaakte frites. De Hoge Kwaliteit dus die je mag verwachten voor je geld.

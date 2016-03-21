@@ -27,25 +27,25 @@ include_once "classes/Category.php";
             <div class="modal-body">
                 <form action="product_toevoegen.php" method="post" class="form-horizontal" role="form">
                     <div class="form-group">
-                        <label class="control-label col-sm-4 marg" for="Productnummer">Nummer:</label>
+                        <label class="control-label col-sm-4" for="Productnummer">Nummer:</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" name="Productnummer" placeholder="productnummer invullen">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-4 marg" for="Productnaam">Naam:</label>
+                        <label class="control-label col-sm-4" for="Productnaam">Naam:</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" name="Productnaam" placeholder="productnaam invullen">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-4 marg" for="Productomschrijving">Omschrijving:</label>
+                        <label class="control-label col-sm-4" for="Productomschrijving">Omschrijving:</label>
                         <div class="col-sm-4">
                             <input type="text" class="form-control" name="Productomschrijving" placeholder="productomschrijving invullen">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-4 marg" for="Productprijs">Prijs:</label>
+                        <label class="control-label col-sm-4" for="Productprijs">Prijs:</label>
                         <div class="col-sm-4">
                             <input type="text" class="form-control" name="Producteuro" placeholder="Euro">
                         </div>

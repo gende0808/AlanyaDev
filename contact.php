@@ -10,7 +10,7 @@ include_once "header.php";
 
 <div class="row">
     <div class="col-md-4 col-md-offset-4">
-        <div class="testimonails-content">
+        <div>
             <p style="font-size: x-large"> Alanya Krommenie is de nieuwe vorm van uit eten, maar dan lekker thuis!</p>
             <p>     Je kunt je bestellingen doorgeven via telefoonnummer 075-640 90 03.<br><br>
 

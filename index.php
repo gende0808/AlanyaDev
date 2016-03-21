@@ -30,7 +30,7 @@ include_once "header.php";
                     </div>
                     <div class="blog-content">
                         <div class="content-show">
-                            <h4><a href="menu.php?catID=2">Special Houtskool Grill</a></h4>
+                            <h4><a href="menu.php">Special Houtskool Grill</a></h4>
                         </div>
                         <div class="content-hide">
                             <p>heeeul lekker</p>
@@ -45,7 +45,7 @@ include_once "header.php";
                     </div>
                     <div class="blog-content">
                         <div class="content-show">
-                            <h4><a href="menu.php?catID=1">Italiaanse Pizza's</a></h4>
+                            <h4><a href="menu.php">Italiaanse Pizza's</a></h4>
                         </div>
                         <div class="content-hide">
                             <p>Sed egestas tincidunt mollis. Suspendisse rhoncus vitae enim et faucibus. Ut dignissim nec arcu nec hendrerit. Sed arcu odio, sagittis vel diam in, malesuada malesuada risus. Aenean a sem leo. Nam ultricies dolor et mi tempor, non pulvinar felis sollicitudin.</p>
@@ -71,11 +71,11 @@ include_once "header.php";
             <div class="col-md-4 col-sm-6">
                 <div class="blog-post">
                     <div class="blog-thumb">
-                        <img src="images/blogpost4.jpg" alt="" />
+                        <img src="images/brocat4.png" alt="" />
                     </div>
                     <div class="blog-content">
                         <div class="content-show">
-                            <h4><a href="single-post.html">Healthy Food</a></h4>
+                            <h4><a href="single-post.html">Sate gerechten</a></h4>
                         </div>
                         <div class="content-hide">
                             <p>Sed egestas tincidunt mollis. Suspendisse rhoncus vitae enim et faucibus. Ut dignissim nec arcu nec hendrerit. Sed arcu odio, sagittis vel diam in, malesuada malesuada risus. Aenean a sem leo. Nam ultricies dolor et mi tempor, non pulvinar felis sollicitudin.</p>
@@ -86,11 +86,11 @@ include_once "header.php";
             <div class="col-md-4 col-sm-6">
                 <div class="blog-post">
                     <div class="blog-thumb">
-                        <img src="images/blogpost5.jpg" alt="" />
+                        <img src="images/brocat5.png" alt="" />
                     </div>
                     <div class="blog-content">
                         <div class="content-show">
-                            <h4><a href="single-post.html">Great Breakfast</a></h4>
+                            <h4><a href="single-post.html">Snacks</a></h4>
                         </div>
                         <div class="content-hide">
                             <p>Sed egestas tincidunt mollis. Suspendisse rhoncus vitae enim et faucibus. Ut dignissim nec arcu nec hendrerit. Sed arcu odio, sagittis vel diam in, malesuada malesuada risus. Aenean a sem leo. Nam ultricies dolor et mi tempor, non pulvinar felis sollicitudin.</p>
@@ -101,11 +101,11 @@ include_once "header.php";
             <div class="col-md-4 col-sm-6">
                 <div class="blog-post">
                     <div class="blog-thumb">
-                        <img src="images/blogpost6.jpg" alt="" />
+                        <img src="images/brocat6.png" alt="" />
                     </div>
                     <div class="blog-content">
                         <div class="content-show">
-                            <h4><a href="single-post.html">Fresh Fruit Juice</a></h4>
+                            <h4><a href="single-post.html">Salades</a></h4>
                         </div>
                         <div class="content-hide">
                             <p>Sed egestas tincidunt mollis. Suspendisse rhoncus vitae enim et faucibus. Ut dignissim nec arcu nec hendrerit. Sed arcu odio, sagittis vel diam in, malesuada malesuada risus. Aenean a sem leo. Nam ultricies dolor et mi tempor, non pulvinar felis sollicitudin.</p>
@@ -172,7 +172,7 @@ include_once "header.php";
         <div class="row">
             <div class="col-md-12">
                 <div class="heading-section">
-                    <h2>What Customers Say</h2>
+                    <h2>Wat vinden de klanten?</h2>
                 </div>
             </div>
         </div>
