@@ -66,6 +66,22 @@ include_once "classes/Category.php";
                                         </div>
                                     </div>
                                     <!-- /.form-group -->
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <label for="uLogin"
+                                                   class="input-group-addon orange glyphicon glyphicon-map-marker"></label>
+                                            <select class="form-control" name="city">
+                                                <option value="" selected disabled><b>Woonplaats</b></option>
+                                                <?PHP
+                                                $listofcities = (new CityList($DB_con))->getlistofcities();
+                                                foreach ($listofcities as $city) {
+                                                    echo "<option value='" . $city->getCityid() . "'>" . $city->getCityname() . "</option>";
+                                                }
+                                                ?>
+
+                                            </select>
+                                        </div>
+                                    </div>
                                     <br>
                                     <div class="form-group bord">
                                         <div class="input-group">
