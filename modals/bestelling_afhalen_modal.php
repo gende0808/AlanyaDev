@@ -8,7 +8,7 @@ include_once "classes/Category.php";
 
 <div class="container">
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-8 col-md-offset-2">
             <ul class="nav nav-tabs">
                 <li role="presentation" class="active"><a href="#">Bestellingen laten bezorgen</a></li>
                 <li role="presentation"><a href="#">Bestelling afhalen</a></li>
@@ -67,26 +67,6 @@ include_once "classes/Category.php";
                                     </div>
                                     <!-- /.form-group -->
                                     <br>
-
-
-                                    <!--                                    <div class="form-group bord">-->
-                                    <!--                                        <div class="input-group">-->
-                                    <!--                                            <label for="uLogin" -->
-                                    <!--                                                   class="input-group-addon orange glyphicon glyphicon-map-marker"></label>-->
-                                    <!--                                            <select class="form-control" name="city">-->
-                                    <!--                                                <option value="" selected disabled><b>Woonplaats</b></option>-->
-                                    <!--                                                --><?PHP
-                                    //                                                $listofcities = (new CityList($DB_con))->getlistofcities();
-                                    //                                                foreach ($listofcities as $city) {
-                                    //                                                    echo "<option value='" . $city->getCityid() . "'>" . $city->getCityname() . "</option>";
-                                    //                                                }
-                                    //                                                ?>
-                                    <!---->
-                                    <!--                                            </select>-->
-                                    <!--                                        </div>-->
-                                    <!--                                    </div>-->
-
-
                                     <div class="form-group bord">
                                         <div class="input-group">
                                             <label for="uLogin"
@@ -96,27 +76,17 @@ include_once "classes/Category.php";
                                             <!--                                            Het kan eventueel nog een textarea van gemaakt worden.-->
                                         </div>
                                     </div>
-
-
-                                    <!-- /.form-group -->
-
-                                    <p>al een bestaand account? <a href="#" data-toggle="modal" data-target="#myModal"
-                                                                   class="hvr-float-shadow">Login</a></p>
-
-                                    <button class="form-control btn orange" id="test" style="color: white;" type="submit"
-                                            value="submit">
-                                        Bestelling plaatsen
-                                    </button>
+                                    <div class="form-group ">
+                                        <br><br>
+                                        <button type="submit" class="btn orange" style="color: white">
+                                            Bestelling plaatsen
+                                        </button>
+                                    </div>
+                                    </div>
                                 </form>
-                            </div>
-
                     </div>
                 </div>
             </div>
-
-
-
-
         </div>
     </div>
 </div>

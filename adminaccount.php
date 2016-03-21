@@ -103,6 +103,72 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
         });
     });
 </script>
+<script>
+    $('#bewerkenmodal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var productid = button.data('productid') // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+
+
+        // Ajax thingie:
+        var postData = {
+            'productid': productid
+        };
+
+        var url = "product_ophalen.php";
+
+        var modal = $(this)
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: postData,
+            dataType: "json",
+            success: function(data)
+            {
+                //console.log(data.omschrijving);
+                modal.find('.modal-title').text('Bewerken van productid: ' + productid)
+                modal.find('#nummer').val(data.nummer)
+                modal.find('#omschrijving').val(data.omschrijving)
+                modal.find('#cat').val(data.catid)
+                modal.find('#productid').val(data.id)
+
+            }
+        });
+    })
+
+    $("#opslaan").click(function() {
+        //postData = $("#product").serialize();
+
+        productid = $("#productid").val();
+        productnummer = $("#nummer").val();
+
+        var postData = {
+            'productid': productid,
+            'productnummer': productnummer
+        }
+
+        var url = "product_opslaan.php";
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: postData,
+            dataType: "text",
+            success: function(data)
+            {
+                $("#nummer" + productid).html(productnummer)
+                // fade out, hier onder:
+                $("#tr" + productid).addClass("success")
+
+                $('#bewerkenmodal').modal('hide')
+
+            }
+        });
+
+    })
+</script>
 
 
 <script type="text/javascript" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>

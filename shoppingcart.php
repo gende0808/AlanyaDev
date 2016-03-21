@@ -202,8 +202,8 @@ include_once "ordersucces.php";
                             <span class="glyphicon glyphicon-shopping-cart"></span> <a href="menu.php" style="color: black"> Terug naar het menu</a>
                         </button></td>
                         <td>
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#OrderSuccesModal">
-                            Afrekenen <span class="glyphicon glyphicon-play"></span>
+                        <button type="button" class="btn btn-success" data-target="#OrderSuccesModal">
+                            <a href="checkout.php" style="color: white"> Afrekenen </a><span class="glyphicon glyphicon-play"></span>
                         </button></td>
                     </tr>
                 </tbody>

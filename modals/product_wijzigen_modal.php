@@ -6,7 +6,7 @@ include_once "classes/Category.php";
 ?>
 
 
-<div class="modal fade modal-dialog-" id="test" tabindex="-1" role="dialog"
+<div class="modal fade modal-dialog-" id="bewerkenmodal" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="col-md-4 col-md-offset-4">
         <div class="modal-dialog">
@@ -25,7 +25,7 @@ include_once "classes/Category.php";
 
                 <!-- Modal Body -->
                 <div class="modal-body">
-                    <form action="product_toevoegen.php" method="post" class="form-horizontal" role="form">
+                    <form action="product_toevoegen.php" method="post" class="form-horizontal" role="form" id="product">
                         <div class="form-group">
                             <label class="control-label col-sm-4" for="Productnummer">Nummer:</label>
                             <div class="col-sm-8">
@@ -78,7 +78,7 @@ include_once "classes/Category.php";
                                 data-dismiss="modal">
                             Annuleren
                         </button>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" id="opslaan" class="btn btn-primary">
                             Opslaan
                         </button>
                     </div>

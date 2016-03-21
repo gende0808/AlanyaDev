@@ -17,9 +17,11 @@ include_once "header.php";
 <div id="catagories">
     <br>
     <div class="container">
+        <div class="heading-section">
+            <h2>DIRECT NAAR ONZE CATEGORIËN!</h2>
+        </div>
         <div class="row">
             <div class="col-md-12">
-
             </div>
         </div>
         <div class="row">
@@ -56,7 +58,7 @@ include_once "header.php";
             <div class="col-md-4 col-sm-6">
                 <div class="blog-post">
                     <div class="blog-thumb">
-                        <img src="images/brocat3.png" alt="" />
+                        <img src="images/brocattest.png" alt="" />
                     </div>
                     <div class="blog-content">
                         <div class="content-show">
