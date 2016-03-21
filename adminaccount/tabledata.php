@@ -28,9 +28,9 @@ try {
 
         echo "";
     foreach ($listofproducts as $product) { //in deze foreach loopt hij over ieder individueel product en print hij de waarden in die array
-        echo "<tr>";
-        echo "<td style='width: 150px;'>" . $product->getProductnumber() . "</td>";
-        echo "<td style='width: 150px;'>" . $product->getProductname() . "</td>";
+        echo "<tr id='tr". $product->getProductid() ."'>";
+        echo "<td id='nummer" . $product->getProductid() ."' style='width: 150px;'>" . $product->getProductnumber() . "</td>";
+        echo "<td id='naam" . $product->getProductid(). "'style='width: 150px;'>" . $product->getProductname() . "</td>";
         echo "<td style='width: 150px;'>" . $product->getProductdescription() . "</td>";
         echo "<td style='width: 150px;'>" . $product->getProductpriceformatted() . "</td>";
         echo "<td style='width: 150px;'><button data-toggle='modal' data-target='#bewerkenmodal' data-productid='".$product->getProductid()."'>Wijzigen</button></td>";

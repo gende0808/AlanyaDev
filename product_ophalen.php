@@ -1,27 +1,22 @@
 <?php
-include_once "header2.php";
-include_once "classes/ProductList.php";
-include_once "classes/Product.php";
-include_once "classes/Category.php";
-include_once "classes/CategoryList.php";
-
-	//print_r($_POST);
 
 	if ($_POST['productid'] == 32) {
         $array = array();
         $array['id'] = 32;
-        $array['Productnummer'] = 101;
-        $array['Productnaam'] = "Pizza";
-        $array['Productomschrijving'] = "De lekkerste ronde schijf";
-        $array['prijs'] = 13.77;
-        $array['catid'] = 2;
+        $array['nummer'] = 101;
+        $array['productnaam'] = "Pizza";
+        $array['omschrijving'] = "De lekkerste ronde schijf";
+        $array['euro'] = 2;
+        $array['cent'] = 50;
+        $array['catid'] = 1;
     } else {
         $array = array();
-        $array['id'] = 9;
-        $array['nummer'] = 103;
-        $array['naam'] = "Kebap";
+        $array['id'] = 33;
+        $array['nummer'] = 102;
+        $array['productnaam'] = "Kebap";
         $array['omschrijving'] = "Van Ap!";
-        $array['prijs'] = 3.11;
+        $array['euro'] = 3;
+        $array['cent'] = 30;
         $array['catid'] = 3;
     }
 

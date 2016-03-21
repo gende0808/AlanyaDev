@@ -1,12 +1,4 @@
-<?PHP
-include_once "connection.php";
-include_once "classes/CategoryList.php";
-include_once "classes/Category.php";
-
-?>
-
-
-<div class="modal fade modal-dialog-" id="bewerkenmodal" tabindex="-1" role="dialog"
+<div id="bewerkenmodal" class="modal fade modal-dialog-" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="col-md-4 col-md-offset-4">
         <div class="modal-dialog">
@@ -18,39 +10,39 @@ include_once "classes/Category.php";
                         <span aria-hidden="true">&times;</span>
                         <span class="sr-only">Close</span>
                     </button>
-                    <h4 class="modal-title" id="myModalLabel">
-                        Product wijzigen
+                    <h4 class="modal-title" id="test">
+                        text
                     </h4>
                 </div>
 
                 <!-- Modal Body -->
                 <div class="modal-body">
-                    <form action="product_toevoegen.php" method="post" class="form-horizontal" role="form" id="product">
+                    <form id="product" class="form-horizontal">
                         <div class="form-group">
                             <label class="control-label col-sm-4" for="Productnummer">Nummer:</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="Productnummer" placeholder=$product->getProductname()>
+                                <input type="text" class="form-control" name="Productnummer" id="nummer">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-4" for="Productnaam">Naam:</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="Productnaam" placeholder="productnaam invullen">
+                                <input type="text" class="form-control" id="productnaam" name="Productnaam">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-4" for="Productomschrijving">Omschrijving:</label>
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control" name="Productomschrijving" placeholder="productomschrijving invullen">
+                            <div class="col-sm-8">
+                                <input type="text" id="omschrijving" class="form-control" name="Productomschrijving">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-4" for="Productprijs">Prijs:</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" name="Producteuro" placeholder="Euro">
+                                <input type="text" id="euro" class="form-control" name="Producteuro">
                             </div>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" name="Productcent" placeholder="Cent">
+                                <input type="text" id="cent" class="form-control" name="Productcent">
                             </div>
                         </div>
 
@@ -59,7 +51,7 @@ include_once "classes/Category.php";
                     <label class="control-label col-sm-4" for="Productcategorie">Categorie:</label>
                     <div class="text-left">
                         <div class="col-sm-8 dropdown">
-                            <select name='CategorieID' class="form-control">
+                            <select name='CategorieID' id="cat" class="form-control">
                                 <?PHP
                                 $categorylist = new CategoryList($DB_con);
                                 $listofcategories = $categorylist->getcategories();
@@ -68,6 +60,7 @@ include_once "classes/Category.php";
                                 }
                                 ?>
                             </select>
+                            <input id="productid" type="hidden" name="productid" value="">
                         </div>
                     </div>
                 </div>
@@ -78,7 +71,7 @@ include_once "classes/Category.php";
                                 data-dismiss="modal">
                             Annuleren
                         </button>
-                        <button type="submit" id="opslaan" class="btn btn-primary">
+                        <button type="button" id="opslaan" class="btn btn-primary">
                             Opslaan
                         </button>
                     </div>
@@ -93,4 +86,3 @@ include_once "classes/Category.php";
         </div>
     </div>
 </div>
-
