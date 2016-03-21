@@ -75,6 +75,98 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
 </div>
 
 
+<div class="modal fade modal-dialog-" id="bewerkenmodal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="col-md-4 col-md-offset-4">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="close"
+                            data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        Product wijzigen
+                    </h4>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <form method="post" class="form-horizontal" role="form" id="product" placeholder="Product nummer">
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="Productnummer">Nummer:</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="Productnummer" id="Productnummer">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="Productnaam">Naam:</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="Productnaam">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="Productomschrijving">Omschrijving:</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="Productomschrijving">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="Productprijs">Prijs:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="Producteuro">
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="Productcent">
+                            </div>
+                        </div>
+
+                </div>
+                <div class="form-group text-right">
+                    <label class="control-label col-sm-4" for="Productcategorie">Categorie:</label>
+                    <div class="text-left">
+                        <div class="col-sm-8 dropdown">
+                            <select name='CategorieID' class="form-control">
+                                <?PHP
+                                $categorylist = new CategoryList($DB_con);
+                                $listofcategories = $categorylist->getcategories();
+                                foreach ($listofcategories as $category){
+                                    echo "<option type='text' class='form-control' value='".$category->getcatID()."'>".$category->getcatname(). "</option>";
+                                }
+                                ?>
+                            </select>
+                            <input id="productid" type="hidden" name="productid" value="">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group">
+                        <br><br>
+                        <button type="button" class="btn btn-default"
+                                data-dismiss="modal">
+                            Annuleren
+                        </button>
+                        <button type="submit" id="opslaan" class="btn btn-primary">
+                            Opslaan
+                        </button>
+                    </div>
+                </div>
+                </form>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 <script src="js/custom.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/t/bs/jq-2.2.0,dt-1.10.11/datatables.min.js"></script>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
@@ -129,7 +221,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
             {
                 //console.log(data.omschrijving);
                 modal.find('.modal-title').text('Bewerken van productid: ' + productid)
-                modal.find('#nummer').val(data.nummer)
+                modal.find('#nummer').val(data.Productnummer)
                 modal.find('#omschrijving').val(data.omschrijving)
                 modal.find('#cat').val(data.catid)
                 modal.find('#productid').val(data.id)
@@ -142,11 +234,11 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
         //postData = $("#product").serialize();
 
         productid = $("#productid").val();
-        productnummer = $("#nummer").val();
+        Productnummer = $("#nummer").val();
 
         var postData = {
             'productid': productid,
-            'productnummer': productnummer
+            'Productnummer': Productnummer
         }
 
         var url = "product_opslaan.php";
@@ -158,7 +250,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
             dataType: "text",
             success: function(data)
             {
-                $("#nummer" + productid).html(productnummer)
+                $("#nummer" + productid).html(Productnummer)
                 // fade out, hier onder:
                 $("#tr" + productid).addClass("success")
 
@@ -169,6 +261,4 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
 
     })
 </script>
-
-
 <script type="text/javascript" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>

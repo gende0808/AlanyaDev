@@ -19,7 +19,7 @@ include_once "classes/Category.php";
                         <span class="sr-only">Close</span>
                     </button>
                     <h4 class="modal-title" id="myModalLabel">
-                        Product Toevoegen
+                        Product wijzigen
                     </h4>
                 </div>
 

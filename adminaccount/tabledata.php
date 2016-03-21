@@ -33,7 +33,7 @@ try {
         echo "<td style='width: 150px;'>" . $product->getProductname() . "</td>";
         echo "<td style='width: 150px;'>" . $product->getProductdescription() . "</td>";
         echo "<td style='width: 150px;'>" . $product->getProductpriceformatted() . "</td>";
-        echo "<td data-toggle=\"modal\" data-target=\"#myModalNorm\" style='width: 150px;'><a href='#'>Wijzigen</a></td>";
+        echo "<td style='width: 150px;'><button data-toggle='modal' data-target='#bewerkenmodal' data-productid='".$product->getProductid()."'>Wijzigen</button></td>";
         echo "<td style='width: 150px;'><a href='adminaccount.php?productid=" . $product->getProductid() . "&delete=true'".
             'onclick="return confirm('."'weet je zeker dat je ".$product->getProductname()." wilt verwijderen?'".')"' .">Verwijderen</a></td>";
         echo "</tr>";
