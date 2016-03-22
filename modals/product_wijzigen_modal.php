@@ -27,7 +27,7 @@
                         <div class="form-group">
                             <label class="control-label col-sm-4" for="Productnaam">Naam:</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="productnaam" name="Productnaam">
+                                <input type="text" class="form-control" id="naam" name="productnaam">
                             </div>
                         </div>
                         <div class="form-group">

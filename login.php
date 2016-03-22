@@ -22,6 +22,7 @@ try {
             //de sessie 'logged' op true gezet en de sessie 'user_info' word gevuld met gegevens van de gebruiker.
             $_SESSION['logged'] = true;
             $_SESSION['user_info'] = $account->getUserInfo();
+            $waarde = true;
         }
         break;
     }

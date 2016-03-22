@@ -131,7 +131,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                 modal.find('.modal-title').text('Bewerken van productid: ' + productid);
                 modal.find('#nummer').val(data.nummer);
                 modal.find('#omschrijving').val(data.omschrijving);
-                modal.find('#productnaam').val(data.productnaam);
+                modal.find('#naam').val(data.naam);
                 modal.find('#cat').val(data.catid);
                 modal.find('#euro').val(data.euro);
                 modal.find('#cent').val(data.cent);
@@ -147,9 +147,10 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
         productid = $("#productid").val();
         Productnummer = $("#nummer").val();
         omschrijving = $("#omschrijving").val();
-        productnaam = $("#productnaam").val();
+        productnaam = $("#naam").val();
         cat= $("#cat").val();
         euro = $("#euro").val();
+        prijs = $("#prijs").val();
         cent= $("#cent").val();
 
         var postData = {
@@ -172,7 +173,10 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
             success: function(data)
             {
                 $("#nummer" + productid).html(Productnummer);
-                $("#productnaam" + productid).html(productnaam);
+                $("#naam" + productid).html(productnaam);
+                $("#omschrijving" + productid).html(omschrijving);
+                $("#price" + productid).html(euro);
+
                 // fade out, hier onder:
                 $("#tr" + productid).addClass("success");
 

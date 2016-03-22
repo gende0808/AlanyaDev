@@ -419,7 +419,7 @@ class Account implements CRUD{
     }
 
     public function getUserInfo(){
-        return $this->user_info;
+        print_r($this->user_info);
     }
 
 }

@@ -31,8 +31,8 @@ try {
         echo "<tr id='tr". $product->getProductid() ."'>";
         echo "<td id='nummer" . $product->getProductid() ."' style='width: 150px;'>" . $product->getProductnumber() . "</td>";
         echo "<td id='naam" . $product->getProductid(). "'style='width: 150px;'>" . $product->getProductname() . "</td>";
-        echo "<td style='width: 150px;'>" . $product->getProductdescription() . "</td>";
-        echo "<td style='width: 150px;'>" . $product->getProductpriceformatted() . "</td>";
+        echo "<td id='omschrijving". $product->getProductid() ."' style='width: 150px;'>" . $product->getProductdescription() . "</td>";
+        echo "<td id='price" . $product->getProductid() . "' style='width: 150px;'>" . $product->getProductpriceformatted() . "</td>";
         echo "<td style='width: 150px;'><button data-toggle='modal' data-target='#bewerkenmodal' data-productid='".$product->getProductid()."'>Wijzigen</button></td>";
         echo "<td style='width: 150px;'><a href='adminaccount.php?productid=" . $product->getProductid() . "&delete=true'".
             'onclick="return confirm('."'weet je zeker dat je ".$product->getProductname()." wilt verwijderen?'".')"' .">Verwijderen</a></td>";
