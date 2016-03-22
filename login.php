@@ -17,14 +17,15 @@ try {
         $accemail = $account->getUseremail();
         $accpassword = $account->getUserpassword();
 
+
         if ($email === $accemail && $password === $accpassword) {
             //als de invoer van email en wachtwoord overeenkomen met een account in de database word
             //de sessie 'logged' op true gezet en de sessie 'user_info' word gevuld met gegevens van de gebruiker.
             $_SESSION['logged'] = true;
             $_SESSION['user_info'] = $account->getUserInfo();
-            $waarde = true;
+            $_SESSION['user_info'] = true;
+            header('Location: index.php');
         }
-        break;
     }
 
 } catch (Exception $e) {
@@ -41,5 +42,4 @@ if ($waarde === false) {
 
 
 ?>
-<script>
-<!--window.location.href = "index.php";-->
+

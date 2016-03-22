@@ -1,14 +1,14 @@
 <?php
+session_start();
 $test = "";
 $mand = "";
 
-
-    if(false)
-    {
-        $test = "<li class='dropdown'><a class='dropdown-toggle' data-toggle='dropdown' href='#'>Mijn account<span class='caret'></span></a>
+if(isset($_SESSION['logged']))
+{
+        $test = "<li class='dropdown'><button class='btn dropdown-toggle' data-toggle='dropdown' href='#'>Mijn account  <span class='caret'></span></button>
         <ul class='dropdown-menu'>
-          <div class='hello'><a href='#' style='color: black'>Profiel</a></div>
-          <div class='hello'><a href='#' style='color: black'>Uitloggen</a></div>
+         <a href='#' style='color: black'>Profiel</a>
+         <a href='logout.php' style='color: black'>Uitloggen</a>
         </ul>
       </li>";
 
@@ -80,7 +80,6 @@ include_once "interfaces/CRUD.php";
             <li><a href="shoppingcart.php" class="hvr-float-shadow"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
             <?php
             echo $test;
-
             ?>
 
         </ul>
