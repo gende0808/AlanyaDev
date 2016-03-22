@@ -5,7 +5,7 @@ $mand = "";
 
 if(isset($_SESSION['logged']))
 {
-        $test = "<li class='dropdown'><button class='btn dropdown-toggle' data-toggle='dropdown' href='#'>Mijn account  <span class='caret'></span></button>
+        $test = "<li class='dropdown'><button class='myButton' data-toggle='dropdown'>Mijn account  <span class='caret'></span></button>
         <ul class='dropdown-menu'>
          <a href='#' style='color: black'>Profiel</a>
          <a href='logout.php' style='color: black'>Uitloggen</a>

@@ -36,8 +36,7 @@ if ($waarde === true) {
     echo "er komt een wachtwoord overeen!";
 }
 if ($waarde === false) {
-    //code voor als het wachtwoord niet overeenkomt
-    echo "fout wachtwoord/gebruikersnaam";
+   echo 'verkeerd gebruikers naam en/of wachtwoord!';
 }
 
 
