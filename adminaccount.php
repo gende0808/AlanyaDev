@@ -27,7 +27,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
 
 <div class="container text-center" style="margin-top: 50px;">
     <?PHP
-     include_once "modals/product_toevoegen_modal.php";
+    include_once "modals/product_toevoegen_modal.php";
     ?>
     <div class="col-md-12 col-md-offset-0 text-center" style="margin-top: 50px">
         <!-- Heb hier een margin top ingegooid zodat er niets onder de header verdwijnt. TODO margin bottom op header! -->
@@ -56,7 +56,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
         <input type="text" id="search" placeholder="Zoeken..." class="col-md-4 col-md-offset-0 search_box"
                onkeyup="doSearch()"/>
         <button class="btn btn-default btn-lg col-md-3 col-md-offset-5" data-toggle="modal" data-target="#myModalNorm"
-                style="margin-top: 25px"> <span class="glyphicon glyphicon-plus"></span> Product toevoegen
+                style="margin-top: 25px"><span class="glyphicon glyphicon-plus"></span> Product toevoegen
         </button>
         <table id="producttable" class='table table-striped table-hover table-responsive'>
             <thead>
@@ -103,89 +103,86 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
             }
         });
 
-    $('#bewerkenmodal').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget) // Button that triggered the modal
-        var productid = button.data('productid') // Extract info from data-* attributes
-        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        $('#bewerkenmodal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var productid = button.data('productid') // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
 
 
-        // Ajax thingie:
-        var postData = {
-            'productid': productid
-        };
+            // Ajax thingie:
+            var postData = {
+                'productid': productid
+            };
 
-        var url = "product_ophalen.php";
+            var url = "product_ophalen.php";
 
-        var modal = $(this);
+            var modal = $(this);
 
 
-        $.ajax({
-            type: "POST",
-            url: url,
-            data: postData,
-            dataType: "json",
-            success: function(data)
-            {
-                //console.log(data.omschrijving);
-                modal.find('.modal-title').text('Bewerken van productid: ' + productid);
-                modal.find('#nummer').val(data.nummer);
-                modal.find('#omschrijving').val(data.omschrijving);
-                modal.find('#naam').val(data.naam);
-                modal.find('#cat').val(data.catid);
-                modal.find('#euro').val(data.euro);
-                modal.find('#cent').val(data.cent);
-                modal.find('#productid').val(data.id);
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: postData,
+                dataType: "json",
+                success: function (data) {
+                    //console.log(data.omschrijving);
+                    modal.find('.modal-title').text('Bewerken van product:');
+                    modal.find('#nummer').val(data.productNummer);
+                    modal.find('#omschrijving').val(data.productOmschrijving);
+                    modal.find('#naam').val(data.productNaam);
+                    modal.find('#cat').val(data.categorieID);
+                    modal.find('#euro').val(data.euros);
+                    modal.find('#cent').val(data.cents);
+                    modal.find('#product_id').val(data.id);
 
-            }
-        });
-    });
-
-    $("#opslaan").click(function() {
-        //postData = $("#product").serialize();
-
-        productid = $("#productid").val();
-        Productnummer = $("#nummer").val();
-        omschrijving = $("#omschrijving").val();
-        productnaam = $("#naam").val();
-        cat= $("#cat").val();
-        euro = $("#euro").val();
-        prijs = $("#prijs").val();
-        cent= $("#cent").val();
-
-        var postData = {
-            'productid': productid,
-            'Productnummer': Productnummer,
-            'omschrijving': omschrijving,
-            'productnaam': productnaam,
-            'cat':  cat,
-            'euro': euro,
-            'cent': cent,
-
-        };
-
-        var url = "product_opslaan.php";
-        $.ajax({
-            type: "POST",
-            url: url,
-            data: postData,
-            dataType: "text",
-            success: function(data)
-            {
-                $("#nummer" + productid).html(Productnummer);
-                $("#naam" + productid).html(productnaam);
-                $("#omschrijving" + productid).html(omschrijving);
-                $("#price" + productid).html(euro);
-
-                // fade out, hier onder:
-                $("#tr" + productid).addClass("success");
-
-                $('#bewerkenmodal').modal('hide');
-
-            }
+                }
+            });
         });
 
-    })
+        $("#opslaan").click(function () {
+            productid = $("#product_id").val();
+            productNummer = $("#nummer").val();
+            productOmschrijving = $("#omschrijving").val();
+            productNaam = $("#naam").val();
+            catID = $("#cat").val();
+            euros = $("#euro").val();
+            prijs = $("#prijs").val();
+            cents = $("#cent").val();
+
+            var postData = {
+                'prodid': productid,
+                'prodnr': productNummer,
+                'proddescription': productOmschrijving,
+                'prodname': productNaam,
+                'catid': catID,
+                'euros': euros,
+                'cents': cents
+            };
+
+            var url = "product_opslaan.php";
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: postData,
+                dataType: "text",
+                success: function (data) {
+
+                    $("#nummer" + productid).html(productNummer);
+                    $("#naam" + productid).html(productNaam);
+                    $("#omschrijving" + productid).html(productOmschrijving);
+                    fullprice = "&#8364; "+euros+","+cents;
+                    $("#price" + productid).html(fullprice);
+
+                    // fade out, hier onder:
+                    $("#tr" + productid).addClass("success");
+
+                    $('#bewerkenmodal').modal('hide');
+
+                }
+            });
+
+        })
     });
 </script>
 <script type="text/javascript" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>

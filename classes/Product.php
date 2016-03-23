@@ -36,15 +36,15 @@ class Product implements CRUD
      */
     private $categoryid;
 
-    /**
-     * @var
-     */
-    private $productinfo = array();
 
     /**
      * @var
      */
     private $productid;
+    /**
+     * @var array
+     */
+    private $product_info = array();
 
     /**
      * @param $dbconnection
@@ -92,6 +92,7 @@ class Product implements CRUD
             $stmt = $this->db->prepare("SELECT id,productNummer,productNaam,productOmschrijving,productPrijs,categorieID FROM product WHERE id=" . $id);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $this->product_info = $result;
             $this->productnumber = $result['productNummer'];
             $this->productname = $result['productNaam'];
             $this->productdescription = $result['productOmschrijving'];
@@ -116,14 +117,15 @@ class Product implements CRUD
             $stmt = $this->db->prepare("UPDATE product SET productNummer = :prodnr,
                                                            productNaam = :prodname,
                                                            productOmschrijving = :proddescription,
-                                                           productPrijs = :prodprice
-                                                           categorieID = :catid;
-                                                           WHERE id=".$id);
+                                                           productPrijs = :prodprice,
+                                                           categorieID = :catid
+                                                           WHERE id= :product_id");
             $stmt->bindparam(":prodnr", $this->productnumber);
             $stmt->bindparam(":prodname", $this->productname);
             $stmt->bindparam(":proddescription", $this->productdescription);
             $stmt->bindparam(":prodprice", $this->productprice);
             $stmt->bindparam(":catid", $this->categoryid);
+            $stmt->bindParam(":product_id", $id);
             $stmt->execute();
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -273,6 +275,8 @@ class Product implements CRUD
         $this->categoryid = $categoryid;
     }
 
-
+    public function getProductInfo(){
+        return $this->product_info;
+    }
 
 }

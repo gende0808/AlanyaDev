@@ -37,6 +37,12 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="control-label col-sm-4" for="product_id"></label>
+                            <div class="col-sm-8">
+                                <input type="hidden" id="product_id" class="form-control" name="product_id">
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="control-label col-sm-4" for="Productprijs">Prijs:</label>
                             <div class="col-sm-4">
                                 <input type="text" id="euro" class="form-control" name="Producteuro">

@@ -1,23 +1,25 @@
 <?php
 
-	if ($_POST['productid'] == 32) {
-        $array = array();
-        $array['id'] = 32;
-        $array['nummer'] = 101;
-        $array['naam'] = "Pizza";
-        $array['omschrijving'] = "De lekkerste ronde schijf";
-        $array['euro'] = 2;
-        $array['cent'] = 50;
-        $array['catid'] = 1;
-    } else {
-        $array = array();
-        $array['id'] = 33;
-        $array['nummer'] = 102;
-        $array['naam'] = "Kebap";
-        $array['omschrijving'] = "Van Ap!";
-        $array['euro'] = 3;
-        $array['cent'] = 30;
-        $array['catid'] = 3;
-    }
+include_once "connection.php";
+include_once "interfaces/CRUD.php";
+include_once "classes/Product.php";
 
-	echo json_encode($array);
+//TODO IF LEVEL = 3 / ADMIN ~~
+if (isset($_POST['productid']))
+{
+    $id = htmlspecialchars($_POST['productid']);
+    try{
+    $product = new Product($DB_con,$id);
+    $product_array = $product->getProductInfo();
+    $eurosandcents = explode('.',$product_array['productPrijs']);
+    $product_array['euros'] = $eurosandcents[0];
+    $product_array['cents'] = $eurosandcents[1];
+
+    echo json_encode($product_array);
+
+
+    } catch(Exception $e){
+        echo "Het volgende is foutgegaan bij het ophalen van gegevens van een product: ". $e->getMessage();
+    }
+}
+
