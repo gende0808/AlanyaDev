@@ -11,15 +11,15 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
     $id = htmlspecialchars($_SESSION['account_id']);
-    $cityid = htmlspecialchars($_SESSION['city_id']);
+    $city = htmlspecialchars($_SESSION['city_id']);
 
     try {
         $account = new Account($DB_con, $id);
-        $city = new City($DB_con, $cityid);
 
     } catch (Exception $e) {
         echo "Het volgende is foutgegaan bij het ophalen van gegevens van het account: " . $e->getMessage();
     }
+
 ?>
 
 <div class="logo text-center">
@@ -105,8 +105,15 @@ error_reporting(E_ALL);
                                     <option value="" selected disabled><b>
                                         <?php
 
+                                        try {
+                                            $citytest = new City($DB_con, $city);
 
-                                        echo $account->getUsercityid() ?>
+                                        } catch (Exception $e) {
+                                            echo "Het volgende is foutgegaan bij het ophalen van gegevens van het account: " . $e->getMessage();
+                                        }
+
+
+                                        echo $citytest->getCityname() ?>
                                         </b></option>
                                     <?PHP
                                     $listofcities = (new CityList($DB_con))->getlistofcities();
@@ -130,7 +137,7 @@ error_reporting(E_ALL);
                         </div>
                         <!-- /.form-group -->
 
-                        <button class="form-control btn orange" id="test" style="color: white;" type="submit"
+                        <button class="form-control btn orange" id="accountwijzigen" style="color: white;" name="accountwijzigen" type="submit"
                                 value="submit">
                             Wijzigen opslaan
                         </button>
@@ -144,7 +151,6 @@ error_reporting(E_ALL);
     <!-- /.modal-dialog -->
 </div>
 
-?>
 
 <script>
     $(document).ready(function () {

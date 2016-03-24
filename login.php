@@ -26,7 +26,6 @@ try {
             $_SESSION['user_info'] = $account->getUserInfo();
             $_SESSION['account_id'] = $account->getUserid();
             $_SESSION['city_id'] = $account->getUsercityid();
-            $_SESSION['user_info'] = true;
             header('Location: index.php');
         }
     }
