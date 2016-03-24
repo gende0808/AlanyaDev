@@ -10,21 +10,23 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+if (isset($_SESSION['logged'])) {
+
+    $id = htmlspecialchars($_SESSION['account_id']);
+    try {
+        $account = new Account($DB_con, $id);
+        $account_array = $account->getUserInfo();
+
+        echo json_encode($account_array);
 
 
-    $iets = new AccountList($DB_con); //er wordt een nieuwe categorie lijst aangemaakt
-
-
-    echo '<div class="col-md-12 col-md-offset-0 text-center">';
-    foreach ($iets->getlistofaccounts() as $mand) { //hij haalt alle categoriën op in een array.
-       
+    } catch (Exception $e) {
+        echo "Het volgende is foutgegaan bij het ophalen van gegevens van een product: " . $e->getMessage();
     }
-echo $mand->getUseremail();
-    echo '</div>';
-
-
-
+}
 ?>
+
+
 <div class="logo text-center">
     <img src="images/testlogo2.png">
 </div>
@@ -40,7 +42,7 @@ echo $mand->getUseremail();
             </div>
             <!-- /.modal-header -->
 
-            <form name="theform" method="post" role="form" action="register.php">
+            <form name="theform" method="post" role="form" action="account.php">
                 <div class="modal-body">
                     <form role="form">
                         <div class="form-group bord">
@@ -141,3 +143,102 @@ echo $mand->getUseremail();
     </div>
     <!-- /.modal-dialog -->
 </div>
+
+<script>
+    $(document).ready(function () {
+        $("#nav-mobile").html($("#nav-main").html());
+        $("#nav-trigger span").click(function () {
+            if ($("nav#nav-mobile ul").hasClass("expanded")) {
+                $("nav#nav-mobile ul.expanded").removeClass("expanded").slideUp(250);
+                $(this).removeClass("open");
+            } else {
+                $("nav#nav-mobile ul").addClass("expanded").slideDown(250);
+                $(this).addClass("open");
+            }
+        });
+
+        $('#bewerkenaccountmodal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var productid = button.data('productid') // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+
+
+            // Ajax thingie:
+            var postData = {
+                'productid': productid
+            };
+
+            var url = "account_ophalen.php";
+
+            var modal = $(this);
+
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: postData,
+                dataType: "json",
+                success: function (data) {
+                    //console.log(data.omschrijving);
+                    modal.find('.modal-title').text('Bewerken van account:');
+                    modal.find('#nummer').val(data.productNummer);
+                    modal.find('#omschrijving').val(data.productOmschrijving);
+                    modal.find('#naam').val(data.productNaam);
+                    modal.find('#cat').val(data.categorieID);
+                    modal.find('#euro').val(data.euros);
+                    modal.find('#cent').val(data.cents);
+                    modal.find('#product_id').val(data.id);
+
+                }
+            });
+        });
+
+        $("#opslaanaccount").click(function () {
+            productid = $("#product_id").val();
+            productNummer = $("#nummer").val();
+            productOmschrijving = $("#omschrijving").val();
+            productNaam = $("#naam").val();
+            catID = $("#cat").val();
+            euros = $("#euro").val();
+            prijs = $("#prijs").val();
+            cents = $("#cent").val();
+
+            var postData = {
+                'prodid': productid,
+                'prodnr': productNummer,
+                'proddescription': productOmschrijving,
+                'prodname': productNaam,
+                'catid': catID,
+                'euros': euros,
+                'cents': cents
+            };
+
+            var url = "account_opslaan.php";
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: postData,
+                dataType: "text",
+                success: function (data) {
+
+                    $("#nummer" + productid).html(productNummer);
+                    $("#naam" + productid).html(productNaam);
+                    $("#omschrijving" + productid).html(productOmschrijving);
+                    fullprice = "&#8364; "+euros+","+cents;
+                    $("#price" + productid).html(fullprice);
+
+                    // fade out, hier onder:
+                    $("#tr" + productid).addClass("success")
+                    setTimeout(function () {
+                        $("#tr" + productid).removeClass('success');
+                    }, 4000)
+
+                    $('#bewerkenaccountmodal').modal('hide');
+
+                }
+            });
+
+        })
+    });
+</script>

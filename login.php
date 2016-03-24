@@ -23,6 +23,7 @@ try {
             //de sessie 'logged' op true gezet en de sessie 'user_info' word gevuld met gegevens van de gebruiker.
             $_SESSION['logged'] = true;
             $_SESSION['user_info'] = $account->getUserInfo();
+            $_SESSION['account_id'] = $account->getUserid();
             $_SESSION['user_info'] = true;
             header('Location: index.php');
         }

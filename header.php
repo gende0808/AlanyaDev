@@ -7,7 +7,7 @@ if(isset($_SESSION['logged']))
 {
         $test = "<li class='dropdown'><button class='myButton' data-toggle='dropdown'>Mijn account  <span class='caret'></span></button>
         <ul class='dropdown-menu'>
-         <a href='#' style='color: black'>Profiel</a>
+         <a href='account.php' style='color: black'>Profiel</a>
          <a href='logout.php' style='color: black'>Uitloggen</a>
         </ul>
       </li>";
