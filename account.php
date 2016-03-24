@@ -10,22 +10,15 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-if (isset($_SESSION['logged'])) {
-
     $id = htmlspecialchars($_SESSION['account_id']);
+
     try {
         $account = new Account($DB_con, $id);
-        $account_array = $account->getUserInfo();
-
-        echo json_encode($account_array);
-
 
     } catch (Exception $e) {
-        echo "Het volgende is foutgegaan bij het ophalen van gegevens van een product: " . $e->getMessage();
+        echo "Het volgende is foutgegaan bij het ophalen van gegevens van het account: " . $e->getMessage();
     }
-}
 ?>
-
 
 <div class="logo text-center">
     <img src="images/testlogo2.png">
@@ -50,7 +43,7 @@ if (isset($_SESSION['logged'])) {
                                 <label for="uLogin"
                                        class="input-group-addon orange glyphicon glyphicon-comment"></label>
                                 <input type="text" onKeyup="checkform()" class="form-control" name="email"
-                                       placeholder="E-mail">
+                                       value="<?php echo $account->getUseremail() ?>">
 
                             </div>
                         </div>
@@ -60,7 +53,7 @@ if (isset($_SESSION['logged'])) {
                         <div class="form-group bord">
                             <div class="input-group">
                                 <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-lock"></label>
-                                <input type="password" onKeyup="checkform()" class="form-control" name="wachtwoord1"
+                                <input type="text" onKeyup="checkform()" class="form-control" name="wachtwoord1"
                                        id="wachtwoord1"
                                        placeholder="Huidig wachtwoord">
                                 <input type="password" onkeyup="checkform(); checkPass(); return false;"
@@ -77,9 +70,9 @@ if (isset($_SESSION['logged'])) {
                             <div class="input-group">
                                 <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-user"></label>
                                 <input type="text" onKeyup="checkform()" class="form-control" name="firstname"
-                                       placeholder="Voornaam">
+                                       value="<?php echo $account->getUserfirstname() ?>">
                                 <input type="text" onKeyup="checkform()" class="form-control" name="lastname"
-                                       placeholder="Achternaam">
+                                       value="<?php echo $account->getUserlastname() ?>">
                             </div>
                         </div>
                         <!-- /.form-group -->
@@ -88,14 +81,14 @@ if (isset($_SESSION['logged'])) {
                             <div class="input-group">
                                 <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-home"></label>
                                 <input type="text" onKeyup="checkform()" class="form-control" name="street"
-                                       placeholder="Straatnaam"
-                                       style="width: 70%;">
+                                       value="<?php echo $account->getUserstreetname() ?>" style="width: 70%;">
+
 
                                 <input type="text" onKeyup="checkform()" class="form-control" name="number"
-                                       placeholder="Nr."
-                                       style="width: 30%;">
+                                       value="<?php echo $account->getUserhousenumber() ?>" style="width: 30%;">
+
                                 <input type="text" onKeyup="checkform()" class="form-control" name="userToevoeging"
-                                       placeholder="Toevoeging adres">
+                                       value="<?php echo $account->getUseraddition()?>">
                             </div>
                         </div>
                         <!-- /.form-group -->
@@ -125,7 +118,7 @@ if (isset($_SESSION['logged'])) {
                                 <label for="uLogin"
                                        class="input-group-addon orange glyphicon glyphicon-earphone"></label>
                                 <input type="text" onKeyup="checkform()" class="form-control" name="phone"
-                                       placeholder="Telefoonnummer">
+                                       value="<?php echo $account->getUserphonenumber() ?>">
                             </div>
                         </div>
                         <!-- /.form-group -->
@@ -143,6 +136,8 @@ if (isset($_SESSION['logged'])) {
     </div>
     <!-- /.modal-dialog -->
 </div>
+
+?>
 
 <script>
     $(document).ready(function () {

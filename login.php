@@ -24,6 +24,7 @@ try {
             $_SESSION['logged'] = true;
             $_SESSION['user_info'] = $account->getUserInfo();
             $_SESSION['account_id'] = $account->getUserid();
+            $_SESSION['test_email'] = $account->getUseremail();
             $_SESSION['user_info'] = true;
             header('Location: index.php');
         }
