@@ -25,9 +25,7 @@
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/menubuttons.css"
     <link rel="stylesheet" href="../css/sidebar.css">
-    <link rel="stylesheet" href="../css/sideshop.css">
     <link rel="stylesheet" href="../css/border.css">
-    <link href="../css/demo-page.css" rel="stylesheet" media="all">
     <link href="../css/hover.css" rel="stylesheet" media="all">
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
 </head>
@@ -45,7 +43,7 @@ include_once "../interfaces/CRUD.php";
     </div>
     <nav id="nav-main">
         <ul>
-            <li style="height: 40px; border-right: solid 0px #950025!important;"><a href="index.php" class="hvr-float-shadow" style="height: 40px;"><img src="../images/alanyaforbanner3.png" style="padding-bottom: 10px;"></a></li>
+            <li style="height: 40px; border-right: solid 0px #950025!important;"><a href="../index.php" class="hvr-float-shadow" style="height: 40px;"><img src="../images/alanyaforbanner3.png" style="padding-bottom: 10px;"></a></li>
             <li><a href="../menu.php" class="hvr-float-shadow">Menukaart</a></li>
             <li><a href="../discountmanager.php" class="hvr-float-shadow">Acties</a></li>
             <li><a href="../contact.php" class="hvr-float-shadow">Contact</a></li>
@@ -148,13 +146,6 @@ include_once "../interfaces/CRUD.php";
                     }
                 });
             });
-        </script>
-        <script type="text/javascript" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('#testTable').dataTable();
-
-            } );
         </script>
     </footer>
 </body>

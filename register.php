@@ -76,12 +76,14 @@ error_reporting(E_ALL);
 						Hallo " . $account->getUserfullname() . ",
 						<br /><br />
 						Welkom bij Alanya-Krommenie!<br/>
-						To complete your registration  please , just click following link<br/>
+						Om je registratie op de website af te ronden kun je op de onderstaande link klikken.<br/>
 						<br /><br />
 						<a href='http://localhost/alanyaDev/verify.php?id=" . $gebruikersID . "&code="
-                            . $account->getToken() . "'>Click HERE to Activate :)</a>
+                            . $account->getToken() . "'>klik HIER om te activeren! :)</a>
 						<br /><br />
-						Thanks,";
+						Met vriendelijke Groet,<br /><br />
+
+						Alanya Krommenie";
                         //hieronder is de mailer die gebruik maakt van de PHPMailer Class.
                         try {
                             require_once('mailer/class.phpmailer.php');
@@ -95,8 +97,8 @@ error_reporting(E_ALL);
                             $mail->AddAddress($account->getUseremail());
                             $mail->Username = "alanyatester@gmail.com";
                             $mail->Password = "alanyatest";
-                            $mail->SetFrom('your_gmail_id_here@gmail.com', 'Coding Cage');
-                            $mail->AddReplyTo("your_gmail_id_here@gmail.com", "Coding Cage");
+                            $mail->SetFrom('your_gmail_id_here@gmail.com', 'Alanya Krommenie');
+                            $mail->AddReplyTo("your_gmail_id_here@gmail.com", "Alanya Krommenie");
                             $mail->Subject = $subject;
                             $mail->MsgHTML($message);
                             $mail->Send();

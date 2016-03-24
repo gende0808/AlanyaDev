@@ -19,7 +19,7 @@ try {
         $accpassword = $account->getUserpassword();
 
 
-        if ($email === $accemail && $password === $accpassword) {
+        if ($email === $accemail && password_verify($password, $accpassword)) {
             //als de invoer van email en wachtwoord overeenkomen met een account in de database word
             //de sessie 'logged' op true gezet en de sessie 'user_info' word gevuld met gegevens van de gebruiker.
             $_SESSION['logged'] = true;

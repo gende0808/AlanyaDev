@@ -3,24 +3,27 @@ include_once 'interfaces/CRUD.php';
 include_once "connection.php";
 require_once 'classes/Account.php';
 
-if(empty($_GET['id']) || empty($_GET['code']))
-{
-//redirect hier naar index.php
+if (empty($_GET['id']) || empty($_GET['code'])) {
+    header("Location: Index.php");
 }
 
-if(isset($_GET['id']) && isset($_GET['code'])) {
-	$id = $_GET['id'];
-	$code = $_GET['code'];
+if (!empty($_GET['id']) && !empty($_GET['code'])) {
+    $id = $_GET['id'];
+    $code = $_GET['code'];
 
-	$statusY = "Y";
-	$statusN = "N";
+    $statusY = "Y";
+    $statusN = "N";
+    try{
+    $account = new Account($DB_con, $id);
 
-	$account = new Account($DB_con, $id);
+    if ($account->getToken() == $code) {
+        $account->setstatus($statusY);
+        $account->update($id);
+    } else {
+        echo "er is een fout gedetecteerd bij het activeren van het account.";
+    }
 
-	if($account->getToken() === $code) {
-	$account->setstatus("Y");
-		$account->update($id);
-
-	}
-
+        } catch(Exception $e){
+        echo $e->getMessage();
+    }
 }

@@ -3,10 +3,8 @@
 /**
  * Class Account
  */
-
-
-
-class Account implements CRUD{
+class Account implements CRUD
+{
     /**
      * @var int
      */
@@ -85,16 +83,18 @@ class Account implements CRUD{
      */
 
 
-    public function __construct($dbconnection, $id=""){
+    public function __construct($dbconnection, $id = "")
+    {
 
         $this->db = $dbconnection;
-        if ($id != "" && is_numeric($id)){
+        if ($id != "" && is_numeric($id)) {
             $this->read($id);
         }
 
     }
 
-    public function create(){
+    public function create()
+    {
         try {
             $stmt = $this->db->prepare("INSERT INTO account(userEmail,userPlaatsID,userStraatnaam,userHuisnummer,userTelefoonnummer,userPassword,userLevel,tokenCode,userStatus)
                                     VALUES(:mail, :cityid, :street, :streetnr, :phone, :password, :userlevel, :token, :status)");
@@ -108,16 +108,17 @@ class Account implements CRUD{
             $stmt->bindparam(":token", $this->verificationcode);
             $stmt->bindparam(":status", $this->userstatus);
             $stmt->execute();
-            } catch(PDOException $e){
-            echo "er is iets misgegaan met de verbinding van de server!".$e->getMessage();
+        } catch (PDOException $e) {
+            echo "er is iets misgegaan met de verbinding van de server!" . $e->getMessage();
         }
     }
-    public function read($id){
+
+    public function read($id)
+    {
         if (empty($id)) {
             throw new InvalidArgumentException('Id is leeg!');
         }
-        if(!is_numeric($id))
-        {
+        if (!is_numeric($id)) {
             throw new InvalidArgumentException("Id is geen getal!");
         }
 
@@ -156,22 +157,64 @@ class Account implements CRUD{
             echo "Database-error: " . $e->getMessage();
         }
     }
-    public function update($id){
+
+    public function update($id)
+    {
+        if (!is_numeric($id)) {
+            throw new InvalidArgumentException('id is geen getal!');
+        }
+        try {
+            $stmt = $this->db->prepare("UPDATE account SET userplaatsID = :uplaceid,
+                                                           userStraatnaam = :ustreetname,
+                                                           userToevoeging = :uaddition,
+                                                           userTelefoonnummer = :uphone,
+                                                           userPassword = :upassword,
+                                                           userLevel = :ulevel,
+                                                           userVoornaam = :ufirstname,
+                                                           userAchternaam = :ulastname,
+                                                           userEmail = :uemail,
+                                                           userHuisnummer = :uhousenr,
+                                                           tokenCode = :verify,
+                                                           userStatus = :status
+                                                           WHERE userID= :userid");
+            $stmt->bindparam(":uplaceid", $this->usercityid);
+            $stmt->bindparam(":ustreetname", $this->userstreetname);
+            $stmt->bindparam(":uaddition", $this->useraddition);
+            $stmt->bindparam(":uphone", $this->userphonenumber);
+            $stmt->bindparam(":upassword", $this->userpassword);
+            $stmt->bindParam(":ulevel", $this->userlevel);
+            $stmt->bindParam(":ufirstname", $this->userfirstname);
+            $stmt->bindParam(":ulastname", $this->userlastname);
+            $stmt->bindParam(":uemail", $this->useremail);
+            $stmt->bindParam(":uhousenr", $this->userhousenumber);
+            $stmt->bindParam(":verify", $this->verificationcode);
+            $stmt->bindParam(":status", $this->userstatus);
+            $stmt->bindParam(":userid", $id);
+
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
 
     }
-    public function delete($id){
+
+    public function delete($id)
+    {
 
     }
 
-    public function updateUserStatus(){
+    public function updateUserStatus()
+    {
         //$stmt = $this->db->prepare
     }
+
     /**
      * @param mixed $userid
      */
     public function setUserid($userid)
     {
-        if(!is_numeric($userid)){
+        if (!is_numeric($userid)) {
             throw new InvalidArgumentException('userID is niet numeriek!');
         }
         $this->userid = $userid;
@@ -186,9 +229,9 @@ class Account implements CRUD{
      */
     public function setUsercityid($usercityid)
     {
-        if(empty($usercityid)){
-           throw new InvalidArgumentException("Je hebt geen stad gekozen!");
-            }
+        if (empty($usercityid)) {
+            throw new InvalidArgumentException("Je hebt geen stad gekozen!");
+        }
         $this->usercityid = $usercityid;
     }
 
@@ -197,7 +240,7 @@ class Account implements CRUD{
      */
     public function setUserstreetname($userstreetname)
     {
-        if(empty($userstreetname)){
+        if (empty($userstreetname)) {
             throw new InvalidArgumentException("Je hebt geen straat ingevoerd!");
         }
         $this->userstreetname = $userstreetname;
@@ -208,7 +251,7 @@ class Account implements CRUD{
      */
     public function setUserhousenumber($userhousenumber)
     {
-        if(empty($userhousenumber)){
+        if (empty($userhousenumber)) {
             throw new InvalidArgumentException("Je hebt geen huisnummer ingevoerd!");
         }
         $this->userhousenumber = $userhousenumber;
@@ -219,7 +262,7 @@ class Account implements CRUD{
      */
     public function setUseremail($useremail)
     {
-        if(empty($useremail)){
+        if (empty($useremail)) {
             throw new InvalidArgumentException("Je hebt geen email ingevoerd!");
         }
         $this->useremail = $useremail;
@@ -255,13 +298,13 @@ class Account implements CRUD{
      */
     public function setUserpassword($userpassword)
     {
-        if(empty($userpassword)){
+        if (empty($userpassword)) {
             throw new InvalidArgumentException("wachtwoord is leeg!");
         }
-        if(strlen($userpassword) < 6 || strlen($userpassword) > 16){
-            throw new InvalidArgumentException("wachtwoord moet tussen de 6 en 16 karakters zijn!");
+        if (strlen($userpassword) < 6 || strlen($userpassword) > 128) {
+            throw new InvalidArgumentException("wachtwoord moet tussen de 6 en 128 karakters zijn!");
         }
-        $this->userpassword = $userpassword;
+        $this->userpassword = password_hash($userpassword, PASSWORD_DEFAULT);
     }
 
     /**
@@ -269,8 +312,7 @@ class Account implements CRUD{
      */
     public function setUserphonenumber($userphonenumber)
     {
-        if(empty($userphonenumber))
-        {
+        if (empty($userphonenumber)) {
             throw new InvalidArgumentException("telefoonnummer is leeg");
         }
         $this->userphonenumber = $userphonenumber;
@@ -331,9 +373,10 @@ class Account implements CRUD{
     {
         return $this->userfirstname;
     }
+
     public function getUserfullname()
     {
-        return $this->userfirstname.' '.$this->userlastname;
+        return $this->userfirstname . ' ' . $this->userlastname;
     }
 
     /**
@@ -401,7 +444,9 @@ class Account implements CRUD{
     {
         return $this->userid;
     }
-    public function setToken(){
+
+    public function setToken()
+    {
         $secret = md5(uniqid(rand()));
         $this->verificationcode = $secret;
 
@@ -411,14 +456,19 @@ class Account implements CRUD{
     {
         return $this->verificationcode;
     }
-    public function getstatus(){
+
+    public function getstatus()
+    {
         return $this->userstatus;
     }
-    public function setstatus($status){
+
+    public function setstatus($status)
+    {
         $this->userstatus = $status;
     }
 
-    public function getUserInfo(){
+    public function getUserInfo()
+    {
         print_r($this->user_info);
     }
 
