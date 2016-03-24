@@ -11,9 +11,11 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
     $id = htmlspecialchars($_SESSION['account_id']);
+    $cityid = htmlspecialchars($_SESSION['city_id']);
 
     try {
         $account = new Account($DB_con, $id);
+        $city = new City($DB_con, $cityid);
 
     } catch (Exception $e) {
         echo "Het volgende is foutgegaan bij het ophalen van gegevens van het account: " . $e->getMessage();
@@ -100,7 +102,12 @@ error_reporting(E_ALL);
                                 <label for="uLogin"
                                        class="input-group-addon orange glyphicon glyphicon-map-marker"></label>
                                 <select class="form-control" name="city">
-                                    <option value="" selected disabled><b>Woonplaats</b></option>
+                                    <option value="" selected disabled><b>
+                                        <?php
+
+
+                                        echo $account->getUsercityid() ?>
+                                        </b></option>
                                     <?PHP
                                     $listofcities = (new CityList($DB_con))->getlistofcities();
                                     foreach ($listofcities as $city) {

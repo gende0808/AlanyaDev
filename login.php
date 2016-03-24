@@ -6,6 +6,7 @@ include_once "connection.php";
 include_once "interfaces/CRUD.php";
 include_once "classes/Account.php";
 include_once "classes/AccountList.php";
+include_once "classes/city.php";
 
 $email = $_POST['loginemail'];
 $password = $_POST['loginpass'];
@@ -24,7 +25,7 @@ try {
             $_SESSION['logged'] = true;
             $_SESSION['user_info'] = $account->getUserInfo();
             $_SESSION['account_id'] = $account->getUserid();
-            $_SESSION['test_email'] = $account->getUseremail();
+            $_SESSION['city_id'] = $account->getUsercityid();
             $_SESSION['user_info'] = true;
             header('Location: index.php');
         }
