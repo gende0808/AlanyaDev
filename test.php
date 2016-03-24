@@ -1,16 +1,14 @@
-<?PHP
-include_once "connection.php";
+<?php
 include_once "interfaces/CRUD.php";
-include_once "classes/Product.php";
+include_once "connection.php";
+include_once "classes/product.php";
+include_once "classes/productlist.php";
 
-session_start();
-
-$product = new Product($DB_con, 1);
-
-$_SESSION['gebruikersnaam'] = 'pietje@pietje.nl';
-$_SESSION['wachtwoord'] = 'mijnwachtwoord123';
-$_SESSION['productinwinkelwagen'] = $product;
-
+$productlist = new ProductList($DB_con);
+$listofproducts = $productlist->getlistofproducts();
+foreach ($listofproducts as $product) {
+    echo $product->getProductnumber();
+}
 //$productnumber = $_POST['Productnummer'];
 //$productname = $_POST['name'];
 //$productdescription = $_POST['description'];
@@ -93,7 +91,3 @@ $_SESSION['productinwinkelwagen'] = $product;
 
 
 ?>
-
-
-
-<?PHP include_once "footer.php" ?>

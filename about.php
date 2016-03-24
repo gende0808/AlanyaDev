@@ -2,7 +2,7 @@
 include_once "header.php";
 ?>
     <div class="logo">
-        <center><img src="images/testlogo2.png"></center>
+        <center><img src="images/testlogo3.png"></center>
     </div>
         <div class="row">
             <div class="col-md-4 col-md-offset-4">

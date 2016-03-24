@@ -175,7 +175,10 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                     $("#price" + productid).html(fullprice);
 
                     // fade out, hier onder:
-                    $("#tr" + productid).addClass("success");
+                    $("#tr" + productid).addClass("success")
+                    setTimeout(function () {
+                        $("#tr" + productid).removeClass('success');
+                    }, 4000)
 
                     $('#bewerkenmodal').modal('hide');
 

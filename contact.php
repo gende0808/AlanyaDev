@@ -4,7 +4,7 @@ include_once "header.php";
 
 <div id="main-header">
     <div class="logo">
-        <center><img src="images/testlogo2.png"></center>
+        <center><img src="images/testlogo3.png"></center>
     </div>
 </div>
 

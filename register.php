@@ -13,7 +13,7 @@ error_reporting(E_ALL);
 
 ?>
 <div class="logo text-center">
-   <img src="images/testlogo2.png">
+   <img src="images/testlogo3.png">
 </div>
 
 <div class="col-md-4 col-md-offset-4">
