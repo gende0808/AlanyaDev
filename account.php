@@ -37,14 +37,14 @@ error_reporting(E_ALL);
             </div>
             <!-- /.modal-header -->
 
-            <form name="theform" method="post" role="form" action="account.php">
+            <form name="theform" method="post" role="form" action="account_wijzigen.php">
                 <div class="modal-body">
-                    <form role="form">
+                    <form action="account_wijzigen.php" method="post" role="form">
                         <div class="form-group bord">
                             <div class="input-group">
                                 <label for="uLogin"
                                        class="input-group-addon orange glyphicon glyphicon-comment"></label>
-                                <input type="text" onKeyup="checkform()" class="form-control" name="email"
+                                <input type="text" onKeyup="checkform()" class="form-control" name="accountemail" id="accountemail"
                                        value="<?php echo $account->getUseremail() ?>">
 
                             </div>
