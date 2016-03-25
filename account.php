@@ -4,152 +4,207 @@ include_once "header.php";
 include_once "classes/Account.php";
 include_once "classes/City.php";
 include_once "classes/CityList.php";
-include_once "classes/AccountList.php";
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
-    $id = htmlspecialchars($_SESSION['account_id']);
-    $city = htmlspecialchars($_SESSION['city_id']);
-
+$id = htmlspecialchars($_SESSION['account_id']);
+//pass werkt nog niet goed dus even gecomment.
+//$currentpass = htmlspecialchars($_SESSION['account_password']);
+if ($_POST) {
     try {
         $account = new Account($DB_con, $id);
 
+        if (isset($_POST['voornaam'])) {
+            $accountvoornaam = htmlspecialchars($_POST['voornaam']);
+            $account->setUserfirstname($accountvoornaam);
+        }
+        if (isset($_POST['achternaam'])) {
+            $accountachternaam = htmlspecialchars($_POST['achternaam']);
+            $account->setUserlastname($accountachternaam);
+        }
+        if (isset($_POST['straatnaam'])) {
+            $accountstraatnaam = htmlspecialchars($_POST['straatnaam']);
+            $account->setUserstreetname($accountstraatnaam);
+        }
+        if (isset($_POST['huisnummer'])) {
+            $accounthuisnummer = htmlspecialchars($_POST['huisnummer']);
+            $account->setUserhousenumber($accounthuisnummer);
+        }
+        if (isset($_POST['toevoeging'])) {
+            $accounttoevoeging = htmlspecialchars($_POST['toevoeging']);
+            $account->setUseraddition($accounttoevoeging);
+        }
+        if (isset($_POST['plaats'])) {
+            $accountplaats = htmlspecialchars($_POST['plaats']);
+            $account->setUsercityid($accountplaats);
+        }
+        if (isset($_POST['telefoonnummer'])) {
+            $accounttelefoonnummer = htmlspecialchars($_POST['telefoonnummer']);
+            $account->setUserphonenumber($accounttelefoonnummer);
+        }
+        if (!empty($_POST['wachtwoord1']) && !empty($_POST['wachtwoord2'])) {
+            $oldpassword = htmlspecialchars($_POST['wachtwoord1']);
+            $newpassword = htmlspecialchars($_POST['wachtwoord2']);
+            if (password_verify($oldpassword, $account->getUserpassword())) {
+                $account->setUserpassword($newpassword);
+            } else {
+                throw new InvalidArgumentException("wachtwoorden kwamen niet overeen");
+                //TODO aan gebruiker tonen dat wachtwoorden niet overeen kwamen op een betere manier
+            }
+        }
+
+        $account->update($id);
     } catch (Exception $e) {
-        echo "Het volgende is foutgegaan bij het ophalen van gegevens van het account: " . $e->getMessage();
+        echo $e->getMessage();
     }
+}
+try {
 
-?>
+    $account = new Account($DB_con, $id)
 
-<div class="logo text-center">
-    <img src="images/testlogo2.png">
-</div>
+    ?>
 
-<div class="col-md-4 col-md-offset-4">
-    <div class="modal-dialog text-center">
-        <br>
+    <div class="logo text-center">
+        <img src="images/testlogo2.png">
+    </div>
 
-        <div class="modal-content text-center">
+    <div class="col-md-4 col-md-offset-4">
+        <div class="modal-dialog text-center">
+            <br>
 
-            <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Mijn Profiel</h4>
-            </div>
-            <!-- /.modal-header -->
+            <div class="modal-content text-center">
 
-            <form name="theform" method="post" role="form" action="account_wijzigen.php">
-                <div class="modal-body">
-                    <form action="account_wijzigen.php" method="post" role="form">
-                        <div class="form-group bord">
-                            <div class="input-group">
-                                <label for="uLogin"
-                                       class="input-group-addon orange glyphicon glyphicon-comment"></label>
-                                <p class="navbar-text"><?php echo $account->getUseremail() ?></p>
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Mijn Profiel</h4>
+                </div>
+                <!-- /.modal-header -->
 
+                <form name="theform" method="post" role="form" action="account.php">
+                    <div class="modal-body">
+                        <form action="account.php" method="post" role="form">
+                            <div class="form-group bord">
+                                <div class="input-group">
+                                    <label for="uLogin"
+                                           class="input-group-addon orange glyphicon glyphicon-comment"></label>
+
+                                    <p class="navbar-text"><?php echo $account->getUseremail() ?></p>
+
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- /.form-group -->
+                            <!-- /.form-group -->
 
-                        <div class="form-group bord">
-                            <div class="input-group">
-                                <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-lock"></label>
-                                <input type="text" onKeyup="checkform()" class="form-control" name="wachtwoord1"
-                                       id="wachtwoord1"
-                                       placeholder="Huidig wachtwoord">
-                                <input type="password" onkeyup="checkform(); checkPass(); return false;"
-                                       class="form-control" name="wachtwoord2" id="wachtwoord2"
-                                       placeholder="Nieuw wachtwoord">
-                                <input type="password" onkeyup="checkform(); checkPass(); return false;"
-                                       class="form-control" name="wachtwoord2" id="wachtwoord3"
-                                       placeholder="verifieer nieuw wachtwoord">
-                                <span id="confirmMessage" class="confirmMessage"></span>
+                            <div class="form-group bord">
+                                <div class="input-group">
+                                    <label for="uLogin"
+                                           class="input-group-addon orange glyphicon glyphicon-lock"></label>
+                                    <input type="password" onKeyup="checkform()" class="form-control" name="wachtwoord1"
+                                           id="wachtwoord1"
+                                           placeholder="Huidig wachtwoord">
+                                    <input type="password" onkeyup="checkform(); checkPass(); return false;"
+                                           class="form-control" name="wachtwoord2" id="wachtwoord2"
+                                           placeholder="Nieuw wachtwoord">
+                                    <input type="password" onkeyup="checkform(); checkPass(); return false;"
+                                           class="form-control" name="wachtwoord2" id="wachtwoord3"
+                                           placeholder="verifieer nieuw wachtwoord">
+                                    <span id="confirmMessage" class="confirmMessage"></span>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group bord">
-                            <div class="input-group">
-                                <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-user"></label>
-                                <input type="text" onKeyup="checkform()" class="form-control" name="voornaam" id="voornaam"
-                                       value="<?php echo $account->getUserfirstname() ?>">
-                                <input type="text" onKeyup="checkform()" class="form-control" name="achternaam" id="achternaam"
-                                       value="<?php echo $account->getUserlastname() ?>">
+                            <div class="form-group bord">
+                                <div class="input-group">
+                                    <label for="uLogin"
+                                           class="input-group-addon orange glyphicon glyphicon-user"></label>
+                                    <input type="text" onKeyup="checkform()" class="form-control" name="voornaam"
+                                           id="voornaam"
+                                           value="<?php echo $account->getUserfirstname() ?>">
+                                    <input type="text" onKeyup="checkform()" class="form-control" name="achternaam"
+                                           id="achternaam"
+                                           value="<?php echo $account->getUserlastname() ?>">
+                                </div>
                             </div>
-                        </div>
-                        <!-- /.form-group -->
+                            <!-- /.form-group -->
 
-                        <div class="form-group bord">
-                            <div class="input-group">
-                                <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-home"></label>
-                                <input type="text" onKeyup="checkform()" class="form-control" name="straatnaam" id="straatnaam"
-                                       value="<?php echo $account->getUserstreetname() ?>" style="width: 70%;">
+                            <div class="form-group bord">
+                                <div class="input-group">
+                                    <label for="uLogin"
+                                           class="input-group-addon orange glyphicon glyphicon-home"></label>
+                                    <input type="text" onKeyup="checkform()" class="form-control" name="straatnaam"
+                                           id="straatnaam"
+                                           value="<?php echo $account->getUserstreetname() ?>" style="width: 70%;">
 
 
-                                <input type="text" onKeyup="checkform()" class="form-control" name="huisnummer" id="huisnummer"
-                                       value="<?php echo $account->getUserhousenumber() ?>" style="width: 30%;">
+                                    <input type="text" onKeyup="checkform()" class="form-control" name="huisnummer"
+                                           id="huisnummer"
+                                           value="<?php echo $account->getUserhousenumber() ?>" style="width: 30%;">
 
-                                <input type="text" onKeyup="checkform()" class="form-control" name="toevoeging" id="toevoeging"
-                                       value="<?php echo $account->getUseraddition()?>">
+                                    <input type="text" onKeyup="checkform()" class="form-control" name="toevoeging"
+                                           id="toevoeging"
+                                           value="<?php echo $account->getUseraddition() ?>">
+                                </div>
                             </div>
-                        </div>
-                        <!-- /.form-group -->
-                        <br>
+                            <!-- /.form-group -->
+                            <br>
 
 
-                        <div class="form-group">
-                            <div class="input-group">
-                                <label for="uLogin"
-                                       class="input-group-addon orange glyphicon glyphicon-map-marker"></label>
-                                <select class="form-control" name='plaats' id='plaats'>
-                                    <option value="" selected disabled><b>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label for="uLogin"
+                                           class="input-group-addon orange glyphicon glyphicon-map-marker"></label>
+                                    <select class="form-control" name='plaats' id='plaats'>
+
                                         <?php
 
                                         try {
-                                            $citytest = new City($DB_con, $city);
-
+                                            $accountt = new Account($DB_con, $id);
+                                            $listofcities = (new CityList($DB_con))->getlistofcities();
+                                            foreach ($listofcities as $city) {
+                                                if ($city->getCityid() == $accountt->getUsercityid()) {
+                                                    echo "<option value='" . $city->getCityid() . "'selected>" . $city->getCityname() . "</option>";
+                                                } else {
+                                                    echo "<option value='" . $city->getCityid() . "'>" . $city->getCityname() . "</option>";
+                                                }
+                                            }
                                         } catch (Exception $e) {
-                                            echo "Het volgende is foutgegaan bij het ophalen van gegevens van het account: " . $e->getMessage();
+                                            //TODO ERROR
                                         }
+                                        ?>
 
-
-                                        echo $citytest->getCityname() ?>
-                                        </b></option>
-                                    <?PHP
-                                    $listofcities = (new CityList($DB_con))->getlistofcities();
-                                    foreach ($listofcities as $city) {
-                                        echo "<option value='" . $city->getCityid() . "'>" . $city->getCityname() . "</option>";
-                                    }
-                                    ?>
-
-                                </select>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <!-- /.form-group -->
+                            <!-- /.form-group -->
 
-                        <div class="form-group bord">
-                            <div class="input-group">
-                                <label for="uLogin"
-                                       class="input-group-addon orange glyphicon glyphicon-earphone"></label>
-                                <input type="text" onKeyup="checkform()" class="form-control" name="telefoonnummer" id="telefoonnummer"
-                                       value="<?php echo $account->getUserphonenumber() ?>">
+                            <div class="form-group bord">
+                                <div class="input-group">
+                                    <label for="uLogin"
+                                           class="input-group-addon orange glyphicon glyphicon-earphone"></label>
+                                    <input type="text" onKeyup="checkform()" class="form-control" name="telefoonnummer"
+                                           id="telefoonnummer"
+                                           value="<?php echo $account->getUserphonenumber() ?>">
+                                </div>
                             </div>
-                        </div>
-                        <!-- /.form-group -->
+                            <!-- /.form-group -->
 
-                        <button class="form-control btn orange" id="accountwijzigen" style="color: white;" name="accountwijzigen" type="submit"
-                                value="submit">
-                            Wijzigen opslaan
-                        </button>
-                    </form>
-                </div>
+                            <button class="form-control btn orange" id="accountwijzigen" style="color: white;"
+                                    name="accountwijzigen" type="submit"
+                                    value="submit">
+                                Wijzigen opslaan
+                            </button>
+                        </form>
+                    </div>
 
-                <!-- /.modal-body -->
+                    <!-- /.modal-body -->
+            </div>
+            <!-- /.modal-content -->
         </div>
-        <!-- /.modal-content -->
+        <!-- /.modal-dialog -->
     </div>
-    <!-- /.modal-dialog -->
-</div>
-
+    <?PHP
+} catch (Exception $e) {
+    //TODO error handling voor $account object
+}
+//hier eindigt try/catch voor $account object
+?>
 
 <script>
     $(document).ready(function () {
@@ -232,7 +287,7 @@ error_reporting(E_ALL);
                     $("#nummer" + productid).html(productNummer);
                     $("#naam" + productid).html(productNaam);
                     $("#omschrijving" + productid).html(productOmschrijving);
-                    fullprice = "&#8364; "+euros+","+cents;
+                    fullprice = "&#8364; " + euros + "," + cents;
                     $("#price" + productid).html(fullprice);
 
                     // fade out, hier onder:
