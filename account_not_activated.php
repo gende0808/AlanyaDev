@@ -1,4 +1,6 @@
 <?PHP
+
+// TODO if user logged in, redirect this page to index.
 include_once "header.php";
 include_once "connection.php";
 include_once "classes/ProductList.php";
@@ -23,8 +25,9 @@ include_once "classes/CategoryList.php";
 
             <form name="theform" method="post" role="form" action="register.php">
                 <div class="modal-body">
-                    Uw account is niet nog niet geactiveerd! Om uw account te activeren ga a.u.b. naar uw opgegeven e-mailadres
-                    en klik op de link die in de mail is meegestuurd. Deze mail kan eventueel in uw spam-box staan.
+                    Uw account is niet nog niet geactiveerd!<br />
+                    Ga a.u.b. naar uw opgegeven e-mailadres om uw account via de link te activeren. <br />
+                    Deze mail kan eventueel in uw spam-box staan.
                 </div>
 
                 <!-- /.modal-body -->
