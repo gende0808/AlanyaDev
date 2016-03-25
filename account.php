@@ -44,8 +44,7 @@ error_reporting(E_ALL);
                             <div class="input-group">
                                 <label for="uLogin"
                                        class="input-group-addon orange glyphicon glyphicon-comment"></label>
-                                <input type="text" onKeyup="checkform()" class="form-control" name="accountemail" id="accountemail"
-                                       value="<?php echo $account->getUseremail() ?>">
+                                <p class="navbar-text"><?php echo $account->getUseremail() ?></p>
 
                             </div>
                         </div>
@@ -71,9 +70,9 @@ error_reporting(E_ALL);
                         <div class="form-group bord">
                             <div class="input-group">
                                 <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-user"></label>
-                                <input type="text" onKeyup="checkform()" class="form-control" name="firstname"
+                                <input type="text" onKeyup="checkform()" class="form-control" name="voornaam" id="voornaam"
                                        value="<?php echo $account->getUserfirstname() ?>">
-                                <input type="text" onKeyup="checkform()" class="form-control" name="lastname"
+                                <input type="text" onKeyup="checkform()" class="form-control" name="achternaam" id="achternaam"
                                        value="<?php echo $account->getUserlastname() ?>">
                             </div>
                         </div>
@@ -82,14 +81,14 @@ error_reporting(E_ALL);
                         <div class="form-group bord">
                             <div class="input-group">
                                 <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-home"></label>
-                                <input type="text" onKeyup="checkform()" class="form-control" name="street"
+                                <input type="text" onKeyup="checkform()" class="form-control" name="straatnaam" id="straatnaam"
                                        value="<?php echo $account->getUserstreetname() ?>" style="width: 70%;">
 
 
-                                <input type="text" onKeyup="checkform()" class="form-control" name="number"
+                                <input type="text" onKeyup="checkform()" class="form-control" name="huisnummer" id="huisnummer"
                                        value="<?php echo $account->getUserhousenumber() ?>" style="width: 30%;">
 
-                                <input type="text" onKeyup="checkform()" class="form-control" name="userToevoeging"
+                                <input type="text" onKeyup="checkform()" class="form-control" name="toevoeging" id="toevoeging"
                                        value="<?php echo $account->getUseraddition()?>">
                             </div>
                         </div>
@@ -101,7 +100,7 @@ error_reporting(E_ALL);
                             <div class="input-group">
                                 <label for="uLogin"
                                        class="input-group-addon orange glyphicon glyphicon-map-marker"></label>
-                                <select class="form-control" name="city">
+                                <select class="form-control" name='plaats' id='plaats'>
                                     <option value="" selected disabled><b>
                                         <?php
 
@@ -131,7 +130,7 @@ error_reporting(E_ALL);
                             <div class="input-group">
                                 <label for="uLogin"
                                        class="input-group-addon orange glyphicon glyphicon-earphone"></label>
-                                <input type="text" onKeyup="checkform()" class="form-control" name="phone"
+                                <input type="text" onKeyup="checkform()" class="form-control" name="telefoonnummer" id="telefoonnummer"
                                        value="<?php echo $account->getUserphonenumber() ?>">
                             </div>
                         </div>

@@ -5,12 +5,20 @@ include_once "classes/Account.php";
 include_once "classes/City.php";
 include_once "classes/CityList.php";
 include_once "classes/AccountList.php";
+include_once "modals/register_succes_modal.php";
+include_once "productAdded.php";
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-
+if (isset($_POST["registerbutton"])) {
+    $hidden = "test";
+    $registreer = "";
+} else {
+    $hidden = "hidden";
+    $registreer = "Registreren";
+}
 ?>
 <div class="logo text-center">
    <img src="images/testlogo3.png">
@@ -29,6 +37,9 @@ error_reporting(E_ALL);
 
                 //als er geen post is meegegeven probeert hij geen account aan te maken.
                 if (!empty($_POST)) {
+
+
+
                     try {
                         //hij maakt hieronder een lijst van accounts aan om te vergelijken met het ingevoerde email adres.
                         //als het email adres true is gaat hij niet proberen de account aan te maken. Dan bestaat de email al.
@@ -44,6 +55,7 @@ error_reporting(E_ALL);
                     }
 
                     if (!$emailalreadyexists) {
+
                         try {
                             //als het emailadres niet al bestaat gaat hij hieronder proberen een account aan te maken.
                             $account = new Account($DB_con);
@@ -115,7 +127,14 @@ error_reporting(E_ALL);
             <div class="modal-header">
 
 
-                <h4 class="modal-title" id="myModalLabel">Registreer</h4>
+                <h4 class="modal-title" id="myModalLabel">
+                    <div id="testje" class="<?php echo $hidden ?>">
+                        <div class="alert alert-success" role="alert">
+                            <p><h2><b>Bedankt voor het registreren!</b></h2></p>
+                            <p><h4><i>U dient uw account te activeren door op de link te klikken die naar uw E-mail adres verzonden is.</i></h4></p>
+                        </div>
+                    </div>
+                    <?php echo $registreer ?></h4>
             </div>
             <!-- /.modal-header -->
 
@@ -209,7 +228,7 @@ error_reporting(E_ALL);
                         <p>al een bestaand account? <a href="#" data-toggle="modal" data-target="#myModal"
                                                        class="hvr-float-shadow">Login</a></p>
 
-                        <button class="form-control btn orange" id="test" style="color: white;" type="submit"
+                        <button name="registerbutton" class="form-control btn orange" id="test" style="color: white;" type="submit"
                                 value="submit">
                             Registeren
                         </button>
@@ -223,6 +242,7 @@ error_reporting(E_ALL);
     <!-- /.modal-dialog -->
 </div>
 </div>
+
 <?PHP
 include_once "footer.php";
 // include_once "sideshoppinglist.php";
