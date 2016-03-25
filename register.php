@@ -5,7 +5,6 @@ include_once "classes/Account.php";
 include_once "classes/City.php";
 include_once "classes/CityList.php";
 include_once "classes/AccountList.php";
-include_once "modals/register_succes_modal.php";
 include_once "productAdded.php";
 
 ini_set('display_errors', 1);

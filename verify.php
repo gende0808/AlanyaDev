@@ -19,10 +19,12 @@ if (!empty($_GET['id']) && !empty($_GET['code'])) {
     if ($account->getToken() == $code) {
         $account->setstatus($statusY);
         $account->update($id);
+        //TODO hier moet een header die redirect naar een "uw account is geactiveerd pagina"
     } else {
+        include_once "header.php";
         echo "er is een fout gedetecteerd bij het activeren van het account.";
+        include_once "footer.php";
     }
-
         } catch(Exception $e){
         echo $e->getMessage();
     }

@@ -136,7 +136,8 @@ class Account implements CRUD
                                                userAchternaam,
                                                userEmail,
                                                userHuisnummer,
-                                               tokenCode
+                                               tokenCode,
+                                               userStatus
                                                 FROM account WHERE userID= :userid");
             $stmt->bindParam(':userid', $id, PDO::PARAM_INT);
             $stmt->execute();
@@ -155,6 +156,7 @@ class Account implements CRUD
             $this->userphonenumber = $this->user_info['userTelefoonnummer'];
             $this->usernote = $this->user_info['userToevoeging'];
             $this->verificationcode = $this->user_info['tokenCode'];
+            $this->userstatus = $this->user_info['userStatus'];
         } catch (PDOException $e) {
             echo "Database-error: " . $e->getMessage();
         }

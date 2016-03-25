@@ -36,7 +36,6 @@ $account->setUseraddition($accounttoevoeging);
 $account->setUsercityid($accountplaats);
 $account->setUserphonenumber($accounttelefoonnummer);
 $account->setUseremail($loggedmail);
-$account->setToken($loggedtoken);
 //pass werkt nog niet goed dus even gecomment.
 //$account->setUserpassword($currentpass);
 $account->setstatus($Y);
