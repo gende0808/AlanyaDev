@@ -27,6 +27,8 @@ try {
             $_SESSION['account_id'] = $account->getUserid();
             $_SESSION['city_id'] = $account->getUsercityid();
             header('Location: index.php');
+        }else {
+            header("Location: account_not_activated.php");
         }
     }
 
