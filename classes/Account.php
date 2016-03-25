@@ -96,8 +96,8 @@ class Account implements CRUD
     public function create()
     {
         try {
-            $stmt = $this->db->prepare("INSERT INTO account(userEmail,userPlaatsID,userStraatnaam,userHuisnummer,userTelefoonnummer,userPassword,userLevel,tokenCode,userStatus)
-                                    VALUES(:mail, :cityid, :street, :streetnr, :phone, :password, :userlevel, :token, :status)");
+            $stmt = $this->db->prepare("INSERT INTO account(userEmail,userPlaatsID,userStraatnaam,userHuisnummer,userTelefoonnummer,userPassword,userLevel,tokenCode,userStatus, userVoornaam, userAchternaam)
+                                    VALUES(:mail, :cityid, :street, :streetnr, :phone, :password, :userlevel, :token, :status, :firstname, :lastname)");
             $stmt->bindparam(":mail", $this->useremail);
             $stmt->bindparam(":cityid", $this->usercityid);
             $stmt->bindparam(":street", $this->userstreetname);
@@ -107,6 +107,8 @@ class Account implements CRUD
             $stmt->bindparam(":userlevel", $this->userlevel);
             $stmt->bindparam(":token", $this->verificationcode);
             $stmt->bindparam(":status", $this->userstatus);
+            $stmt->bindparam(":firstname", $this->userfirstname);
+            $stmt->bindparam(":lastname", $this->userlastname);
             $stmt->execute();
         } catch (PDOException $e) {
             echo "er is iets misgegaan met de verbinding van de server!" . $e->getMessage();
