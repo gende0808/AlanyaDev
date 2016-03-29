@@ -10,7 +10,6 @@ include_once "../connection.php";
 include_once "../interfaces/CRUD.php";
 include_once "../classes/ProductList.php";
 include_once "../classes/Product.php";
-include_once "../productAdded.php";
 
 
 // __________________________________

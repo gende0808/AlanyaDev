@@ -11,7 +11,7 @@ include_once "../interfaces/CRUD.php";
 include_once "../classes/Category.php";
 include_once "../classes/ProductList.php";
 include_once "../classes/Product.php";
-include_once "../productAdded.php";
+include_once "../modals/toevoegingen_modal.php";
 
 
 // __________________________________
@@ -35,7 +35,7 @@ try {
         echo "<td style='width: 150px;'>" . $product->getProductdescription() . "</td>";
         echo "<td style='width: 150px;'>" . $product->getProductpriceformatted() . "</td>";
         echo "<td style='width: 150px;'>
-<a href=\"#\" data-toggle=\"modal\" data-target=\"#myModalAdded\" class=\"hvr-pulse\"><span class=\"glyphicon glyphicon-plus\"></span> Bestellen</a>
+<a href=\"#\" data-toggle=\"modal\" data-target=\"#myModalToev\" class=\"hvr-pulse\"><span class=\"glyphicon glyphicon-plus\"></span> Bestellen</a>
 </td>";
         echo "</tr>";
         echo "\n";
