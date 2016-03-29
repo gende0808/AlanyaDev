@@ -35,8 +35,8 @@ try {
         echo "<td style='width: 150px;'>" . $product->getProductdescription() . "</td>";
         echo "<td style='width: 150px;'>" . $product->getProductpriceformatted() . "</td>";
         echo "<td style='width: 150px;'>
-<a href=\"#\" data-toggle=\"modal\" data-target=\"#myModalToev\" class=\"hvr-pulse\"><span class=\"glyphicon glyphicon-plus\"></span> Bestellen</a>
-</td>";
+        <a id='" . $product->getProductid() . "' href=\"#\" data-toggle=\"modal\" data-target=\"#myModalToev\" class=\"hvr-pulse\"><span class=\"glyphicon glyphicon-plus\"></span> Bestellen</a>
+        </td>";
         echo "</tr>";
         echo "\n";
     };
