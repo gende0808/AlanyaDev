@@ -7,56 +7,58 @@ include_once "classes/CityList.php";
 
 
 $id = htmlspecialchars($_SESSION['account_id']);
-//pass werkt nog niet goed dus even gecomment.
-//$currentpass = htmlspecialchars($_SESSION['account_password']);
-if ($_POST) {
-    try {
-        $account = new Account($DB_con, $id);
+function accountcheck($DB_con, $id)
+{
+    if ($_POST) {
+        try {
+            $account = new Account($DB_con, $id);
 
-        if (isset($_POST['voornaam'])) {
-            $accountvoornaam = htmlspecialchars($_POST['voornaam']);
-            $account->setUserfirstname($accountvoornaam);
-        }
-        if (isset($_POST['achternaam'])) {
-            $accountachternaam = htmlspecialchars($_POST['achternaam']);
-            $account->setUserlastname($accountachternaam);
-        }
-        if (isset($_POST['straatnaam'])) {
-            $accountstraatnaam = htmlspecialchars($_POST['straatnaam']);
-            $account->setUserstreetname($accountstraatnaam);
-        }
-        if (isset($_POST['huisnummer'])) {
-            $accounthuisnummer = htmlspecialchars($_POST['huisnummer']);
-            $account->setUserhousenumber($accounthuisnummer);
-        }
-        if (isset($_POST['toevoeging'])) {
-            $accounttoevoeging = htmlspecialchars($_POST['toevoeging']);
-            $account->setUseraddition($accounttoevoeging);
-        }
-        if (isset($_POST['plaats'])) {
-            $accountplaats = htmlspecialchars($_POST['plaats']);
-            $account->setUsercityid($accountplaats);
-        }
-        if (isset($_POST['telefoonnummer'])) {
-            $accounttelefoonnummer = htmlspecialchars($_POST['telefoonnummer']);
-            $account->setUserphonenumber($accounttelefoonnummer);
-        }
-        if (!empty($_POST['wachtwoord1']) && !empty($_POST['wachtwoord2'])) {
-            $oldpassword = htmlspecialchars($_POST['wachtwoord1']);
-            $newpassword = htmlspecialchars($_POST['wachtwoord2']);
-            if (password_verify($oldpassword, $account->getUserpassword())) {
-                $account->setUserpassword($newpassword);
-            } else {
-                throw new InvalidArgumentException("wachtwoorden kwamen niet overeen");
-                //TODO aan gebruiker tonen dat wachtwoorden niet overeen kwamen op een betere manier
+            if (isset($_POST['voornaam'])) {
+                $accountvoornaam = htmlspecialchars($_POST['voornaam']);
+                $account->setUserfirstname($accountvoornaam);
             }
-        }
+            if (isset($_POST['achternaam'])) {
+                $accountachternaam = htmlspecialchars($_POST['achternaam']);
+                $account->setUserlastname($accountachternaam);
+            }
+            if (isset($_POST['straatnaam'])) {
+                $accountstraatnaam = htmlspecialchars($_POST['straatnaam']);
+                $account->setUserstreetname($accountstraatnaam);
+            }
+            if (isset($_POST['huisnummer'])) {
+                $accounthuisnummer = htmlspecialchars($_POST['huisnummer']);
+                $account->setUserhousenumber($accounthuisnummer);
+            }
+            if (isset($_POST['toevoeging'])) {
+                $accounttoevoeging = htmlspecialchars($_POST['toevoeging']);
+                $account->setUseraddition($accounttoevoeging);
+            }
+            if (isset($_POST['plaats'])) {
+                $accountplaats = htmlspecialchars($_POST['plaats']);
+                $account->setUsercityid($accountplaats);
+            }
+            if (isset($_POST['telefoonnummer'])) {
+                $accounttelefoonnummer = htmlspecialchars($_POST['telefoonnummer']);
+                $account->setUserphonenumber($accounttelefoonnummer);
+            }
+            if (!empty($_POST['wachtwoord1']) && !empty($_POST['wachtwoord2'])) {
+                $oldpassword = htmlspecialchars($_POST['wachtwoord1']);
+                $newpassword = htmlspecialchars($_POST['wachtwoord2']);
+                if (password_verify($oldpassword, $account->getUserpassword())) {
+                    $account->setUserpassword($newpassword);
+                } else {
+                    throw new InvalidArgumentException("wachtwoorden kwamen niet overeen");
+                    //TODO aan gebruiker tonen dat wachtwoorden niet overeen kwamen op een betere manier
+                }
+            }
 
-        $account->update($id);
-    } catch (Exception $e) {
-        echo $e->getMessage();
+            $account->update($id);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
     }
 }
+
 try {
 
     $account = new Account($DB_con, $id)
@@ -74,6 +76,7 @@ try {
             <div class="modal-content text-center">
 
                 <div class="modal-header">
+                    <?PHP accountcheck($DB_con, $id)?>
                     <h4 class="modal-title" id="myModalLabel">Mijn Profiel</h4>
                 </div>
                 <!-- /.modal-header -->

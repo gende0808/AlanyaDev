@@ -96,8 +96,19 @@ class Account implements CRUD
     public function create()
     {
         try {
-            $stmt = $this->db->prepare("INSERT INTO account(userEmail,userPlaatsID,userStraatnaam,userHuisnummer,userTelefoonnummer,userPassword,userLevel,tokenCode,userStatus, userVoornaam, userAchternaam)
-                                    VALUES(:mail, :cityid, :street, :streetnr, :phone, :password, :userlevel, :token, :status, :firstname, :lastname)");
+            $stmt = $this->db->prepare("INSERT INTO account(userEmail,
+                                                            userPlaatsID,
+                                                            userStraatnaam,
+                                                            userHuisnummer,
+                                                            userTelefoonnummer,
+                                                            userPassword,
+                                                            userLevel,
+                                                            tokenCode,
+                                                            userStatus, 
+                                                            userVoornaam, 
+                                                            userAchternaam, 
+                                                            userToevoeging)
+                                    VALUES(:mail, :cityid, :street, :streetnr, :phone, :password, :userlevel, :token, :status, :firstname, :lastname, :useraddition)");
             $stmt->bindparam(":mail", $this->useremail);
             $stmt->bindparam(":cityid", $this->usercityid);
             $stmt->bindparam(":street", $this->userstreetname);
@@ -109,6 +120,7 @@ class Account implements CRUD
             $stmt->bindparam(":status", $this->userstatus);
             $stmt->bindparam(":firstname", $this->userfirstname);
             $stmt->bindparam(":lastname", $this->userlastname);
+            $stmt->bindparam(":useradd", $this->useraddition);
             $stmt->execute();
         } catch (PDOException $e) {
             echo "er is iets misgegaan met de verbinding van de server!" . $e->getMessage();
