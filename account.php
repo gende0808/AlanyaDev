@@ -100,16 +100,16 @@ try {
                                 <div class="input-group">
                                     <label for="uLogin"
                                            class="input-group-addon orange glyphicon glyphicon-lock"></label>
-                                    <input type="password" onKeyup="checkform()" class="form-control" name="wachtwoord1"
-                                           id="wachtwoord1"
+                                    <input type="password" onKeyup="checkform()" class="form-control" name="wachtwoordtest"
+                                           id="wachtwoordtest"
                                            placeholder="Huidig wachtwoord">
-                                    <input type="password" onkeyup="checkform(); checkPass(); return false;"
-                                           class="form-control" name="wachtwoord2" id="wachtwoord2"
+                                    <input type="password" onkeyup="checkform()"
+                                           class="form-control" name="accwachtwoord1" id="accwachtwoord1"
                                            placeholder="Nieuw wachtwoord">
-                                    <input type="password" onkeyup="checkform(); checkPass(); return false;"
-                                           class="form-control" name="wachtwoord2" id="wachtwoord3"
+                                    <input type="password" onkeyup="checkform(); checkPassAcc(); return false;"
+                                           class="form-control" name="accwachtwoord2" id="accwachtwoord2"
                                            placeholder="verifieer nieuw wachtwoord">
-                                    <span id="confirmMessage" class="confirmMessage"></span>
+                                    <span id="accconfirmMessage" class="accconfirmMessage"></span>
                                 </div>
                             </div>
 
@@ -201,6 +201,7 @@ try {
             <!-- /.modal-content -->
         </div>
         <!-- /.modal-dialog -->
+    </div>
     </div>
     <?PHP
 } catch (Exception $e) {
@@ -307,3 +308,6 @@ try {
         })
     });
 </script>
+<?PHP
+include_once "footer.php";
+?>

@@ -5,7 +5,7 @@ include_once "classes/Account.php";
 include_once "classes/City.php";
 include_once "classes/CityList.php";
 include_once "classes/AccountList.php";
-include_once "productAdded.php";
+
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -124,70 +124,69 @@ if (isset($_POST["registerbutton"])) {
             </div>
 
             <div class="modal-header">
-
+                <div id="testje" class="<?php echo $hidden ?>">
+                    <div class="alert alert-success" role="alert">
+                        <p><h2><b>Bedankt voor het registreren!</b></h2></p>
+                        <p><h4><i>U dient uw account te activeren door op de link te klikken die naar uw E-mail adres verzonden is.</i></h4></p>
+                    </div>
+                </div>
+                <?php echo $registreer ?></h4>
 
                 <h4 class="modal-title" id="myModalLabel">
-                    <div id="testje" class="<?php echo $hidden ?>">
-                        <div class="alert alert-success" role="alert">
-                            <p><h2><b>Bedankt voor het registreren!</b></h2></p>
-                            <p><h4><i>U dient uw account te activeren door op de link te klikken die naar uw E-mail adres verzonden is.</i></h4></p>
-                        </div>
-                    </div>
-                    <?php echo $registreer ?></h4>
             </div>
             <!-- /.modal-header -->
 
             <form name="theform" method="post" role="form" action="register.php">
                 <div class="modal-body">
                     <form role="form">
-                        <div class="form-group bord">
+                        <div class="form-group">
                             <div class="input-group">
                                 <label for="uLogin"
                                        class="input-group-addon orange glyphicon glyphicon-comment"></label>
                                 <input type="text" onKeyup="checkform()" class="form-control" name="email"
-                                       placeholder="E-mail">
+                                       placeholder="E-mail" style="border-style: outset!important; border-width: 1px;">
 
                             </div>
                         </div>
 
                         <!-- /.form-group -->
 
-                        <div class="form-group bord">
+                        <div class="form-group">
                             <div class="input-group">
-                                <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-lock"></label>
+                                <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-lock" style="border-style: solid!important; border-width: 1px;"></label>
                                 <input type="password" onKeyup="checkform()" class="form-control" name="wachtwoord1"
                                        id="wachtwoord1"
-                                       placeholder="Wachtwoord">
+                                       placeholder="Wachtwoord" style="border-style: outset!important; border-width: 1px;">
                                 <input type="password" onkeyup="checkform(); checkPass(); return false;"
                                        class="form-control" name="wachtwoord2" id="wachtwoord2"
-                                       placeholder="verifieer Wachtwoord">
+                                       placeholder="verifieer Wachtwoord" style="border-style: outset!important; border-width: 1px;">
                                 <span id="confirmMessage" class="confirmMessage"></span>
                             </div>
                         </div>
 
-                        <div class="form-group bord">
+                        <div class="form-group">
                             <div class="input-group">
                                 <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-user"></label>
                                 <input type="text" onKeyup="checkform()" class="form-control" name="firstname"
-                                       placeholder="Voornaam">
+                                       placeholder="Voornaam" style="border-style: outset!important; border-width: 1px;">
                                 <input type="text" onKeyup="checkform()" class="form-control" name="lastname"
-                                       placeholder="Achternaam">
+                                       placeholder="Achternaam" style="border-style: outset!important; border-width: 1px;">
                             </div>
                         </div>
                         <!-- /.form-group -->
 
-                        <div class="form-group bord">
+                        <div class="form-group">
                             <div class="input-group">
                                 <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-home"></label>
                                 <input type="text" onKeyup="checkform()" class="form-control" name="street"
                                        placeholder="Straatnaam"
-                                       style="width: 70%;">
+                                       style="width: 70%; border-style: outset!important; border-width: 1px;"">
 
                                 <input type="text" onKeyup="checkform()" class="form-control" name="number"
                                        placeholder="Nr."
-                                       style="width: 30%;">
+                                       style="width: 30%; border-style: outset!important; border-width: 1px;"">
                                 <input type="text" onKeyup="checkform()" class="form-control" name="userToevoeging"
-                                       placeholder="Toevoeging adres">
+                                       placeholder="Toevoeging adres" style="border-style: outset!important; border-width: 1px;">
                             </div>
                         </div>
                         <!-- /.form-group -->
@@ -214,12 +213,12 @@ if (isset($_POST["registerbutton"])) {
                         <p style="font-family: 'Open Sans', sans-serif">helaas bezorgen wij niet buiten de weergegeve
                             steden.</p>
 
-                        <div class="form-group bord">
+                        <div class="form-group">
                             <div class="input-group">
                                 <label for="uLogin"
                                        class="input-group-addon orange glyphicon glyphicon-earphone"></label>
                                 <input type="text" onKeyup="checkform()" class="form-control" name="phone"
-                                       placeholder="Telefoonnummer">
+                                       placeholder="Telefoonnummer" style="border-style: outset!important; border-width: 1px;">
                             </div>
                         </div>
                         <!-- /.form-group -->
