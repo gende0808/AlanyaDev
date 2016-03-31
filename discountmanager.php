@@ -26,7 +26,8 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
 
 <div class="container text-center" style="margin-top: 50px;">
     <?PHP
-    include_once "modals/actie_toevoegen_modal.php";
+    include_once "modals/prodactie_toevoegen_modal.php";
+    include_once "modals/catactie_toevoegen_modal.php";
     ?>
     <div class="col-md-12 col-md-offset-0 text-center" style="margin-top: 50px">
         <!-- Heb hier een margin top ingegooid zodat er niets onder de header verdwijnt. TODO margin bottom op header! -->
@@ -47,8 +48,11 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
 
         <input type="text" id="search" placeholder="Zoeken..." class="col-md-4 col-md-offset-0 search_box"
                onkeyup="doSearch()"/>
-        <button class="btn btn-default btn-lg col-md-3 col-md-offset-5" data-toggle="modal" data-target="#mand"
-                style="margin-top: 25px"> <span class="glyphicon glyphicon-plus"></span> Actie toevoegen
+        <button class="btn btn-default btn-lg col-md-3 col-md-offset-1" data-toggle="modal" data-target="#prodactie"
+                style="margin-top: 25px"> <span class="glyphicon glyphicon-plus"></span> Product Actie toevoegen
+        </button>
+        <button class="btn btn-default btn-lg col-md-3 col-md-offset-1" data-toggle="modal" data-target="#catactie"
+                style="margin-top: 25px"> <span class="glyphicon glyphicon-plus"></span> Categorie Actie toevoegen
         </button>
         <table id="producttable" class='table table-striped table-hover table-responsive'>
             <thead>
