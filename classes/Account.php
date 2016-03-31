@@ -120,7 +120,7 @@ class Account implements CRUD
             $stmt->bindparam(":status", $this->userstatus);
             $stmt->bindparam(":firstname", $this->userfirstname);
             $stmt->bindparam(":lastname", $this->userlastname);
-            $stmt->bindparam(":useradd", $this->useraddition);
+            $stmt->bindparam(":useraddition", $this->useraddition);
             $stmt->execute();
         } catch (PDOException $e) {
             echo "er is iets misgegaan met de verbinding van de server!" . $e->getMessage();
