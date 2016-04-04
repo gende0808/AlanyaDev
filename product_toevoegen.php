@@ -1,5 +1,5 @@
 <?PHP
-include_once "header.php";
+include_once "header2.php";
 include_once "classes/Product.php";
 include_once "classes/City.php";
 
@@ -17,7 +17,6 @@ $product->setProductdescription($productdescription);
 $product->setProductprice($producteuro, $productcents);
 $product->setCategoryid($categoryid);
 $product->create();
-include_once "../footer.php"
 ?>
 <script>
     window.location.href = "adminaccount.php";
