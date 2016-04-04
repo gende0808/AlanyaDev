@@ -29,7 +29,7 @@ class ProductList
 
         if (is_numeric($categoryID)) {
             try {
-                $stmt = $this->db->prepare("SELECT * FROM product WHERE categorieID= :catid ORDER BY `productNummer`");
+                $stmt = $this->db->prepare("SELECT * FROM product WHERE categorieID= :catid ORDER BY productNummer * 1, `productNummer` ASC");
                 $stmt->bindParam(':catid', $categoryID, PDO::PARAM_INT);
                 $stmt->execute();
                 while ($result = $stmt->fetch(PDO::FETCH_ASSOC))
