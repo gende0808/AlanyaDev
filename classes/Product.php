@@ -175,9 +175,6 @@ class Product implements CRUD
         if (empty($productnumber)) {
             throw new InvalidArgumentException("Productnummer is niet ingevoerd!");
         }
-        if (!is_numeric($productnumber)) {
-            throw new InvalidArgumentException("productnummer is geen getal!");
-        }
 
         $this->productnumber = $productnumber;
     }
