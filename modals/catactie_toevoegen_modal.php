@@ -13,12 +13,14 @@ include_once "classes/Category.php";
                 $("#datum1").hide();
                 $("#categorie").show();
                 $("#functie").show();
+                $("#prijs").show();
             });
             $("#datum").click(function () {
                 $("#datum1").show();
                 $("#wekelijks1").hide();
                 $("#categorie").show();
                 $("#functie").show();
+                $("#prijs").show();
             });
         });
     </script>
@@ -132,6 +134,18 @@ include_once "classes/Category.php";
                                             ?>
                                         </select>
                                     </div>
+                                </div>
+                                <hr>
+                            </div>
+                            <div id="prijs" class="form-group text-right" style="display: none">
+                                <label class="control-label col-sm-4" for="Prijs">Prijs:</label>
+                                <div class="text-left">
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" name="Prijs" placeholder="Euro">
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" name="Prijs1" placeholder="Cent">
+                                        </div>
                                 </div>
                             </div>
 

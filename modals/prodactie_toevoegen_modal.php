@@ -123,18 +123,24 @@ include_once "classes/Category.php";
 
                             <div id="product" class="form-group text-right" style="display: none">
                                 <label class="control-label col-sm-4" for="Producten">Producten:</label>
-                                <div class="text-left">
-                                    <div class="col-sm-8 dropdown" style="text-align: left;">
-                                        <?PHP
+
+                                    <div class="col-sm-12 dropdown" style="text-align: left;">
+                                        <table id="newtable" class='table table-striped table-hover table-responsive' style="margin-top: 10%">
+                                            <tbody>
+                                            <?PHP
                                         $productlist = new ProductList($DB_con);
                                         $listofproducts = $productlist->getlistofproducts();
                                         foreach ($listofproducts as $product){
-                                            echo "<input type='checkbox' style='width: 20px'>".$product->getProductname()."<br>";
-//                                                echo "<option type='text' class='form-control' value='".$category->getcatID()."'>".$category->getcatname(). "</option>";
+                                            echo "<tr id='tr". $product->getProductid() ."'>";
+                                            echo "<td id='categorie" . $product->getProductid() ."' style='width: 150px;'>"."<input type='checkbox' style='width: 20px'>" . $product->getCategoryid() . "</td>";
+                                            echo "<td id='naam" . $product->getProductid() ."' style='width: 150px;'>". $product->getProductname() . "</td>";
+                                            echo "<td id='prijs" . $product->getProductid() ."' style='width: 150px;'>"."<input type='textbox' value='€".$product->getProductprice()."'></td>";
                                         }
                                         ?>
+                                            </tbody>
+                                        </table>
                                     </div>
-                                </div>
+
                             </div>
 
 

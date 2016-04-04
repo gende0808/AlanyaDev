@@ -4,21 +4,33 @@ include_once "classes/ProductList.php";
 include_once "classes/Product.php";
 include_once "classes/Category.php";
 include_once "classes/CategoryList.php";
+include_once "classes/Discount.php";
+include_once "classes/DiscountList.php";
 
 
-if (isset($_GET['productid']) && isset($_GET['delete'])) {
+
+if (isset($_GET['actieid']) && isset($_GET['delete'])) {
     $delete = $_GET['delete'];
-    $productid = $_GET['productid'];
+    $actieid = $_GET['actieid'];
     if ($delete == "true") {
         try {
-            $productdeletion = new Product($DB_con);
-            $productdeletion->delete($productid);
+            $discountdeletion = new Discount($DB_con);
+            $discountdeletion->delete($actieid);
         } catch (Exception $e) {
             echo "this went wrong: " . $e->getMessage();
         }
 
     }
 }
+$discount_ID = 1;
+//    if (!isset($_GET['catID'])) {
+//        $discount_ID = 1; //als er geen $_GET['catid'] is meegegeven is catid standaard 1
+//    } else {
+//        $discount_ID = $_GET['catID'];
+//    }
+
+$discountlist = new DiscountList($DB_con, $discount_ID);
+$listofdiscounts = $discountlist->getlistofdiscounts();
 
 
 ?>
@@ -54,18 +66,35 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
         <button class="btn btn-default btn-lg col-md-3 col-md-offset-1" data-toggle="modal" data-target="#catactie"
                 style="margin-top: 25px"> <span class="glyphicon glyphicon-plus"></span> Categorie Actie toevoegen
         </button>
-        <table id="producttable" class='table table-striped table-hover table-responsive'>
+        <table id="producttable" class='table table-striped table-hover table-responsive' style="margin-top: 15%">
             <thead>
             <tr>
                 <th class='text-center'>Actie nummer</th>
                 <th class='text-center'>Actie naam</th>
+                <th class='text-center'>Omschrijving</th>
                 <th class='text-center'>Begin datum</th>
                 <th class='text-center'>Eind datum</th>
-                <th class='text-center'>Omschrijving</th>
+                <th class='text-center'>Korting</th>
                 <th class='text-center'>Verwijderen</th>
             </tr>
             </thead>
-            <tbody id="tablecontainer">
+            <tbody
+            <?php
+            foreach ($listofdiscounts as $discount) { //in deze foreach loopt hij over ieder individueel product en print hij de waarden in die array
+                echo "<tr id='tr". $discount->getId() ."'>";
+                echo "<td id='nummer" . $discount->getId() ."' style='width: 150px;'>" . $discount->getId() . "</td>";
+                echo "<td id='naam" . $discount->getId(). "'style='width: 150px;'>" . $discount->getDiscountname() . "</td>";
+                echo "<td id='omschrijving". $discount->getId() ."' style='width: 150px;'>" . $discount->getDiscounttext() . "</td>";
+                echo "<td id='startdate". $discount->getId() ."' style='width: 150px;'>" . $discount->getDiscountstartdate() . "</td>";
+                echo "<td id='enddate". $discount->getId() ."' style='width: 150px;'>" . $discount->getDiscountenddate() . "</td>";
+                echo "<td id='price" . $discount->getId() . "' style='width: 150px;text-align: right'>" ."€". $discount->getDiscount() . "</td>";
+//
+                echo "<td style='width: 150px;'><a href='discountmanager.php?actieid=" . $discount->getId() . "&delete=true'".
+                    'onclick="return confirm('."'weet je zeker dat je ".$discount->getDiscountname()." wilt verwijderen?'".')"' .">Verwijderen</a></td>";
+                echo "</tr>";
+                echo "\n";
+            }
+            ?>
             </tbody>
         </table>
     </div>

@@ -90,6 +90,9 @@ class Discount implements CRUD
             $this->id = $result['actieID'];
             $this->discountname = $result['actieNaam'];
             $this->discount= $result['actieKorting'];
+            $this->discounttext= $result['actieOmschrijving'];
+            $this->discountstartdate= $result['actieBegindatum'];
+            $this->discountenddate= $result['actieEinddatum'];
         } catch (PDOException $e) {
             echo "Database-error: " . $e->getMessage();
         }
@@ -219,9 +222,29 @@ class Discount implements CRUD
     /**
      * @param int $discount
      */
-    public function setDiscount($discount)
+    public function setDiscount($euro, $cents)
     {
-        $this->discount = $discount;
+        if (empty($euro) && empty($cents)) {
+            throw new InvalidArgumentException("prijs mag niet leeg zijn");
+        }
+        if (empty($cents)) {
+            $cents = 00;
+        }
+        if (empty($euro)) {
+            $euro = 00;
+        }
+        if (!is_numeric($euro) || !is_numeric($cents)) {
+            throw new InvalidArgumentException("bedrag moet een getal zijn");
+        }
+
+        if ($euro < 0 || $cents < 0) {
+            throw new InvalidArgumentException("prijs kan niet lager dan 0 zijn");
+        }
+        if (strlen($euro) > 11 || strlen($cents) > 2) {
+            throw new InvalidArgumentException("bedrag te groot of centen kloppen niet");
+        }
+
+        $this->discount = $euro . "." . $cents;
     }
 
 

@@ -33,7 +33,7 @@ class DiscountList
     }
 
     /**
-     * @return 
+     * @return
      */
     function getlistofdiscounts()
     {
