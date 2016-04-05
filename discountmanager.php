@@ -6,6 +6,8 @@ include_once "classes/Category.php";
 include_once "classes/CategoryList.php";
 include_once "classes/Discount.php";
 include_once "classes/DiscountList.php";
+include_once "classes/Discount2.php";
+include_once "classes/DiscountList2.php";
 
 
 
@@ -21,20 +23,37 @@ if (isset($_GET['actieid']) && isset($_GET['delete'])) {
         }
 
     }
-}
-$discount_ID = 1;
+
 //    if (!isset($_GET['catID'])) {
 //        $discount_ID = 1; //als er geen $_GET['catid'] is meegegeven is catid standaard 1
 //    } else {
 //        $discount_ID = $_GET['catID'];
 //    }
-
+}
+$discount_ID = 1;
 $discountlist = new DiscountList($DB_con, $discount_ID);
 $listofdiscounts = $discountlist->getlistofdiscounts();
 
-
+$discount_ID2 = 1;
+$discountlist2 = new DiscountList2($DB_con, $discount_ID2);
+$listofdiscounts2 = $discountlist2->getlistofdiscounts2();
 ?>
 
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#Wekelijks").click(function () {
+                $("#weeklyTable").show();
+                $("#dateTable").hide();
+            });
+            $("#Weekdagen").click(function () {
+                $("#dateTable").show();
+                $("#weeklyTable").hide();
+            });
+        });
+    </script>
+</head>
 
 <div class="container text-center" style="margin-top: 50px;">
     <?PHP
@@ -66,7 +85,15 @@ $listofdiscounts = $discountlist->getlistofdiscounts();
         <button class="btn btn-default btn-lg col-md-3 col-md-offset-1" data-toggle="modal" data-target="#catactie"
                 style="margin-top: 25px"> <span class="glyphicon glyphicon-plus"></span> Categorie Actie toevoegen
         </button>
-        <table id="producttable" class='table table-striped table-hover table-responsive' style="margin-top: 15%">
+        <button id="Wekelijks" class="btn btn-primary" style="width: 20%">
+            Met begin <br>
+            en -einddatum
+        </button>
+        <button id="Weekdagen" class="btn btn-primary" style="width: 20%">
+            Wekelijks<br>
+            op een dag
+        </button>
+        <table id="weeklyTable" class='table table-striped table-hover table-responsive' style="margin-top: 15%;display: none">
             <thead>
             <tr>
                 <th class='text-center'>Actie nummer</th>
@@ -88,6 +115,37 @@ $listofdiscounts = $discountlist->getlistofdiscounts();
                 echo "<td id='startdate". $discount->getId() ."' style='width: 150px;'>" . $discount->getDiscountstartdate() . "</td>";
                 echo "<td id='enddate". $discount->getId() ."' style='width: 150px;'>" . $discount->getDiscountenddate() . "</td>";
                 echo "<td id='price" . $discount->getId() . "' style='width: 150px;text-align: right'>" ."€". $discount->getDiscount() . "</td>";
+//
+                echo "<td style='width: 150px;'><a href='discountmanager.php?actieid=" . $discount->getId() . "&delete=true'".
+                    'onclick="return confirm('."'weet je zeker dat je ".$discount->getDiscountname()." wilt verwijderen?'".')"' .">Verwijderen</a></td>";
+                echo "</tr>";
+                echo "\n";
+            }
+            ?>
+            </tbody>
+        </table>
+        <table id="dateTable" class='table table-striped table-hover table-responsive' style="margin-top: 15%s">
+            <thead>
+            <tr>
+                <th class='text-center'>Actie nummer</th>
+                <th class='text-center'>Actie naam</th>
+                <th class='text-center'>Omschrijving</th>
+                <th class='text-center'>Dagen in de week</th>
+                <th class='text-center'>Productnaam</th>
+                <th class='text-center'>Korting</th>
+                <th class='text-center'>Verwijderen</th>
+            </tr>
+            </thead>
+            <tbody
+            <?php
+            foreach ($listofdiscounts2 as $discount2) { //in deze foreach loopt hij over ieder individueel product en print hij de waarden in die array
+                echo "<tr id='tr". $discount2->getId() ."'>";
+                echo "<td id='nummer" . $discount2->getId() ."' style='width: 150px;'>" . $discount2->getId() . "</td>";
+                echo "<td id='naam" . $discount2->getId(). "'style='width: 150px;'>" . $discount2->getDiscountname() . "</td>";
+                echo "<td id='omschrijving". $discount2->getId() ."' style='width: 150px;'>" . $discount2->getDiscounttext() . "</td>";
+                echo "<td id='actiedagen". $discount2->getId() ."' style='width: 150px;'>" . $discount2->getMaandag() . "</td>";
+                echo "<td id='enddate". $discount2->getId() ."' style='width: 150px;'>" . $discount2->getDinsdag() . "</td>";
+                echo "<td id='price" . $discount2->getId() . "' style='width: 150px;text-align: right'>" ."€". $discount2->getDiscount() . "</td>";
 //
                 echo "<td style='width: 150px;'><a href='discountmanager.php?actieid=" . $discount->getId() . "&delete=true'".
                     'onclick="return confirm('."'weet je zeker dat je ".$discount->getDiscountname()." wilt verwijderen?'".')"' .">Verwijderen</a></td>";

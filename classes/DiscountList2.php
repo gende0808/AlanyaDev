@@ -5,7 +5,7 @@ class DiscountList2
     /**
      * @var array
      */
-    private $listofdiscounts = array();
+    private $listofdiscounts2 = array();
     /**
      * @var PDO
      */
@@ -17,11 +17,11 @@ class DiscountList2
 
         try
         {
-            $stmt = $this->db->prepare("SELECT actieID FROM actie");
+            $stmt = $this->db->prepare("SELECT actieID FROM actie2");
             $stmt->execute();
             while ($result = $stmt->fetch(PDO::FETCH_ASSOC))
             {
-                $this->listofdiscounts[] = new Discount($this->db, $result['actieID']);
+                $this->listofdiscounts2[] = new Discount2($this->db, $result['actieID']);
             }
 
         }
@@ -35,9 +35,9 @@ class DiscountList2
     /**
      * @return
      */
-    function getlistofdiscounts()
+    function getlistofdiscounts2()
     {
-        return $this->listofdiscounts;
+        return $this->listofdiscounts2;
     }
 
 }

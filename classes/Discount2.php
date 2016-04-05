@@ -108,16 +108,21 @@ class Discount2 implements CRUD
         }
 
         try {
-            $stmt = $this->db->prepare("SELECT * FROM actie WHERE actieID= :actieid");
+            $stmt = $this->db->prepare("SELECT * FROM actie2 WHERE actieID= :actieid");
             $stmt->bindparam(":actieid", $id);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             $this->id = $result['actieID'];
             $this->discountname = $result['actieNaam'];
             $this->discount= $result['actieKorting'];
-            $this->discounttext= $result['actieOmschrijving'];
-            $this->discountstartdate= $result['actieBegindatum'];
-            $this->discountenddate= $result['actieEinddatum'];
+            $this->maandag= $result['maandag'];
+            $this->dinsdag= $result['dinsdag'];
+            $this->woensdag= $result['woensdag'];
+            $this->donderdag= $result['donderdag'];
+            $this->vrijdag= $result['vrijdag'];
+            $this->zaterdag= $result['zaterdag'];
+
+
         } catch (PDOException $e) {
             echo "Database-error: " . $e->getMessage();
         }
@@ -207,7 +212,7 @@ class Discount2 implements CRUD
     /**
      * @return boolean
      */
-    public function isMaandag()
+    public function getMaandag()
     {
         return $this->maandag;
     }
@@ -223,7 +228,7 @@ class Discount2 implements CRUD
     /**
      * @return boolean
      */
-    public function isDinsdag()
+    public function getDinsdag()
     {
         return $this->dinsdag;
     }
@@ -239,7 +244,7 @@ class Discount2 implements CRUD
     /**
      * @return boolean
      */
-    public function isWoensdag()
+    public function getWoensdag()
     {
         return $this->woensdag;
     }
@@ -255,7 +260,7 @@ class Discount2 implements CRUD
     /**
      * @return boolean
      */
-    public function isDonderdag()
+    public function getDonderdag()
     {
         return $this->donderdag;
     }
@@ -271,7 +276,7 @@ class Discount2 implements CRUD
     /**
      * @return boolean
      */
-    public function isVrijdag()
+    public function getVrijdag()
     {
         return $this->vrijdag;
     }
@@ -287,7 +292,7 @@ class Discount2 implements CRUD
     /**
      * @return boolean
      */
-    public function isZaterdag()
+    public function getZaterdag()
     {
         return $this->zaterdag;
     }
@@ -303,7 +308,7 @@ class Discount2 implements CRUD
     /**
      * @return boolean
      */
-    public function isZondag()
+    public function getZondag()
     {
         return $this->zondag;
     }
