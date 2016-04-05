@@ -61,7 +61,7 @@ include_once "classes/Category.php";
                         <hr>
                     </div>
                     <div>
-                        <form action="actie_toevoegen.php" method="post" class="form-horizontal" role="form">
+                        <form action="actie_toevoegen2.php" method="post" class="form-horizontal" role="form">
                             <div class="form-group">
                                 <label class="control-label col-sm-4 " for="Actienummer">Actienummer:</label>
                                 <div class="col-sm-8">

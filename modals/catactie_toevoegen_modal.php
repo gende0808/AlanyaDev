@@ -61,7 +61,7 @@ include_once "classes/Category.php";
                         <hr>
                     </div>
                     <div>
-                        <form action="actie_toevoegen.php" method="post" class="form-horizontal" role="form">
+                        <form action="actie_toevoegen2.php" method="post" class="form-horizontal" role="form">
                             <div class="form-group">
                                 <label class="control-label col-sm-4 " for="Actienummer">Actienummer:</label>
                                 <div class="col-sm-8">
@@ -103,19 +103,19 @@ include_once "classes/Category.php";
                                 <div class="form-group">
                                     <label class="control-label col-sm-4 " for="Productprijs">Dagen:</label>
                                     <div class="col-sm-8" style="text-align: left;">
-                                        <input type="checkbox" name="vehicle" value="Bike"
+                                        <input type="checkbox" name="maandag" value="true"
                                                style="width: 20px">Maandag<br>
-                                        <input type="checkbox" name="vehicle" value="Car"
+                                        <input type="checkbox" name="dinsdag" value="true"
                                                style="width: 20px">Dinsdag<br>
-                                        <input type="checkbox" name="vehicle" value="Car"
+                                        <input type="checkbox" name="woensdag" value="true"
                                                style="width: 20px">Woensdag<br>
-                                        <input type="checkbox" name="vehicle" value="Car"
+                                        <input type="checkbox" name="donderdag" value="true"
                                                style="width: 20px">Donderdag<br>
-                                        <input type="checkbox" name="vehicle" value="Car"
+                                        <input type="checkbox" name="vrijdag" value="true"
                                                style="width: 20px">Vrijdag<br>
-                                        <input type="checkbox" name="vehicle" value="Car"
+                                        <input type="checkbox" name="zaterdag" value="true"
                                                style="width: 20px">Zaterdag<br>
-                                        <input type="checkbox" name="vehicle" value="Car" style="width: 20px">Zondag<br>
+                                        <input type="checkbox" name="zondag" value="true" style="width: 20px">Zondag<br>
                                     </div>
                                 </div>
                                 <hr>
