@@ -248,7 +248,7 @@ class Account implements CRUD
         if (empty($usercityid)) {
             throw new InvalidArgumentException("Je hebt geen stad gekozen!");
         }
-        $this->usercityid = $usercityid;
+        $this->usercityid = htmlentities($usercityid);
     }
 
     /**
@@ -259,7 +259,7 @@ class Account implements CRUD
         if (empty($userstreetname)) {
             throw new InvalidArgumentException("Je hebt geen straat ingevoerd!");
         }
-        $this->userstreetname = $userstreetname;
+        $this->userstreetname = htmlentities($userstreetname);
     }
 
     /**
@@ -270,7 +270,7 @@ class Account implements CRUD
         if (empty($userhousenumber)) {
             throw new InvalidArgumentException("Je hebt geen huisnummer ingevoerd!");
         }
-        $this->userhousenumber = $userhousenumber;
+        $this->userhousenumber = htmlentities($userhousenumber);
     }
 
     /**
@@ -281,7 +281,7 @@ class Account implements CRUD
         if (empty($useremail)) {
             throw new InvalidArgumentException("Je hebt geen email ingevoerd!");
         }
-        $this->useremail = $useremail;
+        $this->useremail = htmlentities($useremail);
 
     }
 
@@ -290,7 +290,7 @@ class Account implements CRUD
      */
     public function setUserfirstname($userfirstname)
     {
-        $this->userfirstname = $userfirstname;
+        $this->userfirstname = htmlentities($userfirstname);
     }
 
     /**
@@ -298,7 +298,7 @@ class Account implements CRUD
      */
     public function setUserlastname($userlastname)
     {
-        $this->userlastname = $userlastname;
+        $this->userlastname = htmlentities($userlastname);
     }
 
     /**
@@ -331,7 +331,7 @@ class Account implements CRUD
         if (empty($userphonenumber)) {
             throw new InvalidArgumentException("telefoonnummer is leeg");
         }
-        $this->userphonenumber = $userphonenumber;
+        $this->userphonenumber = htmlentities($userphonenumber);
     }
 
     /**
@@ -339,7 +339,7 @@ class Account implements CRUD
      */
     public function setUsernote($usernote)
     {
-        $this->usernote = $usernote;
+        $this->usernote = htmlentities($usernote);
     }
 
     /**
