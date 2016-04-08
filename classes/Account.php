@@ -233,7 +233,7 @@ class Account implements CRUD
         if (!is_numeric($userid)) {
             throw new InvalidArgumentException('userID is niet numeriek!');
         }
-        $this->userid = $userid;
+        $this->userid = htmlentities($userid);
     }
 
     /**
