@@ -155,7 +155,7 @@ class Product implements CRUD
      */
     public function setProductid($productid)
     {
-        $this->productid = $productid;
+        $this->productid = htmlentities($productid);
     }
 
 
@@ -176,7 +176,7 @@ class Product implements CRUD
             throw new InvalidArgumentException("Productnummer is niet ingevoerd!");
         }
 
-        $this->productnumber = $productnumber;
+        $this->productnumber = htmlentities($productnumber);
     }
 
     /**
@@ -217,7 +217,7 @@ class Product implements CRUD
             throw new InvalidArgumentException("bedrag te groot of centen kloppen niet");
         }
 
-        $this->productprice = $productprice . "." . $cents;
+        $this->productprice = htmlentities($productprice . "." . $cents);
     }
 
     /**
@@ -233,7 +233,7 @@ class Product implements CRUD
      */
     public function setProductdescription($productdescription)
     {
-        $this->productdescription = $productdescription;
+        $this->productdescription = htmlentities($productdescription);
     }
 
     /**
@@ -252,7 +252,7 @@ class Product implements CRUD
         if (empty($productname)) {
             throw new InvalidArgumentException("productnaam mag niet leeg zijn!");
         }
-        $this->productname = $productname;
+        $this->productname = htmlentities($productname);
     }
 
     /**
@@ -269,7 +269,7 @@ class Product implements CRUD
     public function setCategoryid($categoryid)
     {
         //moet nog error handling in zodat er gecheckt wordt of dit een int is, niet leeg is etc.
-        $this->categoryid = $categoryid;
+        $this->categoryid = htmlentities($categoryid);
     }
 
     public function getProductInfo(){
