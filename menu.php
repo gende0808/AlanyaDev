@@ -77,10 +77,10 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
 </div>
 <?php
 include_once "footer.php";
-if(isset($_POST['bref'])){
-    $bref = htmlspecialchars($_POST['bref']);
+if(isset($_GET['bref'])){
+    $bref = htmlspecialchars($_GET['bref']);
     echo '<script>window.onload = function(){buttonreferral('.$bref.')}</script>';
 } else {
-echo '<script src="js/menushowcat.js"></script>';
+    echo '<script src="js/menushowcat.js"></script>';
 }
 ?>
