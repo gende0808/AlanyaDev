@@ -35,10 +35,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                     </ul>
             </div>
         </div>
-        <!-- Heb hier een margin top ingegooid zodat er niets onder de header verdwijnt. TODO margin bottom op header! -->
         <?PHP
-        //TODO _________________________________________________________________________________________________________
-
         try {
 
             $categorylist = new CategoryList($DB_con); //er wordt een nieuwe categorie lijst aangemaakt
@@ -55,7 +52,6 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
         } catch (Exception $e) {
             echo $e->getMessage();
         }
-        //TODO _________________________________________________________________________________________________________
         ?>
 
 
@@ -81,5 +77,10 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
 </div>
 <?php
 include_once "footer.php";
+if(isset($_POST['bref'])){
+    $bref = htmlspecialchars($_POST['bref']);
+    echo '<script>window.onload = function(){buttonreferral('.$bref.')}</script>';
+} else {
+echo '<script src="js/menushowcat.js"></script>';
+}
 ?>
-<script src="js/menushowcat.js"></script>

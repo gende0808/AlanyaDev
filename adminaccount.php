@@ -90,7 +90,6 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
 <script src="js/scrolltop.js"></script>
 <script src="js/modernizr.custom.js"></script>
 <script src="js/adminshowcat.js"></script>
-<script src="js/admin.js"></script>
 <script>
     $(document).ready(function () {
         $("#nav-mobile").html($("#nav-main").html());
@@ -188,5 +187,34 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
 
         })
     });
+</script>
+<script>
+    // functie toont producten in het menu admin
+
+    function showProducts(str) {
+        if (str == "") {
+            document.getElementById("tablecontainer").innerHTML = "";
+            return;
+        } else {
+
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    document.getElementById("tablecontainer").innerHTML = xmlhttp.responseText;
+                    var oTable = $('tablecontainer').dataTable({"sPaginationType": "full_numbers"});
+                    var rows = oTable.fnGetNodes();
+                    {
+                        oTable.fnUpdate('X', rows[i], 4);
+                    }
+                }
+            };
+            xmlhttp.open("GET", "adminaccount/tabledata.php?catID=" + str, true);
+            xmlhttp.send();
+        }
+    }
 </script>
 <script type="text/javascript" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
