@@ -1,7 +1,3 @@
-/**
- * Created by Gregory on 28-2-2016.
- */
-
 function ShowIMG(waarde){
     $( document ).ready(function() {
             $("#placehere img:last-child").remove();
@@ -34,7 +30,7 @@ String.prototype.isEmpty = function() {
             accmessage.innerHTML = "Wachtwoorden komen niet overeen, heeft u een typfout gemaakt?"
         }
     }
-
+//voor registratieformulier
 function checkPass()
 {
     var pass1 = document.getElementById('wachtwoord1');
@@ -53,39 +49,7 @@ function checkPass()
     }
 }
 
-
-
-// onderstaande functie is voor het verzenden van een request naar tabledata.php met ajax om producten op te halen.
-
-    function showProducts(str) {
-    if (str == "") {
-        document.getElementById("tablecontainer").innerHTML = "";
-        return;
-    } else {
-
-        if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function () {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                document.getElementById("tablecontainer").innerHTML = xmlhttp.responseText;
-                var oTable = $('tablecontainer').dataTable({"sPaginationType": "full_numbers"});
-                var rows = oTable.fnGetNodes();
-                {
-                    oTable.fnUpdate('X', rows[i], 4);
-                }
-            }
-        };
-        xmlhttp.open("GET", "adminaccount/tabledata.php?catID=" + str, true);
-        xmlhttp.send();
-//Ajax admin account 
-
-    }
-}function showProductsMenu(str) {
+function showProductsMenu(str) {
 
 
     if (str == "") {
@@ -136,20 +100,18 @@ function checkPass()
 
     }
 }
-//onderstaande functie is de zoekfunctie voor adminaccount
+//onderstaande zoekfunctie voor tabellen
 function doSearch() {
     var searchText = document.getElementById('search').value;
     var targetTable = document.getElementById('producttable');
     var targetTableColCount;
 
-    //Loop through table rows
     for (var rowIndex = 0; rowIndex < targetTable.rows.length; rowIndex++) {
         var rowData = '';
 
-        //Get column count from header row
         if (rowIndex == 0) {
             targetTableColCount = targetTable.rows.item(rowIndex).cells.length;
-            continue; //do not execute further code for header row.
+            continue;
         }
 
         //Process data rows. (rowIndex >= 1)
@@ -167,6 +129,9 @@ function doSearch() {
     }
 
 
-
-
+//
+function buttonreferral(catid){
+    showProducts(catid);
+    ShowIMG(catid);
+}
 

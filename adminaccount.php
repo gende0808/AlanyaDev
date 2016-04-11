@@ -90,6 +90,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
 <script src="js/scrolltop.js"></script>
 <script src="js/modernizr.custom.js"></script>
 <script src="js/adminshowcat.js"></script>
+<script src="js/admin.js"></script>
 <script>
     $(document).ready(function () {
         $("#nav-mobile").html($("#nav-main").html());
