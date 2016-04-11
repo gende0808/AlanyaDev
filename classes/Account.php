@@ -217,12 +217,9 @@ class Account implements CRUD
 
     public function delete($id)
     {
-
-    }
-
-    public function updateUserStatus()
-    {
-        //$stmt = $this->db->prepare
+        $stmt = $this->db->prepare("DELETE FROM account WHERE userID= :productid");
+        $stmt->bindParam(':productid', $id, PDO::PARAM_INT);
+        $stmt->execute();
     }
 
     /**
