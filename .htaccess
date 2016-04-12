@@ -1,5 +1,12 @@
-ErrorDocument 400 http://localhost/alanyadev/error/400.php
-ErrorDocument 401 http://localhost/alanyadev/error/401.php
-ErrorDocument 403 http://localhost/alanyadev/error/403.php
-ErrorDocument 404 http://localhost/alanyadev/error/404.php
-ErrorDocument 500 http://localhost/alanyadev/error/500.php
+RewriteEngine On
+Options -Indexes
+Options -Multiviews
+ErrorDocument 400 http://localhost/alanyadev/400.php
+ErrorDocument 403 http://localhost/alanyadev/403.php
+ErrorDocument 404 http://localhost/alanyadev/404.php
+ErrorDocument 500 http://localhost/alanyadev/500.php
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule (.*) $1.php [L]

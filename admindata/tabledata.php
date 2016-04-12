@@ -1,8 +1,8 @@
 <?php
 /*
- * In dit php script word de tabel voor de adminaccount gemaakt.
+ * In dit php script word de tabel voor de admindata gemaakt.
  * Dit moet in een apart bestand staan omdat ajax op een bestand wordt uitgevoerd.
- * Als we ajax op adminaccount.php zelf uitvoeren zal hij alles refreshen.
+ * Als we ajax op admindata.php zelf uitvoeren zal hij alles refreshen.
  * in plaats daarvan staan hierin alleen de code betreffende de tabel en zal dus alleen de tabel worden ge-refreshed.
  */
 
@@ -33,7 +33,7 @@ try {
         echo "<td id='omschrijving". $product->getProductid() ."' style='width: 150px;'>" . $product->getProductdescription() . "</td>";
         echo "<td id='price" . $product->getProductid() . "' style='width: 150px;'>" . $product->getProductpriceformatted() . "</td>";
         echo "<td style='width: 150px;'><button data-toggle='modal' data-target='#bewerkenmodal' data-productid='".$product->getProductid()."'>Wijzigen</button></td>";
-        echo "<td style='width: 150px;'><a href='adminaccount.php?productid=" . $product->getProductid() . "&delete=true'".
+        echo "<td style='width: 150px;'><a href='admindata.php?productid=" . $product->getProductid() . "&delete=true'".
             'onclick="return confirm('."'weet je zeker dat je ".$product->getProductname()." wilt verwijderen?'".')"' .">Verwijderen</a></td>";
         echo "</tr>";
         echo "\n";

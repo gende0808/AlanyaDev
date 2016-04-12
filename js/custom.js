@@ -67,7 +67,7 @@ function showProductsMenu(str) {
                 }
             }
         };
-        xmlhttp.open("GET", "menu/tabledatamenu.php?catID=" + str, true);
+        xmlhttp.open("GET", "tabledatamenu/tabledatamenu.php?catID=" + str, true);
         xmlhttp.send();
 
 
@@ -90,7 +90,7 @@ function showProductsMenu(str) {
                 }
             }
         };
-        xmlhttp.open("GET", "menu/tabledatamenu.php?catID=" + str, true);
+        xmlhttp.open("GET", "tabledatamenu/tabledatamenu.php?catID=" + str, true);
         xmlhttp.send();
 
 

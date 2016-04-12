@@ -212,7 +212,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                     }
                 }
             };
-            xmlhttp.open("GET", "adminaccount/tabledata.php?catID=" + str, true);
+            xmlhttp.open("GET", "admindata/tabledata.php?catID=" + str, true);
             xmlhttp.send();
         }
     }

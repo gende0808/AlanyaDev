@@ -1,8 +1,8 @@
 <?php
 /*
- * In dit php script word de tabel voor de adminaccount gemaakt.
+ * In dit php script word de tabel voor de admindata gemaakt.
  * Dit moet in een apart bestand staan omdat ajax op een bestand wordt uitgevoerd.
- * Als we ajax op adminaccount.php zelf uitvoeren zal hij alles refreshen.
+ * Als we ajax op admindata.php zelf uitvoeren zal hij alles refreshen.
  * in plaats daarvan staan hierin alleen de code betreffende de tabel en zal dus alleen de tabel worden ge-refreshed.
  */
 

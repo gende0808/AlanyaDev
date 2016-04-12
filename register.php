@@ -209,9 +209,8 @@ if (isset($_POST["registerbutton"])) {
                             </div>
                         </div>
                         <!-- /.form-group -->
-                        <p style="font-family: 'Open Sans', sans-serif">helaas bezorgen wij niet buiten de weergegeve
+                        <p style="font-family: 'Open Sans', sans-serif">helaas bezorgen wij niet buiten de weergegeven
                             steden.</p>
-
                         <div class="form-group">
                             <div class="input-group">
                                 <label for="uLogin"

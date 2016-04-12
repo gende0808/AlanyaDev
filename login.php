@@ -1,12 +1,11 @@
 <?php
 session_start();
-//session comes later!
 
 include_once "connection.php";
 include_once "interfaces/CRUD.php";
 include_once "classes/Account.php";
 include_once "classes/AccountList.php";
-include_once "classes/city.php";
+//include city verwijdered, waarschijnlijk niet nodig?
 
 $email = $_POST['loginemail'];
 $password = $_POST['loginpass'];
