@@ -78,10 +78,6 @@ include_once "interfaces/CRUD.php";
             <li><a href="about" class="hvr-float-shadow">Over ons</a></li>
             <li><a href="tel:0756409003" class="hvr-float-shadow"><span class="glyphicon glyphicon-earphone"></span> 075-6409003 </a></li>
             <li><a href="shoppingcart" class="hvr-float-shadow"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
-            <?php
-            echo $test;
-            ?>
-
         </ul>
     </nav>
     <nav id="nav-mobile"></nav>
