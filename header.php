@@ -15,7 +15,7 @@ if(isset($_SESSION['logged']))
     }
     else
     {
-        $test = " <li><a href='#' data-toggle='modal' data-target='#myModal' class='hvr-float-shadow'>Inloggen</a></li>
+        $loginenregisterknoppen = " <li><a href='#' data-toggle='modal' data-target='#myModal' class='hvr-float-shadow'>Inloggen</a></li>
                 <li><a href='register' class='hvr-float-shadow'>Registreren</a></li>";
     }
 
@@ -78,6 +78,8 @@ include_once "interfaces/CRUD.php";
             <li><a href="about" class="hvr-float-shadow">Over ons</a></li>
             <li><a href="tel:0756409003" class="hvr-float-shadow"><span class="glyphicon glyphicon-earphone"></span> 075-6409003 </a></li>
             <li><a href="shoppingcart" class="hvr-float-shadow"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+            <?PHP echo $loginenregisterknoppen;
+            ?>
         </ul>
     </nav>
     <nav id="nav-mobile"></nav>
