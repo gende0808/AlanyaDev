@@ -5,8 +5,9 @@ $mand = "";
 
 if(isset($_SESSION['logged']))
 {
-    $loginenregisterknoppen = "<li class='dropdown'><button class='myButton' data-toggle='dropdown'>Mijn account  <span class='caret'></span></button>
-        <ul class='dropdown-tabledatamenu'>
+    $loginenregisterknoppen = "<li class='dropdown'>
+        <button class='myButton' data-toggle='dropdown'>Mijn account  <span class='caret'></span></button>
+        <ul class='dropdown-menu'>
          <a href='account.php' style='color: black'>Profiel</a>
          <a href='logout.php' style='color: black'>Uitloggen</a>
         </ul>
