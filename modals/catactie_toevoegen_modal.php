@@ -3,6 +3,8 @@ include_once "connection.php";
 include_once "classes/CategoryList.php";
 include_once "classes/Category.php";
 
+$actiesoort = true;
+$_SESSION['actieSoort'] = $actiesoort;
 ?>
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -13,14 +15,14 @@ include_once "classes/Category.php";
                 $("#datum1").hide();
                 $("#categorie").show();
                 $("#functie").show();
-                $("#prijs").show();
+                $("#prijs2").show();
             });
             $("#datum").click(function () {
                 $("#datum1").show();
                 $("#wekelijks1").hide();
                 $("#categorie").show();
                 $("#functie").show();
-                $("#prijs").show();
+                $("#prijs2").show();
             });
         });
     </script>
@@ -61,14 +63,7 @@ include_once "classes/Category.php";
                         <hr>
                     </div>
                     <div>
-                        <form action="actie_toevoegen2.php" method="post" class="form-horizontal" role="form">
-                            <div class="form-group">
-                                <label class="control-label col-sm-4 " for="Actienummer">Actienummer:</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="Actienummer"
-                                           placeholder="Actienummer invullen">
-                                </div>
-                            </div>
+                        <form action="actie_toevoegen.php" method="post" class="form-horizontal" role="form">
                             <div class="form-group">
                                 <label class="control-label col-sm-4 " for="Actienaam">Actienaam:</label>
                                 <div class="col-sm-8">
@@ -137,15 +132,15 @@ include_once "classes/Category.php";
                                 </div>
                                 <hr>
                             </div>
-                            <div id="prijs" class="form-group text-right" style="display: none">
+                            <div id="prijs2" class="form-group text-right" style="display: none">
                                 <label class="control-label col-sm-4" for="Prijs">Prijs:</label>
                                 <div class="text-left">
-                                        <div class="col-sm-4">
-                                            <input type="text" class="form-control" name="Prijs" placeholder="Euro">
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <input type="text" class="form-control" name="Prijs1" placeholder="Cent">
-                                        </div>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" name="Producteuro" placeholder="00">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" name="Productcent" placeholder="00">
+                                    </div>
                                 </div>
                             </div>
 

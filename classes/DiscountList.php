@@ -7,6 +7,10 @@ class DiscountList
      */
     private $listofdiscounts = array();
     /**
+     * @var array
+     */
+    private $highestid = array();
+    /**
      * @var PDO
      */
     private $db;
@@ -24,6 +28,7 @@ class DiscountList
                 $this->listofdiscounts[] = new Discount($this->db, $result['actieID']);
             }
 
+
         }
         catch (PDOException $e)
         {
@@ -38,6 +43,13 @@ class DiscountList
     function getlistofdiscounts()
     {
         return $this->listofdiscounts;
+    }
+    /**
+     * @return
+     */
+    function gethighestid()
+    {
+        return $this->highestid;
     }
 
 }

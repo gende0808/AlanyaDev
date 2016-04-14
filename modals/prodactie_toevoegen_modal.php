@@ -3,6 +3,8 @@ include_once "connection.php";
 include_once "classes/CategoryList.php";
 include_once "classes/Category.php";
 
+$actiesoort = false;
+$_SESSION['actieSoort'] = $actiesoort;
 ?>
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -14,6 +16,7 @@ include_once "classes/Category.php";
                 $("#categorie1").show();
                 $("#product").show();
                 $("#functie1").show();
+                $("#prijs").show();
             });
             $("#datum2").click(function () {
                 $("#datum3").show();
@@ -21,6 +24,7 @@ include_once "classes/Category.php";
                 $("#categorie1").show();
                 $("#product").show();
                 $("#functie1").show();
+                $("#prijs").show();
             });
         });
     </script>
@@ -61,14 +65,7 @@ include_once "classes/Category.php";
                         <hr>
                     </div>
                     <div>
-                        <form action="actie_toevoegen2.php" method="post" class="form-horizontal" role="form">
-                            <div class="form-group">
-                                <label class="control-label col-sm-4 " for="Actienummer">Actienummer:</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="Actienummer"
-                                           placeholder="Actienummer invullen">
-                                </div>
-                            </div>
+                        <form action="actie_toevoegen.php" method="post" class="form-horizontal" role="form">
                             <div class="form-group">
                                 <label class="control-label col-sm-4 " for="Actienaam">Actienaam:</label>
                                 <div class="col-sm-8">
@@ -103,44 +100,51 @@ include_once "classes/Category.php";
                                 <div class="form-group">
                                     <label class="control-label col-sm-4 " for="Productprijs">Dagen:</label>
                                     <div class="col-sm-8" style="text-align: left;">
-                                        <input type="checkbox" name="vehicle" value="Bike"
+                                        <input type="checkbox" name="maandag" value="true"
                                                style="width: 20px">Maandag<br>
-                                        <input type="checkbox" name="vehicle" value="Car"
+                                        <input type="checkbox" name="dinsdag" value="true"
                                                style="width: 20px">Dinsdag<br>
-                                        <input type="checkbox" name="vehicle" value="Car"
+                                        <input type="checkbox" name="woensdag" value="true"
                                                style="width: 20px">Woensdag<br>
-                                        <input type="checkbox" name="vehicle" value="Car"
+                                        <input type="checkbox" name="donderdag" value="true"
                                                style="width: 20px">Donderdag<br>
-                                        <input type="checkbox" name="vehicle" value="Car"
+                                        <input type="checkbox" name="vrijdag" value="true"
                                                style="width: 20px">Vrijdag<br>
-                                        <input type="checkbox" name="vehicle" value="Car"
+                                        <input type="checkbox" name="zaterdag" value="true"
                                                style="width: 20px">Zaterdag<br>
-                                        <input type="checkbox" name="vehicle" value="Car" style="width: 20px">Zondag<br>
+                                        <input type="checkbox" name="zondag" value="true" style="width: 20px">Zondag<br>
                                     </div>
                                 </div>
                                 <hr>
                             </div>
 
                             <div id="product" class="form-group text-right" style="display: none">
-                                <label class="control-label col-sm-4" for="Producten">Producten:</label>
-
-                                    <div class="col-sm-12 dropdown" style="text-align: left;">
-                                        <table id="newtable" class='table table-striped table-hover table-responsive' style="margin-top: 10%">
-                                            <tbody>
+                                <label class="control-label col-sm-4" for="Productcategorie">Product:</label>
+                                <div class="text-left">
+                                    <div class="col-sm-8 dropdown">
+                                        <select name='ProductID' class="form-control">
                                             <?PHP
-                                        $productlist = new ProductList($DB_con);
-                                        $listofproducts = $productlist->getlistofproducts();
-                                        foreach ($listofproducts as $product){
-                                            echo "<tr id='tr". $product->getProductid() ."'>";
-                                            echo "<td id='categorie" . $product->getProductid() ."' style='width: 150px;'>"."<input type='checkbox' style='width: 20px'>" . $product->getCategoryid() . "</td>";
-                                            echo "<td id='naam" . $product->getProductid() ."' style='width: 150px;'>". $product->getProductname() . "</td>";
-                                            echo "<td id='prijs" . $product->getProductid() ."' style='width: 150px;'>"."<input type='textbox' value='€".$product->getProductprice()."'></td>";
-                                        }
-                                        ?>
-                                            </tbody>
-                                        </table>
+                                            $productlist = new ProductList($DB_con);
+                                            $listofproducts = $productlist->getlistofproducts();
+                                            foreach ($listofproducts as $product){
+                                                echo "<option type='text' class='form-control' value='".$product->getProductid()."'>".$product->getProductname(). "</option>";
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
-
+                                </div>
+                                <hr>
+                            </div>
+                            <div id="prijs" class="form-group text-right" style="display: none">
+                                <label class="control-label col-sm-4" for="Prijs">Prijs:</label>
+                                <div class="text-left">
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" name="Producteuro" placeholder="00">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" name="Productcent" placeholder="00">
+                                    </div>
+                                </div>
                             </div>
 
 
