@@ -67,9 +67,17 @@ class Discount implements CRUD
      */
     private $categorieID;
     /**
+     * @var string
+     */
+    private $categorieName;
+    /**
      * @var int
      */
     private $productID;
+    /**
+     * @var string
+     */
+    private $productName;
     /**
      * @var
      */
@@ -82,6 +90,11 @@ class Discount implements CRUD
      * @var
      */
     private $highestid;
+    /**
+     * @var string
+     */
+    private $completestring;
+
 
 
     /**
@@ -202,18 +215,24 @@ class Discount implements CRUD
 
         try {
             $stmt = $this->db->prepare("
-                                           SELECT actie.*, actiedatum.*, actiecategorie.*
-                                        FROM actie
-                                        INNER JOIN actiedatum
-                                        ON actiedatum.actieID = actie.actieID
-                                         INNER JOIN actiecategorie
-                                        ON actiecategorie.actieID = actie.actieID;
-                                        SELECT actie.*, actiedatum.*, actieproduct.*
+                                        SELECT actie.*, actiedatum.*, actieproduct.*, product.*
                                         FROM actie
                                         INNER JOIN actiedatum
                                         ON actiedatum.actieID = actie.actieID
                                          INNER JOIN actieproduct
-                                        ON actieproduct.actieID = actie.actieID;
+                                        ON actieproduct.actieID = actie.actieID
+                                        INNER JOIN product
+                                         ON product.id = actieproduct.productID
+                                         WHERE actie.actieID= :actieid;
+                                        SELECT actie.*, actiedatum.*, actiecategorie.*, categorie.*
+                                        FROM actie
+                                        INNER JOIN actiedatum
+                                        ON actiedatum.actieID = actie.actieID
+                                         INNER JOIN actiecategorie
+                                        ON actiecategorie.actieID = actie.actieID
+                                        INNER JOIN categorie
+                                        ON categorie.categorieID = actiecategorie.categorieID
+                                         WHERE actie.actieID= :actieid;
                                         ");
             $stmt->bindparam(":actieid", $id);
             $stmt->execute();
@@ -225,7 +244,16 @@ class Discount implements CRUD
             $this->discountsort= $result['actieSoort'];
             $this->begindate= $result['beginDatum'];
             $this->enddate= $result['eindDatum'];
+            $this->monday= $result['maandag'];
+            $this->tuesday= $result['dinsdag'];
+            $this->wednesday= $result['woensdag'];
+            $this->thursday= $result['donderdag'];
+            $this->friday= $result['vrijdag'];
+            $this->saturday= $result['zaterdag'];
+            $this->sunday= $result['zondag'];
             $this->discountprice= $result['prijs'];
+            $this->productName= $result['productNaam'];
+//            $this->productName= $result['categorieNaam'];
 
         } catch (PDOException $e) {
             echo "Database-error: " . $e->getMessage();
@@ -399,6 +427,44 @@ class Discount implements CRUD
     public function isThursday()
     {
         return $this->thursday;
+    }
+
+    /**
+     * @return string
+     */
+    public function getdays(){
+
+        $completestring = "l";
+
+        if ($this->monday == true)
+        {
+            $this->completestring = "ma";
+        }
+        if ($this->tuesday == true)
+        {
+            $this->completestring = "di";
+        }
+        if ($this->wednesday == true)
+        {
+            $this->completestring = "wo";
+        }
+        if ($this->thursday == true)
+        {
+            $this->completestring = "do";
+        }
+        if ($this->friday == true)
+        {
+            $this->completestring = "vr";
+        }
+        if ($this->saturday == true)
+        {
+            $this->completestring = "za";
+        }
+        if ($this->sunday == true)
+        {
+            $this->completestring =  "zo";
+        }
+        return $this->completestring;
     }
 
     /**
@@ -623,6 +689,38 @@ class Discount implements CRUD
         }
 
         $this->discountprice = htmlentities($discounteuro . "." . $discountcents);
+    }
+
+    /**
+     * @return string
+     */
+    public function getCategorieName()
+    {
+        return $this->categorieName;
+    }
+
+    /**
+     * @param string $categorieName
+     */
+    public function setCategorieName($categorieName)
+    {
+        $this->categorieName = $categorieName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProductName()
+    {
+        return $this->productName;
+    }
+
+    /**
+     * @param string $productName
+     */
+    public function setProductName($productName)
+    {
+        $this->productName = $productName;
     }
 
 

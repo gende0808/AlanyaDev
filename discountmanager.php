@@ -30,6 +30,7 @@ if (isset($_GET['actieid']) && isset($_GET['delete'])) {
 //        $discount_ID = $_GET['catID'];
 //    }
 }
+$discount_ID = 1;
 $discountlist = new DiscountList($DB_con); //er wordt een nieuwe categorie lijst aangemaakt
 
 ?>
@@ -81,10 +82,12 @@ $discountlist = new DiscountList($DB_con); //er wordt een nieuwe categorie lijst
                 style="margin-top: 25px"> <span class="glyphicon glyphicon-plus"></span> Categorie Actie toevoegen
         </button>
         <button id="Wekelijks" class="btn btn-primary" style="width: 20%">
-            Op product
+            Op datum<br>
+            sorteren
         </button>
         <button id="Weekdagen" class="btn btn-primary" style="width: 20%">
-            Op categorie
+            Op dagen<br>
+            sorteren
         </button>
         <table id="weeklyTable" class='table table-striped table-hover table-responsive' style="margin-top: 5%;display: none">
             <thead>
@@ -92,21 +95,23 @@ $discountlist = new DiscountList($DB_con); //er wordt een nieuwe categorie lijst
                 <th class='text-center'>Actie nummer</th>
                 <th class='text-center'>Actie naam</th>
                 <th class='text-center'>Omschrijving</th>
+                <th class='text-center'>Product/Categorie</th>
                 <th class='text-center'>Begin datum</th>
                 <th class='text-center'>Eind datum</th>
-                <th class='text-center'>Product/Categorie</th>
                 <th class='text-center'>Kortingsprijs</th>
                 <th class='text-center'>Verwijderen</th>
             </tr>
             </thead>
             <tbody
             <?php
-            foreach ($discountlist->getlistofdiscounts() as $discount) { //in deze foreach loopt hij over ieder individueel product en print hij de waarden in die array
+            $actielist = new DiscountList($DB_con);
+            $listofdiscounts = $actielist->getlistofdiscounts();
+            foreach ($listofdiscounts as $discount) { //in deze foreach loopt hij over ieder individueel product en print hij de waarden in die array
                 echo "<tr id='tr". $discount->getId() ."'>";
                 echo "<td id='nummer" . $discount->getId() ."' style='width: 150px;'>" . $discount->getId() . "</td>";
                 echo "<td id='naam" . $discount->getId(). "'style='width: 150px;'>" . $discount->getDiscountname() . "</td>";
                 echo "<td id='omschrijving". $discount->getId() ."' style='width: 150px;'>" . $discount->getDiscounttext() . "</td>";
-                echo "<td id='soort". $discount->getId() ."' style='width: 150px;'>" . $discount->getDiscounsort() . "</td>";
+                echo "<td id='soort". $discount->getId() ."' style='width: 150px;'>" . $discount->getProductname() . "</td>";
                 echo "<td id='startdate". $discount->getId() ."' style='width: 150px;'>" . $discount->getBegindate() . "</td>";
                 echo "<td id='enddate". $discount->getId() ."' style='width: 150px;'>" . $discount->getEnddate() . "</td>";
                 echo "<td id='prijs". $discount->getId() ."' style='width: 150px;'>" . $discount->getDiscountprice() . "</td>";
@@ -133,14 +138,16 @@ $discountlist = new DiscountList($DB_con); //er wordt een nieuwe categorie lijst
             </thead>
             <tbody
             <?php
-            foreach ($discountlist->getlistofdiscounts() as $discount) { //in deze foreach loopt hij over ieder individueel product en print hij de waarden in die array
+            $actielist = new DiscountList($DB_con);
+            $listofdiscounts = $actielist->getlistofdiscounts();
+            foreach ($listofdiscounts as $discount){
                 echo "<tr id='tr". $discount->getId() ."'>";
                 echo "<td id='nummer" . $discount->getId() ."' style='width: 150px;'>" . $discount->getId() . "</td>";
                 echo "<td id='naam" . $discount->getId(). "'style='width: 150px;'>" . $discount->getDiscountname() . "</td>";
                 echo "<td id='omschrijving". $discount->getId() ."' style='width: 150px;'>" . $discount->getDiscounttext() . "</td>";
-//                echo "<td id='actiedagen". $discount->getId() ."' style='width: 150px;'>" . $discount->isMaandag() . "</td>";
-//                echo "<td id='enddate". $discount->getId() ."' style='width: 150px;'>" . $discount->gisDinsdag() . "</td>";
-//                echo "<td id='price" . $discount->getId() . "' style='width: 150px;text-align: right'>" ."€". $discount->getDiscount() . "</td>";
+                echo "<td id='startdate". $discount->getId() ."' style='width: 150px;'>" . $discount->getdays() . "</td>";
+                echo "<td id='soort". $discount->getId() ."' style='width: 150px;'>" . $discount->getProductname() . "</td>";
+                echo "<td id='prijs". $discount->getId() ."' style='width: 150px;'>" . $discount->getDiscountprice() . "</td>";
 //
                 echo "<td style='width: 150px;'><a href='discountmanager.php?actieid=" . $discount->getId() . "&delete=true'".
                     'onclick="return confirm('."'weet je zeker dat je ".$discount->getDiscountname()." wilt verwijderen?'".')"' .">Verwijderen</a></td>";
