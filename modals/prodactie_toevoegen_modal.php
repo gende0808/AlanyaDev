@@ -26,6 +26,9 @@ $_SESSION['actieSoort'] = $actiesoort;
                 $("#functie1").show();
                 $("#prijs").show();
             });
+            $("#test").click(function () {
+                $("#product").removeClass('hidden');
+            });
         });
     </script>
 </head>
@@ -118,7 +121,7 @@ $_SESSION['actieSoort'] = $actiesoort;
                                 <hr>
                             </div>
 
-                            <div id="product" class="form-group text-right" style="display: none">
+                            <div id="product" class="hidden form-group text-right">
                                 <label class="control-label col-sm-4" for="Productcategorie">Product:</label>
                                 <div class="text-left">
                                     <div class="col-sm-8 dropdown">
@@ -147,9 +150,6 @@ $_SESSION['actieSoort'] = $actiesoort;
                                 </div>
                             </div>
 
-
-
-
                     </div>
                     <div id="functie1" style="display: none">
                         <div class="form-group" style="margin-top: 30px">
@@ -164,6 +164,11 @@ $_SESSION['actieSoort'] = $actiesoort;
                         </div>
                     </div>
                     </form>
+                    <button class="btn" id="test">Pizza's</button>
+                    <button class="btn" id="test1">Grill</button>
+                    <button class="btn" id="test2">klant</button>
+                    <button class="btn" id="test3">klantje</button>
+                    <button class="btn" id="test4">klantest</button>
                 </div>
             </div>
 

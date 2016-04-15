@@ -26,13 +26,13 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
 <div class="container text-center" style="margin-top: 50px;">
     <div class="col-md-12 col-md-offset-0 text-center" style="margin-top: 50px">
         <div class="col-md-12 col-md-offset-0 text-center">
-                <div class="flexslider">
-                    <ul class="slides">
-                        <li>
-                            <div id="placehere" style="margin-bottom: 5%">
-                            </div>
-                        </li>
-                    </ul>
+            <div class="flexslider">
+                <ul class="slides">
+                    <li>
+                        <div id="placehere" style="margin-bottom: 5%">
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
         <?PHP
@@ -44,7 +44,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
             <?PHP
             echo '<div class="col-md-12 col-md-offset-0 text-center">';
             foreach ($categorylist->getcategories() as $category) { //hij haalt alle categoriën op in een array.
-                echo '<button name="catID" onclick="showProductsMenu(this.value); ShowIMG('.$category->getcatID().')" class="myButton" value="' . $category->getcatID() . '">' . $category->getcatname() . '</button>';
+                echo '<a href="#cat"><button name="catID" onclick="showProductsMenu(this.value); ShowIMG('.$category->getcatID().')" class="btntest" value="' . $category->getcatID() . '">' . $category->getcatname() . '</button></a>';
                 //hierboven worden simpele buttons geprint waarvan in de post de ID word meegegeven maar de waarde in de knop is de categorieNaam.
             }
             echo '</div>';
@@ -54,11 +54,13 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
         }
         ?>
 
+        <div id="cat">
+            <!--            de div waar naartoe gescrollt wordt-->
+        </div>
 
-        <input type="text" id="search" placeholder="Zoeken..." class="col-md-12 col-md-offset-0 search_box"
+        <input type="text" id="search" placeholder="Zoeken..." class="col-md-12 marg col-md-offset-0 search_box"
                onkeyup="doSearch()"/>
         <!-- Hier moet een text komen te staan over dat het product aangepasdt kan worden in de winkelwagen. TODO margin bottom op header! -->
-
         <table id="producttable" class='table table-striped table-hover table-responsive'>
             <thead>
             <tr>
@@ -74,7 +76,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
         </table>
     </div>
     </div>
-</div>
+
 <?php
 include_once "footer.php";
 if(isset($_GET['bref'])){

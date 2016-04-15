@@ -3,33 +3,33 @@
 #nav-trigger {
   display: none;
   text-align: center; }
-  #nav-trigger span {
-    display: inline-block;
-    padding: 10px 30px;
-  background: #af0000; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(left top, #af0000, #ff3232); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(bottom right, #af0000, #ff3232); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(bottom right, #af0000, #ff3232); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to bottom right, #af0000, #ff3232); /* Standard syntax */
-    color: white;
-    cursor: pointer;
-    text-transform: uppercase; }
-    #nav-trigger span:after {
-      display: inline-block;
-      margin-left: 10px;
-      width: 20px;
-      height: 10px;
-      content: "";
-      border-left: solid 10px transparent;
-      border-top: solid 10px #fff;
-      border-right: solid 10px transparent; }
-    #nav-trigger span:hover {
-      background-color: #FFBC92; }
-    #nav-trigger span.open:after {
-      border-left: solid 10px transparent;
-      border-top: none;
-      border-bottom: solid 10px #fff;
-      border-right: solid 10px transparent; }
+#nav-trigger span {
+  display: inline-block;
+  padding: 10px 30px;
+  background: rgb(255,5,42); /* Old browsers */
+  background: -moz-linear-gradient(top, rgba(255,5,42,1) 0%, rgba(206,0,0,1) 100%, rgba(255,5,63,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(255,5,42,1) 0%,rgba(206,0,0,1) 100%,rgba(255,5,63,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(255,5,42,1) 0%,rgba(206,0,0,1) 100%,rgba(255,5,63,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff052a', endColorstr='#ff053f',GradientType=0 ); /* IE6-9 */
+  color: white;
+  cursor: pointer;
+  text-transform: uppercase; }
+#nav-trigger span:after {
+  display: inline-block;
+  margin-left: 10px;
+  width: 20px;
+  height: 10px;
+  content: "";
+  border-left: solid 10px transparent;
+  border-top: solid 10px #fff;
+  border-right: solid 10px transparent; }
+#nav-trigger span:hover {
+  background-color: #FFBC92; }
+#nav-trigger span.open:after {
+  border-left: solid 10px transparent;
+  border-top: none;
+  border-bottom: solid 10px #fff;
+  border-right: solid 10px transparent; }
 
 nav {
   margin-bottom: 30px; }
@@ -37,54 +37,59 @@ nav {
 
 nav#nav-main {
   width: 100% !important;
-  background: #af0000; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(left top, #af0000, #ff3232); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(bottom right, #af0000, #ff3232); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(bottom right, #af0000, #ff3232); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to bottom right, #af0000, #ff3232); /* Standard syntax */
+  background: rgb(255,5,42); /* Old browsers */
+  background: -moz-linear-gradient(top, rgba(255,5,42,1) 0%, rgba(206,0,0,1) 100%, rgba(255,5,63,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(255,5,42,1) 0%,rgba(206,0,0,1) 100%,rgba(255,5,63,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(255,5,42,1) 0%,rgba(206,0,0,1) 100%,rgba(255,5,63,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff052a', endColorstr='#ff053f',GradientType=0 ); /* IE6-9 */
   padding: 10px; }
-  nav#nav-main ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    text-align: center; }
-  nav#nav-main li {
-    display: inline-block;
-    border-right: solid 1px #950025;
-    padding: 0 5px; }
-    nav#nav-main li:last-child {
-      border-right: none; }
-  nav#nav-main a {
-    display: block;
-    color: white;
-    padding: 10px 30px; }
-    nav#nav-main a:hover {
-      color: #fff; }
+nav#nav-main ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center; }
+nav#nav-main li {
+  display: inline-block;
+  border-right: solid 1px #950025;
+  padding: 0 5px; }
+nav#nav-main li:last-child {
+  border-right: none; }
+nav#nav-main a {
+  display: block;
+  color: white;
+  padding: 10px 30px; }
+nav#nav-main a:hover {
+  color: #fff; }
 
 nav#nav-mobile {
   position: relative;
   display: none; }
-  nav#nav-mobile ul {
-    display: none;
-    list-style-type: none;
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    background-color: #ff3232; }
-  nav#nav-mobile li {
-    display: block;
-    padding: 5px 0;
-    margin: 0 5px;
-    border-bottom: solid 1px #950025; }
-    nav#nav-mobile li:last-child {
-      border-bottom: none; }
-  nav#nav-mobile a {
-    display: block;
-    color: white;
-    padding: 10px 30px; }
+nav#nav-mobile ul {
+  display: none;
+  list-style-type: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background: rgb(255,5,42); /* Old browsers */
+  background: -moz-linear-gradient(top, rgba(255,5,42,1) 0%, rgba(206,0,0,1) 100%, rgba(255,5,63,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(255,5,42,1) 0%,rgba(206,0,0,1) 100%,rgba(255,5,63,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(255,5,42,1) 0%,rgba(206,0,0,1) 100%,rgba(255,5,63,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff052a', endColorstr='#ff053f',GradientType=0 ); /* IE6-9 */
+  padding: 10px; }
+nav#nav-mobile li {
+  display: block;
+  padding: 5px 0;
+  margin: 0 5px;
+  border-bottom: solid 1px #950025; }
+nav#nav-mobile li:last-child {
+  border-bottom: none; }
+nav#nav-mobile a {
+  display: block;
+  color: white;
+  padding: 10px 30px; }
 
 .dropdown-menu {
   background-color: #f3f3f3;
@@ -109,8 +114,8 @@ section h1 {
 
 section p {
   margin-bottom: 30px; }
-  section p:last-child {
-    margin-bottom: 0; }
+section p:last-child {
+  margin-bottom: 0; }
 
 /* =Media Queries
 -------------------------------------------------------------- */
