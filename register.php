@@ -5,7 +5,7 @@ include_once "classes/City.php";
 include_once "classes/CityList.php";
 include_once "classes/AccountList.php";
 
-
+$accountcreated = null;
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -19,7 +19,7 @@ if (isset($_POST["registerbutton"])) {
 }
 ?>
 <div class="logo text-center">
-   <img src="images/testlogo3.png">
+    <img src="images/testlogo3.png">
 </div>
 
 <div class="col-md-4 col-md-offset-4">
@@ -37,14 +37,22 @@ if (isset($_POST["registerbutton"])) {
                 if (!empty($_POST)) {
 
 
-
                     try {
                         //hij maakt hieronder een lijst van accounts aan om te vergelijken met het ingevoerde email adres.
                         //als het email adres true is gaat hij niet proberen de account aan te maken. Dan bestaat de email al.
                         $listofaccounts = (new AccountList($DB_con))->getlistofaccounts();
                         foreach ($listofaccounts as $acc) {
                             if ($_POST['email'] === $acc->getUseremail()) {
-                                echo "dit emailadres is al in gebruik!";
+                                echo '
+                                         <div class="modal-header">
+                                             <div id="testje" class="<?php echo $hidden ?>">
+                                                 <div class="alert alert-danger" role="alert">
+                                                  <p><h2><b>Het registreren is mislukt!</b></h2></p>
+                                                  <p><h4><i>Dit E-mail adres is al in gebruik.</i></h4></p>
+                                                 </div>
+                                             </div>
+                                         </div>
+                ';
                                 $emailalreadyexists = true;
                             }
                         }
@@ -76,52 +84,72 @@ if (isset($_POST["registerbutton"])) {
                             $query->execute();
                             $resultaat = $query->fetch(PDO::FETCH_ASSOC);
                             $gebruikersID = $resultaat['userID'];
+                            $accountcreated = true;
 
                         } catch
-                        (PDOException $e) {
-                            echo "er ging iets fout bij het maken van uw account. probeer het over een minuut opnieuw.";
-                        }
+                        (Exception $e) {
+                            $accountcreated = false;
+                            if ($accountcreated === false) {
+                                ?>
+                                <div class="modal-header">
+                                    <div id="testje" class="<?php echo $hidden ?>">
+                                        <div class="alert alert-danger" role="alert">
+                                            <p>
+                                            <h2><b>Het registreren is mislukt!</b></h2></p>
+                                            <p><h4><i>
+                                                    <?PHP echo $e->getMessage(); ?>
+                                                </i></h4></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?PHP
+                            }
 
-                        $message = "
+                        }
+                        if ($accountcreated === true) {
+                            $message = "
 						Hallo " . $account->getUserfullname() . ",
 						<br /><br />
 						Welkom bij Alanya-Krommenie!<br/>
 						Om je registratie op de website af te ronden kun je op de onderstaande link klikken.<br/>
 						<br /><br />
 						<a href='http://localhost/alanyaDev/verify.php?id=" . $gebruikersID . "&code="
-                            . $account->getToken() . "'>klik HIER om te activeren! :)</a>
+                                . $account->getToken() . "'>klik HIER om te activeren! :)</a>
 						<br /><br />
 						Met vriendelijke Groet,<br /><br />
 
 						Alanya Krommenie";
-                        //hieronder is de mailer die gebruik maakt van de PHPMailer Class.
-                        try {
-                            require_once('mailer/class.phpmailer.php');
-                            $mail = new PHPMailer();
-                            $mail->IsSMTP();
-                            $mail->SMTPDebug = 0;
-                            $mail->SMTPAuth = true;
-                            $mail->SMTPSecure = "ssl";
-                            $mail->Host = "smtp.gmail.com";
-                            $mail->Port = 465;
-                            $mail->AddAddress($account->getUseremail());
-                            $mail->Username = "alanyatester@gmail.com";
-                            $mail->Password = "alanyatest";
-                            $mail->SetFrom('your_gmail_id_here@gmail.com', 'Alanya Krommenie');
-                            $mail->AddReplyTo("your_gmail_id_here@gmail.com", "Alanya Krommenie");
-                            $mail->Subject = $subject;
-                            $mail->MsgHTML($message);
-                            $mail->Send();
-                        } catch (Exception $e) {
-                            echo "Er ging iets fout  bij het versturen van de email.";
+                            //hieronder is de mailer die gebruik maakt van de PHPMailer Class.
+                            try {
+                                require_once('mailer/class.phpmailer.php');
+                                $mail = new PHPMailer();
+                                $mail->IsSMTP();
+                                $mail->SMTPDebug = 0;
+                                $mail->SMTPAuth = true;
+                                $mail->SMTPSecure = "ssl";
+                                $mail->Host = "smtp.gmail.com";
+                                $mail->Port = 465;
+                                $mail->AddAddress($account->getUseremail());
+                                $mail->Username = "alanyatester@gmail.com";
+                                $mail->Password = "alanyatest";
+                                $mail->SetFrom('your_gmail_id_here@gmail.com', 'Alanya Krommenie');
+                                $mail->AddReplyTo("your_gmail_id_here@gmail.com", "Alanya Krommenie");
+                                $mail->Subject = $subject;
+                                $mail->MsgHTML($message);
+                                $mail->Send();
+                            } catch (Exception $e) {
+                                echo "Er ging iets fout  bij het versturen van de email.";
+                            }
                         }
+                    } else {
+                        //TODO als email al bestaat geef foutmelding dat email al in gebruik is
                     }
                 }
                 ?>
-
-
             </div>
-
+            <?PHP
+            if ($accountcreated === true) {
+                echo '
             <div class="modal-header">
                 <div id="testje" class="<?php echo $hidden ?>">
                     <div class="alert alert-success" role="alert">
@@ -129,10 +157,13 @@ if (isset($_POST["registerbutton"])) {
                         <p><h4><i>U dient uw account te activeren door op de link te klikken die naar uw E-mail adres verzonden is.</i></h4></p>
                     </div>
                 </div>
-                <?php echo $registreer ?></h4>
+                </div>
+                ';
+            }
 
-                <h4 class="modal-title" id="myModalLabel">
-            </div>
+            ?>
+
+
             <!-- /.modal-header -->
 
             <form name="theform" method="post" role="form" action="register.php">
@@ -152,13 +183,16 @@ if (isset($_POST["registerbutton"])) {
 
                         <div class="form-group">
                             <div class="input-group">
-                                <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-lock" style="border-style: solid!important; border-width: 1px;"></label>
+                                <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-lock"
+                                       style="border-style: solid!important; border-width: 1px;"></label>
                                 <input type="password" onKeyup="checkform()" class="form-control" name="wachtwoord1"
                                        id="wachtwoord1"
-                                       placeholder="Wachtwoord" style="border-style: outset!important; border-width: 1px;">
+                                       placeholder="Wachtwoord"
+                                       style="border-style: outset!important; border-width: 1px;">
                                 <input type="password" onkeyup="checkform(); checkPass(); return false;"
                                        class="form-control" name="wachtwoord2" id="wachtwoord2"
-                                       placeholder="verifieer Wachtwoord" style="border-style: outset!important; border-width: 1px;">
+                                       placeholder="verifieer Wachtwoord"
+                                       style="border-style: outset!important; border-width: 1px;">
                                 <span id="confirmMessage" class="confirmMessage"></span>
                             </div>
                         </div>
@@ -167,9 +201,11 @@ if (isset($_POST["registerbutton"])) {
                             <div class="input-group">
                                 <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-user"></label>
                                 <input type="text" onKeyup="checkform()" class="form-control" name="firstname"
-                                       placeholder="Voornaam" style="border-style: outset!important; border-width: 1px;">
+                                       placeholder="Voornaam"
+                                       style="border-style: outset!important; border-width: 1px;">
                                 <input type="text" onKeyup="checkform()" class="form-control" name="lastname"
-                                       placeholder="Achternaam" style="border-style: outset!important; border-width: 1px;">
+                                       placeholder="Achternaam"
+                                       style="border-style: outset!important; border-width: 1px;">
                             </div>
                         </div>
                         <!-- /.form-group -->
@@ -185,7 +221,8 @@ if (isset($_POST["registerbutton"])) {
                                        placeholder="Nr."
                                        style="width: 30%; border-style: outset!important; border-width: 1px;"">
                                 <input type="text" onKeyup="checkform()" class="form-control" name="userToevoeging"
-                                       placeholder="Toevoeging adres" style="border-style: outset!important; border-width: 1px;">
+                                       placeholder="Toevoeging adres"
+                                       style="border-style: outset!important; border-width: 1px;">
                             </div>
                         </div>
                         <!-- /.form-group -->
@@ -216,7 +253,8 @@ if (isset($_POST["registerbutton"])) {
                                 <label for="uLogin"
                                        class="input-group-addon orange glyphicon glyphicon-earphone"></label>
                                 <input type="text" onKeyup="checkform()" class="form-control" name="phone"
-                                       placeholder="Telefoonnummer" style="border-style: outset!important; border-width: 1px;">
+                                       placeholder="Telefoonnummer"
+                                       style="border-style: outset!important; border-width: 1px;">
                             </div>
                         </div>
                         <!-- /.form-group -->
@@ -224,7 +262,8 @@ if (isset($_POST["registerbutton"])) {
                         <p>al een bestaand account? <a href="#" data-toggle="modal" data-target="#myModal"
                                                        class="hvr-float-shadow">Login</a></p>
 
-                        <button name="registerbutton" class="form-control btn orange" id="test" style="color: white;" type="submit"
+                        <button name="registerbutton" class="form-control btn orange" id="test" style="color: white;"
+                                type="submit"
                                 value="submit">
                             Registeren
                         </button>

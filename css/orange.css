@@ -6,4 +6,7 @@
     background-image: -o-linear-gradient(top, #FF3333, #bd0000);
     background-image: linear-gradient(to bottom, #FF3333, #bd0000);
 }
+.grey {
+    background-color:#9494b8 !important;
+}
 

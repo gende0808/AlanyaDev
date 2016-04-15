@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once 'interfaces/CRUD.php';
 include_once "connection.php";
 require_once 'classes/Account.php';
@@ -19,7 +20,8 @@ if (!empty($_GET['id']) && !empty($_GET['code'])) {
     if ($account->getToken() == $code) {
         $account->setstatus($statusY);
         $account->update($id);
-        //TODO hier moet een header die redirect naar een "uw account is geactiveerd pagina"
+        $_SESSION['iactivatedmyaccount'] = true;
+        header("Location: http://localhost/alanyadev/index");
     } else {
         include_once "header.php";
         echo "er is een fout gedetecteerd bij het activeren van het account.";

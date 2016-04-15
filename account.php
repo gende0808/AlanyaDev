@@ -4,6 +4,7 @@ include_once "header.php";
 include_once "classes/Account.php";
 include_once "classes/City.php";
 include_once "classes/CityList.php";
+include_once "modals/verwijder_account_modal.php";
 
 
 $id = htmlspecialchars($_SESSION['account_id']);
@@ -189,11 +190,17 @@ try {
                             <!-- /.form-group -->
 
                             <button class="form-control btn orange" id="accountwijzigen" style="color: white;"
-                                    name="accountwijzigen" type="submit"
-                                    value="submit">
+                                               name="accountwijzigen" type="submit"
+                                               value="submit">
                                 Wijzigen opslaan
                             </button>
-                        </form>
+
+                        <button type="button" class="btn grey"
+                                data-toggle="modal" data-target="#verwijderverificatie" style="color: white; margin-top: 3%;">
+                            Mijn account verwijderen
+                        </button>
+
+
                     </div>
 
                     <!-- /.modal-body -->
