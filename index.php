@@ -1,10 +1,14 @@
 <?PHP
 ob_start();
+include_once "header.php";
+include_once "classes/Account.php";
 $accountisdeletedconfirm = "";
+
 //code voor het verwijderen van een account
-if (isset($_POST['deleteaccount'])) {
-    if (isset($_SESSION['account_id']) && $_SESSION['logged'] === true) {
-        if (htmlspecialchars($_POST['deleteaccount']) === "true") {
+if (isset($_POST['deleteaccount'])){
+    $deleteaccount = htmlspecialchars($_POST['deleteaccount']);
+    if (isset($_SESSION['account_id']) && $_SESSION['logged'] == true) {
+        if ($deleteaccount == true) {
             try {
                 $account = new Account($DB_con);
                 $account->delete($_SESSION['account_id']);
@@ -21,9 +25,9 @@ if (isset($_POST['deleteaccount'])) {
         }
     }
 }
-include_once "header.php";
-include_once "classes/Account.php";
-echo $accountisdeletedconfirm;
+if ($accountisdeletedconfirm != "") {
+    echo $accountisdeletedconfirm;
+}
 //code voor confirmatie als een account is geactiveerd
 
 if (isset($_SESSION['iactivatedmyaccount']) && $_SESSION['iactivatedmyaccount'] === true) {

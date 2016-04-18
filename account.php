@@ -1,5 +1,4 @@
 <?PHP
-session_start();
 include_once "header.php";
 include_once "classes/Account.php";
 include_once "classes/City.php";
