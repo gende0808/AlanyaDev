@@ -113,6 +113,6 @@ $actie->create();
 
 include_once "../footer.php"
 ?>
-<!--<script>-->
-<!--    window.location.href = "discountmanager.php";-->
-<!--</script>-->
+<script>
+    window.location.href = "discountmanager.php";
+</script>

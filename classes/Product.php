@@ -30,6 +30,10 @@ class Product implements CRUD
      * @var
      */
     private $productprice;
+    /**
+     * @var
+     */
+    private $productdiscountprice;
 
     /**
      * @var int
@@ -89,7 +93,16 @@ class Product implements CRUD
         }
 
         try {
-            $stmt = $this->db->prepare("SELECT id,productNummer,productNaam,productOmschrijving,productPrijs,categorieID FROM product WHERE id=" . $id);
+            $stmt = $this->db->prepare("
+                            SELECT product.*,actieproduct.*, CASE
+                                WHEN actieproduct.prijs != 0
+                                    THEN actieproduct.prijs
+                                ELSE product.productPrijs
+                                END AS prijs1
+                            FROM product
+                            LEFT JOIN actieproduct ON actieproduct.productID = product.id
+                            WHERE product.id=" . $id
+            );
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             $this->product_info = $result;
@@ -97,6 +110,7 @@ class Product implements CRUD
             $this->productname = $result['productNaam'];
             $this->productdescription = $result['productOmschrijving'];
             $this->productprice = $result['productPrijs'];
+            $this->productdiscountprice = $result['prijs'];
             $this->categoryid = $result['categorieID'];
             $this->id = $result['id'];
         } catch (PDOException $e) {
@@ -184,11 +198,25 @@ class Product implements CRUD
      */
     public function getProductprice()
     {
+
         return $this->productprice;
     }
+
     public function getProductpriceformatted()
     {
+
         return '€ '.str_replace('.',',',$this->productprice);
+    }
+    /**
+     * @return string
+     */
+    public function getProductdiscountprice()
+    {
+        return $this->productdiscountprice;
+    }
+    public function getDiscountpriceformatted()
+    {
+        return '€ '.str_replace('.',',',$this->productdiscountprice);
     }
 
 
@@ -220,6 +248,7 @@ class Product implements CRUD
         $this->productprice = htmlentities($productprice . "." . $cents);
     }
 
+
     /**
      * @return string
      */
@@ -227,6 +256,7 @@ class Product implements CRUD
     {
         return $this->productdescription;
     }
+
 
     /**
      * @param string $productdescription

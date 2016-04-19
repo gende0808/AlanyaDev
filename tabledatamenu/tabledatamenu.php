@@ -27,13 +27,21 @@ try {
     $productlist = new ProductList($DB_con, $category_ID); // //de post word meegegeven
     $listofproducts = $productlist->getlistofproducts(); //hiermee word een array opgehaald waarin producten met hun waarden zitten
 
+        $prijs = "";
         echo "";
     foreach ($listofproducts as $product) { //in deze foreach loopt hij over ieder individueel product en print hij de waarden in die array
+
+        if($product->getProductdiscountprice() && $product->getProductprice() > $product->getProductdiscountprice()) {
+                $productprijs = $product->getDiscountpriceformatted();
+        }
+        else {
+            $productprijs = $product->getProductpriceformatted();
+        }
         echo "<tr>";
         echo "<td style='width: 150px;'>" . $product->getProductnumber() . "</td>";
         echo "<td style='width: 150px;'>" . $product->getProductname() . "</td>";
         echo "<td style='width: 150px;'>" . $product->getProductdescription() . "</td>";
-        echo "<td style='width: 150px;'>" . $product->getProductpriceformatted() . "</td>";
+        echo "<td style='width: 150px;'>" . $productprijs . "</td>";
         echo "<td style='width: 150px;'>
         <a id='" . $product->getProductid() . "' href=\"#\" data-toggle=\"modal\" data-target=\"#myModalToev\" class=\"hvr-pulse\"><span class=\"glyphicon glyphicon-plus\"></span> Bestellen</a>
         </td>";

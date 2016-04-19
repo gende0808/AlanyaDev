@@ -252,8 +252,15 @@ class Discount implements CRUD
             $this->saturday= $result['zaterdag'];
             $this->sunday= $result['zondag'];
             $this->discountprice= $result['prijs'];
-            $this->productName= $result['productNaam'];
-//            $this->productName= $result['categorieNaam'];
+            if(!empty ($result['productNaam']))
+            {
+                $this->productName = $result['productNaam'];
+            }
+            if(!empty ($result['categorieNaam']))
+            {
+                $this->productName= $result['categorieNaam'];
+            }
+
 
         } catch (PDOException $e) {
             echo "Database-error: " . $e->getMessage();
@@ -434,37 +441,37 @@ class Discount implements CRUD
      */
     public function getdays(){
 
-        $completestring = "l";
+        $completestring = '';
 
         if ($this->monday == true)
         {
-            $this->completestring = "ma";
+            $completestring .= "ma, ";
         }
         if ($this->tuesday == true)
         {
-            $this->completestring = "di";
+            $completestring .= "di, ";
         }
         if ($this->wednesday == true)
         {
-            $this->completestring = "wo";
+            $completestring .= "wo, ";
         }
         if ($this->thursday == true)
         {
-            $this->completestring = "do";
+            $completestring .= "do, ";
         }
         if ($this->friday == true)
         {
-            $this->completestring = "vr";
+            $completestring .= "vr, ";
         }
         if ($this->saturday == true)
         {
-            $this->completestring = "za";
+            $completestring .= "za, ";
         }
         if ($this->sunday == true)
         {
-            $this->completestring =  "zo";
+            $completestring .=  "zo";
         }
-        return $this->completestring;
+        return $completestring;
     }
 
     /**
