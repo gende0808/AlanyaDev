@@ -3,10 +3,8 @@ include_once "header.php";
 ?>
 
 <div class="container">
-    <div class="col-md-6 col-md-offset-3">
-        <div class="logo">
-            <center><img src="images/testlogo3.png" style="width:100%; height:auto;"></center>
-        </div>
+    <div class="logo text-center">
+        <img src="images/testlogo3.png">
     </div>
     <div class="col-md-6">
 

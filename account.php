@@ -64,10 +64,10 @@ try {
     $account = new Account($DB_con, $id)
 
     ?>
-
     <div class="logo text-center">
-        <img src="images/testlogo2.png">
+        <img src="images/testlogo3.png">
     </div>
+
 
     <div class="col-md-4 col-md-offset-4">
         <div class="modal-dialog text-center">
@@ -81,68 +81,68 @@ try {
                 </div>
                 <!-- /.modal-header -->
 
-                <form name="theform" method="post" role="form" action="account.php">
+                <form name="login-form" method="post" role="form" action="account.php">
                     <div class="modal-body">
                         <form action="account.php" method="post" role="form">
-                            <div class="form-group bord">
+                            <div class="form-group ">
                                 <div class="input-group">
                                     <label for="uLogin"
                                            class="input-group-addon orange glyphicon glyphicon-comment"></label>
 
-                                    <p class="navbar-text"><?php echo $account->getUseremail() ?></p>
+                                    <p class="navbar-text"><?php echo $account->getUseremail() ?></p >
 
                                 </div>
                             </div>
 
                             <!-- /.form-group -->
 
-                            <div class="form-group bord">
+                            <div class="form-group ">
                                 <div class="input-group">
                                     <label for="uLogin"
                                            class="input-group-addon orange glyphicon glyphicon-lock"></label>
                                     <input type="password" onKeyup="checkform()" class="form-control" name="wachtwoordtest"
                                            id="wachtwoordtest"
-                                           placeholder="Huidig wachtwoord">
+                                           placeholder="Huidig wachtwoord"  style="border-style: outset!important; border-width: 1px;">
                                     <input type="password" onkeyup="checkform()"
                                            class="form-control" name="accwachtwoord1" id="accwachtwoord1"
-                                           placeholder="Nieuw wachtwoord">
+                                           placeholder="Nieuw wachtwoord"  style="border-style: outset!important; border-width: 1px;">
                                     <input type="password" onkeyup="checkform(); checkPassAcc(); return false;"
                                            class="form-control" name="accwachtwoord2" id="accwachtwoord2"
-                                           placeholder="verifieer nieuw wachtwoord">
+                                           placeholder="verifieer nieuw wachtwoord"  style="border-style: outset!important; border-width: 1px;">
                                     <span id="accconfirmMessage" class="accconfirmMessage"></span>
                                 </div>
                             </div>
 
-                            <div class="form-group bord">
+                            <div class="form-group ">
                                 <div class="input-group">
                                     <label for="uLogin"
                                            class="input-group-addon orange glyphicon glyphicon-user"></label>
                                     <input type="text" onKeyup="checkform()" class="form-control" name="voornaam"
                                            id="voornaam"
-                                           value="<?php echo $account->getUserfirstname() ?>">
+                                           value="<?php echo $account->getUserfirstname() ?>"  style="border-style: outset!important; border-width: 1px;">
                                     <input type="text" onKeyup="checkform()" class="form-control" name="achternaam"
                                            id="achternaam"
-                                           value="<?php echo $account->getUserlastname() ?>">
+                                           value="<?php echo $account->getUserlastname() ?>"  style="border-style: outset!important; border-width: 1px;">
                                 </div>
                             </div>
                             <!-- /.form-group -->
 
-                            <div class="form-group bord">
+                            <div class="form-group ">
                                 <div class="input-group">
                                     <label for="uLogin"
                                            class="input-group-addon orange glyphicon glyphicon-home"></label>
                                     <input type="text" onKeyup="checkform()" class="form-control" name="straatnaam"
                                            id="straatnaam"
-                                           value="<?php echo $account->getUserstreetname() ?>" style="width: 70%;">
+                                           value="<?php echo $account->getUserstreetname() ?>" style="width: 70%;"  style="border-style: outset!important; border-width: 1px;">
 
 
                                     <input type="text" onKeyup="checkform()" class="form-control" name="huisnummer"
                                            id="huisnummer"
-                                           value="<?php echo $account->getUserhousenumber() ?>" style="width: 30%;">
+                                           value="<?php echo $account->getUserhousenumber() ?>" style="width: 30%;" style=" border-style: outset!important; border-width: 1px;">
 
                                     <input type="text" onKeyup="checkform()" class="form-control" name="toevoeging"
                                            id="toevoeging"
-                                           value="<?php echo $account->getUseraddition() ?>">
+                                           value="<?php echo $account->getUseraddition() ?>"  style="border-style: outset!important; border-width: 1px;">
                                 </div>
                             </div>
                             <!-- /.form-group -->
@@ -177,13 +177,13 @@ try {
                             </div>
                             <!-- /.form-group -->
 
-                            <div class="form-group bord">
+                            <div class="form-group">
                                 <div class="input-group">
                                     <label for="uLogin"
                                            class="input-group-addon orange glyphicon glyphicon-earphone"></label>
                                     <input type="text" onKeyup="checkform()" class="form-control" name="telefoonnummer"
                                            id="telefoonnummer"
-                                           value="<?php echo $account->getUserphonenumber() ?>">
+                                           value="<?php echo $account->getUserphonenumber() ?>"  style="border-style: outset!important; border-width: 1px;">
                                 </div>
                             </div>
                             <!-- /.form-group -->
