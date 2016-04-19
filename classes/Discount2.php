@@ -91,6 +91,9 @@ class Discount2 implements CRUD
             $stmt->bindparam(":zondag", $this->zondag);
             $stmt->bindparam(":discount", $this->discount);
 
+            $stmt = $this->db->prepare("INSERT INTO actietest(actieID,actieNaam,actieOmschrijving,actieSoort)
+                                    VALUES(5, 'Nieuw', 'nieuwe text', 0)");
+
             $stmt->execute();
 
         } catch (PDOException $e) {
