@@ -94,13 +94,16 @@ class Product implements CRUD
 
         try {
             $stmt = $this->db->prepare("
-                            SELECT product.*,actieproduct.*, CASE
+                            SELECT product.*,actieproduct.*,actiecategorie.*, CASE
                                 WHEN actieproduct.prijs != 0
                                     THEN actieproduct.prijs
+                                WHEN actiecategorie.prijs != 0
+                                    THEN actiecategorie.prijs
                                 ELSE product.productPrijs
                                 END AS prijs1
                             FROM product
                             LEFT JOIN actieproduct ON actieproduct.productID = product.id
+                            LEFT JOIN actiecategorie ON actiecategorie.categorieID = product.categorieID
                             WHERE product.id=" . $id
             );
             $stmt->execute();

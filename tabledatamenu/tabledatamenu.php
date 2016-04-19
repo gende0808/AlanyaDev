@@ -30,7 +30,7 @@ try {
         $prijs = "";
         echo "";
     foreach ($listofproducts as $product) { //in deze foreach loopt hij over ieder individueel product en print hij de waarden in die array
-
+        
         if($product->getProductdiscountprice() && $product->getProductprice() > $product->getProductdiscountprice()) {
                 $productprijs = $product->getDiscountpriceformatted();
         }

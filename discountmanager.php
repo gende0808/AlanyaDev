@@ -6,8 +6,6 @@ include_once "classes/Category.php";
 include_once "classes/CategoryList.php";
 include_once "classes/Discount.php";
 include_once "classes/DiscountList.php";
-include_once "classes/Discount2.php";
-include_once "classes/DiscountList2.php";
 
 
 
@@ -104,8 +102,8 @@ $discountlist = new DiscountList($DB_con); //er wordt een nieuwe categorie lijst
             </thead>
             <tbody
             <?php
-            $actielist = new DiscountList($DB_con);
-            $listofdiscounts = $actielist->getlistofdiscounts();
+            $discountlist = new DiscountList($DB_con); //er wordt een nieuwe categorie lijst aangemaakt
+            $listofdiscounts = $discountlist->getlistofdiscounts();
             foreach ($listofdiscounts as $discount) { //in deze foreach loopt hij over ieder individueel product en print hij de waarden in die array
                 echo "<tr id='tr". $discount->getId() ."'>";
                 echo "<td id='nummer" . $discount->getId() ."' style='width: 150px;'>" . $discount->getId() . "</td>";
@@ -120,6 +118,8 @@ $discountlist = new DiscountList($DB_con); //er wordt een nieuwe categorie lijst
                     'onclick="return confirm('."'weet je zeker dat je ".$discount->getDiscountname()." wilt verwijderen?'".')"' .">Verwijderen</a></td>";
                 echo "</tr>";
                 echo "\n";
+
+                echo $discount->getBegindate();
             }
             ?>
             </tbody>
