@@ -133,11 +133,11 @@ class Discount implements CRUD
                                     VALUES(:discountid3, :discountid4, :categorieid, :categorieprijs);
                                     ");
                 $stmt->bindparam(":discountid", $this->getHighestidplusone());
-                $stmt->bindparam(":discountid2", $this->getHighestidplusone());
-                $stmt->bindparam(":discountid3", $this->getHighestidplusone());
-                $stmt->bindparam(":discountid4", $this->getHighestidplusone());
                 $stmt->bindparam(":discountname", $this->discountname);
                 $stmt->bindparam(":discounttext", $this->discounttext);
+                $stmt->bindparam(":actiesoort", $this->discountsort);
+
+                $stmt->bindparam(":discountid2", $this->getHighestidplusone());
                 $stmt->bindparam(":begindatum", $this->begindate);
                 $stmt->bindparam(":einddatum", $this->enddate);
                 $stmt->bindparam(":maandag", $this->monday);
@@ -147,7 +147,9 @@ class Discount implements CRUD
                 $stmt->bindparam(":vrijdag", $this->friday);
                 $stmt->bindparam(":zaterdag", $this->saturday);
                 $stmt->bindparam(":zondag", $this->sunday);
-                $stmt->bindparam(":actiesoort", $this->discountsort);
+
+                $stmt->bindparam(":discountid3", $this->getHighestidplusone());
+                $stmt->bindparam(":discountid4", $this->getHighestidplusone());
                 $stmt->bindparam(":categorieprijs", $this->categoryprice);
                 $stmt->bindparam(":categorieid", $this->categorieID);
 
@@ -167,31 +169,27 @@ class Discount implements CRUD
                 }
 
                 $stmt2 = $this->db->prepare("
-                                    INSERT INTO actie(actieID,actieNaam,actieOmschrijving,actieSoort)
-                                    VALUES(:discountid, :discountname, :discounttext, :actiesoort);
-                                    INSERT INTO actiedatum(actieID,beginDatum,eindDatum,maandag,dinsdag,woensdag,donderdag,vrijdag,zaterdag,zondag)
-                                    VALUES(:discountid2, :begindatum, :einddatum, :maandag, :dinsdag, :woensdag, :donderdag, :vrijdag, :zaterdag, :zondag);
-                                    INSERT INTO actieproduct(id,actieID,productID,prijs)
-                                    VALUES(:actiesoort2, :discountid3, :productid, :productprijs);
-                                    ");
-                $stmt2->bindparam(":discountid", $this->getHighestidplusone());
-                $stmt2->bindparam(":discountname", $this->discountname);
-                $stmt2->bindparam(":discounttext", $this->discounttext);
-                $stmt2->bindparam(":actiesoort", $this->discountsort);
 
-                $stmt2->bindparam(":discountid2", $this->getHighestidplusone());
-                $stmt2->bindparam(":begindatum", $this->begindate);
-                $stmt2->bindparam(":einddatum", $this->enddate);
-                $stmt2->bindparam(":maandag", $this->monday);
-                $stmt2->bindparam(":dinsdag", $this->tuesday);
-                $stmt2->bindparam(":woensdag", $this->wednesday);
-                $stmt2->bindparam(":donderdag", $this->thursday);
-                $stmt2->bindparam(":vrijdag", $this->friday);
-                $stmt2->bindparam(":zaterdag", $this->saturday);
-                $stmt2->bindparam(":zondag", $this->sunday);
+                                    INSERT INTO actieproduct(id,actieID,productID,prijs)
+                                    VALUES(4, :discountid3, :productid, :productprijs);
+                                    ");
+//                $stmt2->bindparam(":discountid", $this->getHighestidplusone());
+//                $stmt2->bindparam(":discountname", $this->discountname);
+//                $stmt2->bindparam(":discounttext", $this->discounttext);
+//                $stmt2->bindparam(":actiesoort", $this->discountsort);
+//
+//                $stmt2->bindparam(":discountid2", $this->getHighestidplusone());
+//                $stmt2->bindparam(":begindatum", $this->begindate);
+//                $stmt2->bindparam(":einddatum", $this->enddate);
+//                $stmt2->bindparam(":maandag", $this->monday);
+//                $stmt2->bindparam(":dinsdag", $this->tuesday);
+//                $stmt2->bindparam(":woensdag", $this->wednesday);
+//                $stmt2->bindparam(":donderdag", $this->thursday);
+//                $stmt2->bindparam(":vrijdag", $this->friday);
+//                $stmt2->bindparam(":zaterdag", $this->saturday);
+//                $stmt2->bindparam(":zondag", $this->sunday);
 
                 $stmt2->bindparam(":discountid3", $this->getHighestidplusone());
-                $stmt2->bindparam(":actiesoort2", $this->discountsort);
                 $stmt2->bindparam(":productid", $this->productID);
                 $stmt2->bindparam(":productprijs", $this->discountprice);
 
@@ -215,15 +213,7 @@ class Discount implements CRUD
 
         try {
             $stmt = $this->db->prepare("
-                                        SELECT actie.*, actiedatum.*, actieproduct.*, product.*
-                                        FROM actie
-                                        INNER JOIN actiedatum
-                                        ON actiedatum.actieID = actie.actieID
-                                         INNER JOIN actieproduct
-                                        ON actieproduct.actieID = actie.actieID
-                                        INNER JOIN product
-                                         ON product.id = actieproduct.productID
-                                         WHERE actie.actieID= :actieid;
+
                                         SELECT actie.*, actiedatum.*, actiecategorie.*, categorie.*
                                         FROM actie
                                         INNER JOIN actiedatum
@@ -273,29 +263,7 @@ class Discount implements CRUD
      */
     public function update($id)
     {
-        if (!is_numeric($id)) {
-            throw new InvalidArgumentException('id is geen getal!');
-        }
-        try {
-            $stmt = $this->db->prepare("UPDATE actie SET  actieID = :discountid,
-                                                          actieNaam = :discountname,
-                                                           actieOmschrijving = :discounttext,
-                                                           actieBegindatum = :discountstartdate,
-                                                           actieEinddatum = :discountenddate,
-                                                           actieKorting = :discount
-                                                           WHERE actieID= :actieid");
-            $stmt->bindparam(":discountid", $this->id);
-            $stmt->bindparam(":discountname", $this->discountname);
-            $stmt->bindparam(":discounttext", $this->discounttext);
-            $stmt->bindparam(":discountstartdate", $this->discountstartdate);
-            $stmt->bindparam(":discountenddate", $this->discountenddate);
-            $stmt->bindparam(":discount", $this->discount);
-            $stmt->bindparam(":actieid", $id);
-
-            $stmt->execute();
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-        }
+        //TODO
     }
 
     /**

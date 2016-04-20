@@ -15,6 +15,7 @@ class DiscountList
      */
     private $db;
 
+
     function __construct($dbconnection)
     {
         $this->db = $dbconnection; // moet nog error handling bij

@@ -28,8 +28,7 @@ if (isset($_GET['actieid']) && isset($_GET['delete'])) {
 //        $discount_ID = $_GET['catID'];
 //    }
 }
-$discount_ID = 1;
-$discountlist = new DiscountList($DB_con); //er wordt een nieuwe categorie lijst aangemaakt
+
 
 ?>
 
@@ -119,7 +118,7 @@ $discountlist = new DiscountList($DB_con); //er wordt een nieuwe categorie lijst
                 echo "</tr>";
                 echo "\n";
 
-                echo $discount->getBegindate();
+
             }
             ?>
             </tbody>
@@ -138,7 +137,9 @@ $discountlist = new DiscountList($DB_con); //er wordt een nieuwe categorie lijst
             </thead>
             <tbody
             <?php
-            $actielist = new DiscountList($DB_con);
+
+            $discount_ID = 1;
+            $actielist = new DiscountList($DB_con, $discount_ID); //er wordt een nieuwe categorie lijst aangemaakt
             $listofdiscounts = $actielist->getlistofdiscounts();
             foreach ($listofdiscounts as $discount){
                 echo "<tr id='tr". $discount->getId() ."'>";

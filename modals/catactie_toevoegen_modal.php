@@ -124,7 +124,7 @@ $_SESSION['actieSoort'] = $actiesoort;
                                             $categorylist = new CategoryList($DB_con);
                                             $listofcategories = $categorylist->getcategories();
                                             foreach ($listofcategories as $category){
-                                                echo "<option type='text' class='form-control' value='".$category->getcatID()."'>".$category->getcatname(). "</option>";
+                                                        echo "<option type='text' class='form-control' value='".$category->getcatID()."'>".$category->getcatname(). "</option>";
                                             }
                                             ?>
                                         </select>

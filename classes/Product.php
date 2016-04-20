@@ -100,12 +100,13 @@ class Product implements CRUD
                                 WHEN actiecategorie.prijs != 0
                                     THEN actiecategorie.prijs
                                 ELSE product.productPrijs
-                                END AS prijs1
+                                END AS actiePrijs
                             FROM product
                             LEFT JOIN actieproduct ON actieproduct.productID = product.id
                             LEFT JOIN actiecategorie ON actiecategorie.categorieID = product.categorieID
-                            WHERE product.id=" . $id
-            );
+                            WHERE product.id=:id
+                            ");
+            $stmt->bindParam(":id", $id);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             $this->product_info = $result;
@@ -113,7 +114,7 @@ class Product implements CRUD
             $this->productname = $result['productNaam'];
             $this->productdescription = $result['productOmschrijving'];
             $this->productprice = $result['productPrijs'];
-            $this->productdiscountprice = $result['prijs'];
+            $this->productdiscountprice = $result['actiePrijs'];
             $this->categoryid = $result['categorieID'];
             $this->id = $result['id'];
         } catch (PDOException $e) {

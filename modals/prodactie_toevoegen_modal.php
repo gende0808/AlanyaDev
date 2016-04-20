@@ -1,6 +1,8 @@
 <?PHP
 include_once "connection.php";
 include_once "classes/CategoryList.php";
+include_once "classes/ProductList.php";
+include_once "classes/Product.php";
 include_once "classes/Category.php";
 
 $actiesoort = false;
@@ -121,8 +123,8 @@ $_SESSION['actieSoort'] = $actiesoort;
                                 <hr>
                             </div>
 
-                            <div id="product" class="hidden form-group text-right">
-                                <label class="control-label col-sm-4" for="Productcategorie">Product:</label>
+                            <div id="product" class="form-group text-right" style="display: none">
+                                <label class="control-label col-sm-4" for="Productcategorie">Categorie:</label>
                                 <div class="text-left">
                                     <div class="col-sm-8 dropdown">
                                         <select name='ProductID' class="form-control">
@@ -164,11 +166,7 @@ $_SESSION['actieSoort'] = $actiesoort;
                         </div>
                     </div>
                     </form>
-                    <button class="btn" id="test">Pizza's</button>
-                    <button class="btn" id="test1">Grill</button>
-                    <button class="btn" id="test2">klant</button>
-                    <button class="btn" id="test3">klantje</button>
-                    <button class="btn" id="test4">klantest</button>
+
                 </div>
             </div>
 

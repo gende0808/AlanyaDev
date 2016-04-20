@@ -10,6 +10,8 @@ $discountstartdate = $_POST['Begindatum'];
 $discountenddate = $_POST['Einddatum'];
 $discounteuro = $_POST['Producteuro'];
 $discountcents = $_POST['Productcent'];
+$discountsort = "";
+
 if(!empty($_POST['CategorieID']))
 {
     $categorieID = $_POST['CategorieID'];
@@ -23,11 +25,13 @@ if(!empty($_POST['ProductID']))
 {
     $productID = $_POST['ProductID'];
     $discountsort = false;
+
 }
 else
 {
     $productID = null;
 }
+
 
 if(!empty($_POST['maandag']))
 {
@@ -113,6 +117,6 @@ $actie->create();
 
 include_once "../footer.php"
 ?>
-<script>
-    window.location.href = "discountmanager.php";
-</script>
+<!--<script>-->
+<!--    window.location.href = "discountmanager.php";-->
+<!--</script>-->
