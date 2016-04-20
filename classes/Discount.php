@@ -169,27 +169,31 @@ class Discount implements CRUD
                 }
 
                 $stmt2 = $this->db->prepare("
-
-                                    INSERT INTO actieproduct(id,actieID,productID,prijs)
-                                    VALUES(4, :discountid3, :productid, :productprijs);
+                                    INSERT INTO actie(actieID,actieNaam,actieOmschrijving,actieSoort)
+                                    VALUES(:discountid, :discountname, :discounttext, :actiesoort);
+                                    INSERT INTO actiedatum(actieID,beginDatum,eindDatum,maandag,dinsdag,woensdag,donderdag,vrijdag,zaterdag,zondag)
+                                    VALUES(:discountid2, :begindatum, :einddatum, :maandag, :dinsdag, :woensdag, :donderdag, :vrijdag, :zaterdag, :zondag);
+                                    INSERT INTO actieproduct(actieProID,actieID,productID,prijs)
+                                    VALUES(:discountid3, :discountid4, :productid, :productprijs);
                                     ");
-//                $stmt2->bindparam(":discountid", $this->getHighestidplusone());
-//                $stmt2->bindparam(":discountname", $this->discountname);
-//                $stmt2->bindparam(":discounttext", $this->discounttext);
-//                $stmt2->bindparam(":actiesoort", $this->discountsort);
-//
-//                $stmt2->bindparam(":discountid2", $this->getHighestidplusone());
-//                $stmt2->bindparam(":begindatum", $this->begindate);
-//                $stmt2->bindparam(":einddatum", $this->enddate);
-//                $stmt2->bindparam(":maandag", $this->monday);
-//                $stmt2->bindparam(":dinsdag", $this->tuesday);
-//                $stmt2->bindparam(":woensdag", $this->wednesday);
-//                $stmt2->bindparam(":donderdag", $this->thursday);
-//                $stmt2->bindparam(":vrijdag", $this->friday);
-//                $stmt2->bindparam(":zaterdag", $this->saturday);
-//                $stmt2->bindparam(":zondag", $this->sunday);
+                $stmt2->bindparam(":discountid", $this->getHighestidplusone());
+                $stmt2->bindparam(":discountname", $this->discountname);
+                $stmt2->bindparam(":discounttext", $this->discounttext);
+                $stmt2->bindparam(":actiesoort", $this->discountsort);
+
+                $stmt2->bindparam(":discountid2", $this->getHighestidplusone());
+                $stmt2->bindparam(":begindatum", $this->begindate);
+                $stmt2->bindparam(":einddatum", $this->enddate);
+                $stmt2->bindparam(":maandag", $this->monday);
+                $stmt2->bindparam(":dinsdag", $this->tuesday);
+                $stmt2->bindparam(":woensdag", $this->wednesday);
+                $stmt2->bindparam(":donderdag", $this->thursday);
+                $stmt2->bindparam(":vrijdag", $this->friday);
+                $stmt2->bindparam(":zaterdag", $this->saturday);
+                $stmt2->bindparam(":zondag", $this->sunday);
 
                 $stmt2->bindparam(":discountid3", $this->getHighestidplusone());
+                $stmt2->bindparam(":discountid4", $this->getHighestidplusone());
                 $stmt2->bindparam(":productid", $this->productID);
                 $stmt2->bindparam(":productprijs", $this->discountprice);
 
