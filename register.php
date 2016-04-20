@@ -174,9 +174,10 @@ if (isset($_POST["registerbutton"])) {
                             <div class="input-group">
                                 <label for="uLogin"
                                        class="input-group-addon orange glyphicon glyphicon-comment"></label>
-                                <input type="text" onKeyup="checkform()" class="form-control" name="email"
+                                <div class="text-field">
+                                     <input type="text" onKeyup="checkform()" class="form-control" name="email"
                                        placeholder="E-mail" style="border-style: outset!important; border-width: 1px;" value="<?php if (isset($_POST["email"])){ echo (htmlspecialchars($_POST['email']));}; ?>">
-
+                                </div>
                             </div>
                         </div>
 
@@ -186,45 +187,51 @@ if (isset($_POST["registerbutton"])) {
                             <div class="input-group">
                                 <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-lock"
                                        style="border-style: solid!important; border-width: 1px;"></label>
-                                <input type="password" onKeyup="checkform()" class="form-control" name="wachtwoord1"
-                                       id="wachtwoord1"
-                                       placeholder="Wachtwoord"
-                                       style="border-style: outset!important; border-width: 1px;">
-                                <input type="password" onkeyup="checkform(); checkPass(); return false;"
-                                       class="form-control" name="wachtwoord2" id="wachtwoord2"
-                                       placeholder="verifieer Wachtwoord"
-                                       style="border-style: outset!important; border-width: 1px;">
-                                <span id="confirmMessage" class="confirmMessage"></span>
+                                <div class="text-field">
+                                    <input type="password" onKeyup="checkform()" class="form-control" name="wachtwoord1"
+                                           id="wachtwoord1"
+                                           placeholder="Wachtwoord"
+                                           style="border-style: outset!important; border-width: 1px;">
+                                    <input type="password" onkeyup="checkform(); checkPass(); return false;"
+                                           class="form-control" name="wachtwoord2" id="wachtwoord2"
+                                           placeholder="verifieer Wachtwoord"
+                                           style="border-style: outset!important; border-width: 1px;">
+                                    <span id="confirmMessage" class="confirmMessage"></span>
+                                </div>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="input-group">
                                 <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-user"></label>
-                                <input type="text" onKeyup="checkform()" class="form-control" name="firstname"
-                                       placeholder="Voornaam"
-                                       style="border-style: outset!important; border-width: 1px;" value="<?php if (isset($_POST["firstname"])){ echo (htmlspecialchars($_POST['firstname']));}; ?>">
-                                <input type="text" onKeyup="checkform()" class="form-control" name="lastname"
-                                       placeholder="Achternaam"
-                                       style="border-style: outset!important; border-width: 1px;" value="<?php if (isset($_POST["lastname"])){ echo (htmlspecialchars($_POST['lastname']));}; ?>">
+                                <div class="text-field">
+                                    <input type="text" onKeyup="checkform()" class="form-control" name="firstname"
+                                           placeholder="Voornaam"
+                                           style="border-style: outset!important; border-width: 1px;" value="<?php if (isset($_POST["firstname"])){ echo (htmlspecialchars($_POST['firstname']));}; ?>">
+                                    <input type="text" onKeyup="checkform()" class="form-control" name="lastname"
+                                           placeholder="Achternaam"
+                                           style="border-style: outset!important; border-width: 1px;" value="<?php if (isset($_POST["lastname"])){ echo (htmlspecialchars($_POST['lastname']));}; ?>">
+                                </div>
                             </div>
                         </div>
                         <!-- /.form-group -->
 
                         <div class="form-group">
                             <div class="input-group">
-                                <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-home"></label>
-                                <input type="text" onKeyup="checkform()" class="form-control" name="street"
-                                       placeholder="Straatnaam"
-                                       style="width: 70%; border-style: outset!important; border-width: 1px;" value="<?php if (isset($_POST["street"])){ echo (htmlspecialchars($_POST['street']));}; ?>">
+                                    <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-home"></label>
+                                    <div class="text-field">
+                                        <input type="text" onKeyup="checkform()" class="form-control" name="street"
+                                               placeholder="Straatnaam"
+                                               style="width: 70%; border-style: outset!important; border-width: 1px;" value="<?php if (isset($_POST["street"])){ echo (htmlspecialchars($_POST['street']));}; ?>">
 
-                                <input type="text" onKeyup="checkform()" class="form-control" name="number"
-                                       placeholder="Nr."
-                                       style="width: 30%; border-style: outset!important; border-width: 1px;"value="<?php if (isset($_POST["number"])){ echo (htmlspecialchars($_POST['number']));}; ?>">
-                                <input type="text" onKeyup="checkform()" class="form-control" name="userToevoeging"
-                                       placeholder="Toevoeging adres"
-                                       style="border-style: outset!important; border-width: 1px;" value="<?php if (isset($_POST["userToevoeging"])){ echo (htmlspecialchars($_POST['userToevoeging']));}; ?>"
-                            </div>
+                                        <input type="text" onKeyup="checkform()" class="form-control" name="number"
+                                               placeholder="Nr."
+                                               style="width: 30%; border-style: outset!important; border-width: 1px;"value="<?php if (isset($_POST["number"])){ echo (htmlspecialchars($_POST['number']));}; ?>">
+                                    </div>
+                                        <input type="text" onKeyup="checkform()" class="form-control" name="userToevoeging"
+                                               placeholder="Toevoeging adres"
+                                               style="border-style: outset!important; border-width: 1px;" value="<?php if (isset($_POST["userToevoeging"])){ echo (htmlspecialchars($_POST['userToevoeging']));}; ?>"
+                                </div>
                         </div>
                         <!-- /.form-group -->
                         <br>
@@ -252,21 +259,21 @@ if (isset($_POST["registerbutton"])) {
                             <div class="input-group">
                                 <label for="uLogin"
                                        class="input-group-addon orange glyphicon glyphicon-earphone"></label>
-                                <input type="text" onKeyup="checkform()" class="form-control" name="phone"
-                                       placeholder="Telefoonnummer"
-                                       style="border-style: outset!important; border-width: 1px;" value="<?php if (isset($_POST["phone"])){ echo (htmlspecialchars($_POST['phone']));}; ?>">
+                                <div class="text-field">
+                                    <input type="text" onKeyup="checkform()" class="form-control" name="phone" placeholder="Telefoonnummer" style="border-style: outset!important; border-width: 1px;" value="<?php if (isset($_POST["phone"])){ echo (htmlspecialchars($_POST['phone']));}; ?>">
+                                </div>
                             </div>
                         </div>
                         <!-- /.form-group -->
 
                         <p>al een bestaand account? <a href="#" data-toggle="modal" data-target="#myModal"
                                                        class="hvr-float-shadow">Login</a></p>
-
+                        <div class="actions">
                         <button name="registerbutton" class="form-control btn orange" id="test" style="color: white;"
-                                type="submit"
-                                value="submit">
+                                type="submit" disabled="disabled">
                             Registeren
                         </button>
+                        </div>
                     </form>
                 </div>
 
@@ -284,3 +291,22 @@ include_once "footer.php";
 // include_once "sideshoppinglist.php";
 ?>
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.text-field input').keyup(function() {
+
+            var empty = false;
+            $('.text-field input').each(function() {
+                if ($(this).val().length == 0) {
+                    empty = true;
+                }
+            });
+
+            if (empty) {
+                $('.actions button').attr('disabled', 'disabled');
+            } else {
+                $('.actions button').attr('disabled', false);
+            }
+        });
+    });
+</script>
