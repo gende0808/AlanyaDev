@@ -22,7 +22,7 @@ try {
     }
 
 
-    $productlist = new ProductList($DB_con, 1); // //de post word meegegeven
+    $productlist = new ProductList($DB_con, $category_ID); // //de post word meegegeven
     $listofproducts = $productlist->getlistofproducts(); //hiermee word een array opgehaald waarin producten met hun waarden zitten
 
         echo "";
