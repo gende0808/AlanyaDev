@@ -32,22 +32,6 @@ if (isset($_GET['actieid']) && isset($_GET['delete'])) {
 
 ?>
 
-<head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#Wekelijks").click(function () {
-                $("#weeklyTable").show();
-                $("#dateTable").hide();
-            });
-            $("#Weekdagen").click(function () {
-                $("#dateTable").show();
-                $("#weeklyTable").hide();
-            });
-        });
-    </script>
-</head>
-
 <div class="container text-center" style="margin-top: 50px;">
     <?PHP
     include_once "modals/prodactie_toevoegen_modal.php";
@@ -78,39 +62,40 @@ if (isset($_GET['actieid']) && isset($_GET['delete'])) {
         <button class="btn btn-default btn-lg col-md-3 col-md-offset-1" data-toggle="modal" data-target="#catactie"
                 style="margin-top: 25px"> <span class="glyphicon glyphicon-plus"></span> Categorie Actie toevoegen
         </button>
-        <button id="Wekelijks" class="btn btn-primary" style="width: 20%">
-            Op datum<br>
-            sorteren
-        </button>
-        <button id="Weekdagen" class="btn btn-primary" style="width: 20%">
-            Op dagen<br>
-            sorteren
-        </button>
-        <table id="weeklyTable" class='table table-striped table-hover table-responsive' style="margin-top: 5%;display: none">
+        <table id="weeklyTable" class='table table-striped table-hover table-responsive' style="margin-top: 15%">
             <thead>
             <tr>
                 <th class='text-center'>Actie nummer</th>
                 <th class='text-center'>Actie naam</th>
                 <th class='text-center'>Omschrijving</th>
                 <th class='text-center'>Product/Categorie</th>
-                <th class='text-center'>Begin datum</th>
-                <th class='text-center'>Eind datum</th>
+                <th class='text-center'>Datum</th>
                 <th class='text-center'>Kortingsprijs</th>
                 <th class='text-center'>Verwijderen</th>
             </tr>
             </thead>
             <tbody
             <?php
+
+
             $discountlist = new DiscountList($DB_con); //er wordt een nieuwe categorie lijst aangemaakt
             $listofdiscounts = $discountlist->getlistofdiscounts();
             foreach ($listofdiscounts as $discount) { //in deze foreach loopt hij over ieder individueel product en print hij de waarden in die array
+                if($discount->getBegindate() != 0 && $discount->getEnddate() != 0)
+                {
+                    $ActieDatum = $discount->getBegindate() . " t/m "  . $discount->getEnddate();
+                }
+                else
+                {
+                    $ActieDatum = $discount->getdays();
+                }
+
                 echo "<tr id='tr". $discount->getId() ."'>";
                 echo "<td id='nummer" . $discount->getId() ."' style='width: 150px;'>" . $discount->getId() . "</td>";
                 echo "<td id='naam" . $discount->getId(). "'style='width: 150px;'>" . $discount->getDiscountname() . "</td>";
                 echo "<td id='omschrijving". $discount->getId() ."' style='width: 150px;'>" . $discount->getDiscounttext() . "</td>";
                 echo "<td id='soort". $discount->getId() ."' style='width: 150px;'>" . $discount->getProductname() . "</td>";
-                echo "<td id='startdate". $discount->getId() ."' style='width: 150px;'>" . $discount->getBegindate() . "</td>";
-                echo "<td id='enddate". $discount->getId() ."' style='width: 150px;'>" . $discount->getEnddate() . "</td>";
+                echo "<td id='startdate". $discount->getId() ."' style='width: 150px;'>". $ActieDatum . "</td>";
                 echo "<td id='prijs". $discount->getId() ."' style='width: 150px;'>" . $discount->getDiscountprice() . "</td>";
 
                 echo "<td style='width: 150px;'><a href='discountmanager.php?actieid=" . $discount->getId() . "&delete=true'".
@@ -123,41 +108,7 @@ if (isset($_GET['actieid']) && isset($_GET['delete'])) {
             ?>
             </tbody>
         </table>
-        <table id="dateTable" class='table table-striped table-hover table-responsive' style="margin-top: 5%">
-            <thead>
-            <tr>
-                <th class='text-center'>Actie nummer</th>
-                <th class='text-center'>Actie naam</th>
-                <th class='text-center'>Omschrijving</th>
-                <th class='text-center'>Dagen in de week</th>
-                <th class='text-center'>Productnaam</th>
-                <th class='text-center'>Korting</th>
-                <th class='text-center'>Verwijderen</th>
-            </tr>
-            </thead>
-            <tbody
-            <?php
 
-            $discount_ID = 1;
-            $actielist = new DiscountList($DB_con, $discount_ID); //er wordt een nieuwe categorie lijst aangemaakt
-            $listofdiscounts = $actielist->getlistofdiscounts();
-            foreach ($listofdiscounts as $discount){
-                echo "<tr id='tr". $discount->getId() ."'>";
-                echo "<td id='nummer" . $discount->getId() ."' style='width: 150px;'>" . $discount->getId() . "</td>";
-                echo "<td id='naam" . $discount->getId(). "'style='width: 150px;'>" . $discount->getDiscountname() . "</td>";
-                echo "<td id='omschrijving". $discount->getId() ."' style='width: 150px;'>" . $discount->getDiscounttext() . "</td>";
-                echo "<td id='startdate". $discount->getId() ."' style='width: 150px;'>" . $discount->getdays() . "</td>";
-                echo "<td id='soort". $discount->getId() ."' style='width: 150px;'>" . $discount->getProductname() . "</td>";
-                echo "<td id='prijs". $discount->getId() ."' style='width: 150px;'>" . $discount->getDiscountprice() . "</td>";
-//
-                echo "<td style='width: 150px;'><a href='discountmanager.php?actieid=" . $discount->getId() . "&delete=true'".
-                    'onclick="return confirm('."'weet je zeker dat je ".$discount->getDiscountname()." wilt verwijderen?'".')"' .">Verwijderen</a></td>";
-                echo "</tr>";
-                echo "\n";
-            }
-            ?>
-            </tbody>
-        </table>
     </div>
 </div>
 

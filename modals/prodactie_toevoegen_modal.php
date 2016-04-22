@@ -122,14 +122,13 @@ $_SESSION['actieSoort'] = $actiesoort;
                                 </div>
                                 <hr>
                             </div>
-
                             <div id="product" class="form-group text-right" style="display: none">
-                                <label class="control-label col-sm-4" for="Productcategorie">Categorie:</label>
+                                <label class="control-label col-sm-4" for="Product">Product:</label>
                                 <div class="text-left">
                                     <div class="col-sm-8 dropdown">
                                         <select name='ProductID' class="form-control">
                                             <?PHP
-                                            $productlist = new ProductList($DB_con);
+                                            $productlist = new ProductList($DB_con,1,true);
                                             $listofproducts = $productlist->getlistofproducts();
                                             foreach ($listofproducts as $product){
                                                 echo "<option type='text' class='form-control' value='".$product->getProductid()."'>".$product->getProductname(). "</option>";
@@ -151,7 +150,6 @@ $_SESSION['actieSoort'] = $actiesoort;
                                     </div>
                                 </div>
                             </div>
-
                     </div>
                     <div id="functie1" style="display: none">
                         <div class="form-group" style="margin-top: 30px">
@@ -166,7 +164,6 @@ $_SESSION['actieSoort'] = $actiesoort;
                         </div>
                     </div>
                     </form>
-
                 </div>
             </div>
 

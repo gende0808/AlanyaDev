@@ -23,9 +23,45 @@ class Product implements CRUD
      */
     private $productname;
     /**
+ * @var string
+ */
+    private $productdescription;
+    /**
      * @var string
      */
-    private $productdescription;
+    private $beginActieDatum;
+    /**
+     * @var string
+     */
+    private $eindActieDatum;
+    /**
+     * @var boolean
+     */
+    private $maandag;
+    /**
+     * @var boolean
+     */
+    private $dinsdag;
+    /**
+     * @var boolean
+     */
+    private $woensdag;
+    /**
+     * @var boolean
+     */
+    private $donderdag;
+    /**
+     * @var boolean
+     */
+    private $vrijdag;
+    /**
+     * @var boolean
+     */
+    private $zaterdag;
+    /**
+     * @var boolean
+     */
+    private $zondag;
     /**
      * @var
      */
@@ -39,7 +75,6 @@ class Product implements CRUD
      * @var int
      */
     private $categoryid;
-
 
     /**
      * @var
@@ -92,19 +127,22 @@ class Product implements CRUD
             throw new InvalidArgumentException('Id is geen getal');
         }
 
+
         try {
             $stmt = $this->db->prepare("
-                            SELECT product.*,actieproduct.*,actiecategorie.*, CASE
-                                WHEN actieproduct.prijs != 0
+                           SELECT product. * , actieproduct. * , actiecategorie. * ,actiedatum.*,
+                            CASE
+                                WHEN actieproduct.prijs !=0
                                     THEN actieproduct.prijs
-                                WHEN actiecategorie.prijs != 0
+                                WHEN actiecategorie.prijs !=0
                                     THEN actiecategorie.prijs
                                 ELSE product.productPrijs
-                                END AS actiePrijs
+                            END AS actiePrijs
                             FROM product
                             LEFT JOIN actieproduct ON actieproduct.productID = product.id
                             LEFT JOIN actiecategorie ON actiecategorie.categorieID = product.categorieID
-                            WHERE product.id=:id
+                            LEFT JOIN actiedatum ON actiedatum.actieID = actiecategorie.actieID
+                            WHERE product.id= :id
                             ");
             $stmt->bindParam(":id", $id);
             $stmt->execute();
@@ -116,7 +154,18 @@ class Product implements CRUD
             $this->productprice = $result['productPrijs'];
             $this->productdiscountprice = $result['actiePrijs'];
             $this->categoryid = $result['categorieID'];
+            $this->beginActieDatum = $result['beginDatum'];
+            $this->eindActieDatum = $result['eindDatum'];
+            $this->maandag = $result['maandag'];
+            $this->dinsdag = $result['dinsdag'];
+            $this->woensdag = $result['woensdag'];
+            $this->donderdag = $result['donderdag'];
+            $this->vrijdag = $result['vrijdag'];
+            $this->zaterdag = $result['zaterdag'];
+            $this->zondag = $result['zondag'];
             $this->id = $result['id'];
+
+
         } catch (PDOException $e) {
             echo "Database-error: " . $e->getMessage();
         }
@@ -198,14 +247,113 @@ class Product implements CRUD
     }
 
     /**
-     * @return string
-     */
+ * @return string
+ */
     public function getProductprice()
     {
 
         return $this->productprice;
     }
 
+    /**
+     * @return string
+     */
+    public function getActiebegindatum()
+    {
+
+        return $this->beginActieDatum;
+    }
+    /**
+     * @return string
+     */
+    public function getActieEinddatum()
+    {
+
+        return $this->eindActieDatum;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getMonday()
+    {
+
+        if($this->maandag) {
+            return "Monday";
+        }
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getTuesday()
+    {
+        if($this->dinsdag) {
+            return "Tuesday";
+        }
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getWednesday()
+    {
+        if($this->woensdag) {
+            return "Wednesday";
+        }
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getThursday()
+    {
+        if($this->donderdag) {
+            return "Thursday";
+        }
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getFriday()
+    {
+        if($this->vrijdag) {
+            return "Friday";
+        }
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getSaturday()
+    {
+        if($this->zaterdag) {
+            return "Saturday";
+        }
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getSunday()
+    {
+        if($this->zondag) {
+            return "Sunday";
+        }
+    }
+
+    /**
+     * @return string
+     */
     public function getProductpriceformatted()
     {
 
@@ -218,6 +366,9 @@ class Product implements CRUD
     {
         return $this->productdiscountprice;
     }
+    /**
+     * @return string
+     */
     public function getDiscountpriceformatted()
     {
         return '€ '.str_replace('.',',',$this->productdiscountprice);

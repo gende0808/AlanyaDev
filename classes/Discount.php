@@ -125,11 +125,11 @@ class Discount implements CRUD
                 }
 
                 $stmt = $this->db->prepare("
-                                    INSERT INTO actie(actieID,actieNaam,actieOmschrijving,actieSoort)
+                                    INSERT INTO actie(ActieID,actieNaam,actieOmschrijving,actieSoort)
                                     VALUES(:discountid, :discountname, :discounttext, :actiesoort);
                                     INSERT INTO actiedatum(actieID,beginDatum,eindDatum,maandag,dinsdag,woensdag,donderdag,vrijdag,zaterdag,zondag)
                                     VALUES(:discountid2, :begindatum, :einddatum, :maandag, :dinsdag, :woensdag, :donderdag, :vrijdag, :zaterdag, :zondag);
-                                    INSERT INTO actiecategorie(id,actieID,categorieID,prijs)
+                                    INSERT INTO actiecategorie(actieCatID,actieID,categorieID,prijs)
                                     VALUES(:discountid3, :discountid4, :categorieid, :categorieprijs);
                                     ");
                 $stmt->bindparam(":discountid", $this->getHighestidplusone());
@@ -169,14 +169,14 @@ class Discount implements CRUD
                 }
 
                 $stmt2 = $this->db->prepare("
-                                    INSERT INTO actie(actieID,actieNaam,actieOmschrijving,actieSoort)
+                                    INSERT INTO actie(ActieID,actieNaam,actieOmschrijving,actieSoort)
                                     VALUES(:discountid, :discountname, :discounttext, :actiesoort);
                                     INSERT INTO actiedatum(actieID,beginDatum,eindDatum,maandag,dinsdag,woensdag,donderdag,vrijdag,zaterdag,zondag)
                                     VALUES(:discountid2, :begindatum, :einddatum, :maandag, :dinsdag, :woensdag, :donderdag, :vrijdag, :zaterdag, :zondag);
                                     INSERT INTO actieproduct(actieProID,actieID,productID,prijs)
                                     VALUES(:discountid3, :discountid4, :productid, :productprijs);
                                     ");
-                $stmt2->bindparam(":discountid", $this->getHighestidplusone());
+                $stmt2->bindparam(":discountid", $this->getHighestidplusone());//Bindvalue ipv bindparam
                 $stmt2->bindparam(":discountname", $this->discountname);
                 $stmt2->bindparam(":discounttext", $this->discounttext);
                 $stmt2->bindparam(":actiesoort", $this->discountsort);
@@ -217,23 +217,28 @@ class Discount implements CRUD
 
         try {
             $stmt = $this->db->prepare("
+                                      SELECT actie . * , actiedatum . * , actieproduct . * , product . * , actiecategorie . * , categorie . *,
+                                       CASE
+                                WHEN actieproduct.prijs !=0
+                                    THEN actieproduct.prijs
+                                WHEN actiecategorie.prijs !=0
+                                    THEN actiecategorie.prijs
+                                ELSE product.productPrijs
+                            END AS actiePrijs
+FROM actie
+INNER JOIN actiedatum ON actiedatum.actieID = actie.ActieID
+LEFT JOIN actieproduct ON actieproduct.actieID = actie.ActieID
+LEFT JOIN product ON product.id = actieproduct.productID
+LEFT JOIN actiecategorie ON actiecategorie.actieID = actie.ActieID
+LEFT JOIN categorie ON categorie.categorieID = actiecategorie.categorieID
+                                         WHERE actie.ActieID= :actieid;
 
-                                        SELECT actie.*, actiedatum.*, actiecategorie.*, categorie.*
-                                        FROM actie
-                                        INNER JOIN actiedatum
-                                        ON actiedatum.actieID = actie.actieID
-                                         INNER JOIN actiecategorie
-                                        ON actiecategorie.actieID = actie.actieID
-                                        INNER JOIN categorie
-                                        ON categorie.categorieID = actiecategorie.categorieID
-                                         WHERE actie.actieID= :actieid;
                                         ");
             $stmt->bindparam(":actieid", $id);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            $this->id = $result['actieID'];
+            $this->id = $result['ActieID'];
             $this->discountname = $result['actieNaam'];
-//            $this->discount= $result['actieKorting'];
             $this->discounttext= $result['actieOmschrijving'];
             $this->discountsort= $result['actieSoort'];
             $this->begindate= $result['beginDatum'];
@@ -245,7 +250,7 @@ class Discount implements CRUD
             $this->friday= $result['vrijdag'];
             $this->saturday= $result['zaterdag'];
             $this->sunday= $result['zondag'];
-            $this->discountprice= $result['prijs'];
+            $this->discountprice= $result['actiePrijs'];
             if(!empty ($result['productNaam']))
             {
                 $this->productName = $result['productNaam'];
@@ -276,7 +281,7 @@ class Discount implements CRUD
     public function delete($id)
     {
         $stmt = $this->db->prepare("
-                                    DELETE FROM actie WHERE actieID= :discountid;
+                                    DELETE FROM actie WHERE ActieID= :discountid;
                                     DELETE FROM actiedatum WHERE actieID= :discountid1;
                                     DELETE FROM actieproduct WHERE actieID= :discountid2;
                                     DELETE FROM actiecategorie WHERE actieID= :discountid3;

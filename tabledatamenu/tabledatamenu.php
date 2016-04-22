@@ -24,18 +24,27 @@ try {
     }
     $imgcategory = new Category($DB_con, $category_ID);
 
+    $huidigeDatum = date('Y-m-d');
+    $huidigeDatum = date('Y-m-d', strtotime($huidigeDatum));;
+    $huidigeDag = date("l");
+    $actieshowen ="";
+
     $productlist = new ProductList($DB_con, $category_ID); // //de post word meegegeven
     $listofproducts = $productlist->getlistofproducts(); //hiermee word een array opgehaald waarin producten met hun waarden zitten
-
-        $prijs = "";
-        echo "";
     foreach ($listofproducts as $product) { //in deze foreach loopt hij over ieder individueel product en print hij de waarden in die array
 
-        if($product->getProductdiscountprice() && $product->getProductprice() > $product->getProductdiscountprice()) {
-                $productprijs = $product->getDiscountpriceformatted();
+        if($product->getMonday()  === $huidigeDag or $product->getTuesday()  === $huidigeDag or $product->getWednesday()  === $huidigeDag or $product->getThursday()   === $huidigeDag or $product->getFriday() == $huidigeDag or $product->getSaturday()  === $huidigeDag or $product->getSunday()  === $huidigeDag)
+        {
+           $actieshowen = true;
         }
-        else {
-            $productprijs = $product->getProductpriceformatted();
+
+        $productprijs = $product->getProductpriceformatted();
+        $actieprijs = "";
+        if($product->getActiebegindatum() <= $huidigeDatum  && $product->getActieEinddatum() >= $huidigeDatum or $actieshowen == true) {
+            if ($product->getProductdiscountprice() < $product->getProductprice()) {
+                $actieprijs = $product->getDiscountpriceformatted();
+                $productprijs = "<span style=\"color:#FF3333\">Actie</span>" . " " . "<strike>$productprijs</strike>" . " " . $actieprijs;
+            }
         }
         echo "<tr>";
         echo "<td style='width: 150px;'>" . $product->getProductnumber() . "</td>";
