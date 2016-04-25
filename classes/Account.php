@@ -109,18 +109,18 @@ class Account implements CRUD
                                                             userAchternaam, 
                                                             userToevoeging)
                                     VALUES(:mail, :cityid, :street, :streetnr, :phone, :password, :userlevel, :token, :status, :firstname, :lastname, :useraddition)");
-            $stmt->bindparam(":mail", $this->useremail);
-            $stmt->bindparam(":cityid", $this->usercityid);
-            $stmt->bindparam(":street", $this->userstreetname);
-            $stmt->bindparam(":streetnr", $this->userhousenumber);
-            $stmt->bindparam(":phone", $this->userphonenumber);
-            $stmt->bindparam(":password", $this->userpassword);
-            $stmt->bindparam(":userlevel", $this->userlevel);
-            $stmt->bindparam(":token", $this->verificationcode);
-            $stmt->bindparam(":status", $this->userstatus);
-            $stmt->bindparam(":firstname", $this->userfirstname);
-            $stmt->bindparam(":lastname", $this->userlastname);
-            $stmt->bindparam(":useraddition", $this->useraddition);
+            $stmt->bindParam(":mail", $this->useremail);
+            $stmt->bindParam(":cityid", $this->usercityid);
+            $stmt->bindParam(":street", $this->userstreetname);
+            $stmt->bindParam(":streetnr", $this->userhousenumber);
+            $stmt->bindParam(":phone", $this->userphonenumber);
+            $stmt->bindParam(":password", $this->userpassword);
+            $stmt->bindParam(":userlevel", $this->userlevel);
+            $stmt->bindParam(":token", $this->verificationcode);
+            $stmt->bindParam(":status", $this->userstatus);
+            $stmt->bindParam(":firstname", $this->userfirstname);
+            $stmt->bindParam(":lastname", $this->userlastname);
+            $stmt->bindParam(":useraddition", $this->useraddition);
             $stmt->execute();
         } catch (PDOException $e) {
             echo "er is iets misgegaan met de verbinding van de server!" . $e->getMessage();
@@ -193,11 +193,11 @@ class Account implements CRUD
                                                            tokenCode = :verify,
                                                            userStatus = :status
                                                            WHERE userID= :userid");
-            $stmt->bindparam(":uplaceid", $this->usercityid);
-            $stmt->bindparam(":ustreetname", $this->userstreetname);
-            $stmt->bindparam(":uaddition", $this->useraddition);
-            $stmt->bindparam(":uphone", $this->userphonenumber);
-            $stmt->bindparam(":upassword", $this->userpassword);
+            $stmt->bindParam(":uplaceid", $this->usercityid);
+            $stmt->bindParam(":ustreetname", $this->userstreetname);
+            $stmt->bindParam(":uaddition", $this->useraddition);
+            $stmt->bindParam(":uphone", $this->userphonenumber);
+            $stmt->bindParam(":upassword", $this->userpassword);
             $stmt->bindParam(":ulevel", $this->userlevel);
             $stmt->bindParam(":ufirstname", $this->userfirstname);
             $stmt->bindParam(":ulastname", $this->userlastname);
