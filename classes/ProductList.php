@@ -33,7 +33,6 @@ class ProductList
                 $stmt = $this->db->prepare("
                 SELECT *
                 FROM  `product`
-                WHERE categorieID = :catid
                 ORDER BY  `product`.`categorieID` ASC
                 ");
                 $stmt->bindParam(':catid', $categoryID, PDO::PARAM_INT);

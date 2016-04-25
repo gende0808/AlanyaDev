@@ -5,11 +5,6 @@
  */
 class Product implements CRUD
 {
-
-    /**
-     * @var
-     */
-    private $id;
     /**
      * @var PDO
      */
@@ -23,8 +18,8 @@ class Product implements CRUD
      */
     private $productname;
     /**
- * @var string
- */
+     * @var string
+     */
     private $productdescription;
     /**
      * @var string
@@ -76,6 +71,7 @@ class Product implements CRUD
      */
     private $categoryid;
 
+
     /**
      * @var
      */
@@ -89,11 +85,11 @@ class Product implements CRUD
      * @param $dbconnection
      * @param string $productID
      */
-    public function __construct($dbconnection, $productID="")
+    public function __construct($dbconnection, $productID=null)
     {
         $this->db = $dbconnection;
 
-        if (is_numeric($productID)){
+        if (is_numeric($productID) && $productID != null){
             $this->read($productID);
         }
     }
@@ -106,11 +102,11 @@ class Product implements CRUD
         try {
             $stmt = $this->db->prepare("INSERT INTO product(productNummer,productNaam,productOmschrijving,productPrijs, categorieID)
                                     VALUES(:prodnr, :prodname, :proddescription, :prodprice, :catid)");
-            $stmt->bindparam(":prodnr", $this->productnumber);
-            $stmt->bindparam(":prodname", $this->productname);
-            $stmt->bindparam(":proddescription", $this->productdescription);
-            $stmt->bindparam(":prodprice", $this->productprice);
-            $stmt->bindparam(":catid", $this->categoryid);
+            $stmt->bindParam(":prodnr", $this->productnumber);
+            $stmt->bindParam(":prodname", $this->productname);
+            $stmt->bindParam(":proddescription", $this->productdescription);
+            $stmt->bindParam(":prodprice", $this->productprice);
+            $stmt->bindParam(":catid", $this->categoryid);
             $stmt->execute();
 
         } catch (PDOException $e) {
@@ -127,10 +123,9 @@ class Product implements CRUD
             throw new InvalidArgumentException('Id is geen getal');
         }
 
-
         try {
             $stmt = $this->db->prepare("
-                           SELECT product. * , actieproduct. * , actiecategorie. * ,actiedatum.*,
+                           SELECT product.* , actieproduct.* , actiecategorie.* ,actiedatum.*,
                             CASE
                                 WHEN actieproduct.prijs !=0
                                     THEN actieproduct.prijs
@@ -154,6 +149,7 @@ class Product implements CRUD
             $this->productprice = $result['productPrijs'];
             $this->productdiscountprice = $result['actiePrijs'];
             $this->categoryid = $result['categorieID'];
+            $this->productid = $result['id'];
             $this->beginActieDatum = $result['beginDatum'];
             $this->eindActieDatum = $result['eindDatum'];
             $this->maandag = $result['maandag'];
@@ -163,7 +159,7 @@ class Product implements CRUD
             $this->vrijdag = $result['vrijdag'];
             $this->zaterdag = $result['zaterdag'];
             $this->zondag = $result['zondag'];
-            $this->id = $result['id'];
+            $this->productid = $result['id'];
 
 
         } catch (PDOException $e) {
@@ -187,11 +183,11 @@ class Product implements CRUD
                                                            productPrijs = :prodprice,
                                                            categorieID = :catid
                                                            WHERE id= :product_id");
-            $stmt->bindparam(":prodnr", $this->productnumber);
-            $stmt->bindparam(":prodname", $this->productname);
-            $stmt->bindparam(":proddescription", $this->productdescription);
-            $stmt->bindparam(":prodprice", $this->productprice);
-            $stmt->bindparam(":catid", $this->categoryid);
+            $stmt->bindParam(":prodnr", $this->productnumber);
+            $stmt->bindParam(":prodname", $this->productname);
+            $stmt->bindParam(":proddescription", $this->productdescription);
+            $stmt->bindParam(":prodprice", $this->productprice);
+            $stmt->bindParam(":catid", $this->categoryid);
             $stmt->bindParam(":product_id", $id);
             $stmt->execute();
         } catch (PDOException $e) {
@@ -214,7 +210,7 @@ class Product implements CRUD
      */
     public function getProductid()
     {
-        return $this->id;
+        return $this->productid;
     }
 
     /**
@@ -247,8 +243,8 @@ class Product implements CRUD
     }
 
     /**
- * @return string
- */
+     * @return string
+     */
     public function getProductprice()
     {
 
@@ -277,7 +273,7 @@ class Product implements CRUD
      */
     public function getId()
     {
-        return $this->id;
+        return $this->productid;
     }
 
     /**
@@ -285,7 +281,6 @@ class Product implements CRUD
      */
     public function getMonday()
     {
-
         if($this->maandag) {
             return "Monday";
         }
@@ -366,9 +361,6 @@ class Product implements CRUD
     {
         return $this->productdiscountprice;
     }
-    /**
-     * @return string
-     */
     public function getDiscountpriceformatted()
     {
         return '€ '.str_replace('.',',',$this->productdiscountprice);

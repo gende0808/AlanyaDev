@@ -22,7 +22,7 @@ class DiscountList
 
         try
         {
-            $stmt = $this->db->prepare("SELECT * FROM actie ORDER BY `ActieID");
+            $stmt = $this->db->prepare("SELECT * FROM actie ORDER BY `ActieID`");
             $stmt->execute();
             while ($result = $stmt->fetch(PDO::FETCH_ASSOC))
             {

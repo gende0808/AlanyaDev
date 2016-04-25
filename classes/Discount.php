@@ -132,26 +132,26 @@ class Discount implements CRUD
                                     INSERT INTO actiecategorie(actieCatID,actieID,categorieID,prijs)
                                     VALUES(:discountid3, :discountid4, :categorieid, :categorieprijs);
                                     ");
-                $stmt->bindparam(":discountid", $this->getHighestidplusone());
-                $stmt->bindparam(":discountname", $this->discountname);
-                $stmt->bindparam(":discounttext", $this->discounttext);
-                $stmt->bindparam(":actiesoort", $this->discountsort);
+                $stmt->bindValue(":discountid", $this->getHighestidplusone());
+                $stmt->bindParam(":discountname", $this->discountname);
+                $stmt->bindParam(":discounttext", $this->discounttext);
+                $stmt->bindParam(":actiesoort", $this->discountsort);
 
-                $stmt->bindparam(":discountid2", $this->getHighestidplusone());
-                $stmt->bindparam(":begindatum", $this->begindate);
-                $stmt->bindparam(":einddatum", $this->enddate);
-                $stmt->bindparam(":maandag", $this->monday);
-                $stmt->bindparam(":dinsdag", $this->tuesday);
-                $stmt->bindparam(":woensdag", $this->wednesday);
-                $stmt->bindparam(":donderdag", $this->thursday);
-                $stmt->bindparam(":vrijdag", $this->friday);
-                $stmt->bindparam(":zaterdag", $this->saturday);
-                $stmt->bindparam(":zondag", $this->sunday);
+                $stmt->bindValue(":discountid2", $this->getHighestidplusone());
+                $stmt->bindParam(":begindatum", $this->begindate);
+                $stmt->bindParam(":einddatum", $this->enddate);
+                $stmt->bindParam(":maandag", $this->monday);
+                $stmt->bindParam(":dinsdag", $this->tuesday);
+                $stmt->bindParam(":woensdag", $this->wednesday);
+                $stmt->bindParam(":donderdag", $this->thursday);
+                $stmt->bindParam(":vrijdag", $this->friday);
+                $stmt->bindParam(":zaterdag", $this->saturday);
+                $stmt->bindParam(":zondag", $this->sunday);
 
-                $stmt->bindparam(":discountid3", $this->getHighestidplusone());
-                $stmt->bindparam(":discountid4", $this->getHighestidplusone());
-                $stmt->bindparam(":categorieprijs", $this->categoryprice);
-                $stmt->bindparam(":categorieid", $this->categorieID);
+                $stmt->bindValue(":discountid3", $this->getHighestidplusone());
+                $stmt->bindValue(":discountid4", $this->getHighestidplusone());
+                $stmt->bindParam(":categorieprijs", $this->categoryprice);
+                $stmt->bindParam(":categorieid", $this->categorieID);
 
                 $stmt->execute();
 
@@ -176,7 +176,7 @@ class Discount implements CRUD
                                     INSERT INTO actieproduct(actieProID,actieID,productID,prijs)
                                     VALUES(:discountid3, :discountid4, :productid, :productprijs);
                                     ");
-                $stmt2->bindParam(":discountid", $this->getHighestidplusone());//Bindvalue ipv bindparam
+                $stmt2->bindValue(":discountid", $this->getHighestidplusone());//Bindvalue ipv bindparam
                 $stmt2->bindParam(":discountname", $this->discountname);
                 $stmt2->bindParam(":discounttext", $this->discounttext);
                 $stmt2->bindParam(":actiesoort", $this->discountsort);
@@ -234,7 +234,7 @@ LEFT JOIN categorie ON categorie.categorieID = actiecategorie.categorieID
                                          WHERE actie.ActieID= :actieid;
 
                                         ");
-            $stmt->bindparam(":actieid", $id);
+            $stmt->bindParam(":actieid", $id);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             $this->id = $result['ActieID'];
