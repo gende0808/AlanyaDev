@@ -45,9 +45,9 @@ class City implements CRUD
         try {
             $stmt = $this->db->prepare("INSERT INTO plaats(plaatsID,plaatsNaam,extraKosten)
                                     VALUES(:cityid, :cityname, :delivery)");
-            $stmt->bindparam(":cityid", $this->id);
-            $stmt->bindparam(":cityname", $this->city);
-            $stmt->bindparam(":delivery", $this->deliverycost);
+            $stmt->bindParam(":cityid", $this->id);
+            $stmt->bindParam(":cityname", $this->city);
+            $stmt->bindParam(":delivery", $this->deliverycost);
 
             $stmt->execute();
 
@@ -67,7 +67,7 @@ class City implements CRUD
 
         try {
             $stmt = $this->db->prepare("SELECT plaatsID,plaatsNaam,extraKosten FROM plaats WHERE plaatsID= :cityid");
-            $stmt->bindparam(":cityid", $id);
+            $stmt->bindParam(":cityid", $id);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             $this->id = $result['plaatsID'];
@@ -92,10 +92,10 @@ class City implements CRUD
                                                            plaatsNaam = :cityname,
                                                            extraKosten = :delivery
                                                            WHERE plaatsID= :plaatsid");
-            $stmt->bindparam(":cityid", $this->id);
-            $stmt->bindparam(":cityname", $this->city);
-            $stmt->bindparam(":delivery", $this->deliverycost);
-            $stmt->bindparam(":plaatsid", $id);
+            $stmt->bindParam(":cityid", $this->id);
+            $stmt->bindParam(":cityname", $this->city);
+            $stmt->bindParam(":delivery", $this->deliverycost);
+            $stmt->bindParam(":plaatsid", $id);
 
             $stmt->execute();
         } catch (PDOException $e) {
