@@ -217,7 +217,7 @@ class Discount implements CRUD
 
         try {
             $stmt = $this->db->prepare("
-                                      SELECT actie . * , actiedatum . * , actieproduct . * , product . * , actiecategorie . * , categorie . *,
+                                      SELECT actie.* , actiedatum.* , actieproduct.* , product.* , actiecategorie.* , categorie.*,
                                        CASE
                                 WHEN actieproduct.prijs !=0
                                     THEN actieproduct.prijs
