@@ -113,9 +113,6 @@ $actie->setDiscountprice($discounteuro, $discountcents);
 $actie->create();
 
 
-
-
-include_once "../footer.php"
 ?>
 <script>
     window.location.href = "discountmanager.php";
