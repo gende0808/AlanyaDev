@@ -127,16 +127,17 @@ class Product implements CRUD
             $stmt = $this->db->prepare("
                            SELECT product.* , actieproduct.* , actiecategorie.* ,actiedatum.*,
                             CASE
-                                WHEN actieproduct.prijs !=0
+                                WHEN actieproduct.prijs >= 0 
                                     THEN actieproduct.prijs
-                                WHEN actiecategorie.prijs !=0
+                                WHEN actiecategorie.prijs >= 0
                                     THEN actiecategorie.prijs
                                 ELSE product.productPrijs
                             END AS actiePrijs
                             FROM product
                             LEFT JOIN actieproduct ON actieproduct.productID = product.id
                             LEFT JOIN actiecategorie ON actiecategorie.categorieID = product.categorieID
-                            LEFT JOIN actiedatum ON actiedatum.actieID = actiecategorie.actieID
+                            LEFT JOIN actiedatum ON actiedatum.actieID = actieproduct.actieID OR
+                                                    actiedatum.actieID = actiecategorie.actieID
                             WHERE product.id= :id
                             ");
             $stmt->bindParam(":id", $id);
