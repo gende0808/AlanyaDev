@@ -83,7 +83,7 @@ $_SESSION['actieSoort'] = $actiesoort;
                                 <div class="form-group">
                                     <label class="control-label col-sm-4 " for="Begindatum">Begindatum:</label>
                                     <div class="col-sm-8">
-                                        <input type="date" class="form-control" name="Begindatum" placeholder="Begindatum">
+                                        <input type="date" value="<?php echo date('Y-m-d'); ?>" class="form-control" name="Begindatum" placeholder="Begindatum">
                                     </div>
                                 </div>
                                 <div class="form-group">
