@@ -5,28 +5,12 @@ function ShowIMG(waarde) {
     })
 }
 
-
 //onderstaande functie kan gebruikt worden om te kijken of twee wachtwoorden overeenkomen.
 String.prototype.isEmpty = function () {
     return (this.length === 0 || !this.trim());
 };
 
-function checkPassAcc() {
-    var accpass1 = document.getElementById('accwachtwoord1');
-    var accpass2 = document.getElementById('accwachtwoord2');
-    var accmessage = document.getElementById('accconfirmMessage');
-    var accgoodColor = "#66cc66";
-    var accbadColor = "#ff6666";
-    if (accpass1.value == accpass2.value) {
-        accpass2.style.backgroundColor = accgoodColor;
-        accmessage.style.color = accgoodColor;
-        accmessage.innerHTML = "Wachtwoorden komen overeen!"
-    } else {
-        accpass2.style.backgroundColor = accbadColor;
-        accmessage.style.color = badColor;
-        accmessage.innerHTML = "Wachtwoorden komen niet overeen, heeft u een typfout gemaakt?"
-    }
-}
+
 //voor registratieformulier
 function checkPass() {
     var pass1 = document.getElementById('wachtwoord1');
