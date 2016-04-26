@@ -190,22 +190,21 @@ if (isset($_POST["registerbutton"])) {
 
                         <div class="form-group">
                             <div class="input-group">
-                                <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-lock"></label>
-                                <input type="password" class="form-control" name="wachtwoord1" id="wachtwoord1"
-                                       placeholder="Wachtwoord"  style="border-style: outset!important; border-width: 1px;">
+                                <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-lock"
+                                       style="border-style: solid!important; border-width: 1px;"></label>
+                                <div class="text-field">
+                                    <input type="password" onKeyup="checkform()" class="form-control" name="wachtwoord1"
+                                           id="wachtwoord1"
+                                           placeholder="Wachtwoord"
+                                           style="border-style: outset!important; border-width: 1px;">
+                                    <input type="password" onkeyup="checkform(); checkPass(); return false;"
+                                           class="form-control" name="wachtwoord2" id="wachtwoord2"
+                                           placeholder="verifieer Wachtwoord"
+                                           style="border-style: outset!important; border-width: 1px;">
+                                    <span id="confirmMessage" class="confirmMessage"></span>
+                                </div>
                             </div>
                         </div>
-                        <!-- /.form-group -->
-                        <div class="form-group">
-                            <div class="input-group">
-                                <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-lock"></label>
-                                <input type="password" class="form-control" name="wachtwoord2" id="wachtwoord2"
-                                       onkeyup="checkPass(); return false;"
-                                       placeholder="verifieer Wachtwoord"  style="border-style: outset!important; border-width: 1px;">
-                                <span id="confirmMessage" class="confirmMessage"></span>
-                            </div>
-                        </div>
-                        <!-- /.form-group -->
 
                         <div class="form-group">
                             <div class="input-group">
