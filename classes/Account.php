@@ -479,12 +479,6 @@ class Account implements CRUD
     {
         $this->userstatus = $status;
     }
-
-    public function getUserInfo()
-    {
-        print_r($this->user_info);
-    }
-
 }
 
 

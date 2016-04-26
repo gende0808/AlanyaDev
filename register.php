@@ -1,4 +1,9 @@
 <?PHP
+session_start();
+if (isset($_SESSION['logged'])){
+    header('location: index.php');
+}
+
 include_once "header.php";
 include_once "classes/Account.php";
 include_once "classes/City.php";
@@ -240,7 +245,7 @@ if (isset($_POST["registerbutton"])) {
                             <div class="input-group">
                                 <label for="uLogin"
                                        class="input-group-addon orange glyphicon glyphicon-map-marker"></label>
-                                <select class="form-control" name="city">
+                                <select class="form-control" name="city" id="city">
                                     <option value="" selected disabled><b>Woonplaats</b></option>
                                     <?PHP
                                     $listofcities = (new CityList($DB_con))->getlistofcities();
@@ -248,6 +253,9 @@ if (isset($_POST["registerbutton"])) {
                                         echo "<option value='" . $city->getCityid() . "'>" . $city->getCityname() . "</option>";
                                     }
                                     ?>
+                                    <script type="text/javascript">
+                                        document.getElementById('city').value = "<?php echo $_POST['city'];?>";
+                                    </script>
 
                                 </select>
                             </div>

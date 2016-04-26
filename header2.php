@@ -48,7 +48,6 @@ include_once "interfaces/CRUD.php";
             <li><a href="discountmanager.php" class="hvr-float-shadow">Acties</a></li>
             <li><a href="keukenaccount.php" class="hvr-float-shadow">Bestellingen</a></li>
             <li><a href="adminaccount.php" class="hvr-float-shadow">Producten</a></li>
-            <li><a href="" class="hvr-float-shadow">Account</a></li>
             <li><a href="#" data-toggle="modal" data-target="#myModal" class="hvr-float-shadow">Uitloggen</a></li>
         </ul>
     </nav>

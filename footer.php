@@ -61,7 +61,6 @@
     <script src="js/modernizr.de.js"></script>
     <script type="text/javascript"></script>
     <script src="js/custom.js"></script>
-    <script src="js/checkpassacc.js"></script>
     <script>
         $(document).ready(function () {
             ()
