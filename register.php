@@ -180,8 +180,8 @@ if (isset($_POST["registerbutton"])) {
                                 <label for="uLogin"
                                        class="input-group-addon orange glyphicon glyphicon-comment"></label>
                                 <div class="text-field">
-                                     <input type="text" onKeyup="checkform()" class="form-control" name="email"
-                                       placeholder="E-mail" style="border-style: outset!important; border-width: 1px;" value="<?php if (isset($_POST["email"])){ echo (htmlspecialchars($_POST['email']));}; ?>">
+                                    <input type="text" onKeyup="checkform()" class="form-control" name="email"
+                                           placeholder="E-mail" style="border-style: outset!important; border-width: 1px;" value="<?php if (isset($_POST["email"])){ echo (htmlspecialchars($_POST['email']));}; ?>">
                                 </div>
                             </div>
                         </div>
@@ -193,11 +193,11 @@ if (isset($_POST["registerbutton"])) {
                                 <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-lock"
                                        style="border-style: solid!important; border-width: 1px;"></label>
                                 <div class="text-field">
-                                    <input type="password" onKeyup="checkform()" class="form-control" name="wachtwoord1"
+                                    <input type="password" class="form-control" name="wachtwoord1"
                                            id="wachtwoord1"
                                            placeholder="Wachtwoord"
                                            style="border-style: outset!important; border-width: 1px;">
-                                    <input type="password" onkeyup="checkform(); checkPass(); return false;"
+                                    <input type="password" onkeyup="checkPass(); return false;"
                                            class="form-control" name="wachtwoord2" id="wachtwoord2"
                                            placeholder="verifieer Wachtwoord"
                                            style="border-style: outset!important; border-width: 1px;">
@@ -223,20 +223,20 @@ if (isset($_POST["registerbutton"])) {
 
                         <div class="form-group">
                             <div class="input-group">
-                                    <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-home"></label>
-                                    <div class="text-field">
-                                        <input type="text" onKeyup="checkform()" class="form-control" name="street"
-                                               placeholder="Straatnaam"
-                                               style="width: 70%; border-style: outset!important; border-width: 1px;" value="<?php if (isset($_POST["street"])){ echo (htmlspecialchars($_POST['street']));}; ?>">
+                                <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-home"></label>
+                                <div class="text-field">
+                                    <input type="text" onKeyup="checkform()" class="form-control" name="street"
+                                           placeholder="Straatnaam"
+                                           style="width: 70%; border-style: outset!important; border-width: 1px;" value="<?php if (isset($_POST["street"])){ echo (htmlspecialchars($_POST['street']));}; ?>">
 
-                                        <input type="text" onKeyup="checkform()" class="form-control" name="number"
-                                               placeholder="Nr."
-                                               style="width: 30%; border-style: outset!important; border-width: 1px;"value="<?php if (isset($_POST["number"])){ echo (htmlspecialchars($_POST['number']));}; ?>">
-                                    </div>
-                                        <input type="text" onKeyup="checkform()" class="form-control" name="userToevoeging"
-                                               placeholder="Toevoeging adres"
-                                               style="border-style: outset!important; border-width: 1px;" value="<?php if (isset($_POST["userToevoeging"])){ echo (htmlspecialchars($_POST['userToevoeging']));}; ?>"
+                                    <input type="text" onKeyup="checkform()" class="form-control" name="number"
+                                           placeholder="Nr."
+                                           style="width: 30%; border-style: outset!important; border-width: 1px;"value="<?php if (isset($_POST["number"])){ echo (htmlspecialchars($_POST['number']));}; ?>">
                                 </div>
+                                <input type="text" onKeyup="checkform()" class="form-control" name="userToevoeging"
+                                       placeholder="Toevoeging adres"
+                                       style="border-style: outset!important; border-width: 1px;" value="<?php if (isset($_POST["userToevoeging"])){ echo (htmlspecialchars($_POST['userToevoeging']));}; ?>"
+                            </div>
                         </div>
                         <!-- /.form-group -->
                         <br>
@@ -277,10 +277,10 @@ if (isset($_POST["registerbutton"])) {
                         <p>al een bestaand account? <a href="#" data-toggle="modal" data-target="#myModal"
                                                        class="hvr-float-shadow">Login</a></p>
                         <div class="actions">
-                        <button name="registerbutton" class="form-control btn orange" id="test" style="color: white;"
-                                type="submit" disabled="disabled">
-                            Registeren
-                        </button>
+                            <button name="registerbutton" class="form-control btn orange" id="test" style="color: white;"
+                                    type="submit" disabled="disabled">
+                                Registeren
+                            </button>
                         </div>
                     </form>
                 </div>
