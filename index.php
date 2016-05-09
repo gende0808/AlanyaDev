@@ -4,6 +4,14 @@ include_once "header.php";
 include_once "classes/Account.php";
 $accountisdeletedconfirm = "";
 
+if(isset($_SESSION['logged']))
+{
+    if ($_SESSION['user_info']['userLevel'] === '3') {
+        header('location: adminaccount');
+    }
+}
+
+
 //code voor het verwijderen van een account
 if (isset($_POST['deleteaccount'])){
     $deleteaccount = htmlspecialchars($_POST['deleteaccount']);
@@ -40,7 +48,6 @@ if (isset($_SESSION['iactivatedmyaccount']) && $_SESSION['iactivatedmyaccount'] 
 }
 
 ?>
-
 
 <div id="slider" style="height: 350px!important;">
     <div class="flexslider">
@@ -81,94 +88,148 @@ if (isset($_SESSION['iactivatedmyaccount']) && $_SESSION['iactivatedmyaccount'] 
             </div>
             <h3><b>DIRECT NAAR ONZE CATEGORIËN!</b></h3>
             <div class="col-md-4 col-sm-6">
-                <div class="blog-post">
-                    <div class="blog-thumb">
-                        <img src="images/grillcat1.png" alt=""/>
-                    </div>
-                    <div class="blog-content">
-                        <div class="content-show">
-                            <h4><a href="menu.php?bref=2">Special Houtskool Grill</a></h4>
+                <a href="menu?bref=1">
+                    <div class="blog-post">
+                        <div class="blog-thumb">
+                            <img src="images/frontcat1.jpg" alt="" />
                         </div>
-                        <div class="content-hide">
-                            <p>heeeul lekker</p>
+                        <div class="blog-content">
+                            <div class="content-show">
+                                <h4><a href="menu?bref=1">Italiaanse pizza's</a></h4>
+                            </div>
+                            <div class="content-hide">
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-md-4 col-sm-6">
-                <div class="blog-post">
-                    <div class="blog-thumb">
-                        <img src="images/pizzcat2.png" alt=""/>
-                    </div>
-                    <div class="blog-content">
-                        <div class="content-show">
-                            <h4><a href="menu.php?bref=1">Italiaanse Pizza's</a></h4>
+                <a href="menu?bref=2">
+                    <div class="blog-post">
+                        <div class="blog-thumb">
+                            <img src="images/frontcat4.jpg" alt="" />
                         </div>
-                        <div class="content-hide">
-                            <p>Sed egestas tincidunt mollis. Suspendisse rhoncus vitae enim et faucibus. Ut dignissim nec arcu nec hendrerit. Sed arcu odio, sagittis vel diam in, malesuada malesuada risus. Aenean a sem leo. Nam ultricies dolor et mi tempor, non pulvinar felis sollicitudin.</p>
+                        <div class="blog-content">
+                            <div class="content-show">
+                                <h4><a href="menu?bref=2">SPECIAL HOUTSKOOL GRILL</a></h4>
+                            </div>
+                            <div class="content-hide">
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-md-4 col-sm-6">
-                <div class="blog-post">
-                    <div class="blog-thumb">
-                        <img src="images/brocattest.png" alt=""/>
-                    </div>
-                    <div class="blog-content">
-                        <div class="content-show">
-                            <h4><a href="menu.php?bref=3">Broodjes &AMP; Dürüm</a></h4>
+                <a href="menu?bref=3">
+                    <div class="blog-post">
+                        <div class="blog-thumb">
+                            <img src="images/frontcat8.jpg" alt="" />
                         </div>
-                        <div class="content-hide">
-                            <p>Sed egestas tincidunt mollis. Suspendisse rhoncus vitae enim et faucibus. Ut dignissim nec arcu nec hendrerit. Sed arcu odio, sagittis vel diam in, malesuada malesuada risus. Aenean a sem leo. Nam ultricies dolor et mi tempor, non pulvinar felis sollicitudin.</p>
+                        <div class="blog-content">
+                            <div class="content-show">
+                                <h4><a href="menu.php?bref=3">Broodjes &AMP; Durum</a></h4>
+                            </div>
+                            <div class="content-hide">
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-md-4 col-sm-6">
-                <div class="blog-post">
-                    <div class="blog-thumb">
-                        <img src="images/brocat4.png" alt=""/>
-                    </div>
-                    <div class="blog-content">
-                        <div class="content-show">
-                            <h4><a href="menu.php?bref=8">Sat&eacute; gerechten</a></h4>
+                <a href="menu?bref=4">
+                    <div class="blog-post">
+                        <div class="blog-thumb">
+                            <img src="images/frontcat3.jpg" alt="" />
                         </div>
-                        <div class="content-hide">
-                            <p>Sed egestas tincidunt mollis. Suspendisse rhoncus vitae enim et faucibus. Ut dignissim nec arcu nec hendrerit. Sed arcu odio, sagittis vel diam in, malesuada malesuada risus. Aenean a sem leo. Nam ultricies dolor et mi tempor, non pulvinar felis sollicitudin.</p>
+                        <div class="blog-content">
+                            <div class="content-show">
+                                <h4><a href="menu.php?bref=4">Snacks</a></h4>
+                            </div>
+                            <div class="content-hide">
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-md-4 col-sm-6">
-                <div class="blog-post">
-                    <div class="blog-thumb">
-                        <img src="images/brocat5.png" alt=""/>
-                    </div>
-                    <div class="blog-content">
-                        <div class="content-show">
-                            <h4><a href="menu.php?bref=4">Snacks</a></h4>
+                <a href="menu?bref=5">
+                    <div class="blog-post">
+                        <div class="blog-thumb">
+                            <img src="images/frontcat9.jpg" alt="" />
                         </div>
-                        <div class="content-hide">
-                            <p>Sed egestas tincidunt mollis. Suspendisse rhoncus vitae enim et faucibus. Ut dignissim nec arcu nec hendrerit. Sed arcu odio, sagittis vel diam in, malesuada malesuada risus. Aenean a sem leo. Nam ultricies dolor et mi tempor, non pulvinar felis sollicitudin.</p>
+                        <div class="blog-content">
+                            <div class="content-show">
+                                <h4><a href="menu.php?bref=5">Dranken</a></h4>
+                            </div>
+                            <div class="content-hide">
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-md-4 col-sm-6">
-                <div class="blog-post">
-                    <div class="blog-thumb">
-                        <img src="images/brocat6.png" alt=""/>
-                    </div>
-                    <div class="blog-content">
-                        <div class="content-show">
-                            <h4><a href="menu.php?bref=12">Salades</a></h4>
+                <a href="menu?bref=8">
+                    <div class="blog-post">
+                        <div class="blog-thumb">
+                            <img src="images/frontcat6.jpg" alt="" />
                         </div>
-                        <div class="content-hide">
-                            <p>Sed egestas tincidunt mollis. Suspendisse rhoncus vitae enim et faucibus. Ut dignissim nec arcu nec hendrerit. Sed arcu odio, sagittis vel diam in, malesuada malesuada risus. Aenean a sem leo. Nam ultricies dolor et mi tempor, non pulvinar felis sollicitudin.</p>
+                        <div class="blog-content">
+                            <div class="content-show">
+                                <h4><a href="menu.php?bref=8">Sate gerechten</a></h4>
+                            </div>
+                            <div class="content-hide">
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <a href="menu?bref=9">
+                    <div class="blog-post">
+                        <div class="blog-thumb">
+                            <img src="images/frontcat5.jpg" alt="" />
+                        </div>
+                        <div class="blog-content">
+                            <div class="content-show">
+                                <h4><a href="menu.php?bref=9">Salades</a></h4>
+                            </div>
+                            <div class="content-hide">
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <a href="menu?bref=10">
+                    <div class="blog-post">
+                        <div class="blog-thumb">
+                            <img src="images/frontcat7.jpg" alt="" />
+                        </div>
+                        <div class="blog-content">
+                            <div class="content-show">
+                                <h4><a href="menu.php?bref=10">Turkse deegwaren</a></h4>
+                            </div>
+                            <div class="content-hide">
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <a href="menu?bref=11">
+                    <div class="blog-post">
+                        <div class="blog-thumb">
+                            <img src="images/frontcat2.jpg" alt="" />
+                        </div>
+                        <div class="blog-content">
+                            <div class="content-show">
+                                <h4><a href="menu.php?bref=11">Vers belegde broodjes</a></h4>
+                            </div>
+                            <div class="content-hide">
+                            </div>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
@@ -177,4 +238,3 @@ if (isset($_SESSION['iactivatedmyaccount']) && $_SESSION['iactivatedmyaccount'] 
 <?PHP
 include_once "footer.php";
 ?>
-

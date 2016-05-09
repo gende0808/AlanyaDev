@@ -1,7 +1,7 @@
 function ShowIMG(waarde) {
     $(document).ready(function () {
         $("#placehere img:last-child").remove();
-        $('#placehere').prepend('<img id="cat' + waarde + '" src="images/cat' + waarde + '.png" />');
+        $('#placehere').prepend('<img id="cat' + waarde + '" src="images/menucat' + waarde + '.jpg" />');
     })
 }
 
