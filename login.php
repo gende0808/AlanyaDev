@@ -1,6 +1,6 @@
 <?php
 ob_start();
-session_start(); 
+session_start();
 include_once "connection.php";
 include_once "interfaces/CRUD.php";
 include_once "classes/Account.php";
@@ -10,6 +10,7 @@ include_once "classes/AccountList.php";
 $email = $_POST['loginemail'];
 $password = $_POST['loginpass'];
 $waarde['logincorrect'] = false;
+$waarde['notactive'] = false;
 
 try {
     $accountlist = new AccountList($DB_con);
@@ -20,6 +21,7 @@ try {
 
 
         if ($email === $accemail && password_verify($password, $accpassword)) {
+
             if ($account->getstatus() == "Y") {
                 //als de invoer van email en wachtwoord overeenkomen met een account in de database word
                 //de sessie 'logged' op true gezet en de sessie 'user_info' word gevuld met gegevens van de gebruiker.
@@ -27,11 +29,13 @@ try {
                 $_SESSION['logged'] = true;
                 $_SESSION['account_id'] = $account->getUserid();
                 $_SESSION['city_id'] = $account->getUsercityid();
-                //echo "Sjaak!";
+                $_SESSION['user_info'] = $account->getUserInfo();
                 echo json_encode($waarde);
-                //header('Location: index.php');
             } else {
-                header("Location: account_not_activated.php");
+                $waarde['logincorrect'] = true;
+                $waarde['notactive'] = true;
+                $waarde['notactivemelding'] = "Uw account is nog niet geactiveerd!";
+                echo json_encode($waarde);
             }
         }
     }

@@ -1,10 +1,29 @@
 <?PHP
-include_once "header2.php";
+session_start();
+
+if ($_SESSION['user_info']['userLevel'] === '3')
+{
+    include_once "header2.php";
+}
+
+else
+{
+    include_once "header.php";
+}
+
 include_once "printorder.php";
 include_once "classes/Bestelling.php";
 include_once "classes/BestellingList.php";
+include_once "classes/Account.php";
+include_once "classes/AccountList.php";
 
+if ($_SESSION['user_info']['userLevel'] === '3' || '2')
+{
+}
 
+else {
+    header('location: index.php');
+}
 
 ?>
 

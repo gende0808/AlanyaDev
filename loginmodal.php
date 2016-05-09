@@ -10,8 +10,7 @@
             </div> <!-- /.modal-header -->
 
             <div class="modal-body">
-                <div class="alert alert-danger text-center" role="alert" id="alertReg" style="display: none;">
-                    Foutje, bedankt!
+                <div class="alert alert-danger text-center" role="alert" id="alertLog" style="display: none;">
                 </div>
                 <form name="login-form" id="login-form" role="form" method="post">
                     <div class="form-group">
@@ -45,7 +44,6 @@
         email = $("input[name='loginemail']").val();
         password = $("input[name='loginpass']").val();
 
-        //alert(email);
 
         var postData = {
             'loginemail': email,
@@ -61,16 +59,25 @@
             dataType: "json",
             success: function(data)
             {
+                if (data.notactive == true) {
+                    $("#alertLog").html(data.notactivemelding).show();
+                }
+
                 if (data.logincorrect == false) {
-                    $("#alertReg").html(data.loginfoutmelding).show();
-                } else {
+                    $("#alertLog").html(data.loginfoutmelding).show();
+                }
+
+                if (data.logincorrect == true && data.notactive == false) {
                     $('#myModal').modal('hide');
                     window.location.replace("index");
                 }
             }
+
         });
 
 
     })
 </script>
+
+
 
