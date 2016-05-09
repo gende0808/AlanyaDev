@@ -5,6 +5,7 @@ include_once "classes/ProductList.php";
 include_once "classes/Product.php";
 include_once "classes/Category.php";
 include_once "classes/CategoryList.php";
+include_once "modals/toevoegingen_modal.php";
 
 
 if (isset($_GET['productid']) && isset($_GET['delete'])) {
