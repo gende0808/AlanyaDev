@@ -148,7 +148,7 @@ $('#myModalToev').on('show.bs.modal', function (event) {
                 for (index = 0; index < data['removable'].length; ++index) {
 
                     modal.find('#verwijderbare_toevoegingen').append("<div><input type='checkbox' style='width: 15px;' name='removable' " +
-                        "value='" + data['removable'][index].removalid + "' align='left' checked>" + data['removable'][index].name + "</div>");
+                        "value='" + data['removable'][index].removalid + "' data-price='0' align='left' checked>" + data['removable'][index].name + "</div>");
                 }
             }
             if (typeof data['addable']) {
@@ -162,7 +162,7 @@ $('#myModalToev').on('show.bs.modal', function (event) {
                 for (index = 0; index < data['radio'].length; ++index) {
                     modal.find('#radio_toevoegingen').append("<p><b>" + data['radio'][index].groupname + "</b></p>");
                     for (index2 = 0; index2 < (countInObject(data['radio'][index]) - 1); ++index2) {
-                        modal.find('#radio_toevoegingen').append("<div><input type='radio' style='width: 15px;' name='radio" + (index + 1) + "' " +
+                        modal.find('#radio_toevoegingen').append("<div><input type='radio' style='width: 15px;' name='radio" + (index + 1) + "' data-price='0' " +
                             "value='" + data['radio'][index][index2].radioid + "'>" + data['radio'][index][index2].name + "</div>");
                     }
                 }
@@ -186,9 +186,3 @@ function buttonreferral(bref) {
 }
 
 
-$(document).on('change' , '.checkbox' , function(){
-    if(this.checked) {
-        alert('hoi');
-    }
-
-});

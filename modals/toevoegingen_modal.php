@@ -35,11 +35,15 @@
 </div><!-- /.modal -->
 
 <script>
-    $(document).on('change' , '.checkbox' , function(){
-        if(this.checked) {
-            alert('hoi');
+    $(document).on('change' , '[type=checkbox]' , function(){
+        baseprice = $('#amount').html();
+        addableprice = $(this).data('price');
+        if( $(this).prop('checked')==true) {
+            totalprice = ( (+baseprice) + (+addableprice) ).toFixed(2);
+        } else {
+            totalprice = ( (+baseprice) - (+addableprice) ).toFixed(2);
         }
-
+        $('#amount').html(totalprice);
     });
 </script>
 
