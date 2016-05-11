@@ -14,9 +14,10 @@ include_once "classes/Bestelling.php";
 include_once "classes/BestellingList.php";
 include_once "classes/Account.php";
 include_once "classes/AccountList.php";
-
-if ($_SESSION['user_info']['userLevel'] === '3' || '2')
-{
+if(isset($_SESSION['logged']) && $_SESSION['logged'] == true) {
+    if ($_SESSION['user_info']['userLevel'] != '3' || $_SESSION['user_info']['userLevel'] == '2') {
+        
+    }
 }
 
 else {
