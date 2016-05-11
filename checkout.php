@@ -8,6 +8,10 @@ include_once "classes/AccountList.php";
 <div class="logo">
     <center><img src="images/testlogo3.png"></center>
 </div>
+
+
+
+
 <?php
 include_once "modals/bestelling_afhalen_modal.php";
 ?>
