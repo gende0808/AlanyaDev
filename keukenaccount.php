@@ -1,6 +1,4 @@
 <?PHP
-session_start();
-
 if ($_SESSION['user_info']['userLevel'] === '3')
 {
     include_once "header2.php";
