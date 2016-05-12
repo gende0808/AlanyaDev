@@ -42,6 +42,7 @@
 
 
         email = $("input[name='loginemail']").val();
+        email = email.toLowerCase();
         password = $("input[name='loginpass']").val();
 
 
