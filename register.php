@@ -71,7 +71,7 @@ if (isset($_POST["registerbutton"])) {
                         try {
                             //als het emailadres niet al bestaat gaat hij hieronder proberen een account aan te maken.
                             $account = new Account($DB_con);
-                            $account->setUseremail(htmlspecialchars($_POST['email']));
+                            $account->setUseremail(strtolower(htmlspecialchars($_POST['email'])));
                             $account->setUserfirstname(htmlspecialchars($_POST['firstname']));
                             $account->setUserlastname(htmlspecialchars($_POST['lastname']));
                             $account->setUsercityid(htmlspecialchars($_POST['city']));
