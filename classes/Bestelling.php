@@ -4,192 +4,326 @@
  * Class Order
  */
 
+class Bestelling{
+    /**
+     * @var int
+     */
+    private $orderid;
 
-
-class Order implements CRUD{
-    /**
-     * @var int
-     */
-    private $bestellingid;
-    /**
-     * @var int
-     */
-    private $productid;
-    /**
-     * @var int
-     */
-    private $categoryid;
-    /**
-     * @var int
-     */
-    private $productaddingid;
-    /**
-     * @var int
-     */
-    private $quantity;
     /**
      * @var string
      */
-    private $productnote;
+    private $customerfirstname;
+    /**
+     * @var string
+     */
+    private $customerlastname;
+    /**
+     * @var string
+     */
+    private $customerphonenumber;
+    /**
+     * @var string
+     */
+    private $customeremail;
+    /**
+     * @var string
+     */
+    private $customerstreetname;
+    /**
+     * @var string
+     */
+    private $customerhousenumber;
+    /**
+     * @var string
+     */
+    private $customeraddition;
+    /**
+     * @var int
+     */
+    private $customercityid;
+    /**
+     * @var string
+     */
+    private $customerparticularities;
+    /**
+     * @var string
+     */
+    private $ordertime;
+    /**
+     * @var string
+     */
+    private $printed;
 
     /**
-     * @var PDO
+     * @param $dbconnection
+     * @param string $id
      */
-    private $db;
 
 
+    public function __construct($dbconnection, $id = "")
+    {
 
-    public function __construct($dbconnection){
         $this->db = $dbconnection;
+        if ($id != "" && is_numeric($id)) {
+            $this->read($id);
+        }
+
     }
 
-    public function create(){
+    public function create()
+    {
         try {
-            $stmt = $this->db->prepare("INSERT INTO bestelling(productID,categorieID,productToevoegingID,aantal,productAantekening)
-                                    VALUES(:productid, :categoryid, :productaddingid, :quantity, :productnote)");
-            $stmt->bindparam(":productid", $this->productid);
-            $stmt->bindparam(":categoryid", $this->categoryid);
-            $stmt->bindparam(":productaddingid", $this->productaddingid);
-            $stmt->bindparam(":quantity", $this->quantity);
-            $stmt->bindparam(":productnote", $this->productnote);
+            $stmt = $this->db->prepare("INSERT INTO bestelling(,
+                                                           klantVoornaam,
+                                                           klantAchternaam,
+                                                           klantTelefoonnummer,
+                                                           klantEmail,
+                                                           klantStraatnaam,
+                                                           klantHuisnummer,
+                                                           klantToevoeging,
+                                                           klantWoonplaats,
+                                                           klantBijzonderheden,
+                                                           besteltijd,
+                                                           uitgeprint,
+                                    VALUES(:fistname, :lastname, :phonenumber, :email, :streename, :housenumber, :addition, :cityid, :particularities, :ordertime, :printed)");
+            $stmt->bindParam(":fistname", $this->customerfirstname);
+            $stmt->bindParam(":lastname", $this->customerlastname);
+            $stmt->bindParam(":phonenumber", $this->customerphonenumber);
+            $stmt->bindParam(":email", $this->customeremail);
+            $stmt->bindParam(":streetname", $this->customerstreetname);
+            $stmt->bindParam(":housenumber", $this->customerhousenumber);
+            $stmt->bindParam(":addition", $this->customeraddition);
+            $stmt->bindParam(":cityid", $this->customercityid);
+            $stmt->bindParam(":particularities", $this->customerparticularities);
+            $stmt->bindParam(":ordertime", $this->ordertime);
+            $stmt->bindParam(":printed", $this->printed);
             $stmt->execute();
-
-        } catch(PDOException $e){
-            echo "Er is iets misgegaan met de verbinding van de server!Boodschap".$e->getMessage();
+        } catch (PDOException $e) {
+            echo "er is iets misgegaan met de verbinding van de server!" . $e->getMessage();
         }
     }
-    public function read($id){
+
+
+    public function read($id)
+    {
+        if (empty($id)) {
+            throw new InvalidArgumentException('Id is leeg!');
+        }
+        if (!is_numeric($id)) {
+            throw new InvalidArgumentException("Id is geen getal!");
+        }
 
         try {
-            $stmt = $this->db->prepare("SELECT * FROM bestelling WHERE bestellingID= :orderid");
-            $stmt->bindParam(':order', $id, PDO::PARAM_INT);
+            $stmt = $this->db->prepare("SELECT bestellingNummer,
+                                               klantVoornaam,
+                                               klantAchternaam,
+                                               klantTelefoonnummer,
+                                               klantEmail,
+                                               klantStraatnaam,
+                                               klantHuisnummer,
+                                               klantToevoeging,
+                                               klantWoonplaats,
+                                               klantBijzonderheden,
+                                               besteltijd,
+                                               uitgeprint,
+                                                FROM bestelling WHERE bestellingNummer :orderid");
+            $stmt->bindParam(':bestellingNummer', $id, PDO::PARAM_INT);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            $this->bestellingid = $result['bestellingID'];
-            $this->catdescription = $result['categorieOmschrijving'];
-            $this->discountID = $result['actieID'];
+            $this->orderid = $result['bestellingNummer'];
+            $this->customerfirstname = $result['klantVoornaam'];
+            $this->customerlastname = $this->customerlastname['klantAchternaam'];
+            $this->customerphonenumber = $this->customerphonenumber['klantTelefoonnummer'];
+            $this->customeremail = $this->customeremail['klantEmail'];
+            $this->customerstreetname = $this->customerstreetname['klantStraatnaam'];
+            $this->customerhousenumber = $this->customerhousenumber['klantHuisnummer'];
+            $this->customeraddition = $this->customeraddition['klantToevoeging'];
+            $this->customercityid = $this->customercityid['klantWoonplaats'];
+            $this->customerparticularities = $this->customerparticularities['klantBijzonderheden'];
+            $this->ordertime = $this->ordertime['besteltijd'];
+            $this->printed = $this->printed['uitgeprint'];
         } catch (PDOException $e) {
             echo "Database-error: " . $e->getMessage();
         }
     }
-    public function update($id){
 
-    }
-    public function delete($id){
-
-    }
-
-    /**
-     * @return PDO
-     */
-    public function getDb()
-    {
-        return $this->db;
-    }
-
-    /**
-     * @param PDO $db
-     */
-    public function setDb($db)
-    {
-        $this->db = $db;
-    }
 
     /**
      * @return int
      */
-    public function getQuantity()
+    public function getOrderid()
     {
-        return $this->quantity;
+        return $this->orderid;
     }
-
-    /**
-     * @param int $quantity
-     */
-    public function setQuantity($quantity)
-    {
-        $this->quantity = $quantity;
-    }
-
     /**
      * @return string
      */
-    public function getProductnote()
+    public function getCustomerfirstname()
     {
-        return $this->productnote;
+        return $this->customerfirstname;
     }
-
     /**
-     * @param string $productnote
+     * @return string
      */
-    public function setProductnote($productnote)
+    public function getCustomerlastname()
     {
-        $this->productnote = $productnote;
+        return $this->customerlastname;
     }
-
     /**
-     * @return int
+     * @return string
      */
-    public function getProductaddingid()
+    public function getCustomerphonenumber()
     {
-        return $this->productaddingid;
+        return $this->customerphonenumber;
     }
-
     /**
-     * @param int $productaddingid
+     * @return string
      */
-    public function setProductaddingid($productaddingid)
+    public function getCustomeremail()
     {
-        $this->productaddingid = $productaddingid;
+        return $this->customeremail;
     }
-
     /**
-     * @return int
+     * @return string
      */
-    public function getCategoryid()
+    public function getCustomerstreetname()
     {
-        return $this->categoryid;
+        return $this->customerstreetname;
     }
-
     /**
-     * @param int $categoryid
+     * @return string
      */
-    public function setCategoryid($categoryid)
+    public function getCustomerhousenumber()
     {
-        $this->categoryid = $categoryid;
+        return $this->customerhousenumber;
     }
-
     /**
-     * @return int
+     * @return string
      */
-    public function getProductid()
+    public function getCustomeraddition()
     {
-        return $this->productid;
+        return $this->customeraddition;
     }
-
-    /**
-     * @param int $productid
-     */
-    public function setProductid($productid)
-    {
-        $this->productid = $productid;
-    }
-
     /**
      * @return int
      */
-    public function getBestellingid()
+    public function getCustomercityid()
     {
-        return $this->bestellingid;
+        return $this->customercityid;
+    }
+    /**
+     * @return string
+     */
+    public function getCustomerparticularities()
+    {
+        return $this->customerparticularities;
+    }
+    /**
+     * @return string
+     */
+    public function getOrdertime()
+    {
+        return $this->ordertime;
+    }
+    /**
+     * @return string
+     */
+    public function getPrinted()
+    {
+        return $this->printed;
     }
 
-//    /**
-//     * @param int $bestellingid
-//     */
-//    public function setBestellingid($bestellingid)
-//    {
-//        $this->bestellingid = $bestellingid;
-//    }
+
+    /**
+     * @param mixed $customercityid
+     */
+    public function setCustomercityid($customercityid)
+    {
+        if (empty($customercityid)) {
+            throw new InvalidArgumentException("Je hebt geen stad gekozen!");
+        }
+        $this->customercityid = htmlentities($customercityid);
+    }
+
+    /**
+     * @param mixed $customerstreetname
+     */
+    public function setCustomerstreetname($customerstreetname)
+    {
+        if (empty($customerstreetname)) {
+            throw new InvalidArgumentException("Je hebt geen straat ingevoerd!");
+        }
+        $this->customerstreetname = htmlentities($customerstreetname);
+    }
+
+    /**
+     * @param mixed $customerhousenumber
+     */
+    public function setCustomerhousenumber($customerhousenumber)
+    {
+        if (empty($customerhousenumber)) {
+            throw new InvalidArgumentException("Je hebt geen huisnummer ingevoerd!");
+        }
+        $this->customerhousenumber = htmlentities($customerhousenumber);
+    }
+
+    /**
+     * @param mixed $customeremail
+     */
+    public function setCustomeremail($customeremail)
+    {
+        if (empty($customeremail)) {
+            throw new InvalidArgumentException("Je hebt geen email ingevoerd!");
+        }
+        $this->customeremail = htmlentities($customeremail);
+
+    }
+
+    /**
+     * @param mixed $customerfirstname
+     */
+    public function setCustomerfirstname($customerfirstname)
+    {
+        $this->customerfirstname = htmlentities($customerfirstname);
+    }
+
+    /**
+     * @param mixed $customerlastname
+     */
+    public function setCustomerlastname($customerlastname)
+    {
+        $this->customerlastname = htmlentities($customerlastname);
+    }
+
+    /**
+     * @param mixed $customerphonenumber
+     */
+    public function setCustomerphonenumber($customerphonenumber)
+    {
+        if (empty($customerphonenumber)) {
+            throw new InvalidArgumentException("telefoonnummer is leeg");
+        }
+        $this->customerphonenumber = htmlentities($customerphonenumber);
+    }
+    
+    /**
+     * @param mixed $customeraddition
+     */
+    
+    public function setCustomeraddition($customeraddition)
+    {
+        $this->customeraddition = $customeraddition;
+    }
+
+    /**
+     * @param mixed $customerparticularities
+     */
+
+    public function setCustomerparticularities($customerparticularities)
+    {
+        $this->customerparticularities = $customerparticularities;
+    }
 
 }
 
