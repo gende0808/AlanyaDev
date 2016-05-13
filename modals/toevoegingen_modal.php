@@ -1,3 +1,4 @@
+<form method="POST" role="form" action="">
 <div class="modal fade" id="myModalToev" tabindex="-1" role="dialog" aria-labelledby="myModalAddedLabel" aria-hidden="true" style="padding-top: 5%;">
     <div class="col-md-8 col-md-offset-2">
         <div class="modal-dialog">
@@ -23,26 +24,27 @@
                     </div>
                 </div>
                 <div style="margin-bottom: 2%">
-                    <p><h3><span id="amount" class="amount"></span></h3></p>
+                    <p><h3><span>&#128; </span><span id="amount" class="amount"></span></h3></p>
                     <br>
                     Aantal:
                     <input type="number" min="1" name="quantity" value="1" class="btn form-control input-md input-qty" placeholder="" style="width: 15%">
-                    <button class="btn orange" style="color: white" href="shoppingcart.php"><a href="shoppingcart.php" style="color:white"> Toevoegen</a></button>
-                </div> <!-- /.modal-footer -->
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
+                    <button class="btn orange" style="color: white"><div style="color:white"> Toevoegen</div></button>
+                </div>
+            </div>
+        </div>
     </div>
-</div><!-- /.modal -->
-
+</div>
+</form>
 <script>
     $(document).on('change' , '[type=checkbox]' , function(){
-        baseprice = $('#amount').html();
+        baseprice = ($('#amount').html()).replace(",",".");
         addableprice = $(this).data('price');
         if( $(this).prop('checked')==true) {
             totalprice = ( (+baseprice) + (+addableprice) ).toFixed(2);
         } else {
             totalprice = ( (+baseprice) - (+addableprice) ).toFixed(2);
         }
+        totalprice = totalprice.replace(".",",");
         $('#amount').html(totalprice);
     });
 </script>

@@ -1,13 +1,8 @@
 <?PHP
-session_start();
-
 if ($_SESSION['user_info']['userLevel'] === '3')
 {
     include_once "header2.php";
-}
-
-else
-{
+} else {
     include_once "header.php";
 }
 
@@ -16,9 +11,10 @@ include_once "classes/Bestelling.php";
 include_once "classes/BestellingList.php";
 include_once "classes/Account.php";
 include_once "classes/AccountList.php";
+if(isset($_SESSION['logged']) && $_SESSION['logged'] == true) {
+    if ($_SESSION['user_info']['userLevel'] != '3' || $_SESSION['user_info']['userLevel'] == '2') {
 
-if ($_SESSION['user_info']['userLevel'] === '3' || '2')
-{
+    }
 }
 
 else {
