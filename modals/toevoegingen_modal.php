@@ -2,6 +2,7 @@
 <div class="modal fade" id="myModalToev" tabindex="-1" role="dialog" aria-labelledby="myModalAddedLabel" aria-hidden="true" style="padding-top: 5%;">
     <div class="col-md-8 col-md-offset-2">
         <div class="modal-dialog">
+            <div id="prodid"> blabla</div>
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>

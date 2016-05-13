@@ -142,6 +142,8 @@ $('#myModalToev').on('show.bs.modal', function (event) {
             clearBox("#toevoegbare_toevoegingen");
             clearBox("#radio_toevoegingen");
             clearBox("#amount");
+            clearBox("#prodid");
+            modal.find('#prodid').append('<input type="hidden" name="productid" value="'+ productid +'">');
             modal.find('#amount').append(productbaseprice);
             //for(index = 0; index < data.length; ++index) {
             if (typeof data['removable']) {
