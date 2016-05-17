@@ -49,7 +49,7 @@ class Bestelling{
     /**
      * @var string
      */
-    private $ordertime;
+    private $ordertime ;
     /**
      * @var string
      */
@@ -74,7 +74,7 @@ class Bestelling{
     public function create()
     {
         try {
-            $stmt = $this->db->prepare("INSERT INTO bestelling(,
+            $stmt = $this->db->prepare("INSERT INTO bestelling(
                                                            klantVoornaam,
                                                            klantAchternaam,
                                                            klantTelefoonnummer,
@@ -85,9 +85,9 @@ class Bestelling{
                                                            klantWoonplaats,
                                                            klantBijzonderheden,
                                                            besteltijd,
-                                                           uitgeprint,
-                                    VALUES(:fistname, :lastname, :phonenumber, :email, :streename, :housenumber, :addition, :cityid, :particularities, :ordertime, :printed)");
-            $stmt->bindParam(":fistname", $this->customerfirstname);
+                                                           uitgeprint)
+                                    VALUES(:firstname, :lastname, :phonenumber, :email, :streetname, :housenumber, :addition, :cityid, :particularities, :ordertime, :printed)");
+            $stmt->bindParam(":firstname", $this->customerfirstname);
             $stmt->bindParam(":lastname", $this->customerlastname);
             $stmt->bindParam(":phonenumber", $this->customerphonenumber);
             $stmt->bindParam(":email", $this->customeremail);
@@ -240,9 +240,6 @@ class Bestelling{
      */
     public function setCustomercityid($customercityid)
     {
-        if (empty($customercityid)) {
-            throw new InvalidArgumentException("Je hebt geen stad gekozen!");
-        }
         $this->customercityid = htmlentities($customercityid);
     }
 
@@ -251,9 +248,6 @@ class Bestelling{
      */
     public function setCustomerstreetname($customerstreetname)
     {
-        if (empty($customerstreetname)) {
-            throw new InvalidArgumentException("Je hebt geen straat ingevoerd!");
-        }
         $this->customerstreetname = htmlentities($customerstreetname);
     }
 
@@ -262,9 +256,6 @@ class Bestelling{
      */
     public function setCustomerhousenumber($customerhousenumber)
     {
-        if (empty($customerhousenumber)) {
-            throw new InvalidArgumentException("Je hebt geen huisnummer ingevoerd!");
-        }
         $this->customerhousenumber = htmlentities($customerhousenumber);
     }
 
@@ -273,11 +264,7 @@ class Bestelling{
      */
     public function setCustomeremail($customeremail)
     {
-        if (empty($customeremail)) {
-            throw new InvalidArgumentException("Je hebt geen email ingevoerd!");
-        }
         $this->customeremail = htmlentities($customeremail);
-
     }
 
     /**
@@ -325,7 +312,13 @@ class Bestelling{
         $this->customerparticularities = $customerparticularities;
     }
 
+    /**
+     * @param string $printed
+     */
+    public function setPrinted($printed)
+    {
+        $this->printed = $printed;
+    }
+
 }
-
-
 ?>
