@@ -126,25 +126,26 @@ $('#myModalToev').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget);
     var productid = button.data('productid');
     var productbaseprice = button.data('product-price');
+    clearBox("#verwijderbare_toevoegingen");
+    clearBox("#toevoegbare_toevoegingen");
+    clearBox("#radio_toevoegingen");
+    clearBox("#amount");
+    clearBox("#prodid");
     var postData = {
         'productid': productid
     };
     var url = "toevoegingen_ophalen.php";
     var modal = $(this);
-
+    modal.find('#prodid').append('<input type="hidden" id="product_id" name="productid" value="'+ productid +'">');
+    modal.find('#amount').append(productbaseprice);
     $.ajax({
         type: "POST",
         url: url,
         data: postData,
         dataType: "json",
         success: function (data) {
-            clearBox("#verwijderbare_toevoegingen");
-            clearBox("#toevoegbare_toevoegingen");
-            clearBox("#radio_toevoegingen");
-            clearBox("#amount");
-            clearBox("#prodid");
-            modal.find('#prodid').append('<input type="hidden" id="product_id" name="productid" value="'+ productid +'">');
-            modal.find('#amount').append(productbaseprice);
+
+
             //for(index = 0; index < data.length; ++index) {
             if (typeof data['removable']) {
                 for (index = 0; index < data['removable'].length; ++index) {
