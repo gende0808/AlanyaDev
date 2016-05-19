@@ -40,7 +40,6 @@
 <script>
     $('#loginbutton').click(function() {
 
-
         email = $("input[name='loginemail']").val();
         email = email.toLowerCase();
         password = $("input[name='loginpass']").val();
@@ -77,7 +76,47 @@
         });
 
 
-    })
+    });
+
+    $("#loginpass").keypress(function(e) {
+        if(e.which == 13) {
+            email = $("input[name='loginemail']").val();
+            email = email.toLowerCase();
+            password = $("input[name='loginpass']").val();
+
+
+            var postData = {
+                'loginemail': email,
+                'loginpass': password
+            }
+
+            var url = "login.php";
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: postData,
+                dataType: "json",
+                success: function(data)
+                {
+                    if (data.notactive == true) {
+                        $("#alertLog").html(data.notactivemelding).show();
+                    }
+
+                    if (data.logincorrect == false) {
+                        $("#alertLog").html(data.loginfoutmelding).show();
+                    }
+
+                    if (data.logincorrect == true && data.notactive == false) {
+                        $('#myModal').modal('hide');
+                        window.location.replace("index");
+                    }
+                }
+
+            });
+
+        }
+    });
 </script>
 
 
