@@ -20,8 +20,10 @@ if(isset($_POST['productid'])) {
 
 
     try {
-
-        $lijstmettoevoegingen = new ProductAdditionList($DB_con, 1);
+        $productid = htmlspecialchars($_POST['productid']);
+        $product = new Product($DB_con, $productid);
+        $additionid = $product->getAdditionId();
+        $lijstmettoevoegingen = new ProductAdditionList($DB_con, $additionid);
         $verwijderlijst = $lijstmettoevoegingen->getremovableadditions();
         $toevoeginglijst = $lijstmettoevoegingen->getaddableadditions();
         $radiolijst = $lijstmettoevoegingen->getradioadditions();

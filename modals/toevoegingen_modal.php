@@ -30,7 +30,7 @@
                 <h3><span>&#128; </span><span id="amount" class="amount"></span></h3></p>
                 <br>
                 Aantal:
-                <input type="number" min="1" name="quantity" value="1" class="btn form-control input-md input-qty"
+                <input type="number" min="1" id="quantity" name="quantity" value="1" class="btn form-control input-md input-qty"
                        placeholder="" style="width: 15%">
                 <button type="button" class="btn orange" id="submitproduct" style="color: white">Toevoegen</button>
             </div>
@@ -55,11 +55,29 @@
 
 
         $("#submitproduct").on("click", function () {
-            productid = $("#product_id").val();
-            alert(productid);
-            removablestuff = $('#removable').val();
+
+            var productid = $("#product_id").val();
+            var aantal = $("#quantity").val();
+            var removablee = [];
+            $("input:checkbox[name=removable]:checked").each(function() {
+                removablee.push($(this).val());
+            });
+            var addablee = [];
+            $("input:checkbox[name=addable]:checked").each(function() {
+               addablee.push($(this).val());
+            });
+            var radioe = [];
+            $("input:checkbox[name=radio]:checked").each(function() {
+                radioe.push($(this).val());
+            });
+
+            radiostuff = $('#radio').val();
             var postData = {
                 'prodid': productid,
+                'aantal': aantal,
+                'removable': removablee,
+                'addable': addablee,
+                'radio': radioe
             };
             var url = "test.php";
             $.ajax({
@@ -68,7 +86,8 @@
                 data: postData,
                 dataType: "text",
                 success: function (data) {
-                    $('#myModalToev').modal('hide');
+                   // alert(data.toString());
+                    //$('#myModalToev').modal('hide');
                 }
             });
         });

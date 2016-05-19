@@ -70,8 +70,10 @@ class Product implements CRUD
      * @var int
      */
     private $categoryid;
-
-
+    /**
+     * @var int
+     */
+    private $additionid;
     /**
      * @var
      */
@@ -80,6 +82,7 @@ class Product implements CRUD
      * @var array
      */
     private $product_info = array();
+
 
     /**
      * @param $dbconnection
@@ -161,6 +164,7 @@ class Product implements CRUD
             $this->zaterdag = $result['zaterdag'];
             $this->zondag = $result['zondag'];
             $this->productid = $result['id'];
+            $this->additionid = $result['toevoeginggroepid'];
 
 
         } catch (PDOException $e) {
@@ -362,6 +366,10 @@ class Product implements CRUD
     {
         return $this->productdiscountprice;
     }
+
+    /**
+     * @return string
+     */
     public function getDiscountpriceformatted()
     {
         return '€ '.str_replace('.',',',$this->productdiscountprice);
@@ -450,8 +458,24 @@ class Product implements CRUD
         $this->categoryid = htmlentities($categoryid);
     }
 
+    /**
+     * @return array
+     */
     public function getProductInfo(){
         return $this->product_info;
     }
 
+    /**
+     * @param $additionid
+     */
+    public function setAdditionId($additionid){
+        $this->additionid = $additionid;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAdditionId(){
+        return $this->additionid;
+    }
 }
