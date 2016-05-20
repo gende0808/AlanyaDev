@@ -22,7 +22,7 @@ if(isset($_POST['productid'])) {
         $product = new Product($DB_con, $productid);
         $additionid = $product->getAdditionId();
         $super_array = array();
-        if($additionid!= "" && !empty($additionid)) {
+        if(is_numeric($additionid)) {
             $lijstmettoevoegingen = new ProductAdditionList($DB_con, $additionid);
             $verwijderlijst = $lijstmettoevoegingen->getremovableadditions();
             $toevoeginglijst = $lijstmettoevoegingen->getaddableadditions();

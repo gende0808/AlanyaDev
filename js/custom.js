@@ -144,28 +144,25 @@ $('#myModalToev').on('show.bs.modal', function (event) {
         data: postData,
         dataType: "json",
         success: function (data) {
-
-
-            //for(index = 0; index < data.length; ++index) {
-            if (typeof data['removable']) {
+            if (typeof data['removable'] != 'undefined' && data['removable'] instanceof Array ) {
                 for (index = 0; index < data['removable'].length; ++index) {
 
-                    modal.find('#verwijderbare_toevoegingen').append("<div><input type='checkbox' style='width: 15px;' name='removable' " +
+                    modal.find('#verwijderbare_toevoegingen').append("<div><input type='checkbox' style='width: 15px;' name='removable' id='removable' " +
                         "value='" + data['removable'][index].removalid + "' data-price='0' align='left' checked>" + data['removable'][index].name + "</div>");
                 }
             }
-            if (typeof data['addable']) {
+            if (typeof data['addable']!= 'undefined' && data['addable'] instanceof Array) {
                 for (index = 0; index < data['addable'].length; ++index) {
 
                     modal.find('#toevoegbare_toevoegingen').append("<div><input type='checkbox' style='width: 15px;' name='addable' id='addable' " +
                         "value='" + data['addable'][index].additionid + "' data-price='" + data['addable'][index].price + "'>" + data['addable'][index].name + "(" + data['addable'][index].formattedprice + ")" + "</div>");
                 }
             }
-            if (typeof data['radio']) {
+            if (typeof data['radio'] != 'undefined' && data['radio'] instanceof Array) {
                 for (index = 0; index < data['radio'].length; ++index) {
                     modal.find('#radio_toevoegingen').append("<p><b>" + data['radio'][index].groupname + "</b></p>");
                     for (index2 = 0; index2 < (countInObject(data['radio'][index]) - 1); ++index2) {
-                        modal.find('#radio_toevoegingen').append("<div><input type='radio' style='width: 15px;' name='radio" + (index + 1) + "' data-price='0' " +
+                        modal.find('#radio_toevoegingen').append("<div><input type='radio' style='width: 15px;' name='radio" + (index + 1) + "' id='radio' data-price='0' " +
                             "value='" + data['radio'][index][index2].radioid + "'>" + data['radio'][index][index2].name + "</div>");
                     }
                 }
