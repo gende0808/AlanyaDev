@@ -66,8 +66,10 @@
             $("input:checkbox[name=addable]:checked").each(function() {
                addablee.push($(this).val());
             });
+            //RADIO CHECK WERKT NU
             var radioe = [];
-            $("input:checkbox[name=radio]:checked").each(function() {
+            $("input:radio[id=radio]:checked").each(function() {
+                alert('Hallo');
                 radioe.push($(this).val());
             });
 
@@ -79,15 +81,14 @@
                 'addable': addablee,
                 'radio': radioe
             };
-            var url = "test.php";
+            var url = "shopping_cart_session.php";
             $.ajax({
                 type: "POST",
                 url: url,
                 data: postData,
                 dataType: "text",
                 success: function (data) {
-                   // alert(data.toString());
-                    //$('#myModalToev').modal('hide');
+                    $('#myModalToev').modal('hide');
                 }
             });
         });
