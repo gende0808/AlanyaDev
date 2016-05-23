@@ -66,10 +66,8 @@
             $("input:checkbox[name=addable]:checked").each(function() {
                addablee.push($(this).val());
             });
-            //RADIO CHECK WERKT NU
             var radioe = [];
             $("input:radio[id=radio]:checked").each(function() {
-                alert('Hallo');
                 radioe.push($(this).val());
             });
 

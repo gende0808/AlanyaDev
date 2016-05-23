@@ -13,19 +13,20 @@ if (!empty($_POST['prodid'])) {
     if(empty($_SESSION['productencart'])){
         $_SESSION['productencart'] = array();
     }
-    $array['productid'] = htmlspecialchars($_POST['prodid']);
+    $array['productid'] = $_POST['prodid'];
     if (!empty($_POST['removable'])) {
-        $array['removable'] = htmlspecialchars($_POST['removable']);
+        $array['removable'] = $_POST['removable'];
     }
     if (!empty($_POST['addable'])) {
-        $array['addable'] = htmlspecialchars($_POST['addable']);
+        $array['addable'] = $_POST['addable'];
     }
     if (!empty($_POST['radio'])) {
-        $array['radio'] = htmlspecialchars($_POST['radio']);
+        $array['radio'] = $_POST['radio'];
     }
     if (!empty($array)) {
         array_push($_SESSION['productencart'], $array);
-        print_r($_SESSION['productencart']);
     }
 }
+pr($_SESSION['productencart']);
+
 ?>
