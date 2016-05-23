@@ -25,7 +25,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
 ?>
 
 <div class="container text-center" style="margin-top: 50px;">
-    <div class="col-md-12 col-md-offset-0 text-center" style="margin-top: 50px">
+    <div class="col-md-10 col-md-offset-1 text-center" style="margin-top: 50px">
         <div class="col-md-12 col-md-offset-0 text-center">
             <div class="flexslider">
                 <ul class="slides">
