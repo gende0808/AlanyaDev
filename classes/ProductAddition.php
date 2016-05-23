@@ -1,31 +1,28 @@
 <?php
 
 
-
-
-class ProductAddition{
+class ProductAddition
+{
     /**
      * @var PDO
      */
-private $db;
+    private $db;
 
     private $price;
     private $name;
     private $id;
 
 
-
-
-    public function __construct($dbconnection,$additionid = 0,$additionname = "",$additionprice = 0)
+    public function __construct($dbconnection, $additionid = 0, $additionname = "", $additionprice = 0)
     {
         $this->db = $dbconnection;
-        if($additionid != 0){
+        if ($additionid != 0) {
             $this->id = $additionid;
         }
-        if($additionname != ""){
+        if ($additionname != "") {
             $this->name = $additionname;
         }
-        if($additionprice != 0){
+        if ($additionprice != 0) {
             $this->price = $additionprice;
         }
 
@@ -38,11 +35,17 @@ private $db;
     {
         return $this->price;
     }
+
     /**
      * @return string
      */
-    public function getFormattedPrice(){
-        return '+ €'.str_replace('.',',',$this->price);
+    public function getFormattedPrice()
+    {
+        if ($this->price < 0.01) {
+            return '';
+        } else {
+            return '+ €' . str_replace('.', ',', $this->price);
+        }
     }
 
     /**
@@ -84,7 +87,6 @@ private $db;
     {
         $this->id = $id;
     }
-    
 
 
 }
