@@ -152,14 +152,14 @@ if (isset($_SESSION['iactivatedmyaccount']) && $_SESSION['iactivatedmyaccount'] 
                 </a>
             </div>
             <div class="col-md-4 col-sm-6">
-                <a href="menu?bref=5">
+                <a href="menu?bref=10">
                     <div class="blog-post">
                         <div class="blog-thumb">
-                            <img src="images/frontcat9.jpg" alt="" />
+                            <img src="images/frontcat7.jpg" alt="" />
                         </div>
                         <div class="blog-content">
                             <div class="content-show">
-                                <h4><a href="menu.php?bref=5">Dranken</a></h4>
+                                <h4><a href="menu.php?bref=10">Turkse deegwaren</a></h4>
                             </div>
                             <div class="content-hide">
                             </div>
@@ -200,22 +200,6 @@ if (isset($_SESSION['iactivatedmyaccount']) && $_SESSION['iactivatedmyaccount'] 
                 </a>
             </div>
             <div class="col-md-4 col-sm-6">
-                <a href="menu?bref=10">
-                    <div class="blog-post">
-                        <div class="blog-thumb">
-                            <img src="images/frontcat7.jpg" alt="" />
-                        </div>
-                        <div class="blog-content">
-                            <div class="content-show">
-                                <h4><a href="menu.php?bref=10">Turkse deegwaren</a></h4>
-                            </div>
-                            <div class="content-hide">
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6">
                 <a href="menu?bref=11">
                     <div class="blog-post">
                         <div class="blog-thumb">
@@ -224,6 +208,22 @@ if (isset($_SESSION['iactivatedmyaccount']) && $_SESSION['iactivatedmyaccount'] 
                         <div class="blog-content">
                             <div class="content-show">
                                 <h4><a href="menu.php?bref=11">Vers belegde broodjes</a></h4>
+                            </div>
+                            <div class="content-hide">
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <a href="menu?bref=5">
+                    <div class="blog-post">
+                        <div class="blog-thumb">
+                            <img src="images/frontcat9.jpg" alt="" />
+                        </div>
+                        <div class="blog-content">
+                            <div class="content-show">
+                                <h4><a href="menu.php?bref=5">Dranken</a></h4>
                             </div>
                             <div class="content-hide">
                             </div>
