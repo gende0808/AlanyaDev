@@ -44,7 +44,7 @@ class ProductAddition
         if ($this->price < 0.01) {
             return '';
         } else {
-            return '+ €' . str_replace('.', ',', $this->price);
+            return '(+ €' . str_replace('.', ',', $this->price.")");
         }
     }
 
