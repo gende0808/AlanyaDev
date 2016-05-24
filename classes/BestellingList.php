@@ -17,11 +17,11 @@ class OrderList
 
         try
         {
-            $stmt = $this->db->prepare("SELECT bestellingID FROM bestelling");
+            $stmt = $this->db->prepare("SELECT * FROM bestelling");
             $stmt->execute();
             while ($result = $stmt->fetch(PDO::FETCH_ASSOC))
             {
-                $this->listoforders[] = new Order($this->db, $result['bestellingID']);
+                $this->listoforders[] = new Bestelling($this->db, $result['bestellingNummer']);
             }
 
         }
@@ -33,7 +33,7 @@ class OrderList
     }
 
     /**
-     * @return Order[]
+     * @return Bestelling[]
      */
     function getlistoforders()
     {

@@ -59,7 +59,7 @@
             var productid = $("#product_id").val();
             var aantal = $("#quantity").val();
             var removablee = [];
-            $("input:checkbox[name=removable]:checked").each(function() {
+            $("input:checkbox[name=removable]:not(:checked)").each(function() {
                 removablee.push($(this).val());
             });
             var addablee = [];
