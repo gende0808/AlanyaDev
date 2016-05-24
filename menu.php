@@ -78,7 +78,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
             </tbody>
         </table>
     </div>
-    <div class="col-md-4" id="testje">
+    <div class="col-md-4">
         <div class="text-left">
             <ul>
                 <li class="row list-inline columnCaptions">
@@ -94,6 +94,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                         echo '<li class="row">';
                         echo '<span class="quantity">' . $cartproduct["aantal"] . '</span>';
                         echo '<span class="itemName">' . $product->getProductname() . '</span>';
+                        echo '<span class="popbtn"  data-parent="#asd" data-toggle="collapse" data-target="#demo"><a class="glyphicon glyphicon-remove"></a></span>';
                         echo '<span class="price">€' . $product->getProductprice() . '</span>';
                         echo '</li>';
                         echo '<li class="row">';
