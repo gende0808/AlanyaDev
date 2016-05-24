@@ -11,6 +11,11 @@ class Bestelling{
     private $orderid;
 
     /**
+     * @var array
+     */
+    private $order_info;
+
+    /**
      * @var string
      */
     private $customerfirstname;
@@ -137,23 +142,23 @@ class Bestelling{
                                                klantWoonplaats,
                                                klantBijzonderheden,
                                                besteltijd,
-                                               uitgeprint,
-                                                FROM bestelling WHERE bestellingNummer :orderid");
-            $stmt->bindParam(':bestellingNummer', $id, PDO::PARAM_INT);
+                                               uitgeprint
+                                                FROM bestelling WHERE bestellingNummer = :orderid");
+            $stmt->bindParam(':orderid', $id, PDO::PARAM_INT);
             $stmt->execute();
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            $this->orderid = $result['bestellingNummer'];
-            $this->customerfirstname = $result['klantVoornaam'];
-            $this->customerlastname = $this->customerlastname['klantAchternaam'];
-            $this->customerphonenumber = $this->customerphonenumber['klantTelefoonnummer'];
-            $this->customeremail = $this->customeremail['klantEmail'];
-            $this->customerstreetname = $this->customerstreetname['klantStraatnaam'];
-            $this->customerhousenumber = $this->customerhousenumber['klantHuisnummer'];
-            $this->customeraddition = $this->customeraddition['klantToevoeging'];
-            $this->customercityid = $this->customercityid['klantWoonplaats'];
-            $this->customerparticularities = $this->customerparticularities['klantBijzonderheden'];
-            $this->ordertime = $this->ordertime['besteltijd'];
-            $this->printed = $this->printed['uitgeprint'];
+            $this->order_info = $stmt->fetch(PDO::FETCH_ASSOC);
+            $this->orderid = $this->order_info['bestellingNummer'];
+            $this->customerfirstname = $this->order_info['klantVoornaam'];
+            $this->customerlastname = $this->order_info['klantAchternaam'];
+            $this->customerphonenumber = $this->order_info['klantTelefoonnummer'];
+            $this->customeremail = $this->order_info['klantEmail'];
+            $this->customerstreetname = $this->order_info['klantStraatnaam'];
+            $this->customerhousenumber = $this->order_info['klantHuisnummer'];
+            $this->customeraddition = $this->order_info['klantToevoeging'];
+            $this->customercityid = $this->order_info['klantWoonplaats'];
+            $this->customerparticularities = $this->order_info['klantBijzonderheden'];
+            $this->ordertime = $this->order_info['besteltijd'];
+            $this->printed = $this->order_info['uitgeprint'];
         } catch (PDOException $e) {
             echo "Database-error: " . $e->getMessage();
         }
@@ -246,7 +251,16 @@ class Bestelling{
     {
         return $this->lastinsertedid;
     }
-    
+
+    /**
+     * @return mixed
+     */
+    public function getOrderInfo()
+    {
+        return $this->order_info;
+    }
+
+
     /**
      * @param mixed $customercityid
      */

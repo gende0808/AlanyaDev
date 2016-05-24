@@ -59,6 +59,7 @@ if (!empty($_POST)) {
     $bestelling->setPrinted('N');
     $bestelling->create();
     $laatsteidbestelling = $bestelling->getLastinsertedid();
+    $_SESSION['order_id'] = $laatsteidbestelling;
     foreach ($_SESSION['productencart'] as $cartproduct){
         $bestellingproduct = new BestellingProduct($DB_con);
         $bestellingproduct->setOrderid($laatsteidbestelling);
@@ -94,11 +95,11 @@ if (!empty($_POST)) {
                 }
             }
         }
+     echo "<script>window.location.replace(\"confirmorder\");</script>";
 }
 
 
 include_once "modals/bestelling_bezorgen_modal.php";
 include_once "modals/bestelling_afhalen_modal.php";
 include_once "footer.php";
-// include_once "sideshoppinglist.php";
 ?>
