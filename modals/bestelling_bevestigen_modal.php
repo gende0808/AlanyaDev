@@ -1,26 +1,11 @@
 <?PHP
 include_once "connection.php";
-include_once "classes/CategoryList.php";
-include_once "classes/Category.php";
-
+include_once "classes/BestellingProduct.php";
+include_once "classes/Bestelling.php";
+include_once "classes/BestellingToevoegingen.php";
+include_once "classes/City.php";
+include_once "classes/CityList.php";
 ?>
-<!--<head>-->
-<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>-->
-<!--    <script>-->
-<!--        $(document).ready(function () {-->
-<!--            $("#bezorgen").click(function () {-->
-<!--                $("#istop").show();-->
-<!--                $("#test").hide();-->
-<!---->
-<!--            });-->
-<!--            $("#ophalen").click(function () {-->
-<!--                $("#test").show();-->
-<!--                $("#istop").hide();-->
-<!---->
-<!--            });-->
-<!--        });-->
-<!--    </script>-->
-<!--</head>-->
 
 <div class="container">
     <div class="row">
@@ -28,7 +13,7 @@ include_once "classes/Category.php";
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <h1>Uw bestelling is geplaats!</h1>
+                        <h1>Bedankt voor het plaatsen van uw bestelling!</h1>
                         <div class="media" style="width: 100%">
                             <div class="media" style="width: 50%;float: left">
                                 <div class="media-body">
@@ -100,18 +85,32 @@ include_once "classes/Category.php";
                     <h1>Gegevens</h1>
                     <div class="media" style="width: 100%">
                         <div class="media-body" style="width: 50%; float: left">
-                            <h5 class="media-heading">Meneer Klant</h5>
-                            <h5 class="media-heading">Klantstraat 123</h5>
-                            <h5 class="media-heading">1234KL Krommenie</h5>
-                            <h5 class="media-heading">06-12345678</h5>
-                            <h5 class="media-heading">(Optioneel) Klant@gmail.com</h5>
+                            <h5 class="media-heading">
+                                <?php $bestelling = new Bestelling($DB_con, $_SESSION['order_id']); echo $bestelling->getCustomerfirstname();?> <?php echo $bestelling->getCustomerlastname();?></h5>
+                            <h5 class="media-heading"></h5>
+                            <h5 class="media-heading"><?php echo $bestelling->getCustomerstreetname();?> <?php echo $bestelling->getCustomerhousenumber();?></h5>
+                            <h5 class="media-heading"><?php $city = new City($DB_con, $bestelling->getCustomercityid()); echo $city->getCityname();?></h5>
+                            <h5 class="media-heading"><?php echo $bestelling->getCustomerphonenumber();?></h5>
                         </div>
                     </div>
                     <hr>
-                    <h1>Bezorgtijden</h1>
+
+                    <?php
+                    $minutes_to_add = 30;
+                    $time = new DateTime($bestelling->getOrdertime());
+                    $time->add(new DateInterval('PT' . $minutes_to_add . 'M'));
+                    $halfuur = $time->format('H:i');
+
+                    $minutes_to_add2 = 45;
+                    $time2 = new DateTime($bestelling->getOrdertime());
+                    $time2->add(new DateInterval('PT' . $minutes_to_add2 . 'M'));
+                    $driekwartier = $time2->format('H:i');
+                    ?>
+
+                    <h1>Bezorgtijd</h1>
                     <div class="media" style="width: 100%">
                         <div class="media-body" style="width: 50%; float: left">
-                            <h4 class="media-heading">Uw bestelling zou over een half uur tot 3 kwartier geleverd worden.</h4>
+                            <h4 class="media-heading">Tussen <?php echo $halfuur ?> en <?php echo $driekwartier ?></h4>
                         </div>
                     </div>
 
@@ -123,41 +122,3 @@ include_once "classes/Category.php";
 
 </div>
 </div>
-
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('.text-field input').keyup(function () {
-
-            var empty = false;
-            $('.text-field input').each(function () {
-                if ($(this).val().length == 0) {
-                    empty = true;
-                }
-            });
-
-            if (empty) {
-                $('.actions button').attr('disabled', 'disabled');
-            } else {
-                $('.actions button').attr('disabled', false);
-            }
-        });
-    });
-    $(document).ready(function () {
-        $('.text-field1 input').keyup(function () {
-
-            var empty = false;
-            $('.text-field1 input').each(function () {
-                if ($(this).val().length == 0) {
-                    empty = true;
-                }
-            });
-
-            if (empty) {
-                $('.action button').attr('disabled', 'disabled');
-            } else {
-                $('.action button').attr('disabled', false);
-            }
-        });
-    });
-</script>

@@ -23,9 +23,11 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
 }
 
 ?>
+<link rel="stylesheet" type="text/css" href="css/custom.css"/>
 
-<div class="container text-center" style="margin-top: 50px;">
-    <div class="col-md-10 col-md-offset-1 text-center" style="margin-top: 50px">
+
+<div class="container-fluid text-center" style="margin-top: 50px;">
+    <div class="col-md-7 col-md-offset-1 text-center" style="margin-top: 50px">
         <div class="col-md-12 col-md-offset-0 text-center">
             <div class="flexslider">
                 <ul class="slides">
@@ -76,6 +78,41 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
             </tbody>
         </table>
     </div>
+    <div class="col-md-4">
+        <div class="text-left">
+            <ul>
+                <li class="row list-inline columnCaptions">
+                    <span>Aantal</span>
+                    <span>Product</span>
+                    <span>Prijs</span>
+                </li>
+                <?PHP
+                if(isset($_SESSION['productencart'])) {
+                    foreach ($_SESSION['productencart'] as $cartproduct) {
+                        $product = new Product($DB_con, $cartproduct['productid']);
+                        echo '<div id="product">';
+                        echo '<li class="row">';
+                        echo '<span class="quantity">' . $cartproduct["aantal"] . '</span>';
+                        echo '<span class="itemName">' . $product->getProductname() . '</span>';
+                        echo '<span class="popbtn"  data-parent="#asd" data-toggle="collapse" data-target="#demo"><a class="glyphicon glyphicon-remove"></a></span>';
+                        echo '<span class="price">€' . $product->getProductprice() . '</span>';
+                        echo '</li>';
+                        echo '<li class="row">';
+                        if (array_key_exists('addable', $cartproduct)) {
+                            foreach ($cartproduct['addable'] as $addableaddition) {
+                                echo '<span>' . $addableaddition . '</span>';
+                            }
+                            echo '</li>';
+                            echo '<div>';
+                        }
+                    }
+                }
+
+                ?>
+            </ul>
+        </div>
+
+    </div>
     </div>
 
 <?php
@@ -87,3 +124,6 @@ if(isset($_GET['bref'])){
     echo '<script src="js/menushowcat.js"></script>';
 }
 ?>
+<script src="js/customjs.js"></script>
+
+
