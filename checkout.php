@@ -5,6 +5,8 @@ include_once "classes/City.php";
 include_once "classes/CityList.php";
 include_once "classes/AccountList.php";
 include_once "classes/Bestelling.php";
+include_once "classes/BestellingProduct.php";
+include_once "classes/BestellingToevoegingen.php";
 ?>
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -36,20 +38,64 @@ include_once "classes/Bestelling.php";
 
 
 <?PHP
-if (!empty($_POST)) {
 
-    //als het emailadres niet al bestaat gaat hij hieronder proberen een account aan te maken.
+if (!empty($_POST)) {
     $bestelling = new Bestelling($DB_con);
     $bestelling->setCustomerfirstname(htmlspecialchars($_POST['fname']));
     $bestelling->setCustomerlastname(htmlspecialchars($_POST['lname']));
     $bestelling->setCustomerphonenumber(htmlspecialchars($_POST['phone']));
-    if (isset($_POST["streetn"])){ $bestelling->setCustomerstreetname(htmlspecialchars($_POST['streetn']));}
-    if (isset($_POST["housen"])){$bestelling->setCustomerhousenumber(htmlspecialchars($_POST['housen']));}
-    if (isset($_POST["cityid"])){$bestelling->setCustomercityid(htmlspecialchars($_POST['cityid']));}
-    if (isset($_POST["partic"])){$bestelling->setCustomerparticularities(htmlspecialchars($_POST['partic']));}
+    if (isset($_POST["streetn"])) {
+        $bestelling->setCustomerstreetname(htmlspecialchars($_POST['streetn']));
+    }
+    if (isset($_POST["housen"])) {
+        $bestelling->setCustomerhousenumber(htmlspecialchars($_POST['housen']));
+    }
+    if (isset($_POST["cityid"])) {
+        $bestelling->setCustomercityid(htmlspecialchars($_POST['cityid']));
+    }
+    if (isset($_POST["partic"])) {
+        $bestelling->setCustomerparticularities(htmlspecialchars($_POST['partic']));
+    }
     $bestelling->setPrinted('N');
     $bestelling->create();
+    $laatsteidbestelling = $bestelling->getLastinsertedid();
+    foreach ($_SESSION['productencart'] as $cartproduct){
+        $bestellingproduct = new BestellingProduct($DB_con);
+        $bestellingproduct->setOrderid($laatsteidbestelling);
+        $bestellingproduct->setProductid($cartproduct['productid']);
+        $bestellingproduct->setNumber($cartproduct['aantal']);
+        $bestellingproduct->create();
+        $laatsteidproduct = $bestellingproduct->getLastinsertedid();
+            //Hij kijkt of de array bestaat
+        if (array_key_exists('addable', $cartproduct)) {
+            foreach ($cartproduct['addable'] as $addableaddition) {
+                $bestellingaddable = new BestellingAddable($DB_con, $cartproduct['productid']);
+                $bestellingaddable->setRecordId($laatsteidproduct);
+                $bestellingaddable->setAddableId($addableaddition);
+                $bestellingaddable->create();
+            }
+        }
+            //Hij kijkt of de array bestaat
+            if (array_key_exists('radio', $cartproduct)) {
+                foreach ($cartproduct['radio'] as $radioaddition) {
+                    $bestellingradio = new BestellingRadio($DB_con, $cartproduct['productid']);
+                    $bestellingradio->setRecordId($laatsteidproduct);
+                    $bestellingradio->setRadioId($radioaddition);
+                    $bestellingradio->create();
+                }
+            }
+            //Hij kijkt of de array bestaat
+            if (array_key_exists('removable', $cartproduct)) {
+                foreach ($cartproduct['removable'] as $removableaddition) {
+                    $bestellingremovable = new BestellingRemovable($DB_con, $cartproduct['productid']);
+                    $bestellingremovable->setRecordId($laatsteidproduct);
+                    $bestellingremovable->setRemovableId($removableaddition);
+                    $bestellingremovable->create();
+                }
+            }
+        }
 }
+
 
 include_once "modals/bestelling_bezorgen_modal.php";
 include_once "modals/bestelling_afhalen_modal.php";

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class Order
+ * Class Bestelling
  */
 
 class Bestelling{
@@ -60,6 +60,15 @@ class Bestelling{
      * @param string $id
      */
 
+    /**
+     * @var PDO
+     */
+    private $db;
+
+    /**
+     * @param int
+     */
+    private $lastinsertedid;
 
     public function __construct($dbconnection, $id = "")
     {
@@ -99,6 +108,8 @@ class Bestelling{
             $stmt->bindParam(":ordertime", $this->ordertime);
             $stmt->bindParam(":printed", $this->printed);
             $stmt->execute();
+            $this->lastinsertedid = $this->db->lastInsertId();
+
         } catch (PDOException $e) {
             echo "er is iets misgegaan met de verbinding van de server!" . $e->getMessage();
         }
@@ -149,13 +160,7 @@ class Bestelling{
     }
 
 
-    /**
-     * @return int
-     */
-    public function getOrderid()
-    {
-        return $this->orderid;
-    }
+   
     /**
      * @return string
      */
@@ -234,7 +239,14 @@ class Bestelling{
         return $this->printed;
     }
 
-
+    /**
+     * @return mixed
+     */
+    public function getLastinsertedid()
+    {
+        return $this->lastinsertedid;
+    }
+    
     /**
      * @param mixed $customercityid
      */
