@@ -4,6 +4,8 @@ include_once "classes/CategoryList.php";
 include_once "classes/Category.php";
 ?>
 
+<div class="container">
+    <div class="row">
 <div class="col-md-8 col-md-offset-2" id="test" style="display: none">
     <div class="panel panel-default">
         <div class="panel-body">
@@ -68,6 +70,7 @@ include_once "classes/Category.php";
             </div>
         </div>
     </div>
+</div>
 </div>
 </div>
 
