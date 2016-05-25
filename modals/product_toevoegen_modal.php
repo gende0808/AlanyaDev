@@ -2,6 +2,7 @@
 include_once "connection.php";
 include_once "classes/CategoryList.php";
 include_once "classes/Category.php";
+include_once "classes/ListOfAdditionGroups.php";
 
 ?>
 
@@ -65,6 +66,19 @@ include_once "classes/Category.php";
                             $listofcategories = $categorylist->getcategories();
                             foreach ($listofcategories as $category){
                                 echo "<option type='text' class='form-control' value='".$category->getcatID()."'>".$category->getcatname(). "</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <br />
+                    <label class="control-label col-sm-4" for="ToevoegingGroep">Toevoeginggroep:</label>
+                    <div class="col-sm-8 dropdown">
+                        <select name="ToevoegingGroep" class="form-control">
+                            <?PHP
+                            $additionlist = new ListOfAdditions($DB_con);
+                            $listofadditions = $additionlist->getListofadditiongroups();
+                            foreach ($listofadditions as $addition){
+                                echo "<option type=text' class='form-control' value='".$addition->getAdditiongroupid()."'>".$addition->getAdditiongroupname()."</option>";
                             }
                             ?>
                         </select>

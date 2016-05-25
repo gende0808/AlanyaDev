@@ -135,6 +135,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                     modal.find('#euro').val(data.euros);
                     modal.find('#cent').val(data.cents);
                     modal.find('#product_id').val(data.id);
+                    modal.find('#addid').val(data.toevoeginggroepid);
 
                 }
             });
@@ -149,6 +150,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
             euros = $("#euro").val();
             prijs = $("#prijs").val();
             cents = $("#cent").val();
+            toevoegingid = $("#addid").val();
 
             var postData = {
                 'prodid': productid,
@@ -157,7 +159,8 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                 'prodname': productNaam,
                 'catid': catID,
                 'euros': euros,
-                'cents': cents
+                'cents': cents,
+                'toevoegingid': toevoegingid
             };
 
             var url = "product_opslaan.php";

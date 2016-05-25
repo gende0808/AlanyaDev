@@ -14,6 +14,7 @@ if (isset($_POST['prodid']))
     $product_catID = htmlspecialchars($_POST['catid']);
     $product_euros = htmlspecialchars($_POST['euros']);
     $product_cents = htmlspecialchars($_POST['cents']);
+    $product_addition = htmlspecialchars($_POST['toevoegingid']);
 
     try{
     $product = new Product($DB_con);
@@ -22,6 +23,7 @@ if (isset($_POST['prodid']))
     $product->setProductdescription($product_description);
     $product->setCategoryid($product_catID);
     $product->setProductprice($product_euros,$product_cents);
+    $product->setAdditionId($product_addition);
     $product->update($product_id);
     } catch(Exception $e){
         echo 'er is hetvolgende foutgegaan bij het aanpassen van een product: '. $e->getMessage();
