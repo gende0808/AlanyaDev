@@ -103,13 +103,14 @@ class Product implements CRUD
     public function create()
     {
         try {
-            $stmt = $this->db->prepare("INSERT INTO product(productNummer,productNaam,productOmschrijving,productPrijs, categorieID)
-                                    VALUES(:prodnr, :prodname, :proddescription, :prodprice, :catid)");
+            $stmt = $this->db->prepare("INSERT INTO product(productNummer,productNaam,productOmschrijving,productPrijs, categorieID, toevoeginggroepid)
+                                    VALUES(:prodnr, :prodname, :proddescription, :prodprice, :catid, :additionid)");
             $stmt->bindParam(":prodnr", $this->productnumber);
             $stmt->bindParam(":prodname", $this->productname);
             $stmt->bindParam(":proddescription", $this->productdescription);
             $stmt->bindParam(":prodprice", $this->productprice);
             $stmt->bindParam(":catid", $this->categoryid);
+            $stmt->bindParam(":additionid", $this->additionid );
             $stmt->execute();
 
         } catch (PDOException $e) {
@@ -186,13 +187,15 @@ class Product implements CRUD
                                                            productNaam = :prodname,
                                                            productOmschrijving = :proddescription,
                                                            productPrijs = :prodprice,
-                                                           categorieID = :catid
+                                                           categorieID = :catid,
+                                                           toevoeginggroepid = :toevid
                                                            WHERE id= :product_id");
             $stmt->bindParam(":prodnr", $this->productnumber);
             $stmt->bindParam(":prodname", $this->productname);
             $stmt->bindParam(":proddescription", $this->productdescription);
             $stmt->bindParam(":prodprice", $this->productprice);
             $stmt->bindParam(":catid", $this->categoryid);
+            $stmt->bindParam(":toevid", $this->additionid);
             $stmt->bindParam(":product_id", $id);
             $stmt->execute();
         } catch (PDOException $e) {

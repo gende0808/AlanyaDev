@@ -1,3 +1,7 @@
+<?PHP
+include_once "classes/ListOfAdditionGroups.php";
+?>
+
 <div id="bewerkenmodal" class="modal fade modal-dialog-" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="col-md-4 col-md-offset-4">
@@ -51,11 +55,11 @@
                                 <input type="text" id="cent" class="form-control" name="Productcent">
                             </div>
                         </div>
+                        <input id="productid" type="hidden" name="productid" value="">
 
                 </div>
                 <div class="form-group text-right">
                     <label class="control-label col-sm-4" for="Productcategorie">Categorie:</label>
-                    <div class="text-left">
                         <div class="col-sm-8 dropdown">
                             <select name='CategorieID' id="cat" class="form-control">
                                 <?PHP
@@ -66,10 +70,24 @@
                                 }
                                 ?>
                             </select>
-                            <input id="productid" type="hidden" name="productid" value="">
-                        </div>
                     </div>
                 </div>
+                <div class="form-group text-right">
+                    <label class="control-label col-sm-4" for="toevoeginggroepid">Toevoeginggroep:</label>
+                    <div class="col-sm-8 dropdown">
+                    <select name="toevoeginggroep" id="addid" class="form-control">
+                        <?PHP
+                            $additionlist = new ListOfAdditions($DB_con);
+                            $listofadditions = $additionlist->getListofadditiongroups();
+                            foreach ($listofadditions as $addition){
+                                echo "<option type=text' class='form-control' value='".$addition->getAdditiongroupid()."'>".$addition->getAdditiongroupname()."</option>";
+                            }
+                        ?>
+                    </select>
+                        </div>
+                </div>
+
+
                 <div>
                     <div class="form-group">
                         <br><br>
