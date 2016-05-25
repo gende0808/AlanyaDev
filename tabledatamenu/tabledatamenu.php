@@ -64,7 +64,7 @@ try {
         echo "<td style='width: 150px;'>" . $product->getProductdescription() . "</td>";
         echo "<td style='width: 150px;'>" . $productprijs . "</td>";
         echo "<td style='width: 150px;'>
-        <a id='" . $product->getProductid() . "' href=\"#\" data-toggle=\"modal\" data-target=\"#myModalToev\" data-product-price='".$data_product_price."' data-productid='".$product->getProductid()."' class=\"hvr-pulse\"><span class=\"glyphicon glyphicon-plus\"></span> Bestellen</a>
+        <a id='" . $product->getProductid() . "' href=\"#\" data-toggle=\"modal\" data-target=\"#myModalToev\" data-product-price='".$data_product_price."' data-productid='".$product->getProductid()."' data-productname='".$product->getProductname()."' class=\"hvr-pulse\"><span class=\"glyphicon glyphicon-plus\"></span> Bestellen</a>
         </td>";
         echo "</tr>";
         echo "\n";

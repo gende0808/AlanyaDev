@@ -30,10 +30,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
     include_once "modals/product_toevoegen_modal.php";
     ?>
     <div class="col-md-12 col-md-offset-0 text-center" style="margin-top: 50px">
-        <!-- Heb hier een margin top ingegooid zodat er niets onder de header verdwijnt. TODO margin bottom op header! -->
         <?PHP
-        //TODO _________________________________________________________________________________________________________
-
         try {
 
             $categorylist = new CategoryList($DB_con); //er wordt een nieuwe categorie lijst aangemaakt
@@ -104,13 +101,8 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
         });
 
         $('#bewerkenmodal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget) // Button that triggered the modal
-            var productid = button.data('productid') // Extract info from data-* attributes
-            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-
-
-            // Ajax thingie:
+            var button = $(event.relatedTarget);
+            var productid = button.data('productid');
             var postData = {
                 'productid': productid
             };
@@ -126,7 +118,6 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                 data: postData,
                 dataType: "json",
                 success: function (data) {
-                    //console.log(data.omschrijving);
                     modal.find('.modal-title').text('Bewerken van product:');
                     modal.find('#nummer').val(data.productNummer);
                     modal.find('#omschrijving').val(data.productOmschrijving);
@@ -176,8 +167,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                     $("#omschrijving" + productid).html(productOmschrijving);
                     fullprice = "&#8364; "+euros+","+cents;
                     $("#price" + productid).html(fullprice);
-
-                    // fade out, hier onder:
+                    
                     $("#tr" + productid).addClass("success")
                     setTimeout(function () {
                         $("#tr" + productid).removeClass('success');
@@ -192,7 +182,6 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
     });
 </script>
 <script>
-    // functie toont producten in het menu admin
 
     function showProducts(str) {
         if (str == "") {
