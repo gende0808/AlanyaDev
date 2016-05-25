@@ -72,6 +72,7 @@ include_once "classes/Category.php";
     </div>
 </div>
 </div>
+</div>
 
 
 <script type="text/javascript">
