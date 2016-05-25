@@ -88,11 +88,11 @@ class Product implements CRUD
      * @param $dbconnection
      * @param string $productID
      */
-    public function __construct($dbconnection, $productID=null)
+    public function __construct($dbconnection, $productID = null)
     {
         $this->db = $dbconnection;
 
-        if (is_numeric($productID) && $productID != null){
+        if (is_numeric($productID) && $productID != null) {
             $this->read($productID);
         }
     }
@@ -110,13 +110,25 @@ class Product implements CRUD
             $stmt->bindParam(":proddescription", $this->productdescription);
             $stmt->bindParam(":prodprice", $this->productprice);
             $stmt->bindParam(":catid", $this->categoryid);
-            $stmt->bindParam(":additionid", $this->additionid );
+            $stmt->bindParam(":additionid", $this->additionid);
             $stmt->execute();
 
         } catch (PDOException $e) {
             echo "er is iets misgegaan met het maken van het product!" . " " . $e->getMessage();
         }
     }
+
+    /**
+     *
+     */
+    public function simpleproductdata($id)
+{
+    $stmt = $this->db->prepare("SELECT * FROM product WHERE id = :prodid");
+    $stmt->bindParam(":prodid",$id );
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $this->product_info = $result;
+}
 
     /**
      * @param $id
@@ -129,7 +141,7 @@ class Product implements CRUD
 
         try {
             $stmt = $this->db->prepare("
-                           SELECT product.* , actieproduct.* , actiecategorie.* ,actiedatum.*,
+                           SELECT product.*, actieproduct.* , actiecategorie.* ,actiedatum.*,
                             CASE
                                 WHEN actieproduct.prijs >= 0 
                                     THEN actieproduct.prijs
