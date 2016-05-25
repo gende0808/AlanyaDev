@@ -9,8 +9,14 @@ class ProductAddition
     private $db;
 
     private $price;
+
     private $name;
+
     private $id;
+
+    private $groupid;
+
+    private $add_info;
 
 
     public function __construct($dbconnection, $additionid = 0, $additionname = "", $additionprice = 0)
@@ -25,8 +31,38 @@ class ProductAddition
         if ($additionprice != 0) {
             $this->price = $additionprice;
         }
-
+        if ($additionid != "" && is_numeric($additionid)) {
+            $this->read($additionid);
+        }
     }
+public function read($id)
+{
+    if (empty($id)) {
+        throw new InvalidArgumentException('Id is leeg!');
+    }
+    if (!is_numeric($id)) {
+        throw new InvalidArgumentException("Id is geen getal!");
+    }
+
+    try {
+        $stmt = $this->db->prepare("SELECT toevoegingid,
+                                           toevoeginggroepid,
+                                           toevoegingtoevoegennaam,
+                                           toevoegingprijs
+                                                FROM toevoegingtoevoegen WHERE toevoegingid = :addid");
+        $stmt->bindParam(':addid', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $this->add_info = $stmt->fetch(PDO::FETCH_ASSOC);
+        $this->id = $this->add_info['toevoegingid'];
+        $this->groupid = $this->add_info['toevoeginggroepid'];
+        $this->name = $this->add_info['toevoegingtoevoegennaam'];
+        $this->price = $this->add_info['toevoegingprijs'];
+    } catch (PDOException $e) {
+        echo "Database-error: " . $e->getMessage();
+    }
+}
+
+
 
     /**
      * @return int

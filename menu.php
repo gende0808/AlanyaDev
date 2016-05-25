@@ -5,6 +5,9 @@ include_once "classes/ProductList.php";
 include_once "classes/Product.php";
 include_once "classes/Category.php";
 include_once "classes/CategoryList.php";
+include_once "classes/ProductAddition.php";
+include_once "classes/ProductRadioAddition.php";
+include_once "classes/ProductAdditionRemovable.php";
 include_once "modals/toevoegingen_modal.php";
 
 
@@ -23,7 +26,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
 }
 
 ?>
-<link rel="stylesheet" type="text/css" href="css/custom.css"/>
+<link rel="stylesheet" type="text/css" href="css/shoppingcartmenu.css"/>
 
 
 <div class="container-fluid text-center" style="margin-top: 50px;">
@@ -78,15 +81,15 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
             </tbody>
         </table>
     </div>
-    <div class="col-md-4">
+    <?php if(isset($_SESSION['productencart'])) {
+   echo '<div class="col-md-4">
         <div class="text-left">
             <ul>
                 <li class="row list-inline columnCaptions">
                     <span>Aantal</span>
                     <span>Product</span>
                     <span>Prijs</span>
-                </li>
-                <?PHP
+                </li>';}
                 if(isset($_SESSION['productencart'])) {
                     foreach ($_SESSION['productencart'] as $cartproduct) {
                         $product = new Product($DB_con, $cartproduct['productid']);
@@ -100,12 +103,26 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                         echo '<li class="row">';
                         if (array_key_exists('addable', $cartproduct)) {
                             foreach ($cartproduct['addable'] as $addableaddition) {
-                                echo '<span>' . $addableaddition . '</span>';
+                                $productaddition = new ProductAddition($DB_con, $addableaddition);
+                                echo '<span> ' . $productaddition->getName() . ' - </span>';
                             }
-                            echo '</li>';
-                            echo '<div>';
                         }
-                    }
+                            if (array_key_exists('removable', $cartproduct)) {
+                                foreach ($cartproduct['removable'] as $removableaddition) {
+                                    $productremovable = new ProductAdditionRemovable($DB_con, $removableaddition);
+                                    echo '<span> ' . $productremovable->getName() . ' - </span>';
+                                }
+                            }
+                        if (array_key_exists('radio', $cartproduct)) {
+                            foreach ($cartproduct['radio'] as $radioaddition) {
+                                $productradio = new ProductRadioAddition($DB_con, $radioaddition);
+                                echo '<span> ' . $productradio->getName() . ' - </span>';
+                            }
+                        }
+                        echo '</li>';
+                        echo '<div>';
+                            }
+
                 }
 
                 ?>
