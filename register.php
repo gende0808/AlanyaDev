@@ -296,7 +296,6 @@ if (isset($_POST["registerbutton"])) {
 
 <?PHP
 include_once "footer.php";
-// include_once "sideshoppinglist.php";
 ?>
 
 <script type="text/javascript">

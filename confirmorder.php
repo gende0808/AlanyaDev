@@ -18,5 +18,4 @@ include_once "modals/bestelling_bevestigen_modal.php";
 
 <?PHP
 include_once "footer.php";
-// include_once "sideshoppinglist.php";
 ?>

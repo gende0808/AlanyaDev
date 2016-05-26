@@ -211,7 +211,6 @@ if (isset($_GET['sessionid']) && isset($_GET['delete'])) {
 
 <?PHP
 include_once "footer.php";
-// include_once "sideshoppinglist.php";
 ?>
 
 <!-- The scroll to top feature -->
