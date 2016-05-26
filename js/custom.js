@@ -125,18 +125,21 @@ function doSearch() {
 $('#myModalToev').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget);
     var productid = button.data('productid');
+    var productname = button.data('productname');
     var productbaseprice = button.data('product-price');
     clearBox("#verwijderbare_toevoegingen");
     clearBox("#toevoegbare_toevoegingen");
     clearBox("#radio_toevoegingen");
     clearBox("#amount");
     clearBox("#prodid");
+    clearBox("#prodname");
     var postData = {
         'productid': productid
     };
     var url = "toevoegingen_ophalen.php";
     var modal = $(this);
     modal.find('#prodid').append('<input type="hidden" id="product_id" name="productid" value="'+ productid +'">');
+    modal.find('#prodname').append(productname);
     modal.find('#amount').append(productbaseprice);
     $.ajax({
         type: "POST",

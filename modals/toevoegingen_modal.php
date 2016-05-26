@@ -6,7 +6,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h2 class="modal-title" id="myModalAddedLabel"><b><i>Pizza Hawaii</b></i></h2><br>
+                    <h2 class="modal-title" id="myModalAddedLabel"><b><i><span id="prodname" name="prodname"></span></i></b></h2><br>
                 </div> <!-- /.modal-header -->
                 <div class="modal-body col-md-12">
                     <div class="modal-body col-md-4">

@@ -8,7 +8,8 @@ include_once "classes/Product.php";
 if (isset($_POST['productid'])) {
     $id = htmlspecialchars($_POST['productid']);
     try {
-        $product = new Product($DB_con, $id);
+        $product = new Product($DB_con);
+        $product->simpleproductdata($id);
         $product_array = $product->getProductInfo();
         $eurosandcents = explode('.', $product_array['productPrijs']);
         $product_array['euros'] = $eurosandcents[0];

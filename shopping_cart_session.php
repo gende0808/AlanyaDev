@@ -1,11 +1,4 @@
 <?php
-function pr($var)
-{
-    print '<pre>';
-    print_r($var);
-    print '</pre>';
-}
-
 session_start();
 if (!empty($_POST['prodid']) && !empty($_POST['aantal'])) {
     $array = array();
@@ -29,6 +22,4 @@ if (!empty($_POST['prodid']) && !empty($_POST['aantal'])) {
         array_push($_SESSION['productencart'], $array);
     }
 }
-pr($_SESSION['productencart']);
-
 ?>
