@@ -81,8 +81,9 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
             </tbody>
         </table>
     </div>
+    <div id="shoppingcart-container" class="col-md-4">
     <?php if(isset($_SESSION['productencart'])) {
-   echo '<div class="col-md-4">
+   echo '
         <div class="text-left">
             <ul>
                 <li class="row list-inline columnCaptions">
@@ -120,7 +121,6 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                             }
                         }
                         echo '</li>';
-                        echo '<div>';
                             }
 
                 }
@@ -128,6 +128,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                 ?>
             </ul>
         </div>
+        </>
 
     </div>
     </div>
@@ -142,5 +143,11 @@ if(isset($_GET['bref'])){
 }
 ?>
 <script src="js/customjs.js"></script>
+<script>
+    $("#submitproduct").click(function () {
+        
+        
+    };
+</script>
 
 

@@ -168,10 +168,8 @@ $('#myModalToev').on('show.bs.modal', function (event) {
                         modal.find('#radio_toevoegingen').append("<div><input type='radio' style='width: 15px;' name='radio" + (index + 1) + "' id='radio' data-price='0' " +
                             "value='" + data['radio'][index][index2].radioid + "'>" + data['radio'][index][index2].name + "</div>");
                     }
-
                 }
             }
-
         }
     });
 });

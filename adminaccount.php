@@ -167,7 +167,6 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                     $("#omschrijving" + productid).html(productOmschrijving);
                     fullprice = "&#8364; "+euros+","+cents;
                     $("#price" + productid).html(fullprice);
-                    
                     $("#tr" + productid).addClass("success")
                     setTimeout(function () {
                         $("#tr" + productid).removeClass('success');

@@ -52,6 +52,10 @@ if(isset($_POST['productid'])) {
         if(!empty($radioitems)) {
             $super_array['radio'] = $radioitems;
         }
+        
+        
+        
+        
         echo json_encode($super_array);
     } catch (Exception $e) {
         echo "error: " . $e->getMessage();
