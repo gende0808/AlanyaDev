@@ -80,7 +80,7 @@
 
 .btntest {
   height: 40px;
-  width: 25%;
+  width: 30%;
   background: #FF3333;
   background-image: -webkit-linear-gradient(top, #FF3333, #bd0000);
   background-image: -moz-linear-gradient(top, #FF3333, #bd0000);
@@ -89,7 +89,7 @@
   background-image: linear-gradient(to bottom, #FF3333, #bd0000);
   -webkit-border-radius: 10;
   -moz-border-radius: 10;
-  border-radius: 15px;
+  border-radius: 20px;
   -webkit-box-shadow: 0px 1px 3px #666666;
   -moz-box-shadow: 0px 1px 3px #666666;
   box-shadow: 0px 1px 3px #666666;
@@ -98,6 +98,9 @@
   font-size: 15px;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 
