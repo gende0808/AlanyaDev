@@ -88,7 +88,6 @@
                 success: function (data) {
                     clearBox('#shoppingcart-container');
                     $('#myModalToev').modal('hide');
-                    alert(data);
                     $('#shoppingcart-container').html(data);
                 }
             });
