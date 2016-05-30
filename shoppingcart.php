@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
 <!--
 
 
@@ -20,8 +24,8 @@ if (isset($_GET['sessionid']) && isset($_GET['delete'])) {
     $productid = $_GET['sessionid'];
     if ($delete == "true") {
         try {
-            foreach($_SESSION['productencart'] as $k => $v) {
-                if($v['productid'] == $productid) {
+            foreach ($_SESSION['productencart'] as $k => $v) {
+                if ($v['productid'] == $productid) {
                     unset($_SESSION['productencart'][$k]);
                 }
             }
@@ -31,7 +35,14 @@ if (isset($_GET['sessionid']) && isset($_GET['delete'])) {
 
     }
 }
-
+if($_SESSION['productencart'])
+{
+    $productensession = true;
+}
+else
+{
+    $productensession = false;
+}
 
 ?>
 
@@ -40,8 +51,11 @@ if (isset($_GET['sessionid']) && isset($_GET['delete'])) {
     <title>Alanya Krommenie</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link
+        href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+        rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/templatemo_style.css">
@@ -58,7 +72,9 @@ if (isset($_GET['sessionid']) && isset($_GET['delete'])) {
 </head>
 <body>
 <!--[if lt IE 7]>
-<p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser
+    today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better
+    experience this site.</p>
 <![endif]-->
 <div id="main-header">
     <div class="container">
@@ -106,7 +122,8 @@ if (isset($_GET['sessionid']) && isset($_GET['delete'])) {
                 <button class="form-control btn orange">Ok</button>
 
                 <div class="progress">
-                    <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="100" style="width: 0%;">
+                    <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="1"
+                         aria-valuemin="1" aria-valuemax="100" style="width: 0%;">
                         <span class="sr-only">progress</span>
                     </div>
                 </div>
@@ -116,101 +133,179 @@ if (isset($_GET['sessionid']) && isset($_GET['delete'])) {
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <!-- /originalsliderplace -->
+<?php
+if($productensession)
+{
+
+
+    ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Aantal</th>
+                        <th class="text-center">Prijs</th>
+                        <th class="text-center">Toevoeging</th>
+                        <th class="text-center">Totaal</th>
+                        <th> </th>
+                    </tr>
+                    </thead>
+                    <?php
+                    $huidigeDatum = date('Y-m-d');
+                    $huidigeDatum = date('Y-m-d', strtotime($huidigeDatum));
+
+                    $huidigeDag = date("l"); //is gelijk aan de dag van vandaag
+                    $actieshowen = false;
+
+                    $productlist = new ProductList($DB_con, 1); // //de post word meegegeven
+                    $listofproducts = $productlist->getlistofproducts(); //hiermee word een array opgehaald waarin producten met hun waarden zitten
+                    foreach ($listofproducts as $product) { //in deze foreach loopt hij over ieder individueel product en print hij de waarden in die array
+
+                        if ($product->getMonday() === $huidigeDag
+                            or $product->getTuesday() === $huidigeDag
+                            or $product->getWednesday() === $huidigeDag
+                            or $product->getThursday() === $huidigeDag
+                            or $product->getFriday() === $huidigeDag
+                            or $product->getSaturday() === $huidigeDag
+                            or $product->getSunday() === $huidigeDag
+                        ) {
+                            $actieshowen = true;
+                        }
+                    }
+                    foreach ($_SESSION['productencart'] as $arrayproduct) {
+                    $product = new Product($DB_con, $arrayproduct['productid']);
+                    $productprijs = $product->getProductprice();
+                    $actieprijs = "";
+                    $data_product_price = $product->getProductprice();
+                    if (($product->getActiebegindatum() <= $huidigeDatum
+                            && $product->getActieEinddatum() >= $huidigeDatum)
+                        or $actieshowen == true
+                    ) {
+                        if ($product->getProductdiscountprice() < $product->getProductprice()) {
+                            $actieprijs = $product->getDiscountpriceformatted();
+                            $data_product_price = $product->getProductdiscountprice();
+                            $productprijs = $actieprijs;
+                        }
+                    }
+                    ?>
+                    <tbody>
+                    <tr>
+                        <td class="col-sm-8 col-md-6">
+                            <div class="media">
+                                <div class="media-body">
+                                    <h4 class="media-heading"><?php echo $product->getProductname() . "(" . $product->getProductdescription() . ")" ?> </h4>
+                                    <span>Omschrijving:</span><strong> <?php echo $product->getProductdescription() ?> </strong>
+                                    <h5 class=""><span>Toevoeging:</span><strong> N.v.t.</strong></h5>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="col-sm-1 col-md-1">
+                            <input type="number" class="form-control" name="aantal" id="aantal"
+                                   value="<?php echo $arrayproduct['aantal'] ?>">
+                        </td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong>
+                                <div id="prijs"><?php echo "€" . $productprijs ?></div>
+                        <td class="col-sm-1 col-md-1 text-center"><strong>€0,00</strong></td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong><span
+                                    id="result"><?php echo $product->getProductprice() * $arrayproduct['aantal'] ?></span>
+                                <?php echo "<td style='width: 150px;'><a href='shoppingcart.php?sessionid=" . $product->getId() . "&delete=true'" .
+                                    'onclick="return confirm(' . "'Weet je zeker dat je " . $product->getProductname() . " wilt verwijderen?'" . ')"' . ">Verwijderen</a></td>";
+                                ?>
+                        </td>
+                    </tr>
+
+                    <?php
+                    }
+                    ?>
+                    <tr>
+                        <td>  </td>
+                        <td>  </td>
+                        <td>  </td>
+                        <td><h5>Subtotaal</h5></td>
+                        <td class="text-right"><h5><strong><?php
+                                    $items = array();
+                                    foreach ($_SESSION['productencart'] as $arrayproduct) {
+                                        $product = new Product($DB_con, $arrayproduct['productid']);
+                                        $items[] = $product->getProductprice() * $arrayproduct['aantal'];
+                                    }
+                                    $subtotaal = array_sum($items);
+                                    echo "€" . $subtotaal;
+
+
+                                    ?></strong></h5></td>
+                    </tr>
+                    <tr>
+                        <td>  </td>
+                        <td>  </td>
+                        <td>  </td>
+                        <td><h5>Bezorgkosten</h5></td>
+                        <td class="text-right"><h5><strong>
+                                    <?php
+                                    $bezorgkosten = '1.00';
+                                    echo "€" . $bezorgkosten;
+                                    ?></strong></h5></td>
+                    </tr>
+                    <tr>
+                        <td>  </td>
+                        <td>  </td>
+                        <td>  </td>
+                        <td><h3>Totaal</h3></td>
+                        <td class="text-right"><h3><strong>€<span id="Test1"><?php ?></span>
+                                </strong></h3></td>
+                    </tr>
+                    <tr>
+                        <td>  </td>
+                        <td>  </td>
+                        <td>
+                            <button type="button" class="btn btn-default">
+                                <span class="glyphicon glyphicon-shopping-cart"></span> <a href="menu.php"
+                                                                                           style="color: black"> Terug
+                                    naar
+                                    het menu</a>
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-success" data-target="#OrderSuccesModal">
+                                <a href="checkout.php" style="color: white"> Afrekenen </a><span
+                                    class="glyphicon glyphicon-play"></span>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <?php
+}
+else
+{
+    ?>
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-12">
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th>Product</th>
-                    <th>Aantal</th>
-                    <th class="text-center">Prijs</th>
-                    <th class="text-center">Toevoeging</th>
-                    <th class="text-center">Totaal</th>
-                    <th> </th>
-                </tr>
-                </thead>
-                <?php
-
-                foreach($_SESSION['productencart'] as $arrayproduct) {
-                $product = new Product($DB_con, $arrayproduct['productid']);
-                $productprijs = $product->getProductpriceformatted();
-                $actieprijs = "";
-                $data_product_price = $product->getProductprice();
-                if ($product->getProductdiscountprice() < $product->getProductprice()) {
-                    $actieprijs = $product->getDiscountpriceformatted();
-                    $data_product_price = $product->getProductdiscountprice();
-                    $productprijs = "<span style=\"color:#FF3333\">Actie</span>" . " " . "<strike>$productprijs</strike>" . " " . $actieprijs;
-                }
-                ?>
-                <tbody>
-                <tr>
-                    <td class="col-sm-8 col-md-6">
+                   <h1>Winkelwagen</h1>
                         <div class="media">
                             <div class="media-body">
-                                <h4 class="media-heading"><?php echo $product->getProductname() . "(" . $product->getProductdescription() . ")" ?> </h4>
-                                <h5 class="media-heading"> Categorie <a href="#">Italliaanse pizza's</a></h5>
-                                <span>Omschrijving:</span><strong> <?php echo $product->getProductdescription() ?> </strong>
-                                <h5 class=""><span>Toevoeging:</span><strong> N.v.t</strong></h5>
+                                <h4>Er staan geen artikelen in het Winkelwagentje</h4>
                             </div>
                         </div>
-                    </td>
-                    <td class="col-sm-1 col-md-1">
-                        <input type="number" class="form-control" name="aantal" id="aantal"  value="<?php echo $arrayproduct['aantal'] ?>">
-                    </td>
-                    <td class="col-sm-1 col-md-1 text-center"><strong><div id="prijs"><?php echo $product->getProductdiscountprice() ?></div>
-                    <td class="col-sm-1 col-md-1 text-center"><strong>€0,00</strong></td>
-                    <td class="col-sm-1 col-md-1 text-center"><strong><input type="text" name="result" id="result" value="<?php echo $product->getProductdiscountprice() * $arrayproduct['aantal'] ?>">
-                     <?php       echo "<td style='width: 150px;'><a href='shoppingcart.php?sessionid=" . $product->getId() . "&delete=true'".
-                        'onclick="return confirm('."'Weet je zeker dat je ".$product->getProductname()." wilt verwijderen?'".')"' .">Verwijderen</a></td>";
-                     ?>
-                    </td>
-                </tr>
-
-                <?php
-                }
-                ?>
-                <tr>
-                    <td>   </td>
-                    <td>   </td>
-                    <td>   </td>
-                    <td><h5>Subtootal</h5></td>
-                    <td class="text-right"><h5><strong>€31,00</strong></h5></td>
-                </tr>
-                <tr>
-                    <td>   </td>
-                    <td>   </td>
-                    <td>   </td>
-                    <td><h5>Bezorgkosten</h5></td>
-                    <td class="text-right"><h5><strong>€0.00</strong></h5></td>
-                </tr>
-                <tr>
-                    <td>   </td>
-                    <td>   </td>
-                    <td>   </td>
-                    <td><h3>Totaal</h3></td>
-                    <td class="text-right"><h3><strong>€31,00</strong></h3></td>
-                </tr>
-                <tr>
-                    <td>   </td>
-                    <td>   </td>
-                    <td>
-                        <button type="button" class="btn btn-default">
-                            <span class="glyphicon glyphicon-shopping-cart"></span> <a href="menu.php" style="color: black"> Terug naar het menu</a>
-                        </button></td>
-                    <td>
-                        <button type="button" class="btn btn-success" data-target="#OrderSuccesModal">
-                            <a href="checkout.php" style="color: white"> Afrekenen </a><span class="glyphicon glyphicon-play"></span>
-                        </button></td>
-                </tr>
-                </tbody>
-            </table>
+            <button type="button" class="btn btn-default" style="margin-top: 5%">
+                <span class="glyphicon glyphicon-shopping-cart"></span>
+                <a href="menu.php" style="color: black"> Terug naar het menu</a>
+            </button>
         </div>
     </div>
 </div>
+<?php
+}
 
-<?PHP
 include_once "footer.php";
+// include_once "sideshoppinglist.php";
 ?>
 
 <!-- The scroll to top feature -->
@@ -223,11 +318,20 @@ include_once "footer.php";
 </body>
 </html>
 <script>
-    $("#prijs,#aantal").keyup(function () {
-        var myBox1 = '<?php echo $product->getProductdiscountprice(); ?>';
-        var myBox2 = document.getElementById('aantal').value;
-        var result = document.getElementById('result');
-        var myResult = myBox1 * myBox2;
-        result.value = myResult;
+    $("#aantal").keyup(function () {
+        var aantal = $("#aantal").val();
+        var prijs = <?php echo($productprijs); ?>;
+        var total = aantal * prijs;
+        $("#result").html(total);
     });
+
+
+    $( document ).ready(function() {
+        var bezorgkosten = <?php echo $bezorgkosten; ?>;
+        var subtotal = <?php echo $subtotaal; ?>;
+        var totaalProduct =subtotal + bezorgkosten;
+        $("#Test1").html(totaalProduct);
+
+    });
+
 </script>
