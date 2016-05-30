@@ -43,7 +43,7 @@ foreach ($_SESSION['productencart'] as $cartproduct) {
     echo '<li class="row">';
     echo '<span class="quantity">' . $cartproduct["aantal"] . '</span>';
     echo '<span class="itemName">' . $product->getProductname() . '</span>';
-    echo '<a class="glyphicon glyphicon-remove"></a>';
+    echo '<span id="remove_shoppingcart_product" class="popbtn"  data-parent="#asd" data-toggle="collapse" data-target="#demo"><a class="glyphicon glyphicon-remove"></a></span>';
     echo '<span class="price">€' . $product->getProductprice() . '</span>';
     echo '</li>';
     echo '<li class="row">';
