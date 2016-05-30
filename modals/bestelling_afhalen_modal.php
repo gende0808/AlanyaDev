@@ -59,7 +59,7 @@ include_once "classes/Category.php";
                                 </div>
                             </div>
                             <div class="action">
-                                <button id="submit2" name="registerbutton" class="form-control btn orange"
+                                <button id="submit2" name="submit2" class="form-control btn orange"
                                         style="color: white;"
                                         type="submit" disabled="disabled">
                                     Bestelling plaatsen

@@ -62,6 +62,10 @@ class Bestelling{
     /**
      * @var string
      */
+    private $afhalen;
+    /**
+     * @var string
+     */
     private $order_prod;
     /**
      * @var int
@@ -116,8 +120,9 @@ class Bestelling{
                                                            klantWoonplaats,
                                                            klantBijzonderheden,
                                                            besteltijd,
-                                                           uitgeprint)
-                                    VALUES(:firstname, :lastname, :phonenumber, :email, :streetname, :housenumber, :addition, :cityid, :particularities, :ordertime, :printed)");
+                                                           uitgeprint,
+                                                           afhalen)
+                                    VALUES(:firstname, :lastname, :phonenumber, :email, :streetname, :housenumber, :addition, :cityid, :particularities, :ordertime, :printed, :afhaal)");
             $stmt->bindParam(":firstname", $this->customerfirstname);
             $stmt->bindParam(":lastname", $this->customerlastname);
             $stmt->bindParam(":phonenumber", $this->customerphonenumber);
@@ -129,6 +134,7 @@ class Bestelling{
             $stmt->bindParam(":particularities", $this->customerparticularities);
             $stmt->bindParam(":ordertime", $this->ordertime);
             $stmt->bindParam(":printed", $this->printed);
+            $stmt->bindParam(":afhaal", $this->afhalen);
             $stmt->execute();
             $this->lastinsertedid = $this->db->lastInsertId();
 
@@ -180,7 +186,8 @@ class Bestelling{
                                                klantWoonplaats,
                                                klantBijzonderheden,
                                                besteltijd,
-                                               uitgeprint
+                                               uitgeprint,
+                                               afhalen
                                                 FROM bestelling WHERE bestellingNummer = :orderid");
             $stmt->bindParam(':orderid', $id, PDO::PARAM_INT);
             $stmt->execute();
@@ -197,6 +204,7 @@ class Bestelling{
             $this->customerparticularities = $this->order_info['klantBijzonderheden'];
             $this->ordertime = $this->order_info['besteltijd'];
             $this->printed = $this->order_info['uitgeprint'];
+            $this->afhalen = $this->order_info['afhalen'];
         } catch (PDOException $e) {
             echo "Database-error: " . $e->getMessage();
         }
@@ -210,6 +218,13 @@ class Bestelling{
     public function getCustomerfirstname()
     {
         return $this->customerfirstname;
+    }
+    /**
+     * @return string
+     */
+    public function getAfhalen()
+    {
+        return $this->afhalen;
     }
     /**
      * @return string
@@ -326,6 +341,13 @@ class Bestelling{
     public function setCustomercityid($customercityid)
     {
         $this->customercityid = htmlentities($customercityid);
+    }
+    /**
+     * @param mixed $afhalen
+     */
+    public function setAfhalen($afhalen)
+    {
+        $this->afhalen = htmlentities($afhalen);
     }
 
     /**

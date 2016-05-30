@@ -41,6 +41,12 @@ include_once "classes/BestellingToevoegingen.php";
 
 if (!empty($_POST)) {
     $bestelling = new Bestelling($DB_con);
+    if ( isset( $_POST['submit2'] ) ) {
+        echo 'test';
+        $bestelling->setAfhalen('Y');
+    } else {
+        $bestelling->setAfhalen('N');
+    }
     $bestelling->setCustomerfirstname(htmlspecialchars($_POST['fname']));
     $bestelling->setCustomerlastname(htmlspecialchars($_POST['lname']));
     $bestelling->setCustomerphonenumber(htmlspecialchars($_POST['phone']));
