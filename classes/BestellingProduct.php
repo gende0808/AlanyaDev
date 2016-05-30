@@ -36,6 +36,18 @@ class BestellingProduct
      * @var PDO
      */
     private $db;
+    /**
+     * @var array
+     */
+    private $listofremovables = array();
+    /**
+     * @var array
+     */
+    private $listofaddables = array();
+    /**
+     * @var array
+     */
+    private $listofradios = array();
 
     /**
      * @param $dbconnection
@@ -43,13 +55,19 @@ class BestellingProduct
      */
 
 
-    public function __construct($dbconnection, $id = "")
+    public function __construct($dbconnection, $id = "",$result ="")
     {
 
         $this->db = $dbconnection;
         if ($id != "" && is_numeric($id)) {
             $this->read($id);
         }
+        if (!empty($result)){
+            $this->number = $result['aantal'];
+            $this->productid = $result['productID'];
+            $this->recordid = $result['recordID'];
+        }
+
 
     }
 
@@ -70,6 +88,45 @@ class BestellingProduct
             echo "er is iets misgegaan met de verbinding van de server!" . $e->getMessage();
         }
     }
+    public function ProductAdditions()
+    {
+        try {
+            $stmt = $this->db->prepare("SELECT addableID FROM bestellingaddable WHERE recordID = :recordid");
+            $stmt->bindParam(":recordid", $this->recordid);
+            $stmt->execute();
+            while ($result = $stmt->fetch(PDO::FETCH_ASSOC))
+            {
+                $this->listofaddables[] = new ProductAddition($this->db,$result['addableID']);
+            }
+
+        } catch (PDOException $e) {
+            echo "Database-error: " . $e->getMessage();
+        }
+        try {
+            $stmt = $this->db->prepare("SELECT removableID FROM bestellingremovable WHERE recordID = :recordid");
+            $stmt->bindParam(":recordid", $this->recordid);
+            $stmt->execute();
+            while ($result = $stmt->fetch(PDO::FETCH_ASSOC))
+            {
+                $this->listofremovables[] = new ProductAdditionRemovable($this->db,$result['removableID']);
+            }
+
+        } catch (PDOException $e) {
+            echo "Database-error: " . $e->getMessage();
+        }
+        try {
+            $stmt = $this->db->prepare("SELECT radioID FROM bestellingradio WHERE recordID = :recordid");
+            $stmt->bindParam(":recordid", $this->recordid);
+            $stmt->execute();
+            while ($result = $stmt->fetch(PDO::FETCH_ASSOC))
+            {
+                $this->listofradios[] = new ProductRadioAddition($this->db,$result['radioID']);
+            }
+
+        } catch (PDOException $e) {
+            echo "Database-error: " . $e->getMessage();
+        }
+    }
 
     public function read($id)
     {
@@ -84,8 +141,8 @@ class BestellingProduct
             $stmt = $this->db->prepare("SELECT recordID,
                                                bestellingNummer,
                                                productID,
-                                               aantal,                             
-                                                FROM bestellingproduct WHERE recordID :recordid");
+                                               aantal                            
+                                                FROM bestellingproduct WHERE recordID = :recordid");
             $stmt->bindParam(':recordID', $id, PDO::PARAM_INT);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -160,6 +217,30 @@ class BestellingProduct
     public function setNumber($number)
     {
         $this->number = htmlentities($number);
+    }
+
+    /**
+     * @return ProductAdditionRemovable[]
+     */
+    public function getListofremovables()
+    {
+        return $this->listofremovables;
+    }
+
+    /**
+     * @return ProductAddition[]
+     */
+    public function getListofaddables()
+    {
+        return $this->listofaddables;
+    }
+
+    /**
+     * @return ProductRadioAddition[]
+     */
+    public function getListofradios()
+    {
+        return $this->listofradios;
     }
 
 }

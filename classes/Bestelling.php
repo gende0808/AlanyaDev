@@ -59,6 +59,23 @@ class Bestelling{
      * @var string
      */
     private $printed;
+    /**
+     * @var string
+     */
+    private $order_prod;
+    /**
+     * @var int
+     */
+    private $prodid;
+    /**
+     * @var int
+     */
+    private $number;
+
+    /**
+     * @var array
+     */
+    private $orderlist = array();
 
     /**
      * @param $dbconnection
@@ -120,6 +137,27 @@ class Bestelling{
         }
     }
 
+    /**
+     * 
+     */
+    
+    public function Orderproduct()
+    {
+        try {
+            $stmt = $this->db->prepare("SELECT * FROM bestellingproduct WHERE bestellingNummer = :orderid");
+            $stmt->bindParam(":orderid",$this->orderid);
+            $stmt->execute();
+            while ($result = $stmt->fetch(PDO::FETCH_ASSOC))
+            {
+                $this->orderlist[] = new BestellingProduct($this->db, $prodid="", $result);
+            }
+
+        } catch (PDOException $e) {
+            echo "Database-error: " . $e->getMessage();
+        }
+    }
+
+
 
     public function read($id)
     {
@@ -172,6 +210,20 @@ class Bestelling{
     public function getCustomerfirstname()
     {
         return $this->customerfirstname;
+    }
+    /**
+     * @return string
+     */
+    public function getCustomerproductid()
+    {
+        return $this->prodid;
+    }
+    /**
+     * @return string
+     */
+    public function getCustomerproductaantal()
+    {
+        return $this->number;
     }
     /**
      * @return string
@@ -260,6 +312,13 @@ class Bestelling{
         return $this->order_info;
     }
 
+    /**
+     * @return BestellingProduct[]
+     */
+    function getOrderlist()
+    {
+        return $this->orderlist;
+    }
 
     /**
      * @param mixed $customercityid
