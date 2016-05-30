@@ -42,7 +42,6 @@ include_once "classes/BestellingToevoegingen.php";
 if (!empty($_POST)) {
     $bestelling = new Bestelling($DB_con);
     if ( isset( $_POST['submit2'] ) ) {
-        echo 'test';
         $bestelling->setAfhalen('Y');
     } else {
         $bestelling->setAfhalen('N');
@@ -101,7 +100,11 @@ if (!empty($_POST)) {
                 }
             }
         }
-     echo "<script>window.location.replace(\"confirmorder\");</script>";
+    if ( isset( $_POST['submit2'] ) ) {
+        echo "<script>window.location.replace(\"confirmorderafhaal\");</script>";
+    } else {
+        echo "<script>window.location.replace(\"confirmorder\");</script>";
+    }
 }
 
 
