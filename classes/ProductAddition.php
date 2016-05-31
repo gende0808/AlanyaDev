@@ -7,7 +7,9 @@ class ProductAddition
      * @var PDO
      */
     private $db;
-
+    /**
+     * @var int
+     */
     private $price;
 
     private $name;
@@ -62,8 +64,15 @@ public function read($id)
     }
 }
 
+    /**
+     * @return string
+     */
+    public function getPriceformatted()
+    {
 
-
+        return '€ '.str_replace('.',',',$this->price);
+    }
+    
     /**
      * @return int
      */
@@ -72,6 +81,15 @@ public function read($id)
         return $this->price;
     }
 
+    /**
+     * @return string
+     */
+    public function getProductprice()
+    {
+        return $this->productprice;
+
+    }
+    
     /**
      * @return string
      */

@@ -10,7 +10,6 @@ include_once "classes/ProductRadioAddition.php";
 include_once "classes/ProductAdditionRemovable.php";
 include_once "modals/toevoegingen_modal.php";
 
-
 if (isset($_GET['productid']) && isset($_GET['delete'])) {
     $delete = $_GET['delete'];
     $productid = $_GET['productid'];
@@ -83,8 +82,8 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
     <div id="shoppingcart-container" class="test col-md-4">
     <?php if(isset($_SESSION['productencart'])) {
    echo '
-       <section id="content">
-            <details class="shoppingCart">
+       <div id="content">
+            <div class="shoppingCart">
                 <summary>
                     <h4>Winkelwagen</h4>
                     <span class="arrow"></span>
@@ -94,31 +93,41 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                 if(isset($_SESSION['productencart'])) {
                     foreach ($_SESSION['productencart'] as $key => $cartproduct) {
                         $product = new Product($DB_con, $cartproduct['productid']);
-                        echo '<li>
-                        <span><button class="removalproduct btn-danger glyphicon glyphicon-remove" data-sessid="'.$key.'"></button> ' . $cartproduct["aantal"] . ' x <b>' . $product->getProductname() . '</b></a></span> <strong>&euro;' . $product->getProductprice() . '</strong>
-                        </li>';
-                        if (array_key_exists('addable', $cartproduct) || array_key_exists('removable', $cartproduct) || array_key_exists('radio', $cartproduct)) {
-                            echo '<li>';
                             if (array_key_exists('addable', $cartproduct)) {
-                                echo '<span> extra: <i>';
+                                $prijsvanproduct = $product->getProductprice();
+                                foreach ($cartproduct['addable'] as $prijs) {
+                                    $adprijs = new ProductAddition($DB_con, $prijs);
+                                    $test = $adprijs->getPrice();
+                                    $prixjsvanproduct += $test;
+                                }
+
+                            }
+
+                        echo '<li>
+                        <span><button class="removalproduct btn-danger glyphicon glyphicon-remove" data-sessid="'.$key.'"></button> ' . $cartproduct["aantal"] . ' x <b>' . $product->getProductname() . '</b></a></span> <strong>&euro;' . number_format((float)$prijsvanproduct, 2, '.', '') . '</strong>
+                        ';
+                        if (array_key_exists('addable', $cartproduct) || array_key_exists('removable', $cartproduct) || array_key_exists('radio', $cartproduct)) {
+                            if (array_key_exists('addable', $cartproduct)) {
+                                echo '<br><br><span style="color:green"> Extra: <i>';
                                 foreach ($cartproduct['addable'] as $addableaddition) {
                                     $productaddition = new ProductAddition($DB_con, $addableaddition);
                                     echo $productaddition->getName();
+                                    echo '<b> + €' . $productaddition->getPrice() . '</b><br>';
                                 }
                                 echo '</span></i>';
                                 echo '<br>';
                             }
                             if (array_key_exists('removable', $cartproduct)) {
-                                echo '<span> zonder: <i>';
+                                echo '<br><span style="color:red"> Zonder: <i>';
                                 foreach ($cartproduct['removable'] as $removableaddition) {
                                     $productremovable = new ProductAdditionRemovable($DB_con, $removableaddition);
-                                    echo $productremovable->getName();
+                                    echo $productremovable->getName() . '<br>';
                                 }
                                 echo '</span></i>';
                                 echo '<br>';
                             }
                             if (array_key_exists('radio', $cartproduct)) {
-                                echo '<span>  keuze: <i>';
+                                echo '<br><span>  Keuze: <i>';
                                 foreach ($cartproduct['radio'] as $radioaddition) {
                                     $productradio = new ProductRadioAddition($DB_con, $radioaddition);
                                     echo $productradio->getName();
@@ -131,7 +140,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                 }
                 ?>
 
-        <p> 
+        <p>
             <span>Producten <strong>8</strong></span> <span>Totaal: <strong>&euro;78,40</strong></span>
         </p>
         <a class="checkout" href="checkout">Afrekenen</a>
@@ -143,15 +152,23 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
     </div>
     </div>
 </div>
+</div>
 
 <?php
 include_once "footer.php";
-if (isset($_GET['bref'])) {
+if(isset($_GET['bref'])){
     $bref = htmlspecialchars($_GET['bref']);
     echo '<script>window.onload = function(){buttonreferral('.$bref.')}</script>';
 } else {
     echo '<script src="js/menushowcat.js"></script>';
 }
 ?>
-<script src="js/custom.js"></script>
+<script src="js/customjs.js"></script>
+<script>
+    $("#submitproduct").click(function () {
+        
+        
+    };
+</script>
+
 

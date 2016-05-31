@@ -58,7 +58,7 @@ class Product implements CRUD
      */
     private $zondag;
     /**
-     * @var
+     * @var int
      */
     private $productprice;
     /**
@@ -263,7 +263,7 @@ class Product implements CRUD
     }
 
     /**
-     * @return string
+     * @return int
      */
     public function getProductprice()
     {
