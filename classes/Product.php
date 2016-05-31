@@ -267,8 +267,8 @@ class Product implements CRUD
      */
     public function getProductprice()
     {
+       return $this->productprice;
 
-        return $this->productprice;
     }
 
     /**
@@ -379,7 +379,46 @@ class Product implements CRUD
      */
     public function getProductdiscountprice()
     {
-        return $this->productdiscountprice;
+        $huidigeDatum = date('Y-m-d');
+        $huidigeDatum = date('Y-m-d', strtotime($huidigeDatum));
+
+        $huidigeDag = date("l"); //is gelijk aan de dag van vandaag
+        $actieshowen = false;
+
+        $productprijs = "";
+
+        if ($this->maandag === $huidigeDag
+            or $this->dinsdag  === $huidigeDag
+            or $this->woensdag  === $huidigeDag
+            or $this->donderdag  === $huidigeDag
+            or $this->vrijdag  === $huidigeDag
+            or $this->zaterdag  === $huidigeDag
+            or $this->zondag  === $huidigeDag
+        ) {
+            $actieshowen = true;
+        }
+        $productprijs = "";
+        $data_product_price = $this->productprice;
+        if (($this->beginActieDatum <= $huidigeDatum
+                && $this->eindActieDatum >= $huidigeDatum)
+            or $actieshowen == true)
+        {
+            if ($this->productdiscountprice < $this->productprice)
+            {
+                $productprijs = $this->productdiscountprice;
+                $data_product_price = $this->productdiscountprice;
+            }
+        }
+        $data_product_price = str_replace(".", ",", $data_product_price);
+
+        if($productprijs != 0)
+        {
+            return $productprijs;
+        }
+        else
+        {
+            return $this->productprice;
+        }
     }
 
     /**

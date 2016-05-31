@@ -24,47 +24,28 @@ try {
     }
     $imgcategory = new Category($DB_con, $category_ID);
 
-    $huidigeDatum = date('Y-m-d');
-    $huidigeDatum = date('Y-m-d', strtotime($huidigeDatum));
-
-    $huidigeDag = date("l"); //is gelijk aan de dag van vandaag
-    $actieshowen =false;
-
     $productlist = new ProductList($DB_con, $category_ID); // //de post word meegegeven
     $listofproducts = $productlist->getlistofproducts(); //hiermee word een array opgehaald waarin producten met hun waarden zitten
     foreach ($listofproducts as $product) { //in deze foreach loopt hij over ieder individueel product en print hij de waarden in die array
 
-        if(    $product->getMonday()  === $huidigeDag
-            or $product->getTuesday()  === $huidigeDag
-            or $product->getWednesday()  === $huidigeDag
-            or $product->getThursday()   === $huidigeDag
-            or $product->getFriday() === $huidigeDag
-            or $product->getSaturday()  === $huidigeDag
-            or $product->getSunday()  === $huidigeDag)
-        {
-           $actieshowen = true;
-        }
-
         $productprijs = $product->getProductpriceformatted();
-        $actieprijs = "";
+        $actieprijs = $product->getProductdiscountprice();
         $data_product_price = $product->getProductprice();
-        if(    ($product->getActiebegindatum() <= $huidigeDatum
-            && $product->getActieEinddatum() >= $huidigeDatum)
-            or $actieshowen == true) {
+
             if ($product->getProductdiscountprice() < $product->getProductprice()) {
                 $actieprijs = $product->getDiscountpriceformatted();
                 $data_product_price = $product->getProductdiscountprice();
                 $productprijs = "<span style=\"color:#FF3333\">Actie</span>" . " " . "<strike>$productprijs</strike>" . " " . $actieprijs;
             }
-        }
-        $data_product_price = str_replace(".",",",$data_product_price);
+
+        $data_product_price = str_replace(".", ",", $data_product_price);
         echo "<tr>";
         echo "<td style='width: 150px;'>" . $product->getProductnumber() . "</td>";
         echo "<td style='width: 150px;'>" . $product->getProductname() . "</td>";
         echo "<td style='width: 150px;'>" . $product->getProductdescription() . "</td>";
         echo "<td style='width: 150px;'>" . $productprijs . "</td>";
         echo "<td style='width: 150px;'>
-        <a id='" . $product->getProductid() . "' href=\"#\" data-toggle=\"modal\" data-target=\"#myModalToev\" data-product-price='".$data_product_price."' data-productid='".$product->getProductid()."' data-productname='".$product->getProductname()."' class=\"hvr-pulse\"><span class=\"glyphicon glyphicon-plus\"></span> Bestellen</a>
+        <a id='" . $product->getProductid() . "' href=\"#\" data-toggle=\"modal\" data-target=\"#myModalToev\" data-product-price='" . $data_product_price . "' data-productid='" . $product->getProductid() . "' data-productname='" . $product->getProductname() . "' class=\"hvr-pulse\"><span class=\"glyphicon glyphicon-plus\"></span> Bestellen</a>
         </td>";
         echo "</tr>";
         echo "\n";

@@ -154,42 +154,16 @@ if($productensession)
                     </tr>
                     </thead>
                     <?php
-                    $huidigeDatum = date('Y-m-d');
-                    $huidigeDatum = date('Y-m-d', strtotime($huidigeDatum));
-
-                    $huidigeDag = date("l"); //is gelijk aan de dag van vandaag
-                    $actieshowen = false;
 
                     $productlist = new ProductList($DB_con, 1); // //de post word meegegeven
                     $listofproducts = $productlist->getlistofproducts(); //hiermee word een array opgehaald waarin producten met hun waarden zitten
-                    foreach ($listofproducts as $product) { //in deze foreach loopt hij over ieder individueel product en print hij de waarden in die array
 
-                        if ($product->getMonday() === $huidigeDag
-                            or $product->getTuesday() === $huidigeDag
-                            or $product->getWednesday() === $huidigeDag
-                            or $product->getThursday() === $huidigeDag
-                            or $product->getFriday() === $huidigeDag
-                            or $product->getSaturday() === $huidigeDag
-                            or $product->getSunday() === $huidigeDag
-                        ) {
-                            $actieshowen = true;
-                        }
-                    }
                     foreach ($_SESSION['productencart'] as $arrayproduct) {
                     $product = new Product($DB_con, $arrayproduct['productid']);
-                    $productprijs = $product->getProductprice();
+                    $productprijs = $product->getProductdiscountprice();
                     $actieprijs = "";
                     $data_product_price = $product->getProductprice();
-                    if (($product->getActiebegindatum() <= $huidigeDatum
-                            && $product->getActieEinddatum() >= $huidigeDatum)
-                        or $actieshowen == true
-                    ) {
-                        if ($product->getProductdiscountprice() < $product->getProductprice()) {
-                            $actieprijs = $product->getDiscountpriceformatted();
-                            $data_product_price = $product->getProductdiscountprice();
-                            $productprijs = $actieprijs;
-                        }
-                    }
+
                     ?>
                     <tbody>
                     <tr>
@@ -207,7 +181,7 @@ if($productensession)
                                    value="<?php echo $arrayproduct['aantal'] ?>">
                         </td>
                         <td class="col-sm-1 col-md-1 text-center"><strong>
-                                <div id="prijs"><?php echo "€" . $productprijs ?></div>
+                                <div id="prijs"><?php echo "€" . $product->getProductdiscountprice() ?></div>
                         <td class="col-sm-1 col-md-1 text-center"><strong>€0,00</strong></td>
                         <td class="col-sm-1 col-md-1 text-center"><strong><span
                                     id="result"><?php echo $product->getProductprice() * $arrayproduct['aantal'] ?></span>
