@@ -49,7 +49,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
             <?PHP
             echo '<div class="col-md-12 col-md-offset-0 text-center">';
             foreach ($categorylist->getcategories() as $category) { //hij haalt alle categoriën op in een array.
-                echo '<a href="#cat"><button name="catID" onclick="showProductsMenu(this.value); ShowIMG('.$category->getcatID().')" class="btntest" value="' . $category->getcatID() . '">' . $category->getcatname() . '</button></a>';
+                echo '<a href="#cat"><button name="catID" onclick="showProductsMenu(this.value); ShowIMG(' . $category->getcatID() . ')" class="btntest" value="' . $category->getcatID() . '">' . $category->getcatname() . '</button></a>';
                 //hierboven worden simpele buttons geprint waarvan in de post de ID word meegegeven maar de waarde in de knop is de categorieNaam.
             }
             echo '</div>';
@@ -146,19 +146,12 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
 
 <?php
 include_once "footer.php";
-if(isset($_GET['bref'])){
+if (isset($_GET['bref'])) {
     $bref = htmlspecialchars($_GET['bref']);
     echo '<script>window.onload = function(){buttonreferral('.$bref.')}</script>';
 } else {
     echo '<script src="js/menushowcat.js"></script>';
 }
 ?>
-<script src="js/customjs.js"></script>
-<script>
-    $("#submitproduct").click(function () {
-        
-        
-    };
-</script>
-
+<script src="js/custom.js"></script>
 

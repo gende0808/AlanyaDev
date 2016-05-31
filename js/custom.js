@@ -187,4 +187,23 @@ function buttonreferral(bref) {
     ShowIMG(bref);
 }
 
+$('button.removalproduct').on("click", removeProduct);
 
+function removeProduct() {
+    var dataofbutton = $(this).data('sessid');
+    var postData = {
+        'deleteproductfromcart': dataofbutton
+    };
+    url = 'shopping_cart_session.php';
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: postData,
+        dataType: "text",
+        success: function (data) {
+            clearBox('#shoppingcart-container');
+            $('#shoppingcart-container').html(data);
+            $('button.removalproduct').on("click", removeProduct);
+        }
+    });
+}

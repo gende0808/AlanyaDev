@@ -29,6 +29,10 @@ if (!empty($_POST['prodid']) && !empty($_POST['aantal'])) {
         array_push($_SESSION['productencart'], $array);
     }
 }
+if (isset($_POST['deleteproductfromcart']) && is_numeric($_POST['deleteproductfromcart'])){
+    $deleteproductfromcart = htmlspecialchars($_POST['deleteproductfromcart']);
+    unset($_SESSION['productencart'][$deleteproductfromcart]);
+}
 echo '
        <section id="content">
             <details class="shoppingCart">
@@ -39,7 +43,7 @@ echo '
                 <div class="Content"
                 <ul>';
 if(isset($_SESSION['productencart'])) {
-    foreach ($_SESSION['productencart'] as $cartproduct) {
+    foreach ($_SESSION['productencart'] as $key => $cartproduct) {
         $product = new Product($DB_con, $cartproduct['productid']);
         echo '<li>
                         <span>' . $cartproduct["aantal"] . ' x <b>' . $product->getProductname() . '</b></a></span> <strong>&euro;' . $product->getProductprice() . '</strong>

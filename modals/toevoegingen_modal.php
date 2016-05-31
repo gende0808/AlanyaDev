@@ -89,6 +89,7 @@
                     clearBox('#shoppingcart-container');
                     $('#myModalToev').modal('hide');
                     $('#shoppingcart-container').html(data);
+                    $('button.removalproduct').on("click", removeProduct);
                 }
             });
         });
