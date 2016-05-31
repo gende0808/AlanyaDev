@@ -92,10 +92,10 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                 <div class="Content"
                 <ul>';
                 if(isset($_SESSION['productencart'])) {
-                    foreach ($_SESSION['productencart'] as $cartproduct) {
+                    foreach ($_SESSION['productencart'] as $key => $cartproduct) {
                         $product = new Product($DB_con, $cartproduct['productid']);
                         echo '<li>
-                        <span><button class="btn-danger glyphicon glyphicon-remove"></button> ' . $cartproduct["aantal"] . ' x <b>' . $product->getProductname() . '</b></a></span> <strong>&euro;' . $product->getProductprice() . '</strong>
+                        <span><button class="removalproduct btn-danger glyphicon glyphicon-remove" data-sessid="'.$key.'"></button> ' . $cartproduct["aantal"] . ' x <b>' . $product->getProductname() . '</b></a></span> <strong>&euro;' . $product->getProductprice() . '</strong>
                         </li>';
                         if (array_key_exists('addable', $cartproduct) || array_key_exists('removable', $cartproduct) || array_key_exists('radio', $cartproduct)) {
                             echo '<li>';
@@ -131,7 +131,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                 }
                 ?>
 
-        <p>
+        <p> 
             <span>Producten <strong>8</strong></span> <span>Totaal: <strong>&euro;78,40</strong></span>
         </p>
         <a class="checkout" href="checkout">Afrekenen</a>

@@ -46,7 +46,7 @@ if(isset($_SESSION['productencart'])) {
     foreach ($_SESSION['productencart'] as $key => $cartproduct) {
         $product = new Product($DB_con, $cartproduct['productid']);
         echo '<li>
-                        <span>' . $cartproduct["aantal"] . ' x <b>' . $product->getProductname() . '</b></a></span> <strong>&euro;' . $product->getProductprice() . '</strong>
+                        <span><button class="removalproduct btn-danger glyphicon glyphicon-remove" data-sessid="'.$key.'"></button>' . $cartproduct["aantal"] . ' x <b>' . $product->getProductname() . '</b></a></span> <strong>&euro;' . $product->getProductprice() . '</strong>
                         </li>';
         if (array_key_exists('addable', $cartproduct) || array_key_exists('removable', $cartproduct) || array_key_exists('radio', $cartproduct)) {
             echo '<li>';
