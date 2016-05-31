@@ -26,8 +26,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
 }
 
 ?>
-<link rel="stylesheet" type="text/css" href="css/shoppingcartmenu.css"/>
-
+<link rel="stylesheet" type="text/css" href="css/newshoppingcart.css"/>
 
 <div class="container-fluid text-center" style="margin-top: 50px;">
     <div class="col-md-7 col-md-offset-1 text-center" style="margin-top: 50px">
@@ -81,57 +80,69 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
             </tbody>
         </table>
     </div>
-    <div id="shoppingcart-container" class="col-md-4">
+    <div id="shoppingcart-container" class="test col-md-4">
     <?php if(isset($_SESSION['productencart'])) {
    echo '
-        <div class="text-left">
-            <ul>
-                <li class="row list-inline columnCaptions">
-                    <span>Aantal</span>
-                    <span>Product</span>
-                    <span>Prijs</span>
-                </li>';}
+       <section id="content">
+            <details class="shoppingCart">
+                <summary>
+                    <h4>Winkelwagen</h4>
+                    <span class="arrow"></span>
+                </summary>
+                <div class="Content"
+                <ul>';
                 if(isset($_SESSION['productencart'])) {
                     foreach ($_SESSION['productencart'] as $cartproduct) {
                         $product = new Product($DB_con, $cartproduct['productid']);
-                        echo '<div id="product">';
-                        echo '<li class="row">';
-                        echo '<span class="quantity">' . $cartproduct["aantal"] . '</span>';
-                        echo '<span class="itemName">' . $product->getProductname() . '</span>';
-                        echo '<span id="remove_shoppingcart_product" class="popbtn"  data-parent="#asd" data-toggle="collapse" data-target="#demo"><a class="glyphicon glyphicon-remove"></a></span>';
-                        echo '<span class="price">€' . $product->getProductprice() . '</span>';
-                        echo '</li>';
-                        echo '<li class="row">';
-                        if (array_key_exists('addable', $cartproduct)) {
-                            foreach ($cartproduct['addable'] as $addableaddition) {
-                                $productaddition = new ProductAddition($DB_con, $addableaddition);
-                                echo '<span> ' . $productaddition->getName() . ' - </span>';
+                        echo '<li>
+                        <span><button class="btn-danger glyphicon glyphicon-remove"></button> ' . $cartproduct["aantal"] . ' x <b>' . $product->getProductname() . '</b></a></span> <strong>&euro;' . $product->getProductprice() . '</strong>
+                        </li>';
+                        if (array_key_exists('addable', $cartproduct) || array_key_exists('removable', $cartproduct) || array_key_exists('radio', $cartproduct)) {
+                            echo '<li>';
+                            if (array_key_exists('addable', $cartproduct)) {
+                                echo '<span> extra: <i>';
+                                foreach ($cartproduct['addable'] as $addableaddition) {
+                                    $productaddition = new ProductAddition($DB_con, $addableaddition);
+                                    echo $productaddition->getName();
+                                }
+                                echo '</span></i>';
+                                echo '<br>';
                             }
-                        }
                             if (array_key_exists('removable', $cartproduct)) {
+                                echo '<span> zonder: <i>';
                                 foreach ($cartproduct['removable'] as $removableaddition) {
                                     $productremovable = new ProductAdditionRemovable($DB_con, $removableaddition);
-                                    echo '<span> ' . $productremovable->getName() . ' - </span>';
+                                    echo $productremovable->getName();
                                 }
+                                echo '</span></i>';
+                                echo '<br>';
                             }
-                        if (array_key_exists('radio', $cartproduct)) {
-                            foreach ($cartproduct['radio'] as $radioaddition) {
-                                $productradio = new ProductRadioAddition($DB_con, $radioaddition);
-                                echo '<span> ' . $productradio->getName() . ' - </span>';
+                            if (array_key_exists('radio', $cartproduct)) {
+                                echo '<span>  keuze: <i>';
+                                foreach ($cartproduct['radio'] as $radioaddition) {
+                                    $productradio = new ProductRadioAddition($DB_con, $radioaddition);
+                                    echo $productradio->getName();
+                                }
+                                echo '</span></i>';
                             }
+                            echo '</li>';
                         }
-                        echo '</li>';
-                            }
-
+                    }
                 }
-
                 ?>
+
+        <p>
+            <span>Producten <strong>8</strong></span> <span>Totaal: <strong>&euro;78,40</strong></span>
+        </p>
+        <a class="checkout" href="checkout">Afrekenen</a>
+        </details>
+        </section>
             </ul>
         </div>
-        </>
-
+    <?php } ?>
     </div>
     </div>
+</div>
 
 <?php
 include_once "footer.php";

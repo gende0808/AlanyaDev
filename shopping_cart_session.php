@@ -30,45 +30,62 @@ if (!empty($_POST['prodid']) && !empty($_POST['aantal'])) {
     }
 }
 echo '
-        <div class="text-left">
-            <ul>
-                <li class="row list-inline columnCaptions">
-                    <span>Aantal</span>
-                    <span>Product</span>
-                    <span>Prijs</span>
-                </li>';
-foreach ($_SESSION['productencart'] as $cartproduct) {
-    $product = new Product($DB_con, $cartproduct['productid']);
-    echo '<div id="product">';
-    echo '<li class="row">';
-    echo '<span class="quantity">' . $cartproduct["aantal"] . '</span>';
-    echo '<span class="itemName">' . $product->getProductname() . '</span>';
-    echo '<span id="remove_shoppingcart_product" class="popbtn"  data-parent="#asd" data-toggle="collapse" data-target="#demo"><a class="glyphicon glyphicon-remove"></a></span>';
-    echo '<span class="price">€' . $product->getProductprice() . '</span>';
-    echo '</li>';
-    echo '<li class="row">';
-    if (array_key_exists('addable', $cartproduct)) {
-        foreach ($cartproduct['addable'] as $addableaddition) {
-            $productaddition = new ProductAddition($DB_con, $addableaddition);
-            echo '<span> ' . $productaddition->getName() . ' - </span>';
+       <section id="content">
+            <details class="shoppingCart">
+                <summary>
+                    <h4>Winkelwagen</h4>
+                    <span class="arrow"></span>
+                </summary>
+                <div class="Content"
+                <ul>';
+if(isset($_SESSION['productencart'])) {
+    foreach ($_SESSION['productencart'] as $cartproduct) {
+        $product = new Product($DB_con, $cartproduct['productid']);
+        echo '<li>
+                        <span>' . $cartproduct["aantal"] . ' x <b>' . $product->getProductname() . '</b></a></span> <strong>&euro;' . $product->getProductprice() . '</strong>
+                        </li>';
+        if (array_key_exists('addable', $cartproduct) || array_key_exists('removable', $cartproduct) || array_key_exists('radio', $cartproduct)) {
+            echo '<li>';
+            if (array_key_exists('addable', $cartproduct)) {
+                echo '<span> extra: <i>';
+                foreach ($cartproduct['addable'] as $addableaddition) {
+                    $productaddition = new ProductAddition($DB_con, $addableaddition);
+                    echo $productaddition->getName();
+                }
+                echo '</span></i>';
+                echo '<br>';
+            }
+            if (array_key_exists('removable', $cartproduct)) {
+                echo '<span> zonder: <i>';
+                foreach ($cartproduct['removable'] as $removableaddition) {
+                    $productremovable = new ProductAdditionRemovable($DB_con, $removableaddition);
+                    echo $productremovable->getName();
+                }
+                echo '</span></i>';
+                echo '<br>';
+            }
+            if (array_key_exists('radio', $cartproduct)) {
+                echo '<span>  keuze: <i>';
+                foreach ($cartproduct['radio'] as $radioaddition) {
+                    $productradio = new ProductRadioAddition($DB_con, $radioaddition);
+                    echo $productradio->getName();
+                }
+                echo '</span></i>';
+            }
+            echo '</li>';
         }
     }
-    if (array_key_exists('removable', $cartproduct)) {
-        foreach ($cartproduct['removable'] as $removableaddition) {
-            $productremovable = new ProductAdditionRemovable($DB_con, $removableaddition);
-            echo '<span> ' . $productremovable->getName() . ' - </span>';
-        }
-    }
-    if (array_key_exists('radio', $cartproduct)) {
-        foreach ($cartproduct['radio'] as $radioaddition) {
-            $productradio = new ProductRadioAddition($DB_con, $radioaddition);
-            echo '<span> ' . $productradio->getName() . ' - </span>';
-        }
-    }
-    echo '</li>';
-    echo '<div>';
 }
-
 ?>
-</ul>
+
+    <p>
+        <span>Producten <strong>8</strong></span> <span>Totaal: <strong>&euro;78,40</strong></span>
+    </p>
+    <a class="checkout" href="checkout">Afrekenen</a>
+    </details>
+    </section>
+    </ul>
+    </div>
+</div>
+</div>
 </div>

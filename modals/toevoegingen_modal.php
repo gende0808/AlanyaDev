@@ -10,18 +10,18 @@
                 </div> <!-- /.modal-header -->
                 <div class="modal-body col-md-12">
                     <div class="modal-body col-md-4">
-                        <h4 align="left"><b>Dingen die ik krijg</b></h4>
+                        <h4 align="left"><b>Keuzes</b></h4>
                         <div id="verwijderbare_toevoegingen"
                         ">
                     </div>
 
                 </div>
                 <div class="modal-body col-md-4">
-                    <h4 align="left"><b>Dingen die ik wil</b></h4>
+                    <h4 align="left"><b>Extra's</b></h4>
                     <div id="toevoegbare_toevoegingen"></div>
                 </div>
                 <div class="modal-body col-md-4">
-                    <h4 align="left"><b>Dingen die ik mag kiezen</b></h4>
+                    <h4 align="left"><b>Opties</b></h4>
                     <div id="radio_toevoegingen"></div>
                 </div>
             </div>

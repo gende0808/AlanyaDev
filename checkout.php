@@ -15,18 +15,10 @@ include_once "classes/BestellingToevoegingen.php";
             $("#bezorgen").click(function () {
                 $("#istop").show();
                 $("#test").hide();
-//                $("#klant").show();
-//                $("#mand").show();
-//                $("#strand").show();
-//                $("#want").show();
             });
             $("#ophalen").click(function () {
                 $("#test").show();
                 $("#istop").hide();
-//                $("#klant").hide();
-//                $("#mand").hide();
-//                $("#strand").hide();
-//                $("#want").hide();
             });
         });
     </script>

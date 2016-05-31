@@ -53,10 +53,10 @@ if (isset($_SESSION['iactivatedmyaccount']) && $_SESSION['iactivatedmyaccount'] 
     <div class="flexslider">
         <ul class="slides">
             <li>
-                <img src="images/testslide2.png" alt="" />
+                <img src="images/slide1.jpg" alt="" />
             </li>
             <li>
-                <img src="images/testslide1.png" alt="" />
+                <img src="images/slide2.jpg" alt="" />
             </li>
         </ul>
     </div>
@@ -86,7 +86,7 @@ if (isset($_SESSION['iactivatedmyaccount']) && $_SESSION['iactivatedmyaccount'] 
                     </div>
                 </div>
             </div>
-            <h3><b>DIRECT NAAR ONZE CATEGORIËN!</b></h3>
+<!--            <h3><b> <img src="images/testlogo3.png" alt="" /></b></h3>-->
             <div class="col-md-4 col-sm-6">
                 <a href="menu?bref=1">
                     <div class="blog-post">

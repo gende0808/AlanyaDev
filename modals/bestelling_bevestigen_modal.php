@@ -10,13 +10,16 @@ include_once "classes/ProductAddition.php";
 include_once "classes/ProductAdditionRemovable.php";
 include_once "classes/ProductRadioAddition.php";
 
-?>
+if(isset($_SESSION['productencart'])){
+    unset($_SESSION['productencart']);
+}
 
-<?php $bestelling = new Bestelling($DB_con, $_SESSION['order_id']);
+$bestelling = new Bestelling($DB_con, $_SESSION['order_id']);
 echo $bestelling->getCustomerproductid();
 $bestelling->Orderproduct();
 $productenlijst = $bestelling->getOrderlist();
 ?>
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2" id="istop">
