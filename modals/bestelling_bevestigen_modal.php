@@ -51,18 +51,27 @@ $productenlijst = $bestelling->getOrderlist();
                                         <!--                                    <span>Omschrijving:</span><strong> Tomaat, kaas, ham, ananas</strong>-->
                                         <div class="media" style="width: 52%; float: left; text-align: left">
                                             <h5 class=""><span></span><strong><?php
-
+                                                    if ($removablelist) {
+                                                        echo "Zonder: <br>";
+                                                    }
                                                     foreach ($removablelist as $removableobject) {
                                                         echo '- ' . $removableobject->getName() . '<br>';
-                                                        echo '- ' . $removableobject->get() . '<br>';
                                                     }
+                                                    echo "<br>";
                                                     $toevoegingen = array();
+                                                    if ($addablelist) {
+                                                        echo "Extra's: <br>";
+                                                    }
                                                     foreach ($addablelist as $addableobject) {
                                                         $adprijs = new ProductAddition($DB_con, $addableobject->getId());
                                                         echo '- ' . $addableobject->getName() . "(" . $adprijs->getPrice() . ")" . '<br>';
                                                         $toevoegingen[] = $addableobject->getPrice();
                                                     }
                                                     $toevoegingtotaal = array_sum($toevoegingen);
+                                                    echo "<br>";
+                                                    if ($radiolist) {
+                                                        echo "Met als keuze: <br>";
+                                                    }
                                                     foreach ($radiolist as $radioobject) {
                                                         echo '- ' . $radioobject->getName() . '<br>';
                                                     }
@@ -114,28 +123,25 @@ $productenlijst = $bestelling->getOrderlist();
                         </div>
                         <div class="media-body" style="width: 50%; float: right; text-align: right">
                             <h4 class="media-heading"><?php
-                                if($subtotaal <= 15)
-                                {
+                                if ($subtotaal <= 15) {
                                     $bezorgkosten = 2;
-                                }
-                                else
-                                {
+                                } else {
                                     $bezorgkosten = 0;
                                 }
                                 echo "€" . $bezorgkosten;
                                 ?></h4>
                         </div>
-                    </div>
+
                     <div class="media" style="width: 100%">
                         <div class="media-body" style="width: 50%; float: left">
                             <h4 class="media-heading">Totaalbedrag</h4>
                         </div>
                         <div class="media-body" style="width: 50%; float: right; text-align: right">
                             <h4 class="media-heading">
-                            <?php
-                            echo "€" . ($subtotaal + $bezorgkosten);
-                            ?>
-                                </h4>
+                                <?php
+                                echo "€" . ($subtotaal + $bezorgkosten);
+                                ?>
+                            </h4>
                         </div>
                     </div
                     <hr>

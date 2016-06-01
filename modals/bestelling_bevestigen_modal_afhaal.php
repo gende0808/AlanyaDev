@@ -48,18 +48,30 @@ $productenlijst = $bestelling->getOrderlist();
                                         <!--                                    <span>Omschrijving:</span><strong> Tomaat, kaas, ham, ananas</strong>-->
                                         <div class="media" style="width: 52%; float: left; text-align: left">
                                             <h5 class=""><span></span><strong><?php
-
+                                                    if($removablelist)
+                                                    {
+                                                        echo "Zonder: <br>";
+                                                    }
                                                     foreach ($removablelist as $removableobject) {
                                                         echo '- ' . $removableobject->getName() . '<br>';
-                                                        echo '- ' . $removableobject->get() . '<br>';
                                                     }
+                                                    echo "<br>";
                                                     $toevoegingen = array();
+                                                    if($addablelist)
+                                                    {
+                                                        echo "Extra's: <br>";
+                                                    }
                                                     foreach ($addablelist as $addableobject) {
                                                         $adprijs = new ProductAddition($DB_con, $addableobject->getId());
-                                                        echo '- ' . $addableobject->getName() . "(" . $adprijs->getPrice() . ")" . '<br>';
+                                                        echo '- ' . $addableobject->getName() . "(€" . $adprijs->getPrice() . ")" . '<br>';
                                                         $toevoegingen[] = $addableobject->getPrice();
                                                     }
                                                     $toevoegingtotaal = array_sum($toevoegingen);
+                                                    echo "<br>";
+                                                    if($radiolist)
+                                                    {
+                                                        echo "Met als keuze: <br>";
+                                                    }
                                                     foreach ($radiolist as $radioobject) {
                                                         echo '- ' . $radioobject->getName() . '<br>';
                                                     }
@@ -93,8 +105,6 @@ $productenlijst = $bestelling->getOrderlist();
                     <br>
                     <br>
                     <div class="media" style="width: 100%">
-                    </div>
-                    <div class="media" style="width: 100%">
                         <div class="media-body" style="width: 50%; float: left">
                             <h4 class="media-heading">Totaalbedrag</h4>
                         </div>
@@ -113,10 +123,6 @@ $productenlijst = $bestelling->getOrderlist();
                             <h5 class="media-heading">
                                 <?php $bestelling = new Bestelling($DB_con, $_SESSION['order_id']);
                                 echo $bestelling->getCustomerfirstname(); ?> <?php echo $bestelling->getCustomerlastname(); ?></h5>
-                            <h5 class="media-heading"></h5>
-                            <h5 class="media-heading"><?php echo $bestelling->getCustomerstreetname(); ?> <?php echo $bestelling->getCustomerhousenumber(); ?></h5>
-                            <h5 class="media-heading"><?php $city = new City($DB_con, $bestelling->getCustomercityid());
-                                echo $city->getCityname(); ?></h5>
                             <h5 class="media-heading"><?php echo $bestelling->getCustomerphonenumber(); ?></h5>
                         </div>
                     </div>
