@@ -3,7 +3,7 @@
     <div class="col-md-8 col-md-offset-2">
         <div class="modal-dialog">
             <div id="prodid"> blabla</div>
-            <div class="modal-content">
+            <div class="modal-content-toevoegingen">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     <h2 class="modal-title" id="myModalAddedLabel"><b><i><span id="prodname" name="prodname"></span></i></b></h2><br>
@@ -11,8 +11,7 @@
                 <div class="modal-body col-md-12">
                     <div class="modal-body col-md-4">
                         <h4 align="left"><b>Keuzes</b></h4>
-                        <div id="verwijderbare_toevoegingen"
-                        ">
+                        <div id="verwijderbare_toevoegingen">
                     </div>
 
                 </div>
@@ -25,13 +24,13 @@
                     <div id="radio_toevoegingen"></div>
                 </div>
             </div>
-            <div style="margin-bottom: 2%">
+            <div style="margin-bottom: 2%; margin-left: 3%">
                 <p>
                 <h3><span>&#128; </span><span id="amount" class="amount"></span></h3></p>
                 <br>
                 Aantal:
                 <input type="number" min="1" id="quantity" name="quantity" value="1" class="btn form-control input-md input-qty"
-                       placeholder="" style="width: 15%">
+                       placeholder="" style="width: 16%">
                 <button type="button" class="btn orange" id="submitproduct" style="color: white">Toevoegen</button>
             </div>
         </div>

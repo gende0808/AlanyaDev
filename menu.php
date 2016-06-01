@@ -26,6 +26,8 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
 
 ?>
 <link rel="stylesheet" type="text/css" href="css/newshoppingcart.css"/>
+<link rel="stylesheet" type="text/css" href="css/background.css"/>
+
 
 <div class="container-fluid text-center" style="margin-top: 50px;">
     <div class="col-md-7 col-md-offset-1 text-center" style="margin-top: 50px">
