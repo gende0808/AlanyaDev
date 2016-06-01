@@ -98,7 +98,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                                 foreach ($cartproduct['addable'] as $prijs) {
                                     $adprijs = new ProductAddition($DB_con, $prijs);
                                     $test = $adprijs->getPrice();
-                                    $prixjsvanproduct += $test;
+                                    $prijsvanproduct += $test;
                                 }
 
                             }

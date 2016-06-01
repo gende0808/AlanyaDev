@@ -32,7 +32,7 @@ try {
         $actieprijs = $product->getProductdiscountprice();
         $data_product_price = $product->getProductprice();
 
-            if ($product->getProductdiscountprice() < $product->getProductprice()) {
+            if ($product->getLowestproductprice() < $product->getProductprice()) {
                 $actieprijs = $product->getDiscountpriceformatted();
                 $data_product_price = $product->getProductdiscountprice();
                 $productprijs = "<span style=\"color:#FF3333\">Actie</span>" . " " . "<strike>$productprijs</strike>" . " " . $actieprijs;
