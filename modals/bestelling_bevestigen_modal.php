@@ -10,7 +10,7 @@ include_once "classes/ProductAddition.php";
 include_once "classes/ProductAdditionRemovable.php";
 include_once "classes/ProductRadioAddition.php";
 
-if(isset($_SESSION['productencart'])){
+if (isset($_SESSION['productencart'])) {
     unset($_SESSION['productencart']);
 }
 
@@ -26,68 +26,104 @@ $productenlijst = $bestelling->getOrderlist();
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <div class="alert alert-success" role="alert"><h3>Bedankt voor het plaatsen van uw bestelling!</h3></div>
+                        <div class="alert alert-success" role="alert"><h3>Bedankt voor het plaatsen van uw
+                                bestelling!</h3></div>
                         <div class="media" style="width: 100%">
 
 
-                            <?php foreach ($productenlijst as $product) {
-                                $product->ProductAdditions();
-                                $newproduct = new Product($DB_con, $product->getProductid());
-                                $removablelist = $product->getListofremovables();
-                                $addablelist = $product->getListofaddables();
-                                $radiolist = $product->getListofradios(); ?>
-                                <div class="media" style="width: 100%;float: left">
-                                    <div class="alert alert-info" role="alert">
+                            <?php
+                            $productprijzen = array();
+                            foreach ($productenlijst as $product) {
+                            $product->ProductAdditions();
+                            $newproduct = new Product($DB_con, $product->getProductid());
+                            $removablelist = $product->getListofremovables();
+                            $addablelist = $product->getListofaddables();
+                            $radiolist = $product->getListofradios(); ?>
+                            <div class="media" style="width: 100%;float: left">
+                                <div class="alert alert-info" role="alert">
                                     <div class="media-body">
                                         <h4 class="media-heading">
                                             <?php
+
                                             echo $newproduct->getProductname() . "<br>";
                                             ?></h4>
                                         <!--                                    <h5 class="media-heading"> Categorie <a href="#">Italliaanse pizza's</a></h5>-->
                                         <!--                                    <span>Omschrijving:</span><strong> Tomaat, kaas, ham, ananas</strong>-->
+                                        <div class="media" style="width: 52%; float: left; text-align: left">
+                                            <h5 class=""><span></span><strong><?php
+
+                                                    foreach ($removablelist as $removableobject) {
+                                                        echo '- ' . $removableobject->getName() . '<br>';
+                                                        echo '- ' . $removableobject->get() . '<br>';
+                                                    }
+                                                    $toevoegingen = array();
+                                                    foreach ($addablelist as $addableobject) {
+                                                        $adprijs = new ProductAddition($DB_con, $addableobject->getId());
+                                                        echo '- ' . $addableobject->getName() . "(" . $adprijs->getPrice() . ")" . '<br>';
+                                                        $toevoegingen[] = $addableobject->getPrice();
+                                                    }
+                                                    $toevoegingtotaal = array_sum($toevoegingen);
+                                                    foreach ($radiolist as $radioobject) {
+                                                        echo '- ' . $radioobject->getName() . '<br>';
+                                                    }
+                                                    $productprijzen[] = ($newproduct->getProductprice() + $toevoegingtotaal) * $product->getNumber(); ?></strong>
+                                            </h5>
+                                        </div>
                                         <div class="media" style="width: 16%; float: right; text-align: right">
                                             <div class="media-body">
-                                                <h4 class="media-heading">€<?php echo $newproduct->getProductprice() * $product->getNumber()?></h4>
+                                                <h4 class="media-heading">
+                                                    €<?php echo ($newproduct->getProductprice() + $toevoegingtotaal) * $product->getNumber() ?></h4>
                                             </div>
                                         </div>
                                         <div class="media" style="width: 16%; float: right; text-align: right">
                                             <div class="media-body">
-                                                <h4 class="media-heading"><?php echo $product->getNumber().'x'; ?></h4>
+                                                <h4 class="media-heading"><?php echo $product->getNumber() . 'x'; ?></h4>
                                             </div>
                                         </div>
                                         <div class="media" style="width: 16%; float: right; text-align: right">
                                             <div class="media-body">
-                                                <h4 class="media-heading">€<?php echo $newproduct->getProductprice()?></h4>
+                                                <h4 class="media-heading">
+                                                    €<?php echo $newproduct->getProductprice() + $toevoegingtotaal ?></h4>
                                             </div>
                                         </div>
-                                        <h5 class=""><span></span><strong><?php
-                                                foreach ($removablelist as $removableobject) {
-                                                    echo '- '. $removableobject->getName(). '<br>';
-                                                    echo '- '. $removableobject->get(). '<br>';
-                                                }
-                                                foreach ($addablelist as $addableobject) {
-                                                    $adprijs = new ProductAddition($DB_con, $addableobject->getId());
-                                                    echo '- '. $addableobject->getName(). '<br>';
-                                                    echo '- '. $adprijs->getPrice(). '<br>';
-                                                }
-                                                foreach ($radiolist as $radioobject) {
-                                                    echo '- '. $radioobject->getName(). '<br>';
-                                                } ?></strong></h5>
                                     </div>
                                 </div>
-                            <?php } ?>
+                                <?php } ?>
 
-                        </div>
+                            </div>
                         </div>
                     </div>
                     <br>
                     <br>
+
                     <div class="media" style="width: 100%">
                         <div class="media-body" style="width: 50%; float: left">
-                            <h4 class="media-heading">Verzendkosten</h4>
+                            <h4 class="media-heading">Subtotaal</h4>
                         </div>
                         <div class="media-body" style="width: 50%; float: right; text-align: right">
-                            <h4 class="media-heading">€0,00</h4>
+                            <?php
+
+                            $subtotaal = array_sum($productprijzen);
+                            ?>
+                            <h4 class="media-heading"><?php echo "€" . $subtotaal; ?></h4>
+                        </div>
+                    </div
+                    <div class="media" style="width: 100%">
+                        <div class="media-body" style="width: 50%; float: left">
+                            <h4 class="media-heading">Bezorgkosten</h4>
+                        </div>
+                        <div class="media-body" style="width: 50%; float: right; text-align: right">
+                            <h4 class="media-heading"><?php
+                                if($subtotaal <= 15)
+                                {
+                                    $bezorgkosten = 2;
+                                }
+                                else
+                                {
+                                    $bezorgkosten = 0;
+                                }
+                                echo "€" . $bezorgkosten;
+                                ?></h4>
                         </div>
                     </div>
                     <div class="media" style="width: 100%">
@@ -95,18 +131,22 @@ $productenlijst = $bestelling->getOrderlist();
                             <h4 class="media-heading">Totaalbedrag</h4>
                         </div>
                         <div class="media-body" style="width: 50%; float: right; text-align: right">
-                            <h4 class="media-heading">€29,00</h4>
+                            <h4 class="media-heading">
+                            <?php
+                            echo "€" . ($subtotaal + $bezorgkosten);
+                            ?>
+                                </h4>
                         </div>
-                    </div>
+                    </div
                     <hr>
                     <h1>Gegevens</h1>
                     <div class="media" style="width: 100%">
                         <div class="media-body" style="width: 50%; float: left">
                             <h5 class="media-heading">
                                 <?php $bestelling = new Bestelling($DB_con, $_SESSION['order_id']);
-                                echo $bestelling->getCustomerfirstname(); ?> <?php echo $bestelling->getCustomerlastname(); ?></h5>
+                                echo $bestelling->getCustomerfirstname(); ?><?php echo $bestelling->getCustomerlastname(); ?></h5>
                             <h5 class="media-heading"></h5>
-                            <h5 class="media-heading"><?php echo $bestelling->getCustomerstreetname(); ?> <?php echo $bestelling->getCustomerhousenumber(); ?></h5>
+                            <h5 class="media-heading"><?php echo $bestelling->getCustomerstreetname(); ?><?php echo $bestelling->getCustomerhousenumber(); ?></h5>
                             <h5 class="media-heading"><?php $city = new City($DB_con, $bestelling->getCustomercityid());
                                 echo $city->getCityname(); ?></h5>
                             <h5 class="media-heading"><?php echo $bestelling->getCustomerphonenumber(); ?></h5>
@@ -129,8 +169,9 @@ $productenlijst = $bestelling->getOrderlist();
                     <h1>Bezorgtijd</h1>
                     <div class="media" style="width: 100%">
                         <div class="media-body" style="width: 50%; float: left">
-                            <h4 class="media-heading">Tussen: <i><?php echo $halfuur ?> en <?php echo $driekwartier ?></i></h4>
-                   </div>
+                            <h4 class="media-heading">Tussen: <i><?php echo $halfuur ?>
+                                    en <?php echo $driekwartier ?></i></h4>
+                        </div>
                     </div>
 
                 </div>
