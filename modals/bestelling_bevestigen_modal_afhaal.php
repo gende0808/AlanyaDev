@@ -28,8 +28,9 @@ $productenlijst = $bestelling->getOrderlist();
                         <div class="alert alert-success" role="alert"><h3>Bedankt voor het plaatsen van uw bestelling!</h3></div>
                         <div class="media" style="width: 100%">
 
-
-                            <?php foreach ($productenlijst as $product) {
+                            <?php
+                            $productprijzen = array();
+                            foreach ($productenlijst as $product) {
                             $product->ProductAdditions();
                             $newproduct = new Product($DB_con, $product->getProductid());
                             $removablelist = $product->getListofremovables();
@@ -40,39 +41,48 @@ $productenlijst = $bestelling->getOrderlist();
                                     <div class="media-body">
                                         <h4 class="media-heading">
                                             <?php
+
                                             echo $newproduct->getProductname() . "<br>";
-
-
-
-
                                             ?></h4>
                                         <!--                                    <h5 class="media-heading"> Categorie <a href="#">Italliaanse pizza's</a></h5>-->
                                         <!--                                    <span>Omschrijving:</span><strong> Tomaat, kaas, ham, ananas</strong>-->
+                                        <div class="media" style="width: 52%; float: left; text-align: left">
+                                            <h5 class=""><span></span><strong><?php
+
+                                                    foreach ($removablelist as $removableobject) {
+                                                        echo '- ' . $removableobject->getName() . '<br>';
+                                                        echo '- ' . $removableobject->get() . '<br>';
+                                                    }
+                                                    $toevoegingen = array();
+                                                    foreach ($addablelist as $addableobject) {
+                                                        $adprijs = new ProductAddition($DB_con, $addableobject->getId());
+                                                        echo '- ' . $addableobject->getName() . "(" . $adprijs->getPrice() . ")" . '<br>';
+                                                        $toevoegingen[] = $addableobject->getPrice();
+                                                    }
+                                                    $toevoegingtotaal = array_sum($toevoegingen);
+                                                    foreach ($radiolist as $radioobject) {
+                                                        echo '- ' . $radioobject->getName() . '<br>';
+                                                    }
+                                                    $productprijzen[] = ($newproduct->getProductprice() + $toevoegingtotaal) * $product->getNumber(); ?></strong>
+                                            </h5>
+                                        </div>
                                         <div class="media" style="width: 16%; float: right; text-align: right">
                                             <div class="media-body">
-                                                <h4 class="media-heading">€<?php echo $newproduct->getProductprice() * $product->getNumber()?></h4>
+                                                <h4 class="media-heading">
+                                                    €<?php echo ($newproduct->getProductprice() + $toevoegingtotaal) * $product->getNumber() ?></h4>
                                             </div>
                                         </div>
                                         <div class="media" style="width: 16%; float: right; text-align: right">
                                             <div class="media-body">
-                                                <h4 class="media-heading"><?php echo $product->getNumber().'x'; ?></h4>
+                                                <h4 class="media-heading"><?php echo $product->getNumber() . 'x'; ?></h4>
                                             </div>
                                         </div>
                                         <div class="media" style="width: 16%; float: right; text-align: right">
                                             <div class="media-body">
-                                                <h4 class="media-heading">€<?php echo $newproduct->getProductprice()?></h4>
+                                                <h4 class="media-heading">
+                                                    €<?php echo $newproduct->getProductprice() + $toevoegingtotaal ?></h4>
                                             </div>
                                         </div>
-                                        <h5 class=""><span></span><strong><?php
-                                                foreach ($removablelist as $removableobject) {
-                                                    echo '- '. $removableobject->getName(). '<br>';
-                                                }
-                                                foreach ($addablelist as $addableobject) {
-                                                    echo '- '. $addableobject->getName(). '<br>';
-                                                }
-                                                foreach ($radiolist as $radioobject) {
-                                                    echo '- '. $radioobject->getName(). '<br>';
-                                                } ?></strong></h5>
                                     </div>
                                 </div>
                                 <?php } ?>
@@ -89,9 +99,13 @@ $productenlijst = $bestelling->getOrderlist();
                             <h4 class="media-heading">Totaalbedrag</h4>
                         </div>
                         <div class="media-body" style="width: 50%; float: right; text-align: right">
-                            <h4 class="media-heading">€29,00</h4>
+                            <?php
+
+                            $subtotaal = array_sum($productprijzen);
+                            ?>
+                            <h4 class="media-heading"><?php echo "€" . $subtotaal; ?></h4>
                         </div>
-                    </div>
+                    </div
                     <hr>
                     <h1>Gegevens</h1>
                     <div class="media" style="width: 100%">
@@ -123,7 +137,7 @@ $productenlijst = $bestelling->getOrderlist();
                     <h1>Bezorgtijd</h1>
                     <div class="media" style="width: 100%">
                         <div class="media-body" style="width: 50%; float: left">
-                            <h4 class="media-heading">Afhalen om: <i><?php echo $halfuur ?></i></h4>
+                            <h4 class="media-heading">U kunt uw bestelling afhalen om: <i><?php echo $halfuur ?></i></h4>
                         </div>
                     </div>
 
