@@ -39,8 +39,6 @@ $(document).ready(function(){
 
         inputs.removeAttr("disabled");
 
-        title.text("Log in");
-
         progressBar.css({ "width" : "0%" });
 
         button.removeClass("btn-success")
