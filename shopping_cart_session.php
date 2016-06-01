@@ -33,9 +33,12 @@ if (isset($_POST['deleteproductfromcart']) && is_numeric($_POST['deleteproductfr
     $deleteproductfromcart = htmlspecialchars($_POST['deleteproductfromcart']);
     unset($_SESSION['productencart'][$deleteproductfromcart]);
 }
+$totaalprijs = "";
+$prijsvanproduct = "";
+
 echo '
-       <section id="content">
-            <details class="shoppingCart">
+       <div id="content">
+            <div class="shoppingCart">
                 <summary>
                     <h4>Winkelwagen</h4>
                     <span class="arrow"></span>
@@ -45,51 +48,65 @@ echo '
 if(isset($_SESSION['productencart'])) {
     foreach ($_SESSION['productencart'] as $key => $cartproduct) {
         $product = new Product($DB_con, $cartproduct['productid']);
+        if (array_key_exists('addable', $cartproduct)) {
+            $prijsvanproduct = $product->getLowestproductprice();
+            foreach ($cartproduct['addable'] as $prijs) {
+                $adprijs = new ProductAddition($DB_con, $prijs);
+                $test = $adprijs->getPrice();
+                $prijsvanproduct += $test;
+            }
+        }
+        else {
+            $prijsvanproduct = $product->getLowestproductprice();
+        }
+        $totaalprijs += $prijsvanproduct;
+        
         echo '<li>
-                        <span><button class="removalproduct btn-danger glyphicon glyphicon-remove" data-sessid="'.$key.'"></button>' . $cartproduct["aantal"] . ' x <b>' . $product->getProductname() . '</b></a></span> <strong>&euro;' . $product->getProductprice() . '</strong>
-                        </li>';
+                        <span><button class="removalproduct btn-danger glyphicon glyphicon-remove" data-sessid="'.$key.'"></button> ' . $cartproduct["aantal"] . ' x <b>' . $product->getProductname() . '</b></a></span> <strong>&euro;' . number_format((float)$prijsvanproduct, 2, '.', '') . '</strong>
+                        ';
         if (array_key_exists('addable', $cartproduct) || array_key_exists('removable', $cartproduct) || array_key_exists('radio', $cartproduct)) {
-            echo '<li>';
             if (array_key_exists('addable', $cartproduct)) {
-                echo '<span> extra: <i>';
+                echo '<br><br><span style="color:green"> Extra: <i>';
                 foreach ($cartproduct['addable'] as $addableaddition) {
                     $productaddition = new ProductAddition($DB_con, $addableaddition);
                     echo $productaddition->getName();
+                    echo '<b> + €' . $productaddition->getPrice() . '</b><br>';
                 }
                 echo '</span></i>';
                 echo '<br>';
             }
             if (array_key_exists('removable', $cartproduct)) {
-                echo '<span> zonder: <i>';
+                echo '<br><span style="color:red"> Zonder: <i>';
                 foreach ($cartproduct['removable'] as $removableaddition) {
                     $productremovable = new ProductAdditionRemovable($DB_con, $removableaddition);
-                    echo $productremovable->getName();
+                    echo $productremovable->getName() . '<br>';
                 }
                 echo '</span></i>';
                 echo '<br>';
             }
             if (array_key_exists('radio', $cartproduct)) {
-                echo '<span>  keuze: <i>';
+                echo '<br><span>  Keuze: <i>';
                 foreach ($cartproduct['radio'] as $radioaddition) {
                     $productradio = new ProductRadioAddition($DB_con, $radioaddition);
                     echo $productradio->getName();
                 }
                 echo '</span></i>';
             }
-            echo '</li>';
         }
+        echo '</li>';
     }
 }
 ?>
 
     <p>
-        <span>Producten <strong>8</strong></span> <span>Totaal: <strong>&euro;78,40</strong></span>
+        <span></span><span>Totaal: <strong>&euro;<?php echo number_format((float)$totaalprijs, 2, '.', '') . '';?></strong></span>
     </p>
     <a class="checkout" href="checkout">Afrekenen</a>
     </details>
     </section>
     </ul>
     </div>
+</div>
 </div>
 </div>
 </div>
