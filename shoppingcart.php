@@ -16,8 +16,11 @@ include_once "header.php";
 include_once "ordersucces.php";
 include_once "interfaces/CRUD.php";
 include_once "connection.php";
-include_once "classes/product.php";
-include_once "classes/productlist.php";
+include_once "classes/Product.php";
+include_once "classes/Productlist.php";
+include_once "classes/Discount.php";
+include_once "classes/DiscountList.php";
+include_once "functions.php";
 
 if (isset($_GET['sessionid']) && isset($_GET['delete'])) {
     $delete = $_GET['delete'];
@@ -160,9 +163,8 @@ if($productensession)
 
                     foreach ($_SESSION['productencart'] as $arrayproduct) {
                     $product = new Product($DB_con, $arrayproduct['productid']);
-                    $productprijs = $product->getProductdiscountprice();
-                    $actieprijs = "";
-                    $data_product_price = $product->getProductprice();
+                    $productprijs = check_for_discounts($DB_con,$product->getId(),$product->getCategoryid(),$product->getProductprice());
+                    $data_product_price = $productprijs;
 
                     ?>
                     <tbody>
@@ -181,10 +183,10 @@ if($productensession)
                                    value="<?php echo $arrayproduct['aantal'] ?>">
                         </td>
                         <td class="col-sm-1 col-md-1 text-center"><strong>
-                                <div id="prijs"><?php echo "€" . $product->getProductdiscountprice() ?></div>
+                                <div id="prijs"><?php echo "€" . $productprijs ?></div>
                         <td class="col-sm-1 col-md-1 text-center"><strong>€0,00</strong></td>
                         <td class="col-sm-1 col-md-1 text-center"><strong><span
-                                    id="result"><?php echo $product->getProductprice() * $arrayproduct['aantal'] ?></span>
+                                    id="result"><?php echo $productprijs * $arrayproduct['aantal'] ?></span>
                                 <?php echo "<td style='width: 150px;'><a href='shoppingcart.php?sessionid=" . $product->getId() . "&delete=true'" .
                                     'onclick="return confirm(' . "'Weet je zeker dat je " . $product->getProductname() . " wilt verwijderen?'" . ')"' . ">Verwijderen</a></td>";
                                 ?>
@@ -203,7 +205,7 @@ if($productensession)
                                     $items = array();
                                     foreach ($_SESSION['productencart'] as $arrayproduct) {
                                         $product = new Product($DB_con, $arrayproduct['productid']);
-                                        $items[] = $product->getProductprice() * $arrayproduct['aantal'];
+                                        $items[] = $productprijs * $arrayproduct['aantal'];
                                     }
                                     $subtotaal = array_sum($items);
                                     echo "€" . $subtotaal;

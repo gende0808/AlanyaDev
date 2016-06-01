@@ -30,42 +30,9 @@ class Product implements CRUD
      */
     private $eindActieDatum;
     /**
-     * @var boolean
-     */
-    private $maandag;
-    /**
-     * @var boolean
-     */
-    private $dinsdag;
-    /**
-     * @var boolean
-     */
-    private $woensdag;
-    /**
-     * @var boolean
-     */
-    private $donderdag;
-    /**
-     * @var boolean
-     */
-    private $vrijdag;
-    /**
-     * @var boolean
-     */
-    private $zaterdag;
-    /**
-     * @var boolean
-     */
-    private $zondag;
-    /**
      * @var int
      */
     private $productprice;
-    /**
-     * @var
-     */
-    private $productdiscountprice = 0;
-
     /**
      * @var int
      */
@@ -82,10 +49,6 @@ class Product implements CRUD
      * @var array
      */
     private $product_info = array();
-    /**
-     *
-     */
-    private $lowestproductprice;
 
     /**
      * @param $dbconnection
@@ -125,13 +88,13 @@ class Product implements CRUD
      *
      */
     public function simpleproductdata($id)
-{
-    $stmt = $this->db->prepare("SELECT * FROM product WHERE id = :prodid");
-    $stmt->bindParam(":prodid",$id );
-    $stmt->execute();
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    $this->product_info = $result;
-}
+    {
+        $stmt = $this->db->prepare("SELECT * FROM product WHERE id = :prodid");
+        $stmt->bindParam(":prodid", $id);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $this->product_info = $result;
+    }
 
     /**
      * @param $id
@@ -144,55 +107,21 @@ class Product implements CRUD
 
         try {
             $stmt = $this->db->prepare("
-                           SELECT product.*, 
-                           actieproduct.actieID, 
-                           actieproduct.actieProID, 
-                           actieproduct.productID, 
-                           actieproduct.prijs as actieProductPrijs,
-                           actiecategorie.actieID,
-                           actiecategorie.actieCatID,
-                           actiecategorie.categorieID,
-                           actiecategorie.prijs as actieCategoriePrijs,
-                           actiedatum.* 
+                           SELECT *
                            FROM product
-                            LEFT JOIN actieproduct ON actieproduct.productID = product.id
-                            LEFT JOIN actiecategorie ON actiecategorie.categorieID = product.categorieID
-                            LEFT JOIN actiedatum ON actiedatum.actieID = actieproduct.actieID OR
-                                                    actiedatum.actieID = actiecategorie.actieID
-                            WHERE product.id= :id
+                           WHERE product.id = :id
                             ");
             $stmt->bindParam(":id", $id);
             $stmt->execute();
-            while($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $this->product_info = $result;
                 $this->productnumber = $result['productNummer'];
                 $this->productname = $result['productNaam'];
                 $this->productdescription = $result['productOmschrijving'];
                 $this->productprice = $result['productPrijs'];
-                if(empty($this->lowestproductprice)){
-                    $this->lowestproductprice = $result['productPrijs'];
-                }
-                if(!empty($result['actieProductPrijs']) && isset($result['actieProductPrijs']) &&
-                    $result['actieProductPrijs'] != 0 && $result['actieProductPrijs'] < $this->lowestproductprice){
-                    $this->lowestproductprice = $result['actieProductPrijs'];
-                }
-                if(!empty($result['actieCategoriePrijs']) && isset($result['actieCategoriePrijs']) &&
-                    $result['actieCategoriePrijs'] != 0 && $result['actieCategoriePrijs'] < $this->lowestproductprice){
-                    $this->lowestproductprice = $result['actieCategoriePrijs'];
-                }
-                $this->categoryid = $result['categorieID'];
-                $this->productid = $result['id'];
-                $this->beginActieDatum = $result['beginDatum'];
-                $this->eindActieDatum = $result['eindDatum'];
-                $this->maandag = $result['maandag'];
-                $this->dinsdag = $result['dinsdag'];
-                $this->woensdag = $result['woensdag'];
-                $this->donderdag = $result['donderdag'];
-                $this->vrijdag = $result['vrijdag'];
-                $this->zaterdag = $result['zaterdag'];
-                $this->zondag = $result['zondag'];
                 $this->productid = $result['id'];
                 $this->additionid = $result['toevoeginggroepid'];
+                $this->categoryid = $result['categorieID'];
             }
 
         } catch (PDOException $e) {
@@ -229,7 +158,7 @@ class Product implements CRUD
             echo $e->getMessage();
         }
     }
-
+    
     /**
      * @param $id
      */
@@ -240,7 +169,9 @@ class Product implements CRUD
         $stmt->execute();
     }
 
-    /**
+   
+
+        /**
      * @return int
      */
     public function getProductid()
@@ -282,7 +213,7 @@ class Product implements CRUD
      */
     public function getProductprice()
     {
-       return $this->productprice;
+        return $this->productprice;
 
     }
 
@@ -294,6 +225,7 @@ class Product implements CRUD
 
         return $this->beginActieDatum;
     }
+
     /**
      * @return string
      */
@@ -312,134 +244,18 @@ class Product implements CRUD
     }
 
     /**
-     * @return boolean
-     */
-    public function getMonday()
-    {
-        if($this->maandag) {
-            return "Monday";
-        }
-    }
-
-    /**
-     * @return boolean
-     */
-    public function getTuesday()
-    {
-        if($this->dinsdag) {
-            return "Tuesday";
-        }
-    }
-
-    /**
-     * @return boolean
-     */
-    public function getWednesday()
-    {
-        if($this->woensdag) {
-            return "Wednesday";
-        }
-    }
-
-    /**
-     * @return boolean
-     */
-    public function getThursday()
-    {
-        if($this->donderdag) {
-            return "Thursday";
-        }
-    }
-
-    /**
-     * @return boolean
-     */
-    public function getFriday()
-    {
-        if($this->vrijdag) {
-            return "Friday";
-        }
-    }
-
-    /**
-     * @return boolean
-     */
-    public function getSaturday()
-    {
-        if($this->zaterdag) {
-            return "Saturday";
-        }
-    }
-
-    /**
-     * @return boolean
-     */
-    public function getSunday()
-    {
-        if($this->zondag) {
-            return "Sunday";
-        }
-    }
-
-    /**
      * @return string
      */
     public function getProductpriceformatted()
     {
 
-        return '€ '.str_replace('.',',',$this->productprice);
+        return '€ ' . str_replace('.', ',', $this->productprice);
     }
-    /**
-     * @return string
-     */
-    public function getProductdiscountprice()
-    {
-        $huidigeDatum = date('Y-m-d');
-        $huidigeDatum = date('Y-m-d', strtotime($huidigeDatum));
 
-        $huidigeDag = date("l"); //is gelijk aan de dag van vandaag
-        $actieshowen = false;
-
-        $productprijs = "";
-
-        if ($this->maandag === $huidigeDag
-            or $this->dinsdag  === $huidigeDag
-            or $this->woensdag  === $huidigeDag
-            or $this->donderdag  === $huidigeDag
-            or $this->vrijdag  === $huidigeDag
-            or $this->zaterdag  === $huidigeDag
-            or $this->zondag  === $huidigeDag
-        ) {
-            $actieshowen = true;
-        }
-        $productprijs = "";
-        if (($this->beginActieDatum <= $huidigeDatum
-                && $this->eindActieDatum >= $huidigeDatum)
-            or $actieshowen == true)
-        {
-            if ($this->lowestproductprice < $this->productprice)
-            {
-                $productprijs = $this->lowestproductprice;
-            }
-        }
-            return $productprijs;
-
-    }
-    /**
-     * @return string
-     */
-    public function getdiscountprice(){
-        return $this->productdiscountprice;
-    }
 
     /**
      * @return string
      */
-    public function getDiscountpriceformatted()
-    {
-        return '€ '.str_replace('.',',',$this->lowestproductprice);
-    }
-
 
     /**
      * @param mixed $productprice
@@ -526,30 +342,25 @@ class Product implements CRUD
     /**
      * @return array
      */
-    public function getProductInfo(){
+    public function getProductInfo()
+    {
         return $this->product_info;
     }
 
     /**
      * @param $additionid
      */
-    public function setAdditionId($additionid){
+    public function setAdditionId($additionid)
+    {
         $this->additionid = $additionid;
     }
 
     /**
      * @return int
      */
-    public function getAdditionId(){
-        return $this->additionid;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLowestproductprice()
+    public function getAdditionId()
     {
-        return $this->lowestproductprice;
+        return $this->additionid;
     }
 
 }

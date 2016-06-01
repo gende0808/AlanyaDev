@@ -9,6 +9,9 @@ include_once "classes/ProductAddition.php";
 include_once "classes/ProductRadioAddition.php";
 include_once "classes/ProductAdditionRemovable.php";
 include_once "modals/toevoegingen_modal.php";
+include_once "classes/Discount.php";
+include_once "classes/DiscountList.php";
+include_once "functions.php";
 
 if (isset($_GET['productid']) && isset($_GET['delete'])) {
     $delete = $_GET['delete'];
@@ -97,18 +100,19 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                 if(isset($_SESSION['productencart'])) {
                     foreach ($_SESSION['productencart'] as $key => $cartproduct) {
                         $product = new Product($DB_con, $cartproduct['productid']);
+                        $actieprijs = check_for_discounts($DB_con,$product->getId(), $product->getCategoryid(), $product->getProductprice());
                             if (array_key_exists('addable', $cartproduct)) {
-                                $prijsvanproduct = $product->getLowestproductprice();
+                                $prijsvanaddables = 0;
+                                $prijsvanproduct = $actieprijs;
                                 foreach ($cartproduct['addable'] as $prijs) {
                                     $adprijs = new ProductAddition($DB_con, $prijs);
                                     $test = $adprijs->getPrice();
-                                    $prijsvanproduct += $test * $cartproduct["aantal"];
+                                    $prijsvanaddables += $test;
                                 }
-
+                                $prijsvanproduct += $prijsvanaddables;
+                            } else{
+                                $prijsvanproduct = $actieprijs;
                             }
-                        else {
-                            $prijsvanproduct = $product->getLowestproductprice();
-                        }
                         $totaalprijs += $prijsvanproduct * $cartproduct["aantal"];
 
                         echo '<li>

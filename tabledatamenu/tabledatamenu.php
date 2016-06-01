@@ -12,7 +12,9 @@ include_once "../classes/Category.php";
 include_once "../classes/ProductList.php";
 include_once "../classes/Product.php";
 include_once "../modals/toevoegingen_modal.php";
-
+include_once '../classes/Discount.php';
+include_once '../classes/DiscountList.php';
+include_once "../functions.php";
 
 // __________________________________
 try {
@@ -29,12 +31,10 @@ try {
     foreach ($listofproducts as $product) { //in deze foreach loopt hij over ieder individueel product en print hij de waarden in die array
 
         $productprijs = $product->getProductpriceformatted();
-        $actieprijs = $product->getProductdiscountprice();
         $data_product_price = $product->getProductprice();
-
-            if ($product->getLowestproductprice() < $product->getProductprice()) {
-                $actieprijs = $product->getDiscountpriceformatted();
-                $data_product_price = $product->getProductdiscountprice();
+        $actieprijs = check_for_discounts($DB_con,$product->getId(),$product->getCategoryid(),$product->getProductprice());
+            if ($actieprijs < $product->getProductprice()) {
+                $data_product_price = $actieprijs;
                 $productprijs = "<span style=\"color:#FF3333\">Actie</span>" . " " . "<strike>$productprijs</strike>" . " " . $actieprijs;
             }
 

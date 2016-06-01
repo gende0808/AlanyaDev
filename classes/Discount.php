@@ -94,6 +94,15 @@ class Discount implements CRUD
      * @var string
      */
     private $completestring;
+    /**
+     * @var string
+     */
+    private $discounttype;
+    /**
+     *
+     */
+    private $productprijs;
+    private $categorieprijs;
 
 
 
@@ -254,10 +263,14 @@ LEFT JOIN categorie ON categorie.categorieID = actiecategorie.categorieID
             if(!empty ($result['productNaam']))
             {
                 $this->productName = $result['productNaam'];
+                $this->discounttype = 'product';
+                $this->productID = $result['id'];
             }
             if(!empty ($result['categorieNaam']))
             {
                 $this->productName= $result['categorieNaam'];
+                $this->discounttype = 'category';
+                $this->categorieID = $result['categorieID'];
             }
 
 
@@ -705,6 +718,14 @@ LEFT JOIN categorie ON categorie.categorieID = actiecategorie.categorieID
     public function setProductName($productName)
     {
         $this->productName = $productName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDiscounttype()
+    {
+        return $this->discounttype;
     }
 
 
