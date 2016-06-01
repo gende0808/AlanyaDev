@@ -14,7 +14,7 @@ include_once "header.php";
                 <h3 class="panel-title"><b>Openingstijden & Contact</b></h3>
             </div>
             <div class="panel-body">
-                Alanya Krommenie is elke dag geopend vanaf 11:00 tot 21:00 uur en op vrijdag & zaterdag tot 03:00 uur. <br><br><i>(Pizza's & Grill elke dag vanaf 16.00 uur)</i><br><br>
+                Alanya Krommenie is elke dag geopend vanaf <B>11:00 tot 21:00</b> uur en op vrijdag & zaterdag tot <b>03:00 uur.</b> <br><br><i>(Pizza's & Grill elke dag vanaf 16.00 uur)</i><br><br>
                 <a href="tel:0756409003"><button class="btntest2"><span class="glyphicon glyphicon-earphone"></span> 075-6409003 </button></a>
             </div>
         </div>
@@ -32,23 +32,14 @@ include_once "header.php";
         </div>
     </div>
     <div class="col-md-6">
-
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title"><b>Overige informatie</b></h3>
             </div>
             <div class="panel-body">
-                Bestellingen vanaf €15,00 worden gratis bezorgd. Snel, makkelijk en lekker warm.
-                Voor bestellingen onder €15,00 wordt €2,00 bezorgkosten in rekening gebracht.<br>
-                Wij bezorgen dagelijks van 17:00 tot 21:00 uur in Krommenie, Assendelft, Wormerveer en Wormer.<br><br>
-
-                <p><i>
-                        Lekker, omdat de Chef van Alanya Krommenie alleen maar werkt met dagverse producten, groenten, eerste klas vlees én vers gemaakte frites. De Hoge Kwaliteit dus die je mag verwachten voor je geld.
-                        Ons assortiment bestaat uit o.a. Voorgerechten, Grill gerechten, Gestoofde maaltijden, Saté gerechten, Broodjes en Durum, Vegetarische gerechten, Turkse deegwaren, Hollandse snacks en Italiaanse pizza’s.
-                        Zo is er altijd voor ieder wat wils, en kun je je hele maaltijd op 1 plek bestellen. Dat is wat wij nou bedoelen met Makkelijk.
-                        u kiest hier op uw gemak alvast wat u wilt eten, u belt het door, en wij bezorgen het dan bij u thuis. U kunt natuurlijk ook langskomen de bestelling door te geven, even wachten en het dan zelf mee naar huis nemen.
-                    </i>
-                </p>
+                Bestellingen <b><u>vanaf €15,00 worden gratis thuis bezorgd. </u></b>
+                Voor bestellingen <b><u>onder €15,00 wordt slechts €2,00 bezorgkosten</b></u> in rekening gebracht.<br>
+                Wij bezorgen dagelijks van 17:00 tot 21:00 uur in Krommenie, Assendelft, Wormerveer, Wormer, Westzaan, Oostknollendam en Westknollendam  <p><br><i> ( Westzaan, Oostknollendam en Westknollendam = €5,00 bezorgkosten )</i></p><br><br>
             </div>
         </div>
     </div>

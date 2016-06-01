@@ -42,10 +42,6 @@ $productenlijst = $bestelling->getOrderlist();
                                         <h4 class="media-heading">
                                             <?php
                                             echo $newproduct->getProductname() . "<br>";
-
-
-
-
                                             ?></h4>
                                         <!--                                    <h5 class="media-heading"> Categorie <a href="#">Italliaanse pizza's</a></h5>-->
                                         <!--                                    <span>Omschrijving:</span><strong> Tomaat, kaas, ham, ananas</strong>-->
@@ -67,9 +63,12 @@ $productenlijst = $bestelling->getOrderlist();
                                         <h5 class=""><span></span><strong><?php
                                                 foreach ($removablelist as $removableobject) {
                                                     echo '- '. $removableobject->getName(). '<br>';
+                                                    echo '- '. $removableobject->get(). '<br>';
                                                 }
                                                 foreach ($addablelist as $addableobject) {
+                                                    $adprijs = new ProductAddition($DB_con, $addableobject->getId());
                                                     echo '- '. $addableobject->getName(). '<br>';
+                                                    echo '- '. $adprijs->getPrice(). '<br>';
                                                 }
                                                 foreach ($radiolist as $radioobject) {
                                                     echo '- '. $radioobject->getName(). '<br>';

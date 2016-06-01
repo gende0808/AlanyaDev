@@ -53,6 +53,9 @@ if (isset($_SESSION['iactivatedmyaccount']) && $_SESSION['iactivatedmyaccount'] 
     <div class="flexslider">
         <ul class="slides">
             <li>
+                <img src="images/slide3.jpg" alt="" />
+            </li>
+            <li>
                 <img src="images/slide1.jpg" alt="" />
             </li>
             <li>

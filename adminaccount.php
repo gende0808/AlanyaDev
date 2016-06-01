@@ -39,7 +39,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
             <?PHP
             echo '<div class="col-md-12 col-md-offset-0 text-center">';
             foreach ($categorylist->getcategories() as $category) { //hij haalt alle categoriën op in een array.
-                echo '<button name="catID" onclick="showProducts(this.value)" class="myButton" value="' . $category->getcatID() . '">' . $category->getcatname() . '</button>';
+                echo '<button name="catID" onclick="showProducts(this.value)" class="btntest" value="' . $category->getcatID() . '">' . $category->getcatname() . '</button>';
                 //hierboven worden simpele buttons geprint waarvan in de post de ID word meegegeven maar de waarde in de knop is de categorieNaam.
             }
             echo '</div>';

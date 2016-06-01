@@ -211,6 +211,13 @@ class Bestelling{
     }
 
 
+    /**
+     * @return string
+     */
+    public function getOrderid()
+    {
+        return $this->orderid;
+    }
    
     /**
      * @return string

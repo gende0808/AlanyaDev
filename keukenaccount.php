@@ -12,6 +12,9 @@ include_once "classes/Bestelling.php";
 include_once "classes/BestellingList.php";
 include_once "classes/Account.php";
 include_once "classes/AccountList.php";
+include_once "classes/City.php";
+include_once "classes/CityList.php";
+
 if(isset($_SESSION['logged']) && $_SESSION['logged'] == true) {
     if ($_SESSION['user_info']['userLevel'] != '3' || $_SESSION['user_info']['userLevel'] == '2') {
 
@@ -22,37 +25,17 @@ else {
     header('location: index.php');
 }
 
-?>
 
-<head>
-    <link rel="stylesheet" href="css/sidebar.css">
-    <link rel="stylesheet" href="css/checkbox.css">
-</head>
+$bestellinglist = new BestellingList($DB_con);
+$listofbestellingen = $bestellinglist->getlistoforders();
 
-<?PHP
-//TODO _________________________________________________________________________________________________________
 
-try {
-
-    $orderlist = new OrderList($DB_con); //er wordt een nieuwe categorie lijst aangemaakt
-    ?>
-
-    <?PHP
-    echo '<div class="col-md-12 col-md-offset-0 text-center">';
-    foreach ($orderlist->getlistoforders() as $order) { //hij haalt alle bestellingen op in een array.
-        echo "<br><br><br><br><br>";
-        echo $order->getBestellingid();
-        //hierboven worden simpele buttons geprint waarvan in de post de ID word meegegeven maar de waarde in de knop is de categorieNaam.
-    }
-    echo '</div>';
-
-} catch (Exception $e) {
-    echo $e->getMessage();
-}
-//TODO _________________________________________________________________________________________________________
-?>
-
-<div class="container">
+foreach ($listofbestellingen as $bestelling){
+    $city = new City($DB_con, $bestelling->getCustomercityid());
+   echo
+   '
+   
+   <div class="container">
 <div class="row">
     <div class="col-md-10">
         <div class="panel panel-default">
@@ -60,13 +43,11 @@ try {
                 <div class="table-responsive">
                     <table class="table table-condensed">
                         <thead>
-
                         <tr>
-                            <td><strong><p>Bestelling ID</p></strong></td>
-                            <td><strong><p>1</p></strong></td>
-                            <td
+                            <td><strong><p>Bestellingnummer: </p></strong></td>
+                            <td><strong><p>' . $bestelling->getOrderid() . '</p></strong></td>
+                            <td><strong><p>' . $bestelling->getOrdertime() . '</p></strong></td>
                         </tr>
-
                         </thead>
                         <tbody>
                         <tr>
@@ -129,9 +110,9 @@ try {
                                 </strong></td>
                             <td class="emptyrow">
                                 <strong>
-                                    <p>Boudewijn Bos</p>
-                                    <p>Padlaan 9, Krommenie</p>
-                                    <p>075-6874522</p>
+                                    <p> ' . $bestelling->getCustomerfirstname() . " " . $bestelling->getCustomerlastname() . ' </p>
+                                    <p> ' . $bestelling->getCustomerstreetname() . " " . $bestelling->getCustomerhousenumber() . ", " . $city->getCityname() . ' </p>
+                                    <p> ' . $bestelling->getCustomerphonenumber() . ' </p>
                                 </strong></td>
 
                             <td class="emptyrow">
@@ -165,6 +146,16 @@ try {
                 </div>
             </div>
         </div>
+   ';
+}
+
+
+?>
+
+<head>
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/checkbox.css">
+</head>
 
         <div class="panel panel-default">
             <div class="panel-body">
