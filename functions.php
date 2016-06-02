@@ -56,7 +56,8 @@ function check_for_discounts($databaseconnection,$prodid, $catid, $prodprice)
         }
 
         //hieronder de code voor als een actie voor categoriën is
-        if($discount->getDiscounttype() == 'category' && $catid == $discount->getCategorieID())
+        if($discount->getDiscounttype() == 'category' && $catid == $discount->getCategorieID()&&
+            $discount->getDiscountprice() < $actieprijs)
         {
             if($discount->isMonday() == '1' && $huidigedag == "Monday"){
                 if($discount->getDiscountprice() < $prodprice) {
