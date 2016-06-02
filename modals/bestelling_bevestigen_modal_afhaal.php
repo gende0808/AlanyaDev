@@ -63,7 +63,7 @@ $productenlijst = $bestelling->getOrderlist();
                                                     }
                                                     foreach ($addablelist as $addableobject) {
                                                         $adprijs = new ProductAddition($DB_con, $addableobject->getId());
-                                                        echo '- ' . $addableobject->getName() . "(€" . $adprijs->getPrice() . ")" . '<br>';
+                                                        echo '- ' . $addableobject->getName() . '<br>';
                                                         $toevoegingen[] = $addableobject->getPrice();
                                                     }
                                                     $toevoegingtotaal = array_sum($toevoegingen);
@@ -81,7 +81,7 @@ $productenlijst = $bestelling->getOrderlist();
                                         <div class="media" style="width: 16%; float: right; text-align: right">
                                             <div class="media-body">
                                                 <h4 class="media-heading">
-                                                    €<?php echo ($newproduct->getProductprice() + $toevoegingtotaal) * $product->getNumber() ?></h4>
+                                                    €<?php echo number_format((float)$newproduct->getProductprice() + $toevoegingtotaal * $product->getNumber(), 2, ',', '') ?></h4>
                                             </div>
                                         </div>
                                         <div class="media" style="width: 16%; float: right; text-align: right">
@@ -92,7 +92,7 @@ $productenlijst = $bestelling->getOrderlist();
                                         <div class="media" style="width: 16%; float: right; text-align: right">
                                             <div class="media-body">
                                                 <h4 class="media-heading">
-                                                    €<?php echo $newproduct->getProductprice() + $toevoegingtotaal ?></h4>
+                                                    €<?php echo number_format((float)$newproduct->getProductprice() + $toevoegingtotaal, 2, ',', '') ?></h4>
                                             </div>
                                         </div>
                                     </div>
@@ -113,7 +113,7 @@ $productenlijst = $bestelling->getOrderlist();
 
                             $subtotaal = array_sum($productprijzen);
                             ?>
-                            <h4 class="media-heading"><?php echo "€" . $subtotaal; ?></h4>
+                            <h4 class="media-heading"><?php echo "€" . number_format((float)$subtotaal, 2, ',', ''); ?></h4>
                         </div>
                     </div
                     <hr>
