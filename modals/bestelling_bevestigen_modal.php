@@ -123,9 +123,15 @@ $productenlijst = $bestelling->getOrderlist();
                         </div>
                         <div class="media-body" style="width: 50%; float: right; text-align: right">
                             <h4 class="media-heading"><?php
-                                if ($subtotaal <= 15) {
+                                if($bestelling->getCustomercityid() === '5' || $bestelling->getCustomercityid() === '6' || $bestelling->getCustomercityid() === '7')
+                                {
+                                    $bezorgkosten = 5;
+
+                                }
+                                elseif ($subtotaal < 15) {
                                     $bezorgkosten = 2;
-                                } else {
+                                }
+                                else {
                                     $bezorgkosten = 0;
                                 }
                                 echo "<Br> €" .  number_format((float)$bezorgkosten, 2, ',', '');
