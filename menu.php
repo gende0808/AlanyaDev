@@ -152,10 +152,21 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                 }
                 ?>
 
-        <p>
-            <span></span><span>Totaal: <strong>&euro;<?php echo number_format((float)$totaalprijs, 2, '.', '') . '';?></strong></span>
-        </p>
-        <a class="checkout" href="checkout">Afrekenen</a>
+
+        <?php
+        if(!$_SESSION['productencart']) {
+            echo "<br> <h4 style='color: grey'> Er staan momenteel geen producten in de winkelwagen </h4>";
+        }
+        if($_SESSION['productencart']) {
+        ?>
+            <p>
+                <span></span><span>Totaal: <strong>&euro;<?php echo number_format((float)$totaalprijs, 2, '.', '') . '';?></strong></span>
+            </p>
+        <a class="checkout" href="shoppingcart">Afrekenen</a>
+        <?php
+    }
+
+    ?>
         </details>
         </section>
             </ul>
