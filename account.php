@@ -1,12 +1,23 @@
 <?PHP
+ob_start();
 include_once "header.php";
 include_once "classes/Account.php";
 include_once "classes/City.php";
 include_once "classes/CityList.php";
 include_once "modals/verwijder_account_modal.php";
 
+if(isset($_SESSION['logged']) && $_SESSION['logged'] == true) {
+    if ( $_SESSION['user_info']['userLevel'] == '1') {
+        $id = htmlspecialchars($_SESSION['account_id']);
+    }
+    else {
+        header('location: index.php');
+    }
+}
+else {
+    header('location: index.php');
+}
 
-$id = htmlspecialchars($_SESSION['account_id']);
 function accountcheck($DB_con, $id)
 {
     if ($_POST) {
