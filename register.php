@@ -1,6 +1,6 @@
 <?PHP
 session_start();
-if (isset($_SESSION['logged'])){
+if (isset($_SESSION['logged'])) {
     header('location: index.php');
 }
 
@@ -42,7 +42,6 @@ if (isset($_POST["registerbutton"])) {
                 if (!empty($_POST)) {
 
 
-
                     try {
                         //hij maakt hieronder een lijst van accounts aan om te vergelijken met het ingevoerde email adres.
                         //als het email adres true is gaat hij niet proberen de account aan te maken. Dan bestaat de email al.
@@ -65,8 +64,34 @@ if (isset($_POST["registerbutton"])) {
                     } catch (Exception $e) {
                         echo "er ging iets fout bij het controleren van emailadressen";
                     }
+                    $email =$_POST["email"];
+                    // check if e-mail address is well-formed
+                    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                        $legitemail = false;
+                    }
+                    else
+                    {
+                        $legitemail = true;
+                    }
 
-                    if (!$emailalreadyexists) {
+                    if($legitemail == false)
+                    {
+
+                    ?>
+                      <div class="modal-header">
+                        <div id="testje" class="<?php echo $hidden ?>">
+                          <div class="alert alert-danger" role="alert">
+                            <p>
+                                <h2><b>Uw emailadres is niet geldig!</b></h2></p>
+                            <p><h4><i>
+                            Voer een geldig emailadres in
+                            </i></h4></p>
+                        </div>
+                      </div>
+                    </div>
+                      <?php
+                    }
+                    if (!$emailalreadyexists && $legitemail == true ) {
 
                         try {
                             //als het emailadres niet al bestaat gaat hij hieronder proberen een account aan te maken.
@@ -112,7 +137,8 @@ if (isset($_POST["registerbutton"])) {
                             }
 
                         }
-                        if ($accountcreated === true) {
+                        $test1 = false;
+                        if ($accountcreated === true or $test1 === true) {
                             $message = "
 						Hallo " . $account->getUserfullname() . ",
 						<br /><br />
@@ -151,21 +177,25 @@ if (isset($_POST["registerbutton"])) {
                         //TODO als email al bestaat geef foutmelding dat email al in gebruik is
                     }
                 }
+
                 ?>
             </div>
             <?PHP
             if ($accountcreated === true) {
                 echo '
             <div class="modal-header">
-                <div id="testje" class="<?php echo $hidden ?>">
+                <div id="testje" >
                     <div class="alert alert-success" role="alert">
                         <p><h2><b>Bedankt voor het registreren!</b></h2></p>
                         <p><h4><i>U dient uw account te activeren door op de link te klikken die naar uw E-mail adres verzonden is.</i></h4></p>
+                        <p><h4><i>Als u geen mail ontvangen, klik dan <a href="#" onclick="myFunction(); return false"> hier </a> om de mail opnieuw te sturen. Het kan enkele minuten duren voordat de mail in uw inbox is.</input></h4></p>
                     </div>
                 </div>
                 </div>
                 ';
             }
+
+
 
             ?>
 
@@ -181,7 +211,11 @@ if (isset($_POST["registerbutton"])) {
                                        class="input-group-addon orange glyphicon glyphicon-comment"></label>
                                 <div class="text-field">
                                     <input type="text" onKeyup="checkform()" class="form-control" name="email"
-                                           placeholder="E-mail" style="border-style: outset!important; border-width: 1px;" value="<?php if (isset($_POST["email"])){ echo (htmlspecialchars($_POST['email']));}; ?>">
+                                           placeholder="E-mail"
+                                           style="border-style: outset!important; border-width: 1px;"
+                                           value="<?php if (isset($_POST["email"])) {
+                                               echo(htmlspecialchars($_POST['email']));
+                                           }; ?>">
                                 </div>
                             </div>
                         </div>
@@ -212,10 +246,16 @@ if (isset($_POST["registerbutton"])) {
                                 <div class="text-field">
                                     <input type="text" onKeyup="checkform()" class="form-control" name="firstname"
                                            placeholder="Voornaam"
-                                           style="border-style: outset!important; border-width: 1px;" value="<?php if (isset($_POST["firstname"])){ echo (htmlspecialchars($_POST['firstname']));}; ?>">
+                                           style="border-style: outset!important; border-width: 1px;"
+                                           value="<?php if (isset($_POST["firstname"])) {
+                                               echo(htmlspecialchars($_POST['firstname']));
+                                           }; ?>">
                                     <input type="text" onKeyup="checkform()" class="form-control" name="lastname"
                                            placeholder="Achternaam"
-                                           style="border-style: outset!important; border-width: 1px;" value="<?php if (isset($_POST["lastname"])){ echo (htmlspecialchars($_POST['lastname']));}; ?>">
+                                           style="border-style: outset!important; border-width: 1px;"
+                                           value="<?php if (isset($_POST["lastname"])) {
+                                               echo(htmlspecialchars($_POST['lastname']));
+                                           }; ?>">
                                 </div>
                             </div>
                         </div>
@@ -227,15 +267,24 @@ if (isset($_POST["registerbutton"])) {
                                 <div class="text-field">
                                     <input type="text" onKeyup="checkform()" class="form-control" name="street"
                                            placeholder="Straatnaam"
-                                           style="width: 70%; border-style: outset!important; border-width: 1px;" value="<?php if (isset($_POST["street"])){ echo (htmlspecialchars($_POST['street']));}; ?>">
+                                           style="width: 70%; border-style: outset!important; border-width: 1px;"
+                                           value="<?php if (isset($_POST["street"])) {
+                                               echo(htmlspecialchars($_POST['street']));
+                                           }; ?>">
 
                                     <input type="text" onKeyup="checkform()" class="form-control" name="number"
                                            placeholder="Nr."
-                                           style="width: 30%; border-style: outset!important; border-width: 1px;"value="<?php if (isset($_POST["number"])){ echo (htmlspecialchars($_POST['number']));}; ?>">
+                                           style="width: 30%; border-style: outset!important; border-width: 1px;"
+                                           value="<?php if (isset($_POST["number"])) {
+                                               echo(htmlspecialchars($_POST['number']));
+                                           }; ?>">
                                 </div>
                                 <input type="text" onKeyup="checkform()" class="form-control" name="userToevoeging"
                                        placeholder="Toevoeging adres"
-                                       style="border-style: outset!important; border-width: 1px;" value="<?php if (isset($_POST["userToevoeging"])){ echo (htmlspecialchars($_POST['userToevoeging']));}; ?>"
+                                       style="border-style: outset!important; border-width: 1px;"
+                                       value="<?php if (isset($_POST["userToevoeging"])) {
+                                           echo(htmlspecialchars($_POST['userToevoeging']));
+                                       }; ?>"
                             </div>
                         </div>
                         <!-- /.form-group -->
@@ -268,7 +317,12 @@ if (isset($_POST["registerbutton"])) {
                                 <label for="uLogin"
                                        class="input-group-addon orange glyphicon glyphicon-earphone"></label>
                                 <div class="text-field">
-                                    <input type="text" onKeyup="checkform()" class="form-control" name="phone" placeholder="Telefoonnummer" style="border-style: outset!important; border-width: 1px;" value="<?php if (isset($_POST["phone"])){ echo (htmlspecialchars($_POST['phone']));}; ?>">
+                                    <input type="text" onKeyup="checkform()" class="form-control" name="phone"
+                                           placeholder="Telefoonnummer"
+                                           style="border-style: outset!important; border-width: 1px;"
+                                           value="<?php if (isset($_POST["phone"])) {
+                                               echo(htmlspecialchars($_POST['phone']));
+                                           }; ?>">
                                 </div>
                             </div>
                         </div>
@@ -277,8 +331,9 @@ if (isset($_POST["registerbutton"])) {
                         <p>al een bestaand account? <a href="#" data-toggle="modal" data-target="#myModal"
                                                        class="hvr-float-shadow">Login</a></p>
                         <div class="actions">
-                            <button name="registerbutton" class="form-control btn orange" id="test" style="color: white;"
-                                    type="submit" disabled="disabled">
+                            <button name="registerbutton" class="form-control btn orange" id="test"
+                                    style="color: white;"
+                                    type="submit">
                                 Registeren
                             </button>
                         </div>
@@ -299,11 +354,11 @@ include_once "footer.php";
 ?>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('.text-field input').keyup(function() {
+    $(document).ready(function () {
+        $('.text-field input').keyup(function () {
 
             var empty = false;
-            $('.text-field input').each(function() {
+            $('.text-field input').each(function () {
                 if ($(this).val().length == 0) {
                     empty = true;
                 }
@@ -315,5 +370,12 @@ include_once "footer.php";
                 $('.actions button').attr('disabled', false);
             }
         });
+
     });
+    function myFunction() {
+        alert("Deze link doet het");
+        $test1 = true;
+    }
+
+
 </script>
