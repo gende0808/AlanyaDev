@@ -58,12 +58,10 @@
     <script src="js/bootstrap.js"></script>
     <script src="js/login.js"></script>
     <script src="js/scrolltop.js"></script>
-    <script src="js/modernizr.de.js"></script>
     <script type="text/javascript"></script>
     <script src="js/custom.js"></script>
     <script>
         $(document).ready(function () {
-            ()
             $("#nav-mobile").html($("#nav-main").html());
             $("#nav-trigger span").click(function () {
                 if ($("nav#nav-mobile ul").hasClass("expanded")) {

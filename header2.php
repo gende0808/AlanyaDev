@@ -25,9 +25,7 @@
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/menubuttons.css"
     <link rel="stylesheet" href="css/sidebar.css">
-    <link rel="stylesheet" href="css/sideshop.css">
     <link rel="stylesheet" href="css/border.css">
-    <link href="css/demo-page.css" rel="stylesheet" media="all">
     <link href="css/hover.css" rel="stylesheet" media="all">
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
 </head>

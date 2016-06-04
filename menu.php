@@ -186,12 +186,6 @@ if(isset($_GET['bref'])){
     echo '<script src="js/menushowcat.js"></script>';
 }
 ?>
-<script src="js/customjs.js"></script>
-<script>
-    $("#submitproduct").click(function () {
-        
-        
-    };
-</script>
+
 
 

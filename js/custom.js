@@ -85,6 +85,7 @@ function showProductsMenu(str) {
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
         xmlhttp.onreadystatechange = function () {
+            i=0;
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 document.getElementById("tablecontainermenu").innerHTML = xmlhttp.responseText;
                 var oTable = $('tablecontainermenu').dataTable({"sPaginationType": "full_numbers"});

@@ -1,5 +1,4 @@
 <?PHP
-session_start();
 if (isset($_SESSION['logged'])) {
     header('location: index.php');
 }
@@ -302,9 +301,6 @@ if (isset($_POST["registerbutton"])) {
                                         echo "<option value='" . $city->getCityid() . "'>" . $city->getCityname() . "</option>";
                                     }
                                     ?>
-                                    <script type="text/javascript">
-                                        document.getElementById('city').value = "<?php echo $_POST['city'];?>";
-                                    </script>
 
                                 </select>
                             </div>
@@ -349,8 +345,7 @@ if (isset($_POST["registerbutton"])) {
 </div>
 </div>
 
-<?PHP
-include_once "footer.php";
+<?PHP include_once "footer.php";
 ?>
 
 <script type="text/javascript">
@@ -363,19 +358,15 @@ include_once "footer.php";
                     empty = true;
                 }
             });
-
             if (empty) {
                 $('.actions button').attr('disabled', 'disabled');
             } else {
                 $('.actions button').attr('disabled', false);
             }
         });
-
     });
     function myFunction() {
         alert("Deze link doet het");
         $test1 = true;
     }
-
-
 </script>
