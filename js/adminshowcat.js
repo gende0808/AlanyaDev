@@ -1,3 +1,3 @@
 window.onload = function() {
-    showProducts(1)
+  showProducts(1);
 };

@@ -73,7 +73,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
 </div>
 
 
-<script src="js/custom.js"></script>
+
 <script type="text/javascript" src="https://cdn.datatables.net/t/bs/jq-2.2.0,dt-1.10.11/datatables.min.js"></script>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
 <script src="js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
@@ -87,6 +87,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
 <script src="js/scrolltop.js"></script>
 <script src="js/modernizr.custom.js"></script>
 <script src="js/adminshowcat.js"></script>
+<script src="js/custom.js"></script>
 <script>
     $(document).ready(function () {
         $("#nav-mobile").html($("#nav-main").html());
@@ -167,10 +168,10 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                     $("#omschrijving" + productid).html(productOmschrijving);
                     fullprice = "&#8364; "+euros+","+cents;
                     $("#price" + productid).html(fullprice);
-                    $("#tr" + productid).addClass("success")
+                    $("#tr" + productid).addClass("success");
                     setTimeout(function () {
                         $("#tr" + productid).removeClass('success');
-                    }, 4000)
+                    }, 4000);
 
                     $('#bewerkenmodal').modal('hide');
 
@@ -185,7 +186,6 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
     function showProducts(str) {
         if (str == "") {
             document.getElementById("tablecontainer").innerHTML = "";
-            return;
         } else {
 
             if (window.XMLHttpRequest) {
@@ -194,6 +194,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                 xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
             }
             xmlhttp.onreadystatechange = function () {
+                i=0;
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                     document.getElementById("tablecontainer").innerHTML = xmlhttp.responseText;
                     var oTable = $('tablecontainer').dataTable({"sPaginationType": "full_numbers"});
