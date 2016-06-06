@@ -70,7 +70,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
         <input type="text" id="search" placeholder="Zoeken..." class="col-md-12 marg col-md-offset-0 search_box"
                onkeyup="doSearch()"/>
         <!-- Hier moet een text komen te staan over dat het product aangepasdt kan worden in de winkelwagen. TODO margin bottom op header! -->
-        <table id="producttable" class='table table-striped table-hover table-responsive'>
+        <table id="producttable" class='table table-striped table-responsive'>
             <thead>
             <tr>
                 <th class='text-center'>Nummer</th>
