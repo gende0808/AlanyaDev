@@ -63,7 +63,7 @@ if(isset($_SESSION['productencart'])) {
         } else {
             $prijsvanproduct = $actieprijs;
         }
-        $totaalprijs += $prijsvanproduct;
+        $totaalprijs += $prijsvanproduct * $cartproduct["aantal"];
         
         echo '<li>
                         <span><button class="removalproduct btn-danger glyphicon glyphicon-remove" data-sessid="'.$key.'"></button> ' . $cartproduct["aantal"] . ' x <b>' . $product->getProductname() . '</b></a></span> <strong>&euro;' . number_format((float)$prijsvanproduct, 2, '.', '') . '</strong>
