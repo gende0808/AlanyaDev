@@ -23,11 +23,22 @@ include_once "classes/AccountList.php";
 include_once "classes/City.php";
 include_once "classes/CityList.php";
 include_once "classes/BestellingProduct.php";
+include_once "classes/BestellingToevoegingen.php";
 include_once "classes/Product.php";
 include_once "classes/ProductList.php";
 include_once "classes/ProductAddition.php";
 include_once "classes/ProductAdditionRemovable.php";
 include_once "classes/ProductRadioAddition.php";
+
+?>
+<head>
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/checkbox.css">
+</head>
+<div class="container">
+       <div class="row">
+           <div class="col-md-10">
+           <?php
 
 $bestellinglist = new BestellingList($DB_con);
 $listofbestellingen = $bestellinglist->getlistoforders();
@@ -36,27 +47,20 @@ $listofbestellingen = $bestellinglist->getlistoforders();
 foreach ($listofbestellingen as $bestelling){
     $city = new City($DB_con, $bestelling->getCustomercityid());
     $bestelling->Orderproduct();
-    $productenlijst = $bestelling->getOrderlist();
-    foreach($productenlijst as $orderproduct){
-        $product = new product($DB_con, $orderproduct->getProductid());
-        $removables = $orderproduct->getListofremovables();
-        $addables = $orderproduct->getListofaddables();
-        $radios = $orderproduct->getListofradios();
-   echo
-   '
-   
-   <div class="container">
-<div class="row">
-    <div class="col-md-10">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <div class="table-responsive">
+
+  ?>
+
+
+
+               <div class="panel panel-default">
+                   <div class="panel-body">
+                       <div class="table-responsive">
                     <table class="table table-condensed">
                         <thead>
                         <tr>
                             <td><strong><p>Bestellingnummer: </p></strong></td>
-                            <td><strong><p>' . $bestelling->getOrderid() . '</p></strong></td>
-                            <td><strong><p>' . $bestelling->getOrdertime() . '</p></strong></td>
+                            <td><strong><p> <?php echo $bestelling->getOrderid()?></p></strong></td>
+                            <td><strong><p> <?php echo $bestelling->getOrdertime()?></p></strong></td>
                         </tr>
                         </thead>
                         <tbody>
@@ -69,34 +73,88 @@ foreach ($listofbestellingen as $bestelling){
                         </tr>
                         </thead>
                         <tbody>
+
+                            <?php
+    $productenlijst = $bestelling->getOrderlist();
+                            $items = array();
+    foreach($productenlijst as $orderproduct){
+        $product = new product($DB_con, $orderproduct->getProductid());
+        $removables = $orderproduct->getListofremovables();
+        $addables = $orderproduct->getListofaddables();
+        $radios = $orderproduct->getListofradios();
+
+
+
+                            ?>
                         <tr>
-                            <td>' . $product->getProductname() . '</td>
-                            <td class="highrow"></td>
-                            <td class="text-center">€8,-</td>
-                            <td class="text-center">2</td>
-                            <td class="text-right">€16,-</td>
+                            <td><?php echo $product->getProductname()?></td>
+                            <td class="highrow">
+                                <?php
+                               //Hier  moet nog een functie komen die alle toevoegingen met eventuele prijs laat zien.
+
+                                ?>
+                            </td>
+
+                            <td class="text-center"><?php echo $product->getProductpriceformatted() ?></td>
+                            <td class="text-center"><?php echo $orderproduct->getNumber() ?></td>
+                            <td class="text-right"><?php
+                                $totprodprijs = ($product->getProductprice() * $orderproduct->getNumber());
+                                echo "€" . number_format((float)$totprodprijs, 2, ',', '')
+                                ?></td>
+<!--                            De totaalprijs van de producten moet nog netjes worden gemaakt, zoals ipv 5.5 naar €5.50-->
+                            <?php
+                            $items[] = $product->getProductprice() * $orderproduct->getNumber();
+
+                            ?>
+
                         </tr>
+                        <?php
+                        }
+
+                        ?>
                         <tr>
                             <td class="highrow"></td>
                             <td class="highrow"></td>
                             <td class="highrow"></td>
                             <td class="highrow"><strong>Sub totaal</strong></td>
-                            <td class="highrow text-right">€32,-</td>
+                            <td class="highrow text-right"><?php
+                                $subtotaal = array_sum($items);
+
+                                echo "€" . number_format((float)$subtotaal, 2, ',', '')?></td>
                         </tr>
                         <tr>
                             <td class="highrow"></td>
                             <td class="emptyrow"></td>
                             <td class="emptyrow"></td>
                             <td class="emptyrow"><strong>Bezorgingskosten</strong></td>
-                            <td class="emptyrow text-right">€0,-</td>
+                            <td class="emptyrow text-right"><?php
+                                if($bestelling->getCustomercityid() === '5' || $bestelling->getCustomercityid() === '6' || $bestelling->getCustomercityid() === '7')
+                                {
+                                $bezorgkosten = 5;
+
+                                }
+                                elseif ($subtotaal < 15) {
+                                $bezorgkosten = 2;
+                                }
+                                else {
+                                $bezorgkosten = 0;
+                                }
+                                echo "<Br> €" .  number_format((float)$bezorgkosten, 2, ',', '');
+                                ?>
+                            </td>
                         </tr>
                         <tr>
                             <td class="highrow"></td>
                             <td class="emptyrow"></td>
                             <td class="emptyrow"></td>
                             <td class="emptyrow"><strong>Totaal</strong></td>
-                            <td class="emptyrow text-right">$32,-</td>
+                            <td class="emptyrow text-right"><?php
+
+                                $totaalbedrag = $subtotaal + $bezorgkosten;
+                                echo "€" .  number_format((float)$totaalbedrag, 2, ',', '')?></td>
                         </tr>
+
+
                         <tr>
                             <td class="emptyrow">
                                 <strong>
@@ -106,9 +164,9 @@ foreach ($listofbestellingen as $bestelling){
                                 </strong></td>
                             <td class="emptyrow">
                                 <strong>
-                                    <p> ' . $bestelling->getCustomerfirstname() . " " . $bestelling->getCustomerlastname() . ' </p>
-                                    <p> ' . $bestelling->getCustomerstreetname() . " " . $bestelling->getCustomerhousenumber() . ", " . $city->getCityname() . ' </p>
-                                    <p> ' . $bestelling->getCustomerphonenumber() . ' </p>
+                                    <p> <?php echo $bestelling->getCustomerfirstname() . " " . $bestelling->getCustomerlastname() ?> </p>
+                                    <p> <?php echo $bestelling->getCustomerstreetname() . " " . $bestelling->getCustomerhousenumber() . ", " . $city->getCityname() ?></p>
+                                    <p> <?php echo $bestelling->getCustomerphonenumber() ?></p>
                                 </strong></td>
 
                             <td class="emptyrow">
@@ -142,128 +200,11 @@ foreach ($listofbestellingen as $bestelling){
                 </div>
             </div>
         </div>
-   ';
-            }
-        }
+               <?php
+               }
 
+               ?>
 
-?>
-
-<head>
-    <link rel="stylesheet" href="css/sidebar.css">
-    <link rel="stylesheet" href="css/checkbox.css">
-</head>
-
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <div class="table-responsive">
-                    <table class="table table-condensed">
-                        <thead>
-                        <tr>
-                            <td><strong><p>Bestelling ID</p></strong></td>
-                            <td><strong><p>2</p></strong></td>
-                            <td
-                        </tr>
-
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td><strong>Product Naam</strong></td>
-                            <td class="text-center"><strong>Toevoegingen</strong></td>
-                            <td class="text-center"><strong>Prijs</strong></td>
-                            <td class="text-center"><strong>Aantal</strong></td>
-                            <td class="text-right"><strong>Totaal</strong></td>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>Pizza Boromea</td>
-                            <td class="highrow"></td>
-                            <td class="text-center">€8,-</td>
-                            <td class="text-center">2</td>
-                            <td class="text-right">€16,-</td>
-                        </tr>
-                        <tr>
-                            <td>Kapsalon</td>
-                            <td class="highrow"></td>
-                            <td class="text-center">€6,-</td>
-                            <td class="text-center">1</td>
-                            <td class="text-right">€6,-</td>
-                        </tr>
-                        <tr>
-                            <td>Turkse Pizza</td>
-                            <td class="highrow"></td>
-                            <td class="text-center">€2,50</td>
-                            <td class="text-center">4</td>
-                            <td class="text-right">€10,-</td>
-                        </tr>
-                        <tr>
-                            <td class="highrow"></td>
-                            <td class="highrow"></td>
-                            <td class="highrow"></td>
-                            <td class="highrow"><strong>Sub totaal</strong></td>
-                            <td class="highrow text-right">€32,-</td>
-                        </tr>
-                        <tr>
-                            <td class="highrow"></td>
-                            <td class="emptyrow"></td>
-                            <td class="emptyrow"></td>
-                            <td class="emptyrow"><strong>Bezorgingskosten</strong></td>
-                            <td class="emptyrow text-right">€0,-</td>
-                        </tr>
-                        <tr>
-                            <td class="highrow"></td>
-                            <td class="emptyrow"></td>
-                            <td class="emptyrow"></td>
-                            <td class="emptyrow"><strong>Totaal</strong></td>
-                            <td class="emptyrow text-right">$32,-</td>
-                        </tr>
-                        <tr>
-                            <td class="emptyrow">
-                                <strong>
-                                    <p>Naam</p>
-                                    <p>Adres</p>
-                                    <p>Tel</p>
-                                </strong></td>
-                            <td class="emptyrow">
-                                <strong>
-                                    <p>Boudewijn Bos</p>
-                                    <p>Padlaan 9, Krommenie</p>
-                                    <p>075-6874522</p>
-                                </strong></td>
-
-                            <td class="emptyrow">
-                                <br>
-                                            <div class="alert alert-success" role="alert">Deze bon is al WEL afgedrukt!</div>
-                            </td>
-
-
-                            <td class="emptyrow">
-                                <strong>
-                                    <div class="searchable-container items col-lg-12">
-                                        <div class="info-block block-info clearfix">
-                                            <div class="square-box pull-left">
-                                            </div>
-                                            <div data-toggle="buttons" class="btn-group bizmoduleselect">
-                                                <label class="btn btn-default">
-                                                    <div class="bizcontent">
-                                                        <input type="checkbox" name="var_id[]" autocomplete="off" value="">
-                                                        <span class="glyphicon glyphicon-ok glyphicon-lg"></span>
-                                                        <h5>Selecteren</h5>
-                                                    </div>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </strong>
-                            </td>
-
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
 </div>
 </div>
 </div>
