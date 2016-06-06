@@ -145,7 +145,7 @@ if($productensession)
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12">
-                <table class="table table-hover">
+                <table class="table">
                     <thead>
                     <tr>
                         <th>Product</th>
