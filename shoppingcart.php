@@ -38,7 +38,7 @@ if (isset($_GET['sessionid']) && isset($_GET['delete'])) {
 
     }
 }
-if($_SESSION['productencart'])
+if(isset($_SESSION['productencart']))
 {
     $productensession = true;
 }
@@ -217,12 +217,12 @@ if($productensession)
                         <td>  </td>
                         <td>  </td>
                         <td>  </td>
-                        <td><h5>Bezorgkosten</h5></td>
-                        <td class="text-right"><h5><strong>
-                                    <?php
-                                    $bezorgkosten = '1.00';
-                                    echo "€" . $bezorgkosten;
-                                    ?></strong></h5></td>
+                        <td colspan="2">
+                            <div class="alert alert-info">
+                                <strong>Let op!</strong> Is uw bestelling onder de 15 euro? Dan betaalt u €2,00 bezorgkosten.
+                            </div>
+
+
                     </tr>
                     <tr>
                         <td>  </td>
