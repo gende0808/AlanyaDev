@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/orange.css">
     <link rel="stylesheet" href="css/scrolltop.css">
+    <link rel="stylesheet" href="css/background.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/menubuttons.css"
     <link rel="stylesheet" href="css/sidebar.css">
@@ -39,11 +40,11 @@ include_once "interfaces/CRUD.php";
 ?>
 <nav class="navbar navbar-fixed-top">
     <div id="nav-trigger">
-        <span>Menu</span>
+        <span style="width: 100%!important; height: 70px;">Menu</span>
     </div>
     <nav id="nav-main">
         <ul>
-            <li style="height: 40px; border-right: solid 0px #950025!important;"><a href="keukenaccount.php" class="hvr-float-shadow" style="height: 40px;"><img src="images/alanyaforbanner3.png" style="padding-bottom: 10px;"></a></li>
+            <li class="logoo" style="border-right: solid 0px #950025!important;"><a href="keukenaccount.php" class="hvr-float-shadow" style="height: 40px;"><img src="images/alanyaforbanner3.png" style="padding-bottom: 10px;"></a></li>
             <li><a href="discountmanager.php" class="hvr-float-shadow">Acties</a></li>
             <li><a href="keukenaccount.php" class="hvr-float-shadow">Bestellingen</a></li>
             <li><a href="adminaccount.php" class="hvr-float-shadow">Producten</a></li>
