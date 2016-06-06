@@ -162,7 +162,6 @@ if (isset($_POST["registerbutton"])) {
                     <div class="alert alert-success" role="alert">
                         <p><h2><b>Bedankt voor het registreren!</b></h2></p>
                         <p><h4><i>U dient uw account te activeren door op de link te klikken die naar uw E-mail adres verzonden is.</i></h4></p>
-                        <p><h4><i>Als u geen mail ontvangen, klik dan <a href="#" onclick="myFunction(); return false"> hier </a> om de mail opnieuw te sturen. Het kan enkele minuten duren voordat de mail in uw inbox is.</input></h4></p>
                     </div>
                 </div>
                 </div>
@@ -346,10 +345,7 @@ include_once "footer.php";
         });
 
     });
-    function myFunction() {
-        alert("Deze link doet het");
-        $test1 = true;
-    }
+
 
 
 </script>
