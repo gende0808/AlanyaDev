@@ -60,3 +60,10 @@ body {
 		display: none;
 	}
 }
+
+@media screen and (max-width: 1065px) {
+	.logoo {
+		height: 80px;
+	}
+}
+

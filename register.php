@@ -284,7 +284,7 @@ if (isset($_POST["registerbutton"])) {
                         </div>
                         <!-- /.form-group -->
                         <p style="font-family: 'Open Sans', sans-serif">helaas bezorgen wij niet buiten de weergegeven
-                            steden.</p>
+                            woonplaatsen.</p>
                         <div class="form-group">
                             <div class="input-group">
                                 <label for="uLogin"

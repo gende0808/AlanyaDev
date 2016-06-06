@@ -63,23 +63,11 @@ if(isset($_SESSION['logged']))
     <link href="css/hover.css" rel="stylesheet" media="all">
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
 
+
     <script src="js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
     <script src="js/jquery-1.9.1.min.js"></script>
     <script src="js/modernizr.custom.js"></script>
-    <script>
-        $(document).ready(function(){
-            $("#nav-mobile").html($("#nav-main").html());
-            $("#nav-trigger span").click(function(){
-                if ($("nav#nav-mobile ul").hasClass("expanded")) {
-                    $("nav#nav-mobile ul.expanded").removeClass("expanded").slideUp(250);
-                    $(this).removeClass("open");
-                } else {
-                    $("nav#nav-mobile ul").addClass("expanded").slideDown(250);
-                    $(this).addClass("open");
-                }
-            });
-        });
-    </script>
+
 </head>
 
 <body>
@@ -95,7 +83,7 @@ include_once "interfaces/CRUD.php";
     </div>
     <nav id="nav-main">
         <ul>
-            <li style="height: 40px; border-right: solid 0px #950025!important;"><a href="index.php" class="hvr-float-shadow" style="height: 40px;"><img src="images/alanyaforbanner3.png" style="padding-bottom: 10px;"></a></li>
+            <li class="logoo" style="border-right: solid 0px #950025!important;"><a href="index.php" class="hvr-float-shadow" style="height: 40px;"><img src="images/alanyaforbanner3.png" style="padding-bottom: 10px;"></a></li>
             <li><a href="menu" class="hvr-float-shadow">Menukaart</a></li>
             <li><a href="contact" class="hvr-float-shadow">Contact & Info</a></li>
             <li><a href="tel:0756409003" class="hvr-float-shadow"><span class="glyphicon glyphicon-earphone"></span> 075-6409003 </a></li>

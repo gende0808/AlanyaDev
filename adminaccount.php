@@ -49,7 +49,6 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
         }
         //TODO _________________________________________________________________________________________________________
         ?>
-
         <input type="text" id="search" placeholder="Zoeken..." class="col-md-4 col-md-offset-0 search_box"
                onkeyup="doSearch()"/>
         <button class="btn btn-default btn-lg col-md-3 col-md-offset-5" data-toggle="modal" data-target="#myModalNorm"
