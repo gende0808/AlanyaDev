@@ -1,10 +1,18 @@
 <?PHP
+
+session_start();
 ob_start();
+if(isset($_SESSION['logged']) && ($_SESSION['user_info']['userLevel'] == '2' || '3')) {
+}
+else {
+    header('location: index.php');
+}
+
 if ($_SESSION['user_info']['userLevel'] === '3')
 {
     include_once "header2.php";
 } else {
-    include_once "header.php";
+    include_once "header3.php";
 }
 
 include_once "printorder.php";
@@ -14,17 +22,12 @@ include_once "classes/Account.php";
 include_once "classes/AccountList.php";
 include_once "classes/City.php";
 include_once "classes/CityList.php";
-
-if(isset($_SESSION['logged']) && $_SESSION['logged'] == true) {
-    if ($_SESSION['user_info']['userLevel'] != '3' || $_SESSION['user_info']['userLevel'] == '2') {
-
-    }
-}
-
-else {
-    header('location: index.php');
-}
-
+include_once "classes/BestellingProduct.php";
+include_once "classes/Product.php";
+include_once "classes/ProductList.php";
+include_once "classes/ProductAddition.php";
+include_once "classes/ProductAdditionRemovable.php";
+include_once "classes/ProductRadioAddition.php";
 
 $bestellinglist = new BestellingList($DB_con);
 $listofbestellingen = $bestellinglist->getlistoforders();
@@ -32,6 +35,13 @@ $listofbestellingen = $bestellinglist->getlistoforders();
 
 foreach ($listofbestellingen as $bestelling){
     $city = new City($DB_con, $bestelling->getCustomercityid());
+    $bestelling->Orderproduct();
+    $productenlijst = $bestelling->getOrderlist();
+    foreach($productenlijst as $orderproduct){
+        $product = new product($DB_con, $orderproduct->getProductid());
+        $removables = $orderproduct->getListofremovables();
+        $addables = $orderproduct->getListofaddables();
+        $radios = $orderproduct->getListofradios();
    echo
    '
    
@@ -60,25 +70,11 @@ foreach ($listofbestellingen as $bestelling){
                         </thead>
                         <tbody>
                         <tr>
-                            <td>Pizza Boromea</td>
+                            <td>' . $product->getProductname() . '</td>
                             <td class="highrow"></td>
                             <td class="text-center">€8,-</td>
                             <td class="text-center">2</td>
                             <td class="text-right">€16,-</td>
-                        </tr>
-                        <tr>
-                            <td>Kapsalon</td>
-                            <td class="highrow"></td>
-                            <td class="text-center">€6,-</td>
-                            <td class="text-center">1</td>
-                            <td class="text-right">€6,-</td>
-                        </tr>
-                        <tr>
-                            <td>Turkse Pizza</td>
-                            <td class="highrow"></td>
-                            <td class="text-center">€2,50</td>
-                            <td class="text-center">4</td>
-                            <td class="text-right">€10,-</td>
                         </tr>
                         <tr>
                             <td class="highrow"></td>
@@ -147,7 +143,8 @@ foreach ($listofbestellingen as $bestelling){
             </div>
         </div>
    ';
-}
+            }
+        }
 
 
 ?>
