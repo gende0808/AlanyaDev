@@ -1,11 +1,18 @@
 <?PHP
+session_start();
+ob_start();
+if(isset($_SESSION['logged']) && ($_SESSION['user_info']['userLevel'] == '3')) {
+}
+    else {
+        header('location: index.php');
+    }
+
 include_once "header2.php";
 include_once "classes/ProductList.php";
 include_once "classes/Product.php";
 include_once "classes/Category.php";
 include_once "classes/CategoryList.php";
 include_once "modals/product_wijzigen_modal.php";
-
 
 if (isset($_GET['productid']) && isset($_GET['delete'])) {
     $delete = $_GET['delete'];

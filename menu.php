@@ -66,7 +66,8 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
         <div id="cat">
             <!--            de div waar naartoe gescrollt wordt-->
         </div>
-
+        <br>
+<div id="mobile2"> <h4> <i>De winkelwagen bevindt zich onderaan de pagina</i> </h4> </div>
         <input type="text" id="search" placeholder="Zoeken..." class="col-md-12 marg col-md-offset-0 search_box"
                onkeyup="doSearch()"/>
         <!-- Hier moet een text komen te staan over dat het product aangepasdt kan worden in de winkelwagen. TODO margin bottom op header! -->

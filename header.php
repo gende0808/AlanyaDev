@@ -38,6 +38,19 @@ if(isset($_SESSION['logged']))
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <html>
 <head>
+    <style>
+        .no-js #loader { display: none;  }
+        .js #loader { display: block; position: absolute; left: 100px; top: 0; }
+        .se-pre-con {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url(images/loader-64x/Preloader_custom2.gif) center no-repeat #fff;
+        }
+    </style>
     <meta name="viewport" content="width=device-width, initial-scale=0.9" />
     <?php header("Content-Type: text/html; charset=utf-8"); ?>
     <meta charset="utf-8">
@@ -67,10 +80,19 @@ if(isset($_SESSION['logged']))
     <script src="js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
     <script src="js/jquery-1.9.1.min.js"></script>
     <script src="js/modernizr.custom.js"></script>
+    <script>
+
+        $(window).load(function() {
+            // Animate loader off screen
+            $(".se-pre-con").fadeOut("slow");;
+        });
+    </script>
 
 </head>
 
 <body>
+
+<div class="se-pre-con"></div>
 
 <?php
 include_once "loginmodal.php";
