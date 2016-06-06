@@ -1,4 +1,5 @@
 <?PHP
+session_start();
 if (isset($_SESSION['logged'])) {
     header('location: index.php');
 }
@@ -63,34 +64,8 @@ if (isset($_POST["registerbutton"])) {
                     } catch (Exception $e) {
                         echo "er ging iets fout bij het controleren van emailadressen";
                     }
-                    $email =$_POST["email"];
-                    // check if e-mail address is well-formed
-                    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                        $legitemail = false;
-                    }
-                    else
-                    {
-                        $legitemail = true;
-                    }
 
-                    if($legitemail == false)
-                    {
-
-                    ?>
-                      <div class="modal-header">
-                        <div id="testje" class="<?php echo $hidden ?>">
-                          <div class="alert alert-danger" role="alert">
-                            <p>
-                                <h2><b>Uw emailadres is niet geldig!</b></h2></p>
-                            <p><h4><i>
-                            Voer een geldig emailadres in
-                            </i></h4></p>
-                        </div>
-                      </div>
-                    </div>
-                      <?php
-                    }
-                    if (!$emailalreadyexists && $legitemail == true ) {
+                    if (!$emailalreadyexists) {
 
                         try {
                             //als het emailadres niet al bestaat gaat hij hieronder proberen een account aan te maken.
@@ -301,6 +276,9 @@ if (isset($_POST["registerbutton"])) {
                                         echo "<option value='" . $city->getCityid() . "'>" . $city->getCityname() . "</option>";
                                     }
                                     ?>
+                                    <script type="text/javascript">
+                                        document.getElementById('city').value = "<?php echo $_POST['city'];?>";
+                                    </script>
 
                                 </select>
                             </div>
@@ -345,7 +323,8 @@ if (isset($_POST["registerbutton"])) {
 </div>
 </div>
 
-<?PHP include_once "footer.php";
+<?PHP
+include_once "footer.php";
 ?>
 
 <script type="text/javascript">
@@ -358,15 +337,19 @@ if (isset($_POST["registerbutton"])) {
                     empty = true;
                 }
             });
+
             if (empty) {
                 $('.actions button').attr('disabled', 'disabled');
             } else {
                 $('.actions button').attr('disabled', false);
             }
         });
+
     });
     function myFunction() {
         alert("Deze link doet het");
         $test1 = true;
     }
+
+
 </script>
