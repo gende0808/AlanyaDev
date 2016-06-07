@@ -104,7 +104,8 @@ foreach ($listofbestellingen as $bestelling){
                                 }
                                 foreach ($addablelist as $addableobject) {
                                     $adprijs = new ProductAddition($DB_con, $addableobject->getId());
-                                    echo '- ' . $addableobject->getName() . '<br>';
+                                    echo '- ' . $addableobject->getName();
+                                    echo ' + €' . number_format((float)$addableobject->getPrice(), 2, ',', '') . '<br>';
                                     $toevoegingen[] = $addableobject->getPrice();
                                 }
                                 $toevoegingtotaal = array_sum($toevoegingen);
@@ -118,16 +119,17 @@ foreach ($listofbestellingen as $bestelling){
                                 ?>
                             </td>
 
-                            <td class="text-center"><?php echo $product->getProductpriceformatted() ?></td>
+                            <td class="text-center"><?php
+                                $prodprijstoev = $product->getProductprice() + $toevoegingtotaal;
+                                echo "€" . number_format((float)$prodprijstoev, 2, ',', ''); ?></td>
                             <td class="text-center"><?php echo $orderproduct->getNumber() ?></td>
                             <td class="text-right"><?php
-                                $totprodprijs = ($product->getProductprice() + $toevoegingtotaal * $orderproduct->getNumber());
-                                echo "€" . number_format((float)$totprodprijs, 2, ',', '')
+                                $totprodprijs = ($product->getProductprice() + $toevoegingtotaal) * $orderproduct->getNumber();
+                                echo "€" . number_format((float)$totprodprijs, 2, ',', '');
                                 ?></td>
 <!--                            De totaalprijs van de producten moet nog netjes worden gemaakt, zoals ipv 5.5 naar €5.50-->
                             <?php
-                            $items[] = $product->getProductprice() * $orderproduct->getNumber();
-
+                            $items[] = ($product->getProductprice() + $toevoegingtotaal) * $orderproduct->getNumber();
                             ?>
 
                         </tr>
