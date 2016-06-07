@@ -66,7 +66,7 @@ foreach ($listofbestellingen as $bestelling){
                         <tbody>
                         <tr>
                             <td><strong>Product Naam</strong></td>
-                            <td class="text-center"><strong>Toevoegingen</strong></td>
+                            <td class="text-left"><strong>Toevoegingen</strong></td>
                             <td class="text-center"><strong>Prijs</strong></td>
                             <td class="text-center"><strong>Aantal</strong></td>
                             <td class="text-right"><strong>Totaal</strong></td>
@@ -88,7 +88,7 @@ foreach ($listofbestellingen as $bestelling){
 
                             ?>
                         <tr>
-                            <td><?php echo $product->getProductname()?></td>
+                            <td style="width: 200px;"><?php echo $product->getProductname()?></td>
                             <td class="highrow">
                                 <?php
                                 if ($removablelist) {
@@ -153,7 +153,7 @@ foreach ($listofbestellingen as $bestelling){
                             <td class="emptyrow"></td>
                             <td class="emptyrow"><strong>Bezorgingskosten</strong></td>
                             <td class="emptyrow text-right"><?php
-                                if($bestelling->getCustomercityid() === '5' || $bestelling->getCustomercityid() === '6' || $bestelling->getCustomercityid() === '7')
+                                if($bestelling->getCustomercityid() === '6' || $bestelling->getCustomercityid() === '7' || $bestelling->getCustomercityid() === '8')
                                 {
                                 $bezorgkosten = 5;
 
@@ -192,6 +192,7 @@ foreach ($listofbestellingen as $bestelling){
                                     <p> <?php echo $bestelling->getCustomerfirstname() . " " . $bestelling->getCustomerlastname() ?> </p>
                                     <p> <?php echo $bestelling->getCustomerstreetname() . " " . $bestelling->getCustomerhousenumber() . ", " . $city->getCityname() ?></p>
                                     <p> <?php echo $bestelling->getCustomerphonenumber() ?></p>
+<!--                                    <p> --><?php //echo $bestelling->getCustomerparticularities() ?><!--</p>-->
                                 </strong></td>
 
                             <td class="emptyrow">
