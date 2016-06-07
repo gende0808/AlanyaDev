@@ -123,7 +123,7 @@ $productenlijst = $bestelling->getOrderlist();
                         </div>
                         <div class="media-body" style="width: 50%; float: right; text-align: right">
                             <h4 class="media-heading"><?php
-                                if($bestelling->getCustomercityid() === '5' || $bestelling->getCustomercityid() === '6' || $bestelling->getCustomercityid() === '7')
+                                if($bestelling->getCustomercityid() === '6' || $bestelling->getCustomercityid() === '7'|| $bestelling->getCustomercityid() === '8')
                                 {
                                     $bezorgkosten = 5;
 
