@@ -58,9 +58,9 @@ foreach ($listofbestellingen as $bestelling){
                     <table class="table table-condensed">
                         <thead>
                         <tr>
-                            <td><strong><p>Bestellingnummer: </p></strong></td>
-                            <td><strong><p> <?php echo $bestelling->getOrderid()?></p></strong></td>
-                            <td><strong><p> <?php echo $bestelling->getOrdertime()?></p></strong></td>
+                            <td style="width: 30%;"><strong><p>Bestellingnummer: </p></strong></td>
+                            <td style="width: 30%;"><strong><p> <?php echo $bestelling->getOrderid()?></p></strong></td>
+                            <td style="width: 40%;" style="text-align: center"><strong><p style="color: red"> <?php echo $bestelling->getOrdertime()?></p></strong></td>
                         </tr>
                         </thead>
                         <tbody>
@@ -92,7 +92,7 @@ foreach ($listofbestellingen as $bestelling){
                             <td class="highrow">
                                 <?php
                                 if ($removablelist) {
-                                    echo "Zonder: <br>";
+                                    echo "<b><i>Zonder; </i></b><br>";
                                     echo '- ';
                                 }
                                 foreach ($removablelist as $removableobject) {
@@ -101,7 +101,7 @@ foreach ($listofbestellingen as $bestelling){
                                 echo "<br><br>";
                                 $toevoegingen = array();
                                 if ($addablelist) {
-                                    echo "Extra's: <br>";
+                                    echo "<b><i>Extra's: </i></b><br>";
                                     echo '- ';
                                 }
 
@@ -114,7 +114,7 @@ foreach ($listofbestellingen as $bestelling){
                                 $toevoegingtotaal = array_sum($toevoegingen);
                                 echo "<br><br>";
                                 if ($radiolist) {
-                                    echo "Met als keuze: <br>";
+                                    echo "<b><i>Met als keuze: </i></b><br>";
                                 }
                                 foreach ($radiolist as $radioobject) {
                                     echo '- ' . $radioobject->getName() . '<br>';
