@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <!--[if lt IE 7]>
 <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>
@@ -56,9 +55,6 @@ else
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
           integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link
-        href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
-        rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/templatemo_style.css">
@@ -167,7 +163,7 @@ if($productensession)
                     $data_product_price = $productprijs;
 
                     ?>
-                    <tbody>
+                    <tbody class="winkelproduct">
                     <tr>
                         <td class="col-sm-8 col-md-6">
                             <div class="media">
@@ -179,14 +175,14 @@ if($productensession)
                             </div>
                         </td>
                         <td class="col-sm-1 col-md-1">
-                            <input type="number" class="form-control" name="aantal" id="aantal"
+                            <input type="number" pattern="\d*" class="aantal form-control" name="aantal" id="aantal"
                                    value="<?php echo $arrayproduct['aantal'] ?>">
                         </td>
                         <td class="col-sm-1 col-md-1 text-center"><strong>
-                                <div id="prijs"><?php echo "€" . $productprijs ?></div>
+                                <div id="prijs" data-product-price="<?PHP echo $productprijs ?>"><?php echo "€" . str_replace(".","," ,$productprijs )  ?></div>
                         <td class="col-sm-1 col-md-1 text-center"><strong>€0,00</strong></td>
                         <td class="col-sm-1 col-md-1 text-center"><strong><span
-                                    id="result"><?php echo $productprijs * $arrayproduct['aantal'] ?></span>
+                                    id="result" class="result"><?php echo '&euro; '. number_format(($productprijs * $arrayproduct['aantal']),2,',',''); ?></span>
                                 <?php echo "<td style='width: 150px;'><a href='shoppingcart.php?sessionid=" . $product->getId() . "&delete=true'" .
                                     'onclick="return confirm(' . "'Weet je zeker dat je " . $product->getProductname() . " wilt verwijderen?'" . ')"' . ">Verwijderen</a></td>";
                                 ?>
@@ -201,7 +197,8 @@ if($productensession)
                         <td>  </td>
                         <td>  </td>
                         <td><h5>Subtotaal</h5></td>
-                        <td class="text-right"><h5><strong><?php
+                        <td class="text-right"><h5><strong><span id="subtotal">
+                                    <?php
                                     $items = array();
                                     foreach ($_SESSION['productencart'] as $arrayproduct) {
                                         $product = new Product($DB_con, $arrayproduct['productid']);
@@ -211,7 +208,7 @@ if($productensession)
                                     echo "€" . $subtotaal;
 
 
-                                    ?></strong></h5></td>
+                                    ?></span></strong></h5></td>
                     </tr>
                     <tr>
                         <td>  </td>
@@ -294,20 +291,23 @@ include_once "footer.php";
 </body>
 </html>
 <script>
-    $("#aantal").keyup(function () {
-        var aantal = $("#aantal").val();
-        var prijs = <?php echo($productprijs); ?>;
-        var total = aantal * prijs;
-        $("#result").html(total);
-    });
-
-
-    $( document ).ready(function() {
-        var bezorgkosten = <?php echo $bezorgkosten; ?>;
-        var subtotal = <?php echo $subtotaal; ?>;
-        var totaalProduct =subtotal + bezorgkosten;
-        $("#Test1").html(totaalProduct);
-
+    $("input[type=number]").bind('keyup input', function(){
+        var aantal = $(this).val();
+        if(aantal < 0){
+            $(this).val(0);
+        }
+        if (aantal % 1 != 0){
+          $(this).val(Math.round(parseInt(aantal)));
+        }
+        var subtotaal = 0.00;
+        $(".winkelproduct").each(function(e){
+            var aantal = $(this).find('.aantal').val();
+            var productprijs = $(this).find('#prijs').data("product-price");
+            prijstotaal = parseFloat(((aantal * productprijs) * 100) /100).toFixed(2);
+            //(productprijs + toevoegingprijs)
+            prijstotaal = prijstotaal.replace(".",",");
+            $(this).find('#result').html('&euro; '+prijstotaal);
+        });
     });
 
 </script>
