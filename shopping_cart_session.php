@@ -74,7 +74,7 @@ if(isset($_SESSION['productencart'])) {
                 foreach ($cartproduct['addable'] as $addableaddition) {
                     $productaddition = new ProductAddition($DB_con, $addableaddition);
                     echo $productaddition->getName();
-                    echo '<b> + €' . $productaddition->getPrice() . '</b><br>';
+                    echo '<b> + '. $productaddition->getPriceformatted() . '</b><br>';
                 }
                 echo '</span></i>';
             }
@@ -91,7 +91,7 @@ if(isset($_SESSION['productencart'])) {
             echo '<br>';
 
             if (array_key_exists('radio', $cartproduct)) {
-                echo '<br><span>  Keuze: <i>';
+                echo '<br><span style="color:blue"> <i>';
                 foreach ($cartproduct['radio'] as $radioaddition) {
                     $productradio = new ProductRadioAddition($DB_con, $radioaddition);
                     echo $productradio->getName();

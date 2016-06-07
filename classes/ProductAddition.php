@@ -70,26 +70,16 @@ public function read($id)
     public function getPriceformatted()
     {
 
-        return '€ '.str_replace('.',',',$this->price);
+        return '&euro; '.str_replace('.',',',$this->price);
     }
     
     /**
-     * @return int
+     * @return double
      */
     public function getPrice()
     {
         return $this->price;
     }
-
-    /**
-     * @return string
-     */
-    public function getProductprice()
-    {
-        return $this->productprice;
-
-    }
-    
     /**
      * @return string
      */

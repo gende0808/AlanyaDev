@@ -125,7 +125,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                                 foreach ($cartproduct['addable'] as $addableaddition) {
                                     $productaddition = new ProductAddition($DB_con, $addableaddition);
                                     echo $productaddition->getName();
-                                    echo '<b> + €' . $productaddition->getPrice() . '</b><br>';
+                                    echo '<b> + ' . $productaddition->getPriceformatted() . '</b><br>';
                                 }
                                 echo '</span></i>';
                             }
@@ -141,10 +141,10 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                             }
                             echo '<br>';
                             if (array_key_exists('radio', $cartproduct)) {
-                                echo '<br><span>  Keuze: <i>';
+                                echo '<br><span style="color:blue">Keuze: <i><br>';
                                 foreach ($cartproduct['radio'] as $radioaddition) {
                                     $productradio = new ProductRadioAddition($DB_con, $radioaddition);
-                                    echo $productradio->getName();
+                                    echo $productradio->getName()."<br>";
                                 }
                                 echo '</span></i>';
                             }
