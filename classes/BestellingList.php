@@ -23,7 +23,7 @@ class BestellingList
 
         try
         {
-            $stmt = $this->db->prepare("SELECT * FROM bestelling");
+            $stmt = $this->db->prepare("SELECT * FROM bestelling ORDER BY bestelTijd DESC");
             $stmt->execute();
             while ($result = $stmt->fetch(PDO::FETCH_ASSOC))
             {
