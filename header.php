@@ -51,6 +51,7 @@ if(isset($_SESSION['logged']))
             background: url(images/loader-64x/Preloader_custom2.gif) center no-repeat #fff;
         }
     </style>
+    <link rel="icon" href="images/L2.png">
     <meta name="viewport" content="width=device-width, initial-scale=0.9" />
     <?php header("Content-Type: text/html; charset=utf-8"); ?>
     <meta charset="utf-8">
