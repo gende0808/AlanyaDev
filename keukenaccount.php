@@ -93,23 +93,26 @@ foreach ($listofbestellingen as $bestelling){
                                 <?php
                                 if ($removablelist) {
                                     echo "Zonder: <br>";
+                                    echo '- ';
                                 }
                                 foreach ($removablelist as $removableobject) {
-                                    echo '- ' . $removableobject->getName() . '<br>';
+                                    echo $removableobject->getName() . ', ';
                                 }
-                                echo "<br>";
+                                echo "<br><br>";
                                 $toevoegingen = array();
                                 if ($addablelist) {
                                     echo "Extra's: <br>";
+                                    echo '- ';
                                 }
+
                                 foreach ($addablelist as $addableobject) {
                                     $adprijs = new ProductAddition($DB_con, $addableobject->getId());
-                                    echo '- ' . $addableobject->getName();
-                                    echo ' + €' . number_format((float)$addableobject->getPrice(), 2, ',', '') . '<br>';
+                                    echo $addableobject->getName();
+                                    echo '(€' . number_format((float)$addableobject->getPrice(), 2, ',', '') . '), ';
                                     $toevoegingen[] = $addableobject->getPrice();
                                 }
                                 $toevoegingtotaal = array_sum($toevoegingen);
-                                echo "<br>";
+                                echo "<br><br>";
                                 if ($radiolist) {
                                     echo "Met als keuze: <br>";
                                 }
