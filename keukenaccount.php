@@ -78,10 +78,11 @@ foreach ($listofbestellingen as $bestelling){
     $productenlijst = $bestelling->getOrderlist();
                             $items = array();
     foreach($productenlijst as $orderproduct){
+        $orderproduct->ProductAdditions();
         $product = new product($DB_con, $orderproduct->getProductid());
-        $removables = $orderproduct->getListofremovables();
-        $addables = $orderproduct->getListofaddables();
-        $radios = $orderproduct->getListofradios();
+        $removablelist = $orderproduct->getListofremovables();
+        $addablelist = $orderproduct->getListofaddables();
+        $radiolist = $orderproduct->getListofradios();
 
 
 
@@ -90,15 +91,37 @@ foreach ($listofbestellingen as $bestelling){
                             <td><?php echo $product->getProductname()?></td>
                             <td class="highrow">
                                 <?php
-                               //Hier  moet nog een functie komen die alle toevoegingen met eventuele prijs laat zien.
-
+                                if ($removablelist) {
+                                    echo "Zonder: <br>";
+                                }
+                                foreach ($removablelist as $removableobject) {
+                                    echo '- ' . $removableobject->getName() . '<br>';
+                                }
+                                echo "<br>";
+                                $toevoegingen = array();
+                                if ($addablelist) {
+                                    echo "Extra's: <br>";
+                                }
+                                foreach ($addablelist as $addableobject) {
+                                    $adprijs = new ProductAddition($DB_con, $addableobject->getId());
+                                    echo '- ' . $addableobject->getName() . '<br>';
+                                    $toevoegingen[] = $addableobject->getPrice();
+                                }
+                                $toevoegingtotaal = array_sum($toevoegingen);
+                                echo "<br>";
+                                if ($radiolist) {
+                                    echo "Met als keuze: <br>";
+                                }
+                                foreach ($radiolist as $radioobject) {
+                                    echo '- ' . $radioobject->getName() . '<br>';
+                                }
                                 ?>
                             </td>
 
                             <td class="text-center"><?php echo $product->getProductpriceformatted() ?></td>
                             <td class="text-center"><?php echo $orderproduct->getNumber() ?></td>
                             <td class="text-right"><?php
-                                $totprodprijs = ($product->getProductprice() * $orderproduct->getNumber());
+                                $totprodprijs = ($product->getProductprice() + $toevoegingtotaal * $orderproduct->getNumber());
                                 echo "€" . number_format((float)$totprodprijs, 2, ',', '')
                                 ?></td>
 <!--                            De totaalprijs van de producten moet nog netjes worden gemaakt, zoals ipv 5.5 naar €5.50-->
