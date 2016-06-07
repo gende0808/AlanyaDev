@@ -77,8 +77,9 @@ if(isset($_SESSION['productencart'])) {
                     echo '<b> + €' . $productaddition->getPrice() . '</b><br>';
                 }
                 echo '</span></i>';
-                echo '<br>';
             }
+            echo '<br>';
+
             if (array_key_exists('removable', $cartproduct)) {
                 echo '<br><span style="color:red"> Zonder: <i>';
                 foreach ($cartproduct['removable'] as $removableaddition) {
@@ -86,8 +87,9 @@ if(isset($_SESSION['productencart'])) {
                     echo $productremovable->getName() . '<br>';
                 }
                 echo '</span></i>';
-                echo '<br>';
             }
+            echo '<br>';
+
             if (array_key_exists('radio', $cartproduct)) {
                 echo '<br><span>  Keuze: <i>';
                 foreach ($cartproduct['radio'] as $radioaddition) {
