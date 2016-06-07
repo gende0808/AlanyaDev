@@ -39,7 +39,7 @@ include_once "header.php";
             <div class="panel-body">
                 Bestellingen <b><u>vanaf €15,00 worden gratis thuis bezorgd. </u></b>
                 Voor bestellingen <b><u>onder €15,00 wordt slechts €2,00 bezorgkosten</b></u> in rekening gebracht.<br>
-                Wij bezorgen dagelijks van 17:00 tot 21:00 uur in Krommenie, Assendelft, Wormerveer, Wormer, Westzaan, Oostknollendam en Westknollendam  <p><br><i> ( Westzaan, Oostknollendam en Westknollendam = €5,00 bezorgkosten )</i></p><br><br>
+                Wij bezorgen dagelijks van 17:00 tot 21:00 uur in Krommenie, Assendelft, Wormerveer, Wormer, Westzaan, Oostknollendam en Westknollendam  <p><br><i> ( Westzaan en Oostknollendam = €5,00 bezorgkosten )</i></p><br><br>
             </div>
         </div>
     </div>

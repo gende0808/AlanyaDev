@@ -114,7 +114,7 @@ if($_SESSION['productencart']) {
     <p>
         <span></span><span>Totaal: <strong>&euro;<?php echo number_format((float)$totaalprijs, 2, '.', '') . '';?></strong></span>
     </p>
-    <a class="checkout" href="shoppingcart">Afrekenen</a>
+    <a class="checkout" href="shoppingcart">Bestelling plaatsen</a>
     <?php
 }
 
