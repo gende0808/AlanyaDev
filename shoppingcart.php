@@ -160,8 +160,6 @@ if ($productensession) {
                     $product = new Product($DB_con, $arrayproduct['productid']);
                     $productprijs = check_for_discounts($DB_con, $product->getId(), $product->getCategoryid(), $product->getProductprice());
                     $data_product_price = $productprijs;
-                    $subtotal += $data_product_price;
-
                     ?>
                     <tbody class="winkelproduct">
                     <tr>
@@ -171,9 +169,9 @@ if ($productensession) {
                                     <h4 class="media-heading"><?php echo $product->getProductname() . "(" . $product->getProductdescription() . ")" ?> </h4>
                                     <span>Omschrijving:</span><strong> <?php echo $product->getProductdescription() ?> </strong>
                                             <?PHP
+                                            $additiontotalprice = 0;
                                             if (array_key_exists('addable', $arrayproduct) || array_key_exists('removable', $arrayproduct) || array_key_exists('radio', $arrayproduct)) {
                                                 echo "<br />";
-                                                $additiontotalprice = 0;
                                                 if (array_key_exists('addable', $arrayproduct)) {
                                                     echo '<span style="color:green"> <i>';
                                                     foreach ($arrayproduct['addable'] as $addableaddition) {
@@ -218,19 +216,29 @@ if ($productensession) {
                                 <div id="prijs"
                                      data-product-price="<?PHP echo $productprijs ?>"><?php echo "€" . str_replace(".", ",", $productprijs) ?></div>
                         <td class="col-sm-1 col-md-1 text-center"><strong>
-                                <div class="">
+                                <div class="toevoeging" data-toevoeging-prijs="
                                 <?PHP
-                                if($additiontotalprice > 0) {
+
+                                if (isset($additiontotalprice)){
+                                    echo $additiontotalprice;
+                                } else {
+                                    echo 0.00;
+                                }
+                                ?>">
+                                <?PHP
+                                if(isset($additiontotalprice) && $additiontotalprice > 0) {
                                     echo "&euro; ".number_format($additiontotalprice, "2", ",", "");
                                 } else {
                                     echo "&euro; 0,00";
                                 }
+                                $productprijs += $additiontotalprice;
+                                $subtotal  += $productprijs;
                                 ?>
                             </div>
                             </strong></td>
                         <td class="col-sm-1 col-md-1 text-center"><strong><span
                                     id="result" class="result"
-                                    data-result="<?PHP echo $productprijs ?>"><?php echo '&euro; ' . number_format(($data_product_price * $arrayproduct['aantal']), 2, ',', ''); ?></span>
+                                    data-result="<?PHP echo $productprijs; ?>"><?php echo '&euro; ' . number_format(($productprijs * $arrayproduct['aantal']), 2, ',', ''); ?></span>
                                 <?php echo "<td style='width: 150px;'><a href='shoppingcart.php?sessionid=" . $product->getId() . "&delete=true'" .
                                     'onclick="return confirm(' . "'Weet je zeker dat je " . $product->getProductname() . " wilt verwijderen?'" . ')"' . ">Verwijderen</a></td>";
                                 ?>
@@ -345,6 +353,8 @@ include_once "footer.php";
         $(".winkelproduct").each(function (e) {
             var amount = $(this).find('.aantal').val();
             var productprice = $(this).find('#prijs').data("product-price");
+            var additionprice = $(this).find('.toevoeging').data('toevoeging-prijs');
+            productprice = parseFloat(productprice) + parseFloat(additionprice);
             pricetotal = parseFloat(((amount * productprice) * 100) / 100).toFixed(2);
             productpricetotal = pricetotal.replace(".", ",");
             $(this).find('#result').html('&euro; ' + productpricetotal);
