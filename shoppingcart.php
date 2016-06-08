@@ -26,11 +26,11 @@ include_once "classes/ProductRadioAddition.php";
 
 if (isset($_GET['sessionid']) && isset($_GET['delete'])) {
     $delete = $_GET['delete'];
-    $productid = $_GET['sessionid'];
+    $sessionid = $_GET['sessionid'];
     if ($delete == "true") {
         try {
             foreach ($_SESSION['productencart'] as $k => $v) {
-                if ($v['productid'] == $productid) {
+                if ($k == $sessionid) {
                     unset($_SESSION['productencart'][$k]);
                 }
             }
@@ -156,7 +156,7 @@ if ($productensession) {
                     $productlist = new ProductList($DB_con, 1); // //de post word meegegeven
                     $listofproducts = $productlist->getlistofproducts(); //hiermee word een array opgehaald waarin producten met hun waarden zitten
                     $subtotal = 0;
-                    foreach ($_SESSION['productencart'] as $arrayproduct) {
+                    foreach ($_SESSION['productencart'] as $key => $arrayproduct) {
                     $product = new Product($DB_con, $arrayproduct['productid']);
                     $productprijs = check_for_discounts($DB_con, $product->getId(), $product->getCategoryid(), $product->getProductprice());
                     $data_product_price = $productprijs;
@@ -240,7 +240,7 @@ if ($productensession) {
                         <td class="col-sm-1 col-md-1 text-center"><strong><span
                                     id="result" class="result"
                                     data-result="<?PHP echo $productprijs; ?>"><?php echo '&euro; ' . number_format(($productprijs * $arrayproduct['aantal']), 2, ',', ''); ?></span>
-                                <?php echo "<td style='width: 150px;'><a href='shoppingcart.php?sessionid=" . $product->getId() . "&delete=true'" .
+                                <?php echo "<td style='width: 150px;'><a href='shoppingcart.php?sessionid=" . $key . "&delete=true'" .
                                     'onclick="return confirm(' . "'Weet je zeker dat je " . $product->getProductname() . " wilt verwijderen?'" . ')"' . ">Verwijderen</a></td>";
                                 ?>
                         </td>
