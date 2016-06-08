@@ -139,13 +139,16 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                                 echo '</span></i>';
 
                             }
+
                             echo '<br>';
                             if (array_key_exists('radio', $cartproduct)) {
-                                echo '<br><span style="color:blue">Keuze: <i><br>';
+                                echo '<br><span style="color:blue">Keuze: <i>';
+                                $keuze = '';
                                 foreach ($cartproduct['radio'] as $radioaddition) {
                                     $productradio = new ProductRadioAddition($DB_con, $radioaddition);
-                                    echo $productradio->getName()."<br>";
+                                    $keuze .= $productradio->getName().', ';
                                 }
+                                echo rtrim($keuze, ', ');
                                 echo '</span></i>';
                             }
                         }
