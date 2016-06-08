@@ -91,11 +91,13 @@ if(isset($_SESSION['productencart'])) {
             echo '<br>';
 
             if (array_key_exists('radio', $cartproduct)) {
-                echo '<br><span style="color:blue"> <i>';
+                echo '<br><span style="color:blue">Keuz: <i>';
+                $keuze = '';
                 foreach ($cartproduct['radio'] as $radioaddition) {
                     $productradio = new ProductRadioAddition($DB_con, $radioaddition);
-                    echo $productradio->getName();
+                    $keuze .= $productradio->getName().', ';
                 }
+                echo rtrim($keuze, ', ');
                 echo '</span></i>';
             }
         }

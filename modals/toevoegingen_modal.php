@@ -29,7 +29,7 @@
                 <h3><span>&#128; </span><span id="amount" class="amount"></span></h3></p>
                 <br>
                 Aantal:
-                <input type="number" min="1" id="quantity" name="quantity" value="1" class="btn form-control input-md input-qty"
+                <input type="number" min="1" id="quantity" name="quantity" value="1" class="aantal" class="btn form-control input-md input-qty"
                        placeholder="" style="width: 16%">
                 <button type="button" class="btn orange" id="submitproduct" style="color: white">Toevoegen</button>
             </div>
@@ -51,7 +51,6 @@
             totalprice = totalprice.replace(".", ",");
             $('#amount').html(totalprice);
         });
-
 
         $("#submitproduct").on("click", function () {
 
@@ -91,7 +90,18 @@
                     $('button.removalproduct').on("click", removeProduct);
                 }
             });
+
+            $("input[type=number]").bind('keyup input', function () {
+                var aantal = $(this).val();
+                if (aantal < 0) {
+                    $(this).val(0);
+                }
+                if (aantal % 1 != 0) {
+                    $(this).val(Math.round(parseInt(aantal)));
+                }
+            });
         });
+
     });
 
 </script>
