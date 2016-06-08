@@ -192,13 +192,14 @@ if ($productensession) {
                                                     echo '<br>';
                                                 }
                                                 if (array_key_exists('radio', $arrayproduct)) {
-
+                                                    $keuze = '';
                                                     echo '<span style="color:blue"> <i>';
                                                     echo '<span>  Keuze: <i>';
                                                     foreach ($arrayproduct['radio'] as $radioaddition) {
                                                         $productradio = new ProductRadioAddition($DB_con, $radioaddition);
-                                                        echo $productradio->getName().", ";
+                                                        $keuze .= $productradio->getName().", ";
                                                     }
+                                                    echo rtrim($keuze, ', ');
                                                     echo '</span></i>';
                                                 }
                                             }
@@ -277,9 +278,6 @@ if ($productensession) {
                         <td>  </td>
                         <td>  </td>
                         <td>  </td>
-                        <td><h3>Totaal</h3></td>
-                        <td class="text-right"><h3><strong>€<span id="Test1"><?php ?></span>
-                                </strong></h3></td>
                     </tr>
                     <tr>
                         <td>  </td>
