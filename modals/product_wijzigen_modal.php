@@ -59,32 +59,32 @@ include_once "classes/ListOfAdditionGroups.php";
 
                 </div>
                 <div class="form-group text-right">
-                    <label class="control-label col-sm-4" for="Productcategorie">Categorie:</label>
-                        <div class="col-sm-8 dropdown">
-                            <select name='CategorieID' id="cat" class="form-control">
-                                <?PHP
-                                $categorylist = new CategoryList($DB_con);
-                                $listofcategories = $categorylist->getcategories();
-                                foreach ($listofcategories as $category){
-                                    echo "<option type='text' class='form-control' value='".$category->getcatID()."'>".$category->getcatname(). "</option>";
-                                }
-                                ?>
-                            </select>
+                    <label for="cat" class="control-label col-sm-4">Categorie:</label>
+                    <div class="col-sm-8 dropdown">
+                        <select name='CategorieID' id="catid" class="form-control">
+                            <?PHP
+                            $categorylist = new CategoryList($DB_con);
+                            $listofcategories = $categorylist->getcategories();
+                            foreach ($listofcategories as $category) {
+                                echo "<option type='text' class='form-control' value='" . $category->getcatID() . "'>" . $category->getcatname() . "</option>";
+                            }
+                            ?>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group text-right">
-                    <label class="control-label col-sm-4" for="toevoeginggroepid">Toevoeginggroep:</label>
+                    <label for="addid" class="control-label col-sm-4" for="toevoeginggroepid">Toevoeginggroep:</label>
                     <div class="col-sm-8 dropdown">
-                    <select name="toevoeginggroep" id="addid" class="form-control">
-                        <?PHP
+                        <select name="toevoeginggroep" id="addid" class="form-control">
+                            <?PHP
                             $additionlist = new ListOfAdditions($DB_con);
                             $listofadditions = $additionlist->getListofadditiongroups();
-                            foreach ($listofadditions as $addition){
-                                echo "<option type=text' class='form-control' value='".$addition->getAdditiongroupid()."'>".$addition->getAdditiongroupname()."</option>";
+                            foreach ($listofadditions as $addition) {
+                                echo "<option type=text' class='form-control' value='" . $addition->getAdditiongroupid() . "'>" . $addition->getAdditiongroupname() . "</option>";
                             }
-                        ?>
-                    </select>
-                        </div>
+                            ?>
+                        </select>
+                    </div>
                 </div>
 
 

@@ -2,6 +2,8 @@
 
 function check_for_discounts($databaseconnection,$prodid, $catid, $prodprice)
 {
+    //gebruikt de volgende classes:
+    //DiscountList, Discount,
     $discountlist = (new DiscountList($databaseconnection))->getlistofdiscounts();
     $huidigeDatum = date('Y-m-d');
     $huidigeDatum = date('Y-m-d', strtotime($huidigeDatum));

@@ -129,7 +129,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                     modal.find('#nummer').val(data.productNummer);
                     modal.find('#omschrijving').val(data.productOmschrijving);
                     modal.find('#naam').val(data.productNaam);
-                    modal.find('#cat').val(data.categorieID);
+                    modal.find('#catid').val(data.categorieID);
                     modal.find('#euro').val(data.euros);
                     modal.find('#cent').val(data.cents);
                     modal.find('#product_id').val(data.id);

@@ -4,6 +4,11 @@ include_once "classes/Account.php";
 include_once "classes/City.php";
 include_once "classes/CityList.php";
 include_once "classes/AccountList.php";
+include_once "functions.php";
+include_once "classes/Discount.php";
+include_once "classes/DiscountList.php";
+
+
 
 if(isset($_SESSION['order_id']) && isset($_SESSION['productencart']) ) {
 }

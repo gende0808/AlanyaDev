@@ -47,8 +47,6 @@ $productenlijst = $bestelling->getOrderlist();
 
                                             echo $newproduct->getProductname() . "<br>";
                                             ?></h4>
-                                        <!--                                    <h5 class="media-heading"> Categorie <a href="#">Italliaanse pizza's</a></h5>-->
-                                        <!--                                    <span>Omschrijving:</span><strong> Tomaat, kaas, ham, ananas</strong>-->
                                         <div class="media" style="width: 52%; float: left; text-align: left">
                                             <h5 class=""><span></span><strong><?php
                                                     if ($removablelist) {
@@ -75,13 +73,14 @@ $productenlijst = $bestelling->getOrderlist();
                                                     foreach ($radiolist as $radioobject) {
                                                         echo '- ' . $radioobject->getName() . '<br>';
                                                     }
-                                                    $productprijzen[] = ($newproduct->getProductprice() + $toevoegingtotaal) * $product->getNumber(); ?></strong>
+                                                    $productprijs = check_for_discounts($DB_con, $newproduct->getId(),$newproduct->getCategoryid(), $newproduct->getProductprice() ) + $toevoegingtotaal;
+                                                    $productprijzen[] = $productprijs * $product->getNumber(); ?></strong>
                                             </h5>
                                         </div>
                                         <div class="media" style="width: 16%; float: right; text-align: right">
                                             <div class="media-body">
                                                 <h4 class="media-heading">
-                                                    €<?php echo number_format((float)$newproduct->getProductprice() + $toevoegingtotaal * $product->getNumber(), 2, ',', '') ?></h4>
+                                                    €<?php echo number_format((float)($productprijs) * $product->getNumber(), 2, ',', '') ?></h4>
                                             </div>
                                         </div>
                                         <div class="media" style="width: 16%; float: right; text-align: right">
@@ -92,7 +91,7 @@ $productenlijst = $bestelling->getOrderlist();
                                         <div class="media" style="width: 16%; float: right; text-align: right">
                                             <div class="media-body">
                                                 <h4 class="media-heading">
-                                                    €<?php echo number_format((float)$newproduct->getProductprice() + $toevoegingtotaal, 2, ',', '') ?></h4>
+                                                    €<?php echo number_format((float)$productprijs , 2, ',', '') ?></h4>
                                             </div>
                                         </div>
                                     </div>

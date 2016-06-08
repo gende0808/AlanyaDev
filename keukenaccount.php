@@ -98,7 +98,6 @@ foreach ($listofbestellingen as $bestelling){
                                 foreach ($removablelist as $removableobject) {
                                     echo $removableobject->getName() . ', ';
                                 }
-                                echo "<br><br>";
                                 $toevoegingen = array();
                                 if ($addablelist) {
                                     echo "<b><i>Extra's: </i></b><br>";
@@ -167,7 +166,7 @@ foreach ($listofbestellingen as $bestelling){
                                 else {
                                 $bezorgkosten = 0;
                                 }
-                                echo "<Br> €" .  number_format((float)$bezorgkosten, 2, ',', '');
+                                echo " €" .  number_format((float)$bezorgkosten, 2, ',', '');
                                 ?>
                             </td>
                         </tr>

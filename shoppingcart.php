@@ -152,10 +152,9 @@ if ($productensession) {
                     </tr>
                     </thead>
                     <?php
-
+                    $subtotal = 0;
                     $productlist = new ProductList($DB_con, 1); // //de post word meegegeven
                     $listofproducts = $productlist->getlistofproducts(); //hiermee word een array opgehaald waarin producten met hun waarden zitten
-                    $subtotal = 0;
                     foreach ($_SESSION['productencart'] as $key => $arrayproduct) {
                     $product = new Product($DB_con, $arrayproduct['productid']);
                     $productprijs = check_for_discounts($DB_con, $product->getId(), $product->getCategoryid(), $product->getProductprice());
@@ -166,8 +165,8 @@ if ($productensession) {
                         <td class="col-sm-8 col-md-6">
                             <div class="media">
                                 <div class="media-body">
-                                    <h4 class="media-heading"><?php echo $product->getProductname() . "(" . $product->getProductdescription() . ")" ?> </h4>
-                                    <span>Omschrijving:</span><strong> <?php echo $product->getProductdescription() ?> </strong>
+                                    <h4 class="media-heading"><strong><?php echo $product->getProductname(); ?> </strong></h4>
+                                    <span>Omschrijving:</span><?php echo $product->getProductdescription() ?>
                                             <?PHP
                                             $additiontotalprice = 0;
                                             if (array_key_exists('addable', $arrayproduct) || array_key_exists('removable', $arrayproduct) || array_key_exists('radio', $arrayproduct)) {
@@ -233,7 +232,7 @@ if ($productensession) {
                                     echo "&euro; 0,00";
                                 }
                                 $productprijs += $additiontotalprice;
-                                $subtotal  += $productprijs;
+                                $subtotal  += ($productprijs * $arrayproduct['aantal']);
                                 ?>
                             </div>
                             </strong></td>
