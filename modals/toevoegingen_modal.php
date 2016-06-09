@@ -55,7 +55,7 @@
         $("#submitproduct").on("click", function () {
 
             var productid = $("#product_id").val();
-            var aantal = $("#quantity").val();
+            var aantal = $("#aantalproducten").val();
             var removablee = [];
             $("input:checkbox[name=removable]:not(:checked)").each(function() {
                 removablee.push($(this).val());
