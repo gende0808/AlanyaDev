@@ -9,6 +9,9 @@ function check_for_discounts($databaseconnection,$prodid, $catid, $prodprice, $h
         $huidigeDatum = date('Y-m-d');
         $huidigeDatum = date('Y-m-d', strtotime($huidigeDatum));
         $huidigedag = date("l");
+    } else{
+        $huidigeDatum = strtotime($huidigeDatum);
+        $huidigedag = date("l",$huidigeDatum);
     }
     $actieprijs = $prodprice;
     foreach ($discountlist as $discount) {

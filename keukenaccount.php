@@ -29,6 +29,9 @@ include_once "classes/ProductList.php";
 include_once "classes/ProductAddition.php";
 include_once "classes/ProductAdditionRemovable.php";
 include_once "classes/ProductRadioAddition.php";
+include_once "classes/DiscountList.php";
+include_once "classes/Discount.php";
+include_once "functions.php";
 
 ?>
 <head>
@@ -60,7 +63,7 @@ foreach ($listofbestellingen as $bestelling){
                         <tr>
                             <td style="width: 30%;"><strong><p>Bestellingnummer: </p></strong></td>
                             <td style="width: 30%;"><strong><p> <?php echo $bestelling->getOrderid()?></p></strong></td>
-                            <td style="width: 40%;" style="text-align: center"><strong><p style="color: red"> <?php echo $bestelling->getOrdertime()?></p></strong></td>
+                            <td style="width: 40%;" style="text-align: center"><strong><p style="color: red"> <?php echo $bestelling->getOrdertime() ?></p></strong></td>
                         </tr>
                         </thead>
                         <tbody>
@@ -122,16 +125,17 @@ foreach ($listofbestellingen as $bestelling){
                             </td>
 
                             <td class="text-center"><?php
-                                $prodprijstoev = $product->getProductprice() + $toevoegingtotaal;
+                                //$bestelling->getOrdertime()
+                                $prodprijstoev = check_for_discounts($DB_con, $product->getId(),$product->getCategoryid() ,$product->getProductprice(),$bestelling->getOrdertime() ) + $toevoegingtotaal;
                                 echo "€" . number_format((float)$prodprijstoev, 2, ',', ''); ?></td>
                             <td class="text-center"><?php echo $orderproduct->getNumber() ?></td>
                             <td class="text-right"><?php
-                                $totprodprijs = ($product->getProductprice() + $toevoegingtotaal) * $orderproduct->getNumber();
+                                $totprodprijs = $prodprijstoev * $orderproduct->getNumber();
                                 echo "€" . number_format((float)$totprodprijs, 2, ',', '');
                                 ?></td>
 <!--                            De totaalprijs van de producten moet nog netjes worden gemaakt, zoals ipv 5.5 naar €5.50-->
                             <?php
-                            $items[] = ($product->getProductprice() + $toevoegingtotaal) * $orderproduct->getNumber();
+                            $items[] = $totprodprijs;
                             ?>
 
                         </tr>
