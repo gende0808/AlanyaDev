@@ -16,8 +16,6 @@ if (isset($_POST['productid'])) {
         $product_array['cents'] = $eurosandcents[1];
 
         echo json_encode($product_array);
-
-
     } catch (Exception $e) {
         echo "Het volgende is foutgegaan bij het ophalen van gegevens van een product: " . $e->getMessage();
     }

@@ -29,9 +29,9 @@
                 <h3><span>&#128; </span><span id="amount" class="amount"></span></h3></p>
                 <br>
                 Aantal:
-                <input type="number" min="1" id="quantity" name="quantity" value="1" class="aantal" class="btn form-control input-md input-qty"
+                <input type="number" min="1" id="aantalproducten" name="quantity" value="1" class="aantal" class="btn form-control input-md input-qty"
                        placeholder="" style="width: 8%;color: #333;font-size: large">
-                <button type="button" class="btn orange" id="submitproduct" style="float: right;color: white">Toevoegen</button>
+                <button type="button" class="btn orange" id="submitproduct" style="float: right; color: white">Toevoegen</button>
             </div>
         </div>
     </div>

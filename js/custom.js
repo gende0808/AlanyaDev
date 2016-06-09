@@ -132,6 +132,7 @@ $('#myModalToev').on('show.bs.modal', function (event) {
     clearBox("#toevoegbare_toevoegingen");
     clearBox("#radio_toevoegingen");
     clearBox("#amount");
+    clearBox("#aantalproducten");
     clearBox("#prodid");
     clearBox("#prodname");
     var postData = {
@@ -142,6 +143,7 @@ $('#myModalToev').on('show.bs.modal', function (event) {
     modal.find('#prodid').append('<input type="hidden" id="product_id" name="productid" value="'+ productid +'">');
     modal.find('#prodname').append(productname);
     modal.find('#amount').append(productbaseprice);
+    modal.find('#aantalproducten').val(1);
     $.ajax({
         type: "POST",
         url: url,
