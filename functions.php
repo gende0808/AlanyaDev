@@ -1,13 +1,15 @@
 <?php
 
-function check_for_discounts($databaseconnection,$prodid, $catid, $prodprice)
+function check_for_discounts($databaseconnection,$prodid, $catid, $prodprice, $huidigeDatum = "")
 {
     //gebruikt de volgende classes:
     //DiscountList, Discount,
     $discountlist = (new DiscountList($databaseconnection))->getlistofdiscounts();
-    $huidigeDatum = date('Y-m-d');
-    $huidigeDatum = date('Y-m-d', strtotime($huidigeDatum));
-    $huidigedag = date("l");
+    if($huidigeDatum == "") {
+        $huidigeDatum = date('Y-m-d');
+        $huidigeDatum = date('Y-m-d', strtotime($huidigeDatum));
+        $huidigedag = date("l");
+    }
     $actieprijs = $prodprice;
     foreach ($discountlist as $discount) {
         //hieronder de code voor als een actie voor producten is
