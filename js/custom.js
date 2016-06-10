@@ -152,27 +152,33 @@ $('#myModalToev').on('show.bs.modal', function (event) {
         success: function (data) {
             if (typeof data['removable'] != 'undefined' && data['removable'] instanceof Array ) {
                 for (index = 0; index < data['removable'].length; ++index) {
-
-                    modal.find('#verwijderbare_toevoegingen').append("<div><input type='checkbox' style='width: 15px;' name='removable' id='removable' " +
-                        "value='" + data['removable'][index].removalid + "' data-price='0' align='left' checked>" + data['removable'][index].name + "</div>");
+                    modal.find('#verwijderbare_toevoegingen').append("<label><div><input type='checkbox' style='width: 15px;' name='removable' id='removable' " +
+                        "value='" + data['removable'][index].removalid + "' data-price='0' align='left' checked>" + " "+data['removable'][index].name + "</div></label><br>");
                 }
+            } else {
+                modal.find('#verwijderbare_toevoegingen').append('<i>Er zijn geen verwijderbare keuzes voor dit product.</i>');
             }
             if (typeof data['addable']!= 'undefined' && data['addable'] instanceof Array) {
                 for (index = 0; index < data['addable'].length; ++index) {
 
-                    modal.find('#toevoegbare_toevoegingen').append("<div><input type='checkbox' style='width: 15px;' name='addable' id='addable' " +
-                        "value='" + data['addable'][index].additionid + "' data-price='" + data['addable'][index].price + "'>" + data['addable'][index].name + data['addable'][index].formattedprice + "</div>");
+                    modal.find('#toevoegbare_toevoegingen').append("<label><div><input type='checkbox' style='width: 15px;' name='addable' id='addable' " +
+                        "value='" + data['addable'][index].additionid + "' data-price='" + " "+data['addable'][index].price + "'>" +
+                        data['addable'][index].name + data['addable'][index].formattedprice + "</div></label><br>");
                 }
+            } else {
+                modal.find('#toevoegbare_toevoegingen').append('<i>Er zijn geen toevoegingen voor dit product.</i>');
             }
             if (typeof data['radio'] != 'undefined' && data['radio'] instanceof Array) {
                 for (index = 0; index < data['radio'].length; ++index) {
                     modal.find('#radio_toevoegingen').append("<p><b>" + data['radio'][index].groupname + "</b></p>");
                     for (index2 = 0; index2 < (countInObject(data['radio'][index]) - 1); ++index2) {
-                        modal.find('#radio_toevoegingen').append("<div><input type='radio' style='width: 15px;' name='radio" + (index + 1) + "' id='radio' data-price='0' " +
-                            "value='" + data['radio'][index][index2].radioid + "'>" + data['radio'][index][index2].name + "</div>");
+                        modal.find('#radio_toevoegingen').append("<label><div><input type='radio' checked='checked' style='width: 15px;' name='radio" + (index + 1) + "' id='radio' data-price='0' " +
+                            "value='" + data['radio'][index][index2].radioid + "'>" + " "+data['radio'][index][index2].name + "</div></label><br>");
                     }
                     modal.find('#radio_toevoegingen').append("<br>");
                 }
+            }else {
+                modal.find('#radio_toevoegingen').append('<i>Er zijn geen opties voor dit product.</i>');
             }
         }
     });

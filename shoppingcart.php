@@ -290,10 +290,12 @@ if ($productensession) {
                             </button>
                         </td>
                         <td>
+                            <a href="checkout.php" style="color: white">
                             <button type="button" class="btn btn-success" data-target="#OrderSuccesModal">
-                                <a href="checkout.php" style="color: white"> Afrekenen </a><span
+                                Bestelling plaatsen <span
                                     class="glyphicon glyphicon-play"></span>
                             </button>
+                            </a>
                         </td>
                     </tr>
                     </tbody>

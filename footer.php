@@ -16,7 +16,7 @@
                     <div class="more-info">
                         <h4 class="footer-title">Meer informatie</h4>
                         <ul>
-                            <li><i class="fa fa-phone"></i>075-6409003</li>
+                            <a href="tel 0756409003"><li><i class="fa fa-phone"></i>075-6409003</li></a>
                             <li><i class="fa fa-globe"></i>Padlaan 4, 1561 ZA te Krommenie</li>
                             <li><i class="fa fa-envelope"></i><a href="#">info@alanya.nl</a></li>
                         </ul>

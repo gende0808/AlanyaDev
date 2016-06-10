@@ -121,7 +121,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                         ';
                         if (array_key_exists('addable', $cartproduct) || array_key_exists('removable', $cartproduct) || array_key_exists('radio', $cartproduct)) {
                             if (array_key_exists('addable', $cartproduct)) {
-                                echo '<br><br><span style="color:green"> Extra: <i>';
+                                echo '<br><span style="color:green"> Extra: <i>';
                                 foreach ($cartproduct['addable'] as $addableaddition) {
                                     $productaddition = new ProductAddition($DB_con, $addableaddition);
                                     echo $productaddition->getName();
