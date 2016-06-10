@@ -146,6 +146,10 @@ include_once "classes/Category.php";
 
                                     <p>Al een bestaand account? <a href="#" data-toggle="modal" data-target="#myModal"
                                                                    class="hvr-float-shadow">Login</a></p>
+                                    <br>
+                                    <div class="alert-danger">
+                                    <p style="color: darkred;"><b>Let op! De bestelling wordt altijd tussen 30 en 45 minuten bezorgd, het is dus niet mogelijk om voor een later tijdstip te kiezen.</b></p>
+                                    </div><br>
                                     <div class="actions">
                                         <button id="submit" name="registerbutton" class="form-control btn orange"
                                                 style="color: white;"

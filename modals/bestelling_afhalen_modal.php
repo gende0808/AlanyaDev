@@ -58,6 +58,11 @@ include_once "classes/Category.php";
                                     </div>
                                 </div>
                             </div>
+                            <br>
+                            <div class="alert-danger">
+                                <p style="color: darkred;"><b>Let op! Na het plaatsen van uw bestelling is deze na 30 minuten klaar om af te halen.</b></p>
+                            </div>
+                            <br>
                             <div class="action">
                                 <button id="submit2" name="submit2" class="form-control btn orange"
                                         style="color: white;"
