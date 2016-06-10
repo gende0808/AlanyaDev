@@ -35,7 +35,7 @@
         <div class="bottom-footer">
             <p>
                         	<span>Copyright © 2016 <a href="#">Alanya Krommenie</a>
-                            | Design: <a rel="nofollow"  target="_parent" href="http://www.jimebbelaar.com"><span class="blue">Alpha</span><span class="green">Insane</span></a></span>
+                            | Design: <a rel="nofollow"  target="_parent"><span class="blue">Alpha</span><span class="green">NOVA</span></a></span>
             </p>
         </div>
     </div>
@@ -60,7 +60,9 @@
     <script src="js/scrolltop.js"></script>
     <script type="text/javascript"></script>
     <script src="js/custom.js"></script>
+    <script src="js/sticky.js"></script>
     <script>
+        $("#shoppingcart-container").stick_in_parent({offset_top: 120});
         $(document).ready(function () {
             $("#nav-mobile").html($("#nav-main").html());
             $("#nav-trigger span").click(function () {

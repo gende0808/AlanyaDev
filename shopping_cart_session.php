@@ -66,7 +66,7 @@ if(isset($_SESSION['productencart'])) {
         $totaalprijs += $prijsvanproduct * $cartproduct["aantal"];
         
         echo '<li>
-                        <span><button class="removalproduct btn-danger glyphicon glyphicon-remove" data-sessid="'.$key.'"></button> ' . $cartproduct["aantal"] . ' x <b>' . $product->getProductname() . '</b></a></span> <strong>&euro;' . number_format((float)$prijsvanproduct, 2, '.', '') . '</strong>
+                        <span><button class="removalproduct btn-danger glyphicon glyphicon-remove" data-sessid="'.$key.'"></button> ' . $cartproduct["aantal"] . ' x <b>' . $product->getProductname() . '</b></a></span> <strong>&euro;' . number_format((float)$prijsvanproduct, 2, ',', '') . '</strong>
                         ';
         if (array_key_exists('addable', $cartproduct) || array_key_exists('removable', $cartproduct) || array_key_exists('radio', $cartproduct)) {
             if (array_key_exists('addable', $cartproduct)) {
@@ -91,7 +91,7 @@ if(isset($_SESSION['productencart'])) {
             echo '<br>';
 
             if (array_key_exists('radio', $cartproduct)) {
-                echo '<br><span style="color:blue">Keuz: <i>';
+                echo '<br><span style="color:blue">Keuze: <i>';
                 $keuze = '';
                 foreach ($cartproduct['radio'] as $radioaddition) {
                     $productradio = new ProductRadioAddition($DB_con, $radioaddition);
@@ -114,7 +114,7 @@ if(!$_SESSION['productencart']) {
 if($_SESSION['productencart']) {
     ?>
     <p>
-        <span></span><span>Totaal: <strong>&euro;<?php echo number_format((float)$totaalprijs, 2, '.', '') . '';?></strong></span>
+        <span></span><span>Totaal: <strong>&euro;<?php echo number_format((float)$totaalprijs, 2, ',', '') . '';?></strong></span>
     </p>
     <a class="checkout" href="shoppingcart">Bestelling plaatsen</a>
     <?php

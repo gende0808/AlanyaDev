@@ -117,7 +117,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                         $totaalprijs += $prijsvanproduct * $cartproduct["aantal"];
 
                         echo '<li>
-                        <span><button class="removalproduct btn-danger glyphicon glyphicon-remove" data-sessid="'.$key.'"></button> ' . $cartproduct["aantal"] . ' x <b>' . $product->getProductname() . '</b></a></span> <strong>&euro;' . number_format((float)$prijsvanproduct, 2, '.', '') . '</strong>
+                        <span><button class="removalproduct btn-danger glyphicon glyphicon-remove" data-sessid="'.$key.'"></button> ' . $cartproduct["aantal"] . ' x <b>' . $product->getProductname() . '</b></a></span> <strong>&euro;' . number_format((float)$prijsvanproduct, 2, ',', '') . '</strong>
                         ';
                         if (array_key_exists('addable', $cartproduct) || array_key_exists('removable', $cartproduct) || array_key_exists('radio', $cartproduct)) {
                             if (array_key_exists('addable', $cartproduct)) {
@@ -165,7 +165,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
         if($_SESSION['productencart']) {
         ?>
             <p>
-                <span></span><span>Totaal: <strong>&euro;<?php echo number_format((float)$totaalprijs, 2, '.', '') . '';?></strong></span>
+                <span></span><span>Totaal: <strong>&euro;<?php echo number_format((float)$totaalprijs, 2, ',', '') . '';?></strong></span>
             </p>
         <a class="checkout" href="shoppingcart">Bestelling plaatsen</a>
         <?php

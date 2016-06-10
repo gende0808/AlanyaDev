@@ -4,8 +4,7 @@ $loginenregisterknoppen = "";
 $mand = "";
 $bestellingenlijst = "";
 
-if(isset($_SESSION['logged']))
-{
+if (isset($_SESSION['logged'])) {
     $loginenregisterknoppen = "<li class='dropdown'>
         <button class='btntest2' data-toggle='dropdown'>Mijn account  <span class='caret'></span></button>
         <ul class='dropdown-menu'>
@@ -14,15 +13,12 @@ if(isset($_SESSION['logged']))
         </ul>
       </li>";
 
-    }
-    else
-    {
-        $loginenregisterknoppen = " <li><a href='#' data-toggle='modal' data-target='#myModal' class='hvr-float-shadow'>Inloggen</a></li>
+} else {
+    $loginenregisterknoppen = " <li><a href='#' data-toggle='modal' data-target='#myModal' class='hvr-float-shadow'>Inloggen</a></li>
                 <li><a href='register' class='hvr-float-shadow'>Registreren</a></li>";
-    }
+}
 
-if(isset($_SESSION['logged']))
-{
+if (isset($_SESSION['logged'])) {
     if ($_SESSION['user_info']['userLevel'] === '2') {
         $bestellingenlijst = '<li><a href="keukenaccount" class="hvr-float-shadow">Bestellingen</a></li>';
     };
@@ -32,15 +28,28 @@ if(isset($_SESSION['logged']))
 ?>
 
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
 <html>
 <head>
     <style>
-        .no-js #loader { display: none;  }
-        .js #loader { display: block; position: absolute; left: 100px; top: 0; }
+        .no-js #loader {
+            display: none;
+        }
+
+        .js #loader {
+            display: block;
+            position: absolute;
+            left: 100px;
+            top: 0;
+        }
+
         .se-pre-con {
             position: fixed;
             left: 0px;
@@ -52,12 +61,13 @@ if(isset($_SESSION['logged']))
         }
     </style>
     <link rel="icon" href="images/L2.png">
-    <meta name="viewport" content="width=device-width, initial-scale=0.9" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.9"/>
     <?php header("Content-Type: text/html; charset=utf-8"); ?>
     <meta charset="utf-8">
     <title>Alanya Krommenie</title>
     <meta name="description" content="">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/templatemo_style.css">
@@ -82,9 +92,10 @@ if(isset($_SESSION['logged']))
     <script src="js/modernizr.custom.js"></script>
     <script>
 
-        $(window).load(function() {
+        $(window).load(function () {
             // Animate loader off screen
-            $(".se-pre-con").fadeOut("slow");;
+            $(".se-pre-con").fadeOut("slow");
+            ;
         });
     </script>
 
@@ -105,11 +116,16 @@ include_once "interfaces/CRUD.php";
     </div>
     <nav id="nav-main">
         <ul>
-            <li class="logoo" style="border-right: solid 0px #950025!important;"><a href="index.php" class="hvr-float-shadow" style="height: 40px;"><img src="images/alanyaforbanner3.png" style="padding-bottom: 10px;"></a></li>
+            <li class="logoo" style="border-right: solid 0px #950025!important;"><a href="index.php"
+                                                                                    class="hvr-float-shadow"
+                                                                                    style="height: 40px;"><img
+                        src="images/alanyaforbanner3.png" style="padding-bottom: 10px;"></a></li>
             <li><a href="menu" class="hvr-float-shadow">Menukaart</a></li>
             <li><a href="contact" class="hvr-float-shadow">Contact & Info</a></li>
-            <li><a href="tel:0756409003" class="hvr-float-shadow"><span class="glyphicon glyphicon-earphone"></span> 075-6409003 </a></li>
-            <li><a href="shoppingcart" class="hvr-float-shadow"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+            <li><a href="tel:0756409003" class="hvr-float-shadow"><span class="glyphicon glyphicon-earphone"></span>
+                    075-6409003 </a></li>
+            <li><a href="shoppingcart" class="hvr-float-shadow"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+            </li>
             <?PHP echo $bestellingenlijst;
             ?>
             <?PHP echo $loginenregisterknoppen;
