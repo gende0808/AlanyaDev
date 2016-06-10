@@ -126,11 +126,11 @@ a:hover{
     transition:all 0.5s;
 }
 .shoppingCart:hover .arrow{
-    border-bottom-color:hsla(200,17%,93%,1);
+ /*   border-bottom-color:hsla(200,17%,93%,1);
     -webkit-transform:rotate(-180deg);
     -moz-transform:rotate(-180deg);
     -o-transform:rotate(-180deg);
-    transform:rotate(-180deg);
+    transform:rotate(-180deg);*/
 }
 .shoppingCart ul{
     list-style:none;
@@ -138,14 +138,14 @@ a:hover{
     display:block;
 }
 .shoppingCart li{
-    padding:0 15px;
+    padding:10px 15px;
     overflow:hidden;
-    height:0px;
+    height:auto;
     background:#fff;
-    -webkit-transition:all 0.3s;
+    /*-webkit-transition:all 0.3s;
     -moz-transition:all 0.3s;
     -o-transition:all 0.3s;
-    transition:all 0.3s;
+    transition:all 0.3s;*/
 }
 .shoppingCart:hover li{
     height:auto;
@@ -182,10 +182,10 @@ a:hover{
     padding:12px 16px 14px 16px;
     overflow:hidden;
     background:#fff;
-    -webkit-transition:background 0.2s;
+    /*webkit-transition:background 0.2s;
     -moz-transition:background 0.2s;
     -o-transition:background 0.2s;
-    transition:background 0.2s;
+    transition:background 0.2s;-*/
 }
 .shoppingCart:hover p{
     text-shadow:0 -1px #fff;
@@ -204,7 +204,7 @@ a:hover{
     float:right;
 }
 .checkout{
-    opacity:0;
+    opacity:1;
     display:block;
     position:absolute;
     color:#fff;
