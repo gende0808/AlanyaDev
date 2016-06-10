@@ -94,7 +94,6 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                     <h4>Winkelwagen</h4>
                     <span class="arrow"></span>
                 </summary>
-                <div class="Content"
                 <ul>';
     $totaalprijs = "";
     $prijsvanproduct = "";
@@ -121,7 +120,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                         ';
                         if (array_key_exists('addable', $cartproduct) || array_key_exists('removable', $cartproduct) || array_key_exists('radio', $cartproduct)) {
                             if (array_key_exists('addable', $cartproduct)) {
-                                echo '<br><span style="color:green"> Extra: <i>';
+                                echo '<br><br><span style="color:green"> Extra: <i>';
                                 foreach ($cartproduct['addable'] as $addableaddition) {
                                     $productaddition = new ProductAddition($DB_con, $addableaddition);
                                     echo $productaddition->getName();
@@ -134,7 +133,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                                 echo '<br><span style="color:red"> Zonder: <i>';
                                 foreach ($cartproduct['removable'] as $removableaddition) {
                                     $productremovable = new ProductAdditionRemovable($DB_con, $removableaddition);
-                                    echo $productremovable->getName() . '<br>';
+                                    echo $productremovable->getName()."<br>";
                                 }
                                 echo '</span></i>';
 

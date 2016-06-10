@@ -16,7 +16,7 @@
                     <div class="more-info">
                         <h4 class="footer-title">Meer informatie</h4>
                         <ul>
-                            <a href="tel 0756409003"><li><i class="fa fa-phone"></i>075-6409003</li></a>
+                            <a href="tel:0756409003"><li><i class="fa fa-phone"></i>075-6409003</li></a>
                             <li><i class="fa fa-globe"></i>Padlaan 4, 1561 ZA te Krommenie</li>
                             <li><i class="fa fa-envelope"></i><a href="#">info@alanya.nl</a></li>
                         </ul>
@@ -62,7 +62,16 @@
     <script src="js/custom.js"></script>
     <script src="js/sticky.js"></script>
     <script>
-        $("#shoppingcart-container").stick_in_parent({offset_top: 120});
+
+        if ($(window).width() > 768){
+            $("#shoppingcart-container").stick_in_parent({offset_top: 120, spacer:false});
+        }
+
+        $(window).resize(function() {
+            if ($(this).width() > 768) {
+                $("#shoppingcart-container").stick_in_parent({offset_top: 120, spacer:false});
+            }
+        });
         $(document).ready(function () {
             $("#nav-mobile").html($("#nav-main").html());
             $("#nav-trigger span").click(function () {

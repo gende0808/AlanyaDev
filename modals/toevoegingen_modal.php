@@ -10,7 +10,7 @@
                 </div> <!-- /.modal-header -->
                 <div class="modal-body col-md-12">
                     <div class="modal-body col-md-4">
-                        <h4 align="left"><b>Keuzes</b></h4>
+                        <h4 align="left"><b>Gratis toevoegingen</b></h4>
                         <div id="verwijderbare_toevoegingen">
                     </div>
 

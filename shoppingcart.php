@@ -170,29 +170,28 @@ if ($productensession) {
                                             <?PHP
                                             $additiontotalprice = 0;
                                             if (array_key_exists('addable', $arrayproduct) || array_key_exists('removable', $arrayproduct) || array_key_exists('radio', $arrayproduct)) {
-                                                echo "<br />";
+
                                                 if (array_key_exists('addable', $arrayproduct)) {
-                                                    echo '<span style="color:green"> <i>';
+                                                    echo '<br><br><span style="color:green"> <i>';
                                                     foreach ($arrayproduct['addable'] as $addableaddition) {
                                                         $productaddition = new ProductAddition($DB_con, $addableaddition);
                                                         echo $productaddition->getName();
                                                         $additiontotalprice += $productaddition->getPrice();
-                                                        echo '<b> + ('.$productaddition->getPriceformatted().')</b><br>';
+                                                        echo '<b> + ('.$productaddition->getPriceformatted().')</b>';
                                                     }
                                                     echo '</span></i>';
                                                 }
                                                 if (array_key_exists('removable', $arrayproduct)) {
-                                                    echo '<span style="color:red"> Zonder: <i>';
+                                                    echo '<br><br><span style="color:red"> Zonder: <i>';
                                                     foreach ($arrayproduct['removable'] as $removableaddition) {
                                                         $productremovable = new ProductAdditionRemovable($DB_con, $removableaddition);
                                                         echo $productremovable->getName().", ";
                                                     }
                                                     echo '</span></i>';
-                                                    echo '<br>';
                                                 }
                                                 if (array_key_exists('radio', $arrayproduct)) {
                                                     $keuze = '';
-                                                    echo '<span style="color:blue"> <i>';
+                                                    echo '<br><br><span style="color:blue"> <i>';
                                                     echo '<span>  Keuze: <i>';
                                                     foreach ($arrayproduct['radio'] as $radioaddition) {
                                                         $productradio = new ProductRadioAddition($DB_con, $radioaddition);
