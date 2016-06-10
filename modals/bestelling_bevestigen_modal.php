@@ -111,7 +111,6 @@ $productenlijst = $bestelling->getOrderlist();
                         <div class="media-body" style="width: 50%; float: right; text-align: right">
                             <?php
                             $subtotaal = array_sum($productprijzen);
-                            echo '<br>';
                             ?>
                             <h4 class="media-heading"><?php echo "€" . number_format((float)$subtotaal, 2, ',', ''); ?></h4>
                         </div>
@@ -133,10 +132,10 @@ $productenlijst = $bestelling->getOrderlist();
                                 else {
                                     $bezorgkosten = 0;
                                 }
-                                echo "<Br> €" .  number_format((float)$bezorgkosten, 2, ',', '');
+                                echo "€" .  number_format((float)$bezorgkosten, 2, ',', '');
                                 ?></h4>
                         </div>
-
+                    <br>
                     <div class="media" style="width: 100%">
                         <div class="media-body" style="width: 50%; float: left">
                             <h4 class="media-heading">Totaalbedrag</h4>
@@ -144,7 +143,7 @@ $productenlijst = $bestelling->getOrderlist();
                         <div class="media-body" style="width: 50%; float: right; text-align: right">
                             <h4 class="media-heading">
                                 <?php
-                                echo "<Br> €" . number_format((float)$subtotaal + $bezorgkosten, 2, ',', '');
+                                echo " €" . number_format((float)$subtotaal + $bezorgkosten, 2, ',', '');
                                 ?>
                             </h4>
                         </div>
