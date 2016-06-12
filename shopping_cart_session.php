@@ -9,6 +9,16 @@ include_once "classes/ProductRadioAddition.php";
 include_once 'classes/Discount.php';
 include_once 'classes/DiscountList.php';
 include_once "functions.php";
+if(!empty($_POST['changeamount']) && is_numeric($_POST['changeamount']) && ($_POST['changeamount'] % 1 == 0) && isset($_POST['cartproductid'])){
+    if (!empty($_SESSION['productencart'])){
+        $cartproductid = htmlentities($_POST['cartproductid'], ENT_QUOTES);
+        $changeamount = htmlentities($_POST['changeamount'], ENT_QUOTES);
+        if ($changeamount == 0){
+            $changeamount = 1;
+        }
+        $_SESSION['productencart'][$cartproductid]['aantal'] = $changeamount;
+    }
+}
 
 if (!empty($_POST['prodid']) && !empty($_POST['aantal'])) {
     $array = array();

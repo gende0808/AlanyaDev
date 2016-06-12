@@ -94,7 +94,8 @@ if (isset($_SESSION['productencart'])) {
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h4 class="modal-title" id="myModalLabel">Log in</h4>
-            </div> <!-- /.modal-header -->
+            </div>
+            <!-- /.modal-header -->
 
             <div class="modal-body">
                 <form role="form">
@@ -103,19 +104,23 @@ if (isset($_SESSION['productencart'])) {
                             <input type="text" class="form-control" id="uLogin" placeholder="Gebruikersnaam">
                             <label for="uLogin" class="input-group-addon orange glyphicon glyphicon-user"></label>
                         </div>
-                    </div> <!-- /.form-group -->
+                    </div>
+                    <!-- /.form-group -->
 
                     <div class="form-group">
                         <div class="input-group">
                             <input type="password" class="form-control" id="uPassword" placeholder="Wachtwoord">
                             <label for="uPassword" class="input-group-addon orange glyphicon glyphicon-lock"></label>
-                        </div> <!-- /.input-group -->
-                    </div> <!-- /.form-group -->
+                        </div>
+                        <!-- /.input-group -->
+                    </div>
+                    <!-- /.form-group -->
 
                     <p>Nog geen account? <a href="register.php">Registreer</a></p>
                 </form>
 
-            </div> <!-- /.modal-body -->
+            </div>
+            <!-- /.modal-body -->
 
             <div class="modal-footer">
                 <button class="form-control btn orange">Ok</button>
@@ -126,11 +131,15 @@ if (isset($_SESSION['productencart'])) {
                         <span class="sr-only">progress</span>
                     </div>
                 </div>
-            </div> <!-- /.modal-footer -->
+            </div>
+            <!-- /.modal-footer -->
 
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 <!-- /originalsliderplace -->
 <?php
 if ($productensession) {
@@ -165,83 +174,85 @@ if ($productensession) {
                         <td class="col-sm-8 col-md-6">
                             <div class="media">
                                 <div class="media-body">
-                                    <h4 class="media-heading"><strong><?php echo $product->getProductname(); ?> </strong></h4>
+                                    <h4 class="media-heading">
+                                        <strong><?php echo $product->getProductname(); ?> </strong></h4>
                                     <span>Omschrijving:</span><?php echo $product->getProductdescription() ?>
-                                            <?PHP
-                                            $additiontotalprice = 0;
-                                            if (array_key_exists('addable', $arrayproduct) || array_key_exists('removable', $arrayproduct) || array_key_exists('radio', $arrayproduct)) {
+                                    <?PHP
+                                    $additiontotalprice = 0;
+                                    if (array_key_exists('addable', $arrayproduct) || array_key_exists('removable', $arrayproduct) || array_key_exists('radio', $arrayproduct)) {
 
-                                                if (array_key_exists('addable', $arrayproduct)) {
-                                                    echo '<br><br><span style="color:green"> <i>';
-                                                    foreach ($arrayproduct['addable'] as $addableaddition) {
-                                                        $productaddition = new ProductAddition($DB_con, $addableaddition);
-                                                        echo $productaddition->getName();
-                                                        $additiontotalprice += $productaddition->getPrice();
-                                                        echo '<b> + ('.$productaddition->getPriceformatted().')</b>';
-                                                    }
-                                                    echo '</span></i>';
-                                                }
-                                                if (array_key_exists('removable', $arrayproduct)) {
-                                                    echo '<br><br><span style="color:red"> Zonder: <i>';
-                                                    foreach ($arrayproduct['removable'] as $removableaddition) {
-                                                        $productremovable = new ProductAdditionRemovable($DB_con, $removableaddition);
-                                                        echo $productremovable->getName().", ";
-                                                    }
-                                                    echo '</span></i>';
-                                                }
-                                                if (array_key_exists('radio', $arrayproduct)) {
-                                                    $keuze = '';
-                                                    echo '<br><br><span style="color:blue"> <i>';
-                                                    echo '<span>  Keuze: <i>';
-                                                    foreach ($arrayproduct['radio'] as $radioaddition) {
-                                                        $productradio = new ProductRadioAddition($DB_con, $radioaddition);
-                                                        $keuze .= $productradio->getName().", ";
-                                                    }
-                                                    echo rtrim($keuze, ', ');
-                                                    echo '</span></i>';
-                                                }
+                                        if (array_key_exists('addable', $arrayproduct)) {
+                                            echo '<br><br><span style="color:green"> <i>';
+                                            foreach ($arrayproduct['addable'] as $addableaddition) {
+                                                $productaddition = new ProductAddition($DB_con, $addableaddition);
+                                                echo $productaddition->getName();
+                                                $additiontotalprice += $productaddition->getPrice();
+                                                echo '<b> + (' . $productaddition->getPriceformatted() . ')</b>';
                                             }
-                                            ?>
+                                            echo '</span></i>';
+                                        }
+                                        if (array_key_exists('removable', $arrayproduct)) {
+                                            echo '<br><br><span style="color:red"> Zonder: <i>';
+                                            foreach ($arrayproduct['removable'] as $removableaddition) {
+                                                $productremovable = new ProductAdditionRemovable($DB_con, $removableaddition);
+                                                echo $productremovable->getName() . ", ";
+                                            }
+                                            echo '</span></i>';
+                                        }
+                                        if (array_key_exists('radio', $arrayproduct)) {
+                                            $keuze = '';
+                                            echo '<br><br><span style="color:blue"> <i>';
+                                            echo '<span>  Keuze: <i>';
+                                            foreach ($arrayproduct['radio'] as $radioaddition) {
+                                                $productradio = new ProductRadioAddition($DB_con, $radioaddition);
+                                                $keuze .= $productradio->getName() . ", ";
+                                            }
+                                            echo rtrim($keuze, ', ');
+                                            echo '</span></i>';
+                                        }
+                                    }
+                                    ?>
 
-                                        </strong></h5>
+                                    </strong></h5>
                                 </div>
                             </div>
                         </td>
                         <td class="col-sm-1 col-md-1">
                             <input type="number" pattern="\d*" class="aantal form-control" name="aantal" id="aantal"
+                                   data-arrayid="<?PHP echo $key; ?>"
                                    value="<?php echo $arrayproduct['aantal'] ?>">
                         </td>
                         <td class="col-sm-1 col-md-1 text-center"><strong>
                                 <div id="prijs"
                                      data-product-price="<?PHP echo $productprijs ?>"><?php echo "€" . str_replace(".", ",", $productprijs) ?></div>
-                        <td class="col-sm-1 col-md-1 text-center"><strong>
-                                <div class="toevoeging" data-toevoeging-prijs="
+                                <td class="col-sm-1 col-md-1 text-center"><strong>
+                                        <div class="toevoeging" data-toevoeging-prijs="
                                 <?PHP
 
-                                if (isset($additiontotalprice)){
-                                    echo $additiontotalprice;
-                                } else {
-                                    echo 0.00;
-                                }
-                                ?>">
-                                <?PHP
-                                if(isset($additiontotalprice) && $additiontotalprice > 0) {
-                                    echo "&euro; ".number_format($additiontotalprice, "2", ",", "");
-                                } else {
-                                    echo "&euro; 0,00";
-                                }
-                                $productprijs += $additiontotalprice;
-                                $subtotal  += ($productprijs * $arrayproduct['aantal']);
-                                ?>
-                            </div>
-                            </strong></td>
-                        <td class="col-sm-1 col-md-1 text-center"><strong><span
-                                    id="result" class="result"
-                                    data-result="<?PHP echo $productprijs; ?>"><?php echo '&euro; ' . number_format(($productprijs * $arrayproduct['aantal']), 2, ',', ''); ?></span>
-                                <?php echo "<td style='width: 150px;'><a href='shoppingcart.php?sessionid=" . $key . "&delete=true'" .
-                                    'onclick="return confirm(' . "'Weet je zeker dat je " . $product->getProductname() . " wilt verwijderen?'" . ')"' . ">Verwijderen</a></td>";
-                                ?>
-                        </td>
+                                        if (isset($additiontotalprice)) {
+                                            echo $additiontotalprice;
+                                        } else {
+                                            echo 0.00;
+                                        }
+                                        ?>">
+                                            <?PHP
+                                            if (isset($additiontotalprice) && $additiontotalprice > 0) {
+                                                echo "&euro; " . number_format($additiontotalprice, "2", ",", "");
+                                            } else {
+                                                echo "&euro; 0,00";
+                                            }
+                                            $productprijs += $additiontotalprice;
+                                            $subtotal += ($productprijs * $arrayproduct['aantal']);
+                                            ?>
+                                        </div>
+                                    </strong></td>
+                                <td class="col-sm-1 col-md-1 text-center"><strong><span
+                                            id="result" class="result"
+                                            data-result="<?PHP echo $productprijs; ?>"><?php echo '&euro; ' . number_format(($productprijs * $arrayproduct['aantal']), 2, ',', ''); ?></span>
+                                        <?php echo "<td style='width: 150px;'><a href='shoppingcart.php?sessionid=" . $key . "&delete=true'" .
+                                            'onclick="return confirm(' . "'Weet je zeker dat je " . $product->getProductname() . " wilt verwijderen?'" . ')"' . ">Verwijderen</a></td>";
+                                        ?>
+                                </td>
                     </tr>
 
                     <?php
@@ -254,7 +265,7 @@ if ($productensession) {
                         <td><h5>Subtotaal</h5></td>
                         <td class="text-right"><h5><strong><span id="subtotal">
                                     <?php
-                                    if(!empty($subtotal)) {
+                                    if (!empty($subtotal)) {
                                         echo "€ " . number_format($subtotal, "2", ",", "");
                                     }
 
@@ -290,10 +301,10 @@ if ($productensession) {
                         </td>
                         <td>
                             <a href="checkout.php" style="color: white">
-                            <button type="button" class="btn btn-success" data-target="#OrderSuccesModal">
-                                Bestelling plaatsen <span
-                                    class="glyphicon glyphicon-play"></span>
-                            </button>
+                                <button type="button" class="btn btn-success" data-target="#OrderSuccesModal">
+                                    Bestelling plaatsen <span
+                                        class="glyphicon glyphicon-play"></span>
+                                </button>
                             </a>
                         </td>
                     </tr>
@@ -310,6 +321,7 @@ if ($productensession) {
         <div class="row">
             <div class="col-sm-12 col-md-12">
                 <h1>Winkelwagen</h1>
+
                 <div class="media">
                     <div class="media-body">
                         <h4>Er staan geen artikelen in het Winkelwagentje</h4>
@@ -341,12 +353,14 @@ include_once "footer.php";
 <script>
     $("input[type=number]").bind('keyup input', function () {
         var aantal = $(this).val();
+        var arrayid = $(this).data('arrayid');
         if (aantal < 0) {
             $(this).val(0);
         }
         if (aantal % 1 != 0) {
             $(this).val(Math.round(parseInt(aantal)));
         }
+
         var subtotal = 0.00;
         $(".winkelproduct").each(function (e) {
             var amount = $(this).find('.aantal').val();
@@ -363,7 +377,24 @@ include_once "footer.php";
         formatted = ((subtotal * 100) / 100).toFixed(2);
         formatted.replace(".", ",");
         $("#subtotal").html("&euro; " + ((subtotal * 100) / 100).toFixed(2));
-
+        change_amount(aantal, arrayid);
     });
+
+    function change_amount(aantal, arrayid) {
+        var url = "shopping_cart_session.php";
+        var postData = {
+            'changeamount': aantal,
+            'cartproductid': arrayid
+        };
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: postData,
+            dataType: "text",
+            success: function () {
+            }
+        });
+    }
+
 
 </script>

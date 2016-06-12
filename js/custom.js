@@ -162,7 +162,7 @@ $('#myModalToev').on('show.bs.modal', function (event) {
                 for (index = 0; index < data['addable'].length; ++index) {
 
                     modal.find('#toevoegbare_toevoegingen').append("<label><div><input type='checkbox' style='width: 15px;' name='addable' id='addable' " +
-                        "value='" + data['addable'][index].additionid + "' data-price='" + " "+data['addable'][index].price + "'>" +
+                        "value='" + data['addable'][index].additionid + "' data-price='" + " "+data['addable'][index].price + "'> " +
                         data['addable'][index].name + data['addable'][index].formattedprice + "</div></label><br>");
                 }
             } else {

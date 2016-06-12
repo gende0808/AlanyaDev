@@ -113,7 +113,6 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
             var postData = {
                 'productid': productid
             };
-
             var url = "product_ophalen.php";
 
             var modal = $(this);
