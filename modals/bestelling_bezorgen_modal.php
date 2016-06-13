@@ -14,7 +14,7 @@ include_once "classes/Category.php";
                 data-target="#prodactie"
                 style="margin-top: 25px;margin-left: 0px"> Bestelling ophalen
         </button>
-        <div class="col-md-8 col-md-offset-2" id="istop">
+        <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="table-responsive">
@@ -70,7 +70,7 @@ include_once "classes/Category.php";
                                     <!-- /.form-group -->
 
                                     <div class="form-group">
-                                        <div class="input-group" id="klant">
+                                        <div class="input-group">
                                             <label for="uLogin"
                                                    class="input-group-addon orange glyphicon glyphicon-home"></label>
                                                 <div class="field">
@@ -100,7 +100,7 @@ include_once "classes/Category.php";
                                     <br>
 
                                     <div class="form-group">
-                                        <div class="input-group" id="mand">
+                                        <div class="input-group">
                                             <label for="uLogin"
                                                    class="input-group-addon orange glyphicon glyphicon-map-marker"></label>
                                             <div class="field">
