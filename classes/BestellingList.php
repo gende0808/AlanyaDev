@@ -23,7 +23,7 @@ class BestellingList
 
         try
         {
-            $stmt = $this->db->prepare("SELECT * FROM bestelling ORDER BY bestelTijd DESC");
+            $stmt = $this->db->prepare("SELECT * FROM bestelling ORDER BY bestelTijd DESC LIMIT 50");
             $stmt->execute();
             while ($result = $stmt->fetch(PDO::FETCH_ASSOC))
             {

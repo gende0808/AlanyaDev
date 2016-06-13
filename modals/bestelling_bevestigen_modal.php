@@ -46,6 +46,8 @@ $productenlijst = $bestelling->getOrderlist();
                                             <?php
 
                                             echo $newproduct->getProductname() . "<br>";
+                                            echo $newproduct->getProductname() . "<br>";
+
                                             ?></h4>
                                         <div class="media" style="width: 52%; float: left; text-align: left">
                                             <h5 class=""><span></span><strong><?php

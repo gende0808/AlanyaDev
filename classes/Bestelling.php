@@ -143,6 +143,49 @@ class Bestelling{
         }
     }
 
+    public function update($id)
+    {
+        if (!is_numeric($id)) {
+            throw new InvalidArgumentException('id is geen getal!');
+        }
+        try {
+            $stmt = $this->db->prepare("UPDATE bestelling SET bestellingNummer = :uorderid,
+                                                           afhalen = :uafhalen,
+                                                           klantVoornaam = :ufname,
+                                                           klantAchternaam = :ulname,
+                                                           klantTelefoonnummer = :uphone,
+                                                           klantEmail = :uemail,
+                                                           klantStraatnaam = :ustreetn,
+                                                           klantHuisnummer = :uhousen,
+                                                           klantToevoeging = :uaddition,
+                                                           klantWoonplaats = :ucity,
+                                                           klantBijzonderheden = :upartic,
+                                                           bestelTijd = :uordertime,
+                                                           uitgeprint = :uprinted
+                                                           WHERE bestellingNummer= :uorderid");
+            $stmt->bindParam(":uorderid", $this->orderid);
+            $stmt->bindParam(":uafhalen", $this->afhalen);
+            $stmt->bindParam(":ufname", $this->customerfirstname);
+            $stmt->bindParam(":ulname", $this->customerlastname);
+            $stmt->bindParam(":uphone", $this->customerphonenumber);
+            $stmt->bindParam(":uemail", $this->customeremail);
+            $stmt->bindParam(":ustreetn", $this->customerstreetname);
+            $stmt->bindParam(":uhousen", $this->customerhousenumber);
+            $stmt->bindParam(":uaddition", $this->customeraddition);
+            $stmt->bindParam(":ucity", $this->customercityid);
+            $stmt->bindParam(":upartic", $this->customerparticularities);
+            $stmt->bindParam(":uordertime", $this->ordertime);
+            $stmt->bindParam(":uprinted", $this->printed);
+            $stmt->bindParam(":uorderid", $id);
+
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+
+    }
+
     /**
      * 
      */

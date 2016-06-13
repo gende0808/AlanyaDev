@@ -458,6 +458,10 @@ p {
   margin-top: 60px;
 }
 
+.opacitybon {
+  opacity: 0.3;
+}
+
 .pagination ul {
   padding: 0;
   margin: 0;

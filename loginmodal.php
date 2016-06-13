@@ -69,7 +69,7 @@
 
                 if (data.logincorrect == true && data.notactive == false) {
                     $('#myModal').modal('hide');
-                    window.location.replace("index");
+                    window.location.replace("<?PHP echo $URL ?>");
                 }
             }
 
@@ -109,7 +109,7 @@
 
                     if (data.logincorrect == true && data.notactive == false) {
                         $('#myModal').modal('hide');
-                        window.location.replace("index");
+                        window.location.replace("<?PHP echo $URL ?>");
                     }
                 }
 

@@ -1,5 +1,6 @@
 <?php
 session_start();
+$URL = $_SESSION['url'] = $_SERVER['REQUEST_URI'];
 $loginenregisterknoppen = "";
 $mand = "";
 $bestellingenlijst = "";

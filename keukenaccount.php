@@ -15,7 +15,6 @@ if ($_SESSION['user_info']['userLevel'] === '3')
     include_once "header3.php";
 }
 
-include_once "printorder.php";
 include_once "classes/Bestelling.php";
 include_once "classes/BestellingList.php";
 include_once "classes/Account.php";
@@ -37,10 +36,11 @@ include_once "functions.php";
 <head>
     <link rel="stylesheet" href="css/sidebar.css">
     <link rel="stylesheet" href="css/checkbox.css">
+    <link rel="stylesheet" href="css/opacitybon.css">
 </head>
 <div class="container">
        <div class="row">
-           <div class="col-md-10">
+           <div class="col-md-10 col-md-offset-1">
            <?php
 
 $bestellinglist = new BestellingList($DB_con);
@@ -55,14 +55,14 @@ foreach ($listofbestellingen as $bestelling){
 
 
 
-               <div class="panel panel-default">
+               <div class="test panel panel-default" id="bon<?php echo $bestelling->getOrderid()?>">
                    <div class="panel-body">
                        <div class="table-responsive">
                     <table class="table table-condensed">
                         <thead>
                         <tr>
                             <td style="width: 30%;"><strong><p>Bestellingnummer: </p></strong></td>
-                            <td style="width: 30%;"><strong><p> <?php echo $bestelling->getOrderid()?></p></strong></td>
+                            <td style="width: 30%;"><strong><p id="orderid"><?php echo $bestelling->getOrderid()?></p></strong></td>
                             <td style="width: 40%;" style="text-align: center"><strong><p style="color: red"> <?php echo $bestelling->getOrdertime() ?></p></strong></td>
                         </tr>
                         </thead>
@@ -203,13 +203,12 @@ foreach ($listofbestellingen as $bestelling){
 
                             <td class="emptyrow">
                                 <br>
-                                            <div class="alert alert-danger" role="alert">Deze bon is nog NIET afgedrukt!</div>
                             </td>
 
 
                             <td class="emptyrow">
                                 <strong>
-                                    <div class="searchable-container items col-lg-12">
+                                    <div class="printed searchable-container items col-lg-12" data-orderid="<?PHP echo $bestelling->getOrderid() ?>">
                                         <div class="info-block block-info clearfix">
                                             <div class="square-box pull-left">
                                             </div>
@@ -218,14 +217,13 @@ foreach ($listofbestellingen as $bestelling){
                                                     <div class="bizcontent">
                                                         <input type="checkbox" name="var_id[]" autocomplete="off" value="">
                                                         <span class="glyphicon glyphicon-ok glyphicon-lg"></span>
-                                                        <h5>Selecteren</h5>
+                                                        <h5>Bon selecteren</h5>
                                                     </div>
                                                 </label>
                                             </div>
                                         </div>
                                     </div>
                                 </strong>
-                            </td>
                         </tr>
                         </tbody>
                     </table>
@@ -261,10 +259,47 @@ foreach ($listofbestellingen as $bestelling){
 <script src="js/checkbox.js"></script>
 <script src="js/modernizr.custom.js"></script>
 <script language="JavaScript" type="text/javascript">
-    setTimeout("location.href = 'http://localhost/alanyadev/keukenaccount.php'",30000);//1000 === 1 sec.
+    setTimeout("location.href = 'http://localhost/alanyadev/keukenaccount.php'",10000);//1000 === 1 sec.
     // De timer staat nu op 30 sec.
     // De href moet uiteindelijk nog veranderd worden naar alanya.krommenie
 </script>
+<script>
+    $('.printed').click(function() {
+        if ( $( this ).closest('.test').hasClass( "opacitybon" ) ) {
+            $( this ).closest(".test").removeClass('opacitybon');
+        }
+            else{
+            $( this ).closest(".test").addClass('opacitybon');
+            }
+        id = $(this).data('orderid');
 
+        var postData = {
+            'id': id
+        };
+
+        var url = "print.php";
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: postData,
+            dataType: "json",
+            success: function(data)
+            {
+
+            }
+
+        });
+    });
+
+</script>
+<?php
+foreach ($listofbestellingen as $bestelling) {
+    if ($bestelling->getPrinted() == 'Y') {
+
+        echo '<script>$("#bon' . $bestelling->getOrderid() . '").addClass(\'opacitybon\');</script>';
+    }
+}
+?>
 </body>
 </html>
