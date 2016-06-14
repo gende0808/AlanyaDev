@@ -6,10 +6,15 @@ include_once "classes/Category.php";
 
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-        <button id="bezorgen" type="button" class="col-md-3 col-md-offset-2 btn btn-lg btn-default" data-target="#prodactie" data-toggle="modal">Bestelling laten bezorgen</button>
-        <button id="ophalen" type="button" class="col-md-3 btn btn-lg btn-default" data-target="#prodactie" data-toggle="modal">Bestelling afhalen</button>
-        <div class="col-md-8 col-md-offset-2" id="istop">
+        <button id="bezorgen" class="btn btn-default btn-lg col-md-3 col-md-offset-1" data-toggle="modal"
+                data-target="#prodactie"
+                style="margin-top: 25px;margin-left: 210px"> Bestelling laten bezorgen
+        </button>
+        <button id="ophalen" class="btn btn-default btn-lg col-md-3 col-md-offset-1" data-toggle="modal"
+                data-target="#prodactie"
+                style="margin-top: 25px;margin-left: 0px"> Bestelling ophalen
+        </button>
+        <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="table-responsive">
@@ -65,7 +70,7 @@ include_once "classes/Category.php";
                                     <!-- /.form-group -->
 
                                     <div class="form-group">
-                                        <div class="input-group" id="klant">
+                                        <div class="input-group">
                                             <label for="uLogin"
                                                    class="input-group-addon orange glyphicon glyphicon-home"></label>
                                                 <div class="field">
@@ -95,7 +100,7 @@ include_once "classes/Category.php";
                                     <br>
 
                                     <div class="form-group">
-                                        <div class="input-group" id="mand">
+                                        <div class="input-group">
                                             <label for="uLogin"
                                                    class="input-group-addon orange glyphicon glyphicon-map-marker"></label>
                                             <div class="field">
@@ -160,8 +165,6 @@ include_once "classes/Category.php";
         </div>
         </div>
         </div>
-</div>
-
 <script type="text/javascript">
     $(document).ready(function()
     {
