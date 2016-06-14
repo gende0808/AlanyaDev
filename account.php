@@ -6,15 +6,13 @@ include_once "classes/City.php";
 include_once "classes/CityList.php";
 include_once "modals/verwijder_account_modal.php";
 
-if(isset($_SESSION['logged']) && $_SESSION['logged'] == true) {
-    if ( $_SESSION['user_info']['userLevel'] == '1') {
+if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) {
+    if ($_SESSION['user_info']['userLevel'] == '1' || $_SESSION['user_info']['userLevel'] == '3') {
         $id = htmlspecialchars($_SESSION['account_id']);
-    }
-    else {
+    } else {
         header('location: index.php');
     }
-}
-else {
+} else {
     header('location: index.php');
 }
 
@@ -52,17 +50,18 @@ function accountcheck($DB_con, $id)
                 $accounttelefoonnummer = htmlspecialchars($_POST['telefoonnummer']);
                 $account->setUserphonenumber($accounttelefoonnummer);
             }
-            if (!empty($_POST['wachtwoord1']) && !empty($_POST['wachtwoord2'])) {
-                $oldpassword = htmlspecialchars($_POST['wachtwoord1']);
-                $newpassword = htmlspecialchars($_POST['wachtwoord2']);
-                if (password_verify($oldpassword, $account->getUserpassword())) {
-                    $account->setUserpassword($newpassword);
+            if (!empty($_POST['oldpassword']) && !empty($_POST['accwachtwoord1'] && !empty($_POST['accwachtwoord2']))) {
+                $accww1 = htmlspecialchars($_POST['accwachtwoord1']);
+                $accww2 = htmlspecialchars($_POST['accwachtwoord2']);
+                $oldpassword = htmlspecialchars($_POST['oldpassword']);
+                if ($accww1 == $accww2) {
+                    if (password_verify($oldpassword, $account->getUserpassword())) {
+                        $account->setUserpassword($accww1);
+                    }
                 } else {
                     throw new InvalidArgumentException("wachtwoorden kwamen niet overeen");
-                    //TODO aan gebruiker tonen dat wachtwoorden niet overeen kwamen op een betere manier
                 }
             }
-
             $account->update($id);
         } catch (Exception $e) {
             echo $e->getMessage();
@@ -87,7 +86,7 @@ try {
             <div class="modal-content text-center">
 
                 <div class="modal-header">
-                    <?PHP accountcheck($DB_con, $id)?>
+                    <?PHP accountcheck($DB_con, $id) ?>
                     <h4 class="modal-title" id="myModalLabel">Mijn Profiel</h4>
                 </div>
                 <!-- /.modal-header -->
@@ -100,7 +99,7 @@ try {
                                     <label for="uLogin"
                                            class="input-group-addon orange glyphicon glyphicon-comment"></label>
 
-                                    <p class="navbar-text"><?php echo $account->getUseremail() ?></p >
+                                    <p class="navbar-text"><?php echo $account->getUseremail() ?></p>
 
                                 </div>
                             </div>
@@ -111,15 +110,18 @@ try {
                                 <div class="input-group">
                                     <label for="uLogin"
                                            class="input-group-addon orange glyphicon glyphicon-lock"></label>
-                                    <input type="password" onKeyup="checkform()" class="form-control" name="wachtwoordtest"
+                                    <input type="password" onKeyup="checkform()" class="form-control" name="oldpassword"
                                            id="wachtwoordtest"
-                                           placeholder="Huidig wachtwoord"  style="border-style: outset!important; border-width: 1px;">
+                                           placeholder="Huidig wachtwoord"
+                                           style="border-style: outset!important; border-width: 1px;">
                                     <input type="password" onkeyup="checkform()"
                                            class="form-control" name="accwachtwoord1" id="accwachtwoord1"
-                                           placeholder="Nieuw wachtwoord"  style="border-style: outset!important; border-width: 1px;">
+                                           placeholder="Nieuw wachtwoord"
+                                           style="border-style: outset!important; border-width: 1px;">
                                     <input type="password" onkeyup="checkform(); checkPassAcc(); return false;"
                                            class="form-control" name="accwachtwoord2" id="accwachtwoord2"
-                                           placeholder="verifieer nieuw wachtwoord"  style="border-style: outset!important; border-width: 1px;">
+                                           placeholder="verifieer nieuw wachtwoord"
+                                           style="border-style: outset!important; border-width: 1px;">
                                     <span id="accconfirmMessage" class="accconfirmMessage"></span>
                                 </div>
                             </div>
@@ -130,10 +132,12 @@ try {
                                            class="input-group-addon orange glyphicon glyphicon-user"></label>
                                     <input type="text" onKeyup="checkform()" class="form-control" name="voornaam"
                                            id="voornaam"
-                                           value="<?php echo $account->getUserfirstname() ?>"  style="border-style: outset!important; border-width: 1px;">
+                                           value="<?php echo $account->getUserfirstname() ?>"
+                                           style="border-style: outset!important; border-width: 1px;">
                                     <input type="text" onKeyup="checkform()" class="form-control" name="achternaam"
                                            id="achternaam"
-                                           value="<?php echo $account->getUserlastname() ?>"  style="border-style: outset!important; border-width: 1px;">
+                                           value="<?php echo $account->getUserlastname() ?>"
+                                           style="border-style: outset!important; border-width: 1px;">
                                 </div>
                             </div>
                             <!-- /.form-group -->
@@ -144,16 +148,19 @@ try {
                                            class="input-group-addon orange glyphicon glyphicon-home"></label>
                                     <input type="text" onKeyup="checkform()" class="form-control" name="straatnaam"
                                            id="straatnaam"
-                                           value="<?php echo $account->getUserstreetname() ?>" style="width: 70%;"  style="border-style: outset!important; border-width: 1px;">
+                                           value="<?php echo $account->getUserstreetname() ?>" style="width: 70%;"
+                                           style="border-style: outset!important; border-width: 1px;">
 
 
                                     <input type="text" onKeyup="checkform()" class="form-control" name="huisnummer"
                                            id="huisnummer"
-                                           value="<?php echo $account->getUserhousenumber() ?>" style="width: 30%;" style=" border-style: outset!important; border-width: 1px;">
+                                           value="<?php echo $account->getUserhousenumber() ?>" style="width: 30%;"
+                                           style=" border-style: outset!important; border-width: 1px;">
 
                                     <input type="text" onKeyup="checkform()" class="form-control" name="toevoeging"
                                            id="toevoeging"
-                                           value="<?php echo $account->getUseraddition() ?>"  style="border-style: outset!important; border-width: 1px;">
+                                           value="<?php echo $account->getUseraddition() ?>"
+                                           style="border-style: outset!important; border-width: 1px;">
                                 </div>
                             </div>
                             <!-- /.form-group -->
@@ -194,21 +201,23 @@ try {
                                            class="input-group-addon orange glyphicon glyphicon-earphone"></label>
                                     <input type="text" onKeyup="checkform()" class="form-control" name="telefoonnummer"
                                            id="telefoonnummer"
-                                           value="<?php echo $account->getUserphonenumber() ?>"  style="border-style: outset!important; border-width: 1px;">
+                                           value="<?php echo $account->getUserphonenumber() ?>"
+                                           style="border-style: outset!important; border-width: 1px;">
                                 </div>
                             </div>
                             <!-- /.form-group -->
 
                             <button class="form-control btn orange" id="accountwijzigen" style="color: white;"
-                                               name="accountwijzigen" type="submit"
-                                               value="submit">
+                                    name="accountwijzigen" type="submit"
+                                    value="submit">
                                 Wijzigen opslaan
                             </button>
 
-                        <button type="button" class="btn grey"
-                                data-toggle="modal" data-target="#verwijderverificatie" style="color: white; margin-top: 3%;">
-                            Mijn account verwijderen
-                        </button>
+                            <button type="button" class="btn grey"
+                                    data-toggle="modal" data-target="#verwijderverificatie"
+                                    style="color: white; margin-top: 3%;">
+                                Mijn account verwijderen
+                            </button>
 
 
                     </div>

@@ -191,7 +191,7 @@ class Account implements CRUD
                                                            userEmail = :uemail,
                                                            userHuisnummer = :uhousenr,
                                                            tokenCode = :verify,
-                                                           userStatus = :status
+                                                           userStatus = :userstatus
                                                            WHERE userID= :userid");
             $stmt->bindParam(":uplaceid", $this->usercityid);
             $stmt->bindParam(":ustreetname", $this->userstreetname);
@@ -204,7 +204,7 @@ class Account implements CRUD
             $stmt->bindParam(":uemail", $this->useremail);
             $stmt->bindParam(":uhousenr", $this->userhousenumber);
             $stmt->bindParam(":verify", $this->verificationcode);
-            $stmt->bindParam(":status", $this->userstatus);
+            $stmt->bindParam(":userstatus", $this->userstatus);
             $stmt->bindParam(":userid", $id);
 
             $stmt->execute();
