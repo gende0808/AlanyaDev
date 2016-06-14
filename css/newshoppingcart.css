@@ -40,7 +40,7 @@ a:hover{
 }
 
 /* Content */
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1000px) {
     .test {
         right: 0;
         position: fixed;
@@ -65,7 +65,7 @@ a:hover{
 #content{
     margin:0 auto;
     padding-bottom:50px;
-    width:400px;
+    width:100%;
 }
 .shoppingCart{
     position:relative;

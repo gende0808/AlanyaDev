@@ -6,13 +6,11 @@ include_once "classes/Category.php";
 
 <div class="container">
     <div class="row">
-        <button id="bezorgen" class="btn btn-default btn-lg col-md-3 col-md-offset-1" data-toggle="modal"
-                data-target="#prodactie"
-                style="margin-top: 25px;margin-left: 210px"> Bestelling laten bezorgen
+        <button id="bezorgen" class="btn btn-default btn-lg col-md-3 col-md-offset-3 col-xs-3 col-xs-offset-2" data-toggle="modal"
+                data-target="#prodactie"> Bestelling laten bezorgen
         </button>
-        <button id="ophalen" class="btn btn-default btn-lg col-md-3 col-md-offset-1" data-toggle="modal"
-                data-target="#prodactie"
-                style="margin-top: 25px;margin-left: 0px"> Bestelling ophalen
+        <button id="ophalen" class="btn btn-default btn-lg col-md-3 "  data-toggle="modal"
+                data-target="#prodactie"> Bestelling ophalen
         </button>
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">

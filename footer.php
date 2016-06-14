@@ -70,6 +70,8 @@
         $(window).resize(function() {
             if ($(this).width() > 768) {
                 $("#shoppingcart-container").stick_in_parent({offset_top: 120, spacer:false});
+            } else {
+                $("#shoppingcart-container").trigger("sticky_kit:detach");
             }
         });
         $(document).ready(function () {
