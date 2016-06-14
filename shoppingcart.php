@@ -212,11 +212,12 @@ if ($productensession) {
                                         }
                                     }
                                     ?>
-
                                     </strong></h5>
                                 </div>
+                                <br><hr class="style-one">
                             </div>
                         </td>
+
                         <td class="col-sm-1 col-md-1">
                             <input type="number" pattern="\d*" class="aantal form-control" name="aantal" id="aantal"
                                    data-arrayid="<?PHP echo $key; ?>"
@@ -254,6 +255,7 @@ if ($productensession) {
                                         ?>
                                 </td>
                     </tr>
+
 
                     <?php
                     }

@@ -6,14 +6,9 @@ include_once "classes/Category.php";
 
 <div class="container">
     <div class="row">
-        <button id="bezorgen" class="btn btn-default btn-lg col-md-3 col-md-offset-1" data-toggle="modal"
-                data-target="#prodactie"
-                style="margin-top: 25px;margin-left: 210px"> Bestelling laten bezorgen
-        </button>
-        <button id="ophalen" class="btn btn-default btn-lg col-md-3 col-md-offset-1" data-toggle="modal"
-                data-target="#prodactie"
-                style="margin-top: 25px;margin-left: 0px"> Bestelling ophalen
-        </button>
+        <div class="col-md-12">
+        <button id="bezorgen" type="button" class="col-md-3 col-md-offset-2 btn btn-lg btn-default" data-target="#prodactie" data-toggle="modal">Bestelling laten bezorgen</button>
+        <button id="ophalen" type="button" class="col-md-3 btn btn-lg btn-default" data-target="#prodactie" data-toggle="modal">Bestelling afhalen</button>
         <div class="col-md-8 col-md-offset-2" id="istop">
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -165,6 +160,8 @@ include_once "classes/Category.php";
         </div>
         </div>
         </div>
+</div>
+
 <script type="text/javascript">
     $(document).ready(function()
     {

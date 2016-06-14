@@ -458,6 +458,31 @@ p {
   margin-top: 60px;
 }
 
+
+button.selected {
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #960100), color-stop(1, #93372c));
+  background:-moz-linear-gradient(top, #960100 5%, #93372c 100%);
+  background:-webkit-linear-gradient(top, #960100 5%, #93372c 100%);
+  background:-o-linear-gradient(top,#960100 5%, #93372c 100%);
+  background:-ms-linear-gradient(top, #960100 5%, #93372c 100%);
+  background:linear-gradient(to bottom,#960100 5%, #93372c 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ce0100', endColorstr='#fe1a00',GradientType=0);
+  background-color:#ce0100;
+  text-decoration: none;
+
+}
+
+
+/* Gradient color1 - color2 - color1 */
+
+hr.style-one {
+  border: 0;
+  height: 1px;
+  width: 100%;
+  background: #333;
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
 .opacitybon {
   opacity: 0.3;
 }
