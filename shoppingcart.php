@@ -248,6 +248,9 @@ if ($productensession) {
                             <div class="alert alert-info">
                                 <strong>Let op!</strong> Is uw bestelling onder de 15 euro? Dan betaalt u €2,00
                                 bezorgkosten.
+                                <br>
+                                <br>
+                                Wilt u laten bezorgen in <strong>Oostknollendam</strong>,<strong> De Woude</strong> of <strong>Westzaan</strong>? Dan betaalt u standaard €5,00 bezorgkosten.
                             </div>
 
 
