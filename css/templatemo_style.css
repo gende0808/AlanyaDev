@@ -1198,6 +1198,9 @@ footer {
 /*--- RESPONSIVE ---*/
 
 @media screen and (max-width: 990px) {
+  footer {
+    border-top: 0 solid;
+  }
 
   .home-account {
     text-align: center;
@@ -1261,6 +1264,9 @@ footer {
 }
 
 @media screen and (max-width: 568px) {
+  footer {
+    border-top: 0 solid;
+  }
 
   .home-account {
     text-align: center;
@@ -1351,7 +1357,6 @@ footer {
 }
 
 @media screen and (max-width: 1000px) {
-
   .slider-caption {
     display: none;
   }
@@ -1367,9 +1372,16 @@ footer {
     overflow-x: hidden;
   }
 }
+@media screen and (min-width: 768px){
+  footer {
+    border-top: 4px solid #FF3333;
+  }
+}
 
 @media screen and (min-width: 995px) {
-
+  footer {
+    border-top: 4px solid #FF3333;
+  }
   .hover-iner span {
   margin-top: 160px;
   }
