@@ -80,7 +80,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
 
 
 
-<script type="text/javascript" src="https://cdn.datatables.net/t/bs/jq-2.2.0,dt-1.10.11/datatables.min.js"></script>
+<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
 <script src="js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
 <script src="js/jquery-1.9.1.min.js"></script>

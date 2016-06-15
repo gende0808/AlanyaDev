@@ -33,11 +33,10 @@ include_once "classes/Discount.php";
 include_once "functions.php";
 
 ?>
-<head>
     <link rel="stylesheet" href="css/sidebar.css">
     <link rel="stylesheet" href="css/checkbox.css">
     <link rel="stylesheet" href="css/opacitybon.css">
-</head>
+
 <div class="container">
        <div class="row">
            <div class="col-md-10 col-md-offset-1">
@@ -246,6 +245,7 @@ foreach ($listofbestellingen as $bestelling){
   </span>
 </div>
 
+
 <script type="text/javascript" src="https://cdn.datatables.net/t/bs/jq-2.2.0,dt-1.10.11/datatables.min.js"></script>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
 <script src="js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
@@ -259,7 +259,7 @@ foreach ($listofbestellingen as $bestelling){
 <script src="js/checkbox.js"></script>
 <script src="js/modernizr.custom.js"></script>
 <script language="JavaScript" type="text/javascript">
-    setTimeout("location.href = 'http://localhost/alanyadev/keukenaccount.php'",10000);//1000 === 1 sec.
+    setTimeout("location.href = 'http://localhost/alanyadev/keukenaccount.php'",30000);//1000 === 1 sec.
     // De timer staat nu op 30 sec.
     // De href moet uiteindelijk nog veranderd worden naar alanya.krommenie
 </script>
@@ -300,6 +300,25 @@ foreach ($listofbestellingen as $bestelling) {
         echo '<script>$("#bon' . $bestelling->getOrderid() . '").addClass(\'opacitybon\');</script>';
     }
 }
+
 ?>
+
+<script>
+    $(document).ready(function () {
+        $("#nav-mobile").html($("#nav-main").html());
+        $("#nav-trigger span").click(function () {
+            if ($("nav#nav-mobile ul").hasClass("expanded")) {
+                $("nav#nav-mobile ul.expanded").removeClass("expanded").slideUp(250);
+                $(this).removeClass("open");
+            } else {
+                $("nav#nav-mobile ul").addClass("expanded").slideDown(250);
+                $(this).addClass("open");
+            }
+        });
+    });
+</script>
+<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+
+
 </body>
 </html>
