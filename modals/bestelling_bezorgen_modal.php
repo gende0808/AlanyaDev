@@ -5,13 +5,13 @@ include_once "classes/Category.php";
 ?>
 
 <div class="container">
-        <button id="bezorgen" class="widthleft btn btn-default btn-lg col-md-3 col-md-offset-3" data-toggle="modal"
+        <button id="bezorgen" class="width100 btn btn-default btn-lg col-md-3 col-md-offset-3" data-toggle="modal"
                 data-target="#prodactie"> Bestelling laten bezorgen
         </button>
         <button id="ophalen" class="btn btn-default btn-lg col-md-3 width100"  data-toggle="modal"
                 data-target="#prodactie"> Bestelling ophalen
         </button>
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-2" id="istop">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="table-responsive">
