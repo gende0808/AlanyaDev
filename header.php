@@ -1,10 +1,12 @@
 <?php
 session_start();
+if($_SESSION['user_info']['userLevel'] == 2){
+    header("Location: keukenaccount.php");
+}
 $URL = $_SESSION['url'] = $_SERVER['REQUEST_URI'];
 $loginenregisterknoppen = "";
 $mand = "";
 $bestellingenlijst = "";
-
 if (isset($_SESSION['logged'])) {
     $loginenregisterknoppen = "<li class='dropdown'>
         <button class='btntest2' data-toggle='dropdown'>Mijn account  <span class='caret'></span></button>

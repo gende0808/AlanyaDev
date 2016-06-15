@@ -1,10 +1,19 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+if (isset($_SESSION['logged']) && ($_SESSION['user_info']['userLevel'] == '3')) {
+} else {
+    header('location: index.php');
+}
 
 include_once "connection.php";
 include_once "interfaces/CRUD.php";
 include_once "classes/Product.php";
 
-//TODO IF LEVEL = 3 / ADMIN ~~
+
+
+
 if (isset($_POST['productid'])) {
     $id = htmlspecialchars($_POST['productid']);
     try {

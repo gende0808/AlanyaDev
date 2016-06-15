@@ -1,4 +1,12 @@
 <?PHP
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+if (isset($_SESSION['logged']) && ($_SESSION['user_info']['userLevel'] == '3')) {
+} else {
+    header('location: index.php');
+}
+
 include_once "connection.php";
 include_once "classes/CategoryList.php";
 include_once "classes/Category.php";
@@ -83,13 +91,15 @@ $_SESSION['actieSoort'] = $actiesoort;
                                 <div class="form-group">
                                     <label class="control-label col-sm-4 " for="Begindatum">Begindatum:</label>
                                     <div class="col-sm-8">
-                                        <input type="date" value="<?php echo date('Y-m-d'); ?>" class="form-control" name="Begindatum" placeholder="Begindatum">
+                                        <input type="date" value="<?php echo date('Y-m-d'); ?>" class="form-control"
+                                               name="Begindatum" placeholder="Begindatum">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-sm-4 " for="Einddatum">Einddatum:</label>
                                     <div class="col-sm-8">
-                                        <input type="date" class="form-control" name="Einddatum" placeholder="Einddatum">
+                                        <input type="date" class="form-control" name="Einddatum"
+                                               placeholder="Einddatum">
                                     </div>
                                 </div>
                                 <hr>
@@ -123,8 +133,8 @@ $_SESSION['actieSoort'] = $actiesoort;
                                             <?PHP
                                             $categorylist = new CategoryList($DB_con);
                                             $listofcategories = $categorylist->getcategories();
-                                            foreach ($listofcategories as $category){
-                                                        echo "<option type='text' class='form-control' value='".$category->getcatID()."'>".$category->getcatname(). "</option>";
+                                            foreach ($listofcategories as $category) {
+                                                echo "<option type='text' class='form-control' value='" . $category->getcatID() . "'>" . $category->getcatname() . "</option>";
                                             }
                                             ?>
                                         </select>

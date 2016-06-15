@@ -1,4 +1,12 @@
 <?PHP
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+if (isset($_SESSION['logged']) && ($_SESSION['user_info']['userLevel'] == '3')) {
+} else {
+    header('location: index.php');
+}
+
 include_once "header.php";
 include_once "classes/Product.php";
 include_once "classes/City.php";

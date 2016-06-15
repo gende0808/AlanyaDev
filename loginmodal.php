@@ -66,7 +66,6 @@
                 if (data.logincorrect == false) {
                     $("#alertLog").html(data.loginfoutmelding).show();
                 }
-
                 if (data.logincorrect == true && data.notactive == false) {
                     $('#myModal').modal('hide');
                     window.location.replace("<?PHP echo $URL ?>");

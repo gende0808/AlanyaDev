@@ -1,4 +1,11 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+if (isset($_SESSION['logged']) && ($_SESSION['user_info']['userLevel'] == '2') || ($_SESSION['user_info']['userLevel'] == '3')) {
+} else {
+    header('location: index.php');
+}
 ob_start();
 include_once "header.php";
 include_once "printorder.php";
