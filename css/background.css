@@ -69,5 +69,12 @@ body {
 	.logoo {
 		height: 80px;
 	}
+
+	.width100 {
+		width: 100%;
+	}
+	.widthleft {
+		width: 100%;
+	}
 }
 

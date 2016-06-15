@@ -99,7 +99,6 @@ if (!empty($_POST)) {
     }
 }
 
-
 include_once "modals/bestelling_bezorgen_modal.php";
 include_once "modals/bestelling_afhalen_modal.php";
 include_once "footer.php";
