@@ -8,11 +8,13 @@ $loginenregisterknoppen = "";
 $mand = "";
 $bestellingenlijst = "";
 if (isset($_SESSION['logged'])) {
-    $loginenregisterknoppen = "<li class='dropdown'>
-        <button class='btntest2' data-toggle='dropdown'>Mijn account  <span class='caret'></span></button>
+    $loginenregisterknoppen = "
+        <li class='dropdown'>
+        <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Mijn Account 
+        <span class=\"caret\"></span></a>
         <ul class='dropdown-menu'>
-         <a href='account.php' style='color: black'>Profiel</a>
-         <a href='logout.php' style='color: black'>Uitloggen</a>
+         <li style='border-right: solid 0;'><a href='account.php' style='color: black'>Profiel</a></li>
+         <li style='border-right: solid 0;'><a href='logout.php' style='color: black'>Uitloggen</a></li>
         </ul>
       </li>";
 
