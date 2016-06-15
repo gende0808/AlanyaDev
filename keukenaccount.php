@@ -34,7 +34,7 @@ include_once "functions.php";
 
 ?>
     <link rel="stylesheet" href="css/sidebar.css">
-    <link rel="stylesheet" href="css/checkbox.css">
+
     <link rel="stylesheet" href="css/opacitybon.css">
 
 <div class="container">
@@ -211,19 +211,16 @@ foreach ($listofbestellingen as $bestelling){
                                         <div class="info-block block-info clearfix">
                                             <div class="square-box pull-left">
                                             </div>
-                                            <div data-toggle="buttons" class="btn-group bizmoduleselect">
+                                            <br>
+                                            <div data-toggle="buttons" class="btn-group"">
                                                 <label class="btn btn-default">
-                                                    <div class="bizcontent">
                                                         <input type="checkbox" name="var_id[]" autocomplete="off" value="">
-                                                        <span class="glyphicon glyphicon-ok glyphicon-lg"></span>
-                                                        <h5>Bon selecteren</h5>
-                                                    </div>
+                                                        <h5>Bon afhandelen</h5>
                                                 </label>
                                             </div>
                                         </div>
-                                    </div>
                                 </strong>
-                        </tr>
+                             </tr>
                         </tbody>
                     </table>
                 </div>
@@ -259,7 +256,7 @@ foreach ($listofbestellingen as $bestelling){
 <script src="js/checkbox.js"></script>
 <script src="js/modernizr.custom.js"></script>
 <script language="JavaScript" type="text/javascript">
-    setTimeout("location.href = 'http://localhost/alanyadev/keukenaccount.php'",30000);//1000 === 1 sec.
+    setTimeout("location.href = 'http://localhost/alanyadev/keukenaccount.php'",10000);//1000 === 1 sec.
     // De timer staat nu op 30 sec.
     // De href moet uiteindelijk nog veranderd worden naar alanya.krommenie
 </script>
