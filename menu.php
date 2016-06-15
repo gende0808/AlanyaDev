@@ -94,6 +94,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                     <h4>Winkelwagen</h4>
                     <span class="arrow"></span>
                 </summary>
+                <div class="Content">
                 <ul>';
     $totaalprijs = "";
     $prijsvanproduct = "";
@@ -166,15 +167,17 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
             <p>
                 <span></span><span>Totaal: <strong>&euro;<?php echo number_format((float)$totaalprijs, 2, ',', '') . '';?></strong></span>
             </p>
-        <a class="checkout" href="shoppingcart">Bestelling plaatsen</a>
         <?php
     }
 
     ?>
         </details>
+
         </section>
             </ul>
+
         </div>
+    <a class="checkout" href="shoppingcart">Bestelling plaatsen</a>
     <?php } ?>
     </div>
     </div>

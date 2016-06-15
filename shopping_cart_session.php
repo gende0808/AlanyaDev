@@ -55,7 +55,7 @@ echo '
                     <h4>Winkelwagen</h4>
                     <span class="arrow"></span>
                 </summary>
-                <div class="Content"
+                <div class="Content">
                 <ul>';
 if(isset($_SESSION['productencart'])) {
     foreach ($_SESSION['productencart'] as $key => $cartproduct) {
@@ -126,7 +126,7 @@ if($_SESSION['productencart']) {
     <p>
         <span></span><span>Totaal: <strong>&euro;<?php echo number_format((float)$totaalprijs, 2, ',', '') . '';?></strong></span>
     </p>
-    <a class="checkout" href="shoppingcart">Bestelling plaatsen</a>
+
     <?php
 }
 
@@ -135,6 +135,7 @@ if($_SESSION['productencart']) {
     </section>
     </ul>
     </div>
+<a class="checkout" href="shoppingcart">Bestelling plaatsen</a>
 </div>
 </div>
 </div>
