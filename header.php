@@ -1,6 +1,6 @@
 <?php
 session_start();
-if($_SESSION['user_info']['userLevel'] == 2){
+if(isset($_SESSION['user_info']) && $_SESSION['user_info']['userLevel'] == 2){
     header("Location: keukenaccount.php");
 }
 $URL = $_SESSION['url'] = $_SERVER['REQUEST_URI'];
