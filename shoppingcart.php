@@ -195,12 +195,14 @@ if ($productensession) {
                         <td>  </td>
                         <td>  </td>
                         <td>
+                            <a href="menu.php">
                             <button type="button" class="btn btn-default">
-                                <span class="glyphicon glyphicon-shopping-cart"></span> <a href="menu.php"
-                                                                                           style="color: black"> Terug
+                                <span class="glyphicon glyphicon-shopping-cart"></span>
+                                Terug
                                     naar
-                                    het menu</a>
+                                    het menu
                             </button>
+                            </a>
                         </td>
                         <td>
                             <a href="checkout.php" style="color: white">
@@ -230,10 +232,12 @@ if ($productensession) {
                         <h4>Er staan geen artikelen in het Winkelwagentje</h4>
                     </div>
                 </div>
+                <a href="menu.php" style="color: black">
                 <button type="button" class="btn btn-default" style="margin-top: 5%">
                     <span class="glyphicon glyphicon-shopping-cart"></span>
-                    <a href="menu.php" style="color: black"> Terug naar het menu</a>
+                    Terug naar het menu
                 </button>
+                </a>
             </div>
         </div>
     </div>
