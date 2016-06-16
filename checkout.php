@@ -1,4 +1,5 @@
 <?PHP
+ob_start();
 include_once "header.php";
 include_once "classes/Account.php";
 include_once "classes/City.php";
@@ -7,7 +8,12 @@ include_once "classes/AccountList.php";
 include_once "classes/Bestelling.php";
 include_once "classes/BestellingProduct.php";
 include_once "classes/BestellingToevoegingen.php";
+
+if(!$_SESSION['productencart']) {
+    header('location: menu');
+}
 ?>
+
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script>
