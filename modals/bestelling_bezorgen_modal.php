@@ -123,7 +123,7 @@ include_once "classes/Category.php";
                                         </div>
                                     </div>
                                     <!-- /.form-group -->
-                                    <p id="strand" style="font-family: 'Open Sans', sans-serif">Helaas bezorgen wij niet
+                                    <p id="nodeliver" style="font-family: 'Open Sans', sans-serif">Helaas bezorgen wij niet
                                         buiten de
                                         weergegeven
                                         steden.</p>

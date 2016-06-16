@@ -38,7 +38,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
             <div class="flexslider">
                 <ul class="slides">
                     <li>
-                        <div id="placehere" style="margin-bottom: 5%">
+                        <div id="placehere" style="margin-bottom: 5%; opacity: 40">
                         </div>
                     </li>
                 </ul>

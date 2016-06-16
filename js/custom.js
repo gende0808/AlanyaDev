@@ -8,8 +8,6 @@ function ShowIMG(waarde) {
         $('#placehere').prepend('<img id="cat' + waarde + '" src="images/menucat' + waarde + '.jpg" />');
     })
 }
-
-
 //onderstaande functie kan gebruikt worden om te kijken of twee wachtwoorden overeenkomen.
 String.prototype.isEmpty = function () {
     return (this.length === 0 || !this.trim());
