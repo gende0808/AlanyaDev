@@ -4,14 +4,6 @@ include_once "header.php";
 include_once "classes/Account.php";
 $accountisdeletedconfirm = "";
 
-if(isset($_SESSION['logged']))
-{
-    if ($_SESSION['user_info']['userLevel'] === '3') {
-        header('location: adminaccount');
-    }
-}
-
-
 //code voor het verwijderen van een account
 if (isset($_POST['deleteaccount'])){
     $deleteaccount = htmlspecialchars($_POST['deleteaccount']);

@@ -5,6 +5,14 @@ if (session_status() == PHP_SESSION_NONE) {
 if(isset($_SESSION['user_info']) && $_SESSION['user_info']['userLevel'] == 2){
     header("Location: keukenaccount.php");
 }
+
+if(isset($_SESSION['logged']))
+{
+    if ($_SESSION['user_info']['userLevel'] === '3') {
+        header('location: adminaccount');
+    }
+}
+
 $URL = $_SESSION['url'] = $_SERVER['REQUEST_URI'];
 $loginenregisterknoppen = "";
 $mand = "";
