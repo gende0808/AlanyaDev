@@ -256,7 +256,7 @@ foreach ($listofbestellingen as $bestelling){
 <script src="js/checkbox.js"></script>
 <script src="js/modernizr.custom.js"></script>
 <script language="JavaScript" type="text/javascript">
-    setTimeout("location.href = 'http://localhost/alanyadev/keukenaccount.php'",10000);//1000 === 1 sec.
+    setTimeout('window.location.reload(true);',30000);//1000 === 1 sec.
     // De timer staat nu op 30 sec.
     // De href moet uiteindelijk nog veranderd worden naar alanya.krommenie
 </script>
