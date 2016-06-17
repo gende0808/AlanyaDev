@@ -73,16 +73,16 @@ $_SESSION['actieSoort'] = $actiesoort;
                     <div>
                         <form action="actie_toevoegen.php" method="post" class="form-horizontal" role="form">
                             <div class="form-group">
-                                <label class="control-label col-sm-4 " for="Actienaam">Actienaam:</label>
+                                <label class="control-label col-sm-4" for="Actienaam">Actienaam:</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="Actienaam"
+                                    <input type="text" style="border: 1px solid #949494;" class="form-control" name="Actienaam"
                                            placeholder="Actienaam invullen">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-4 " for="Actieomschrijving">Omschrijving:</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="Actieomschrijving"
+                                    <input type="text" style="border: 1px solid #949494;" class="form-control" name="Actieomschrijving"
                                            placeholder="Actieomschrijving invullen" rows=5>
                                 </div>
                             </div>
@@ -91,14 +91,14 @@ $_SESSION['actieSoort'] = $actiesoort;
                                 <div class="form-group">
                                     <label class="control-label col-sm-4 " for="Begindatum">Begindatum:</label>
                                     <div class="col-sm-8">
-                                        <input type="date" value="<?php echo date('Y-m-d'); ?>" class="form-control"
+                                        <input type="date" style="border: 1px solid #949494;" value="<?php echo date('Y-m-d'); ?>" class="form-control"
                                                name="Begindatum" placeholder="Begindatum">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-sm-4 " for="Einddatum">Einddatum:</label>
                                     <div class="col-sm-8">
-                                        <input type="date" class="form-control" name="Einddatum"
+                                        <input type="date" style="border: 1px solid #949494;" class="form-control" name="Einddatum"
                                                placeholder="Einddatum">
                                     </div>
                                 </div>
@@ -108,19 +108,19 @@ $_SESSION['actieSoort'] = $actiesoort;
                                 <div class="form-group">
                                     <label class="control-label col-sm-4 " for="Productprijs">Dagen:</label>
                                     <div class="col-sm-8" style="text-align: left;">
-                                        <input type="checkbox" name="maandag" value="true"
-                                               style="width: 20px">Maandag<br>
-                                        <input type="checkbox" name="dinsdag" value="true"
-                                               style="width: 20px">Dinsdag<br>
-                                        <input type="checkbox" name="woensdag" value="true"
-                                               style="width: 20px">Woensdag<br>
-                                        <input type="checkbox" name="donderdag" value="true"
-                                               style="width: 20px">Donderdag<br>
-                                        <input type="checkbox" name="vrijdag" value="true"
-                                               style="width: 20px">Vrijdag<br>
-                                        <input type="checkbox" name="zaterdag" value="true"
-                                               style="width: 20px">Zaterdag<br>
-                                        <input type="checkbox" name="zondag" value="true" style="width: 20px">Zondag<br>
+                                        <label> <input type="checkbox" name="maandag" value="true"
+                                                       style="width: 20px">Maandag<br></label><br>
+                                        <label><input type="checkbox" name="dinsdag" value="true"
+                                                      style="width: 20px">Dinsdag<br></label><br>
+                                        <label><input type="checkbox" name="woensdag" value="true"
+                                                      style="width: 20px">Woensdag<br></label><br>
+                                        <label><input type="checkbox" name="donderdag" value="true"
+                                                      style="width: 20px">Donderdag<br></label><br>
+                                        <label><input type="checkbox" name="vrijdag" value="true"
+                                                      style="width: 20px">Vrijdag<br></label><br>
+                                        <label><input type="checkbox" name="zaterdag" value="true"
+                                                      style="width: 20px">Zaterdag<br></label><br>
+                                        <label><input type="checkbox" name="zondag" value="true" style="width: 20px">Zondag<br></label><br>
                                     </div>
                                 </div>
                                 <hr>
@@ -146,10 +146,10 @@ $_SESSION['actieSoort'] = $actiesoort;
                                 <label class="control-label col-sm-4" for="Prijs">Prijs:</label>
                                 <div class="text-left">
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" name="Producteuro" placeholder="00">
+                                        <input type="text" style="border: 1px solid #949494;" class="form-control" name="Producteuro" placeholder="00">
                                     </div>
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" name="Productcent" placeholder="00">
+                                        <input type="text" style="border: 1px solid #949494;" class="form-control" name="Productcent" placeholder="00">
                                     </div>
                                 </div>
                             </div>
