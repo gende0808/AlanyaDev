@@ -33,37 +33,37 @@ include_once "classes/ListOfAdditionGroups.php";
                         <div class="form-group">
                             <label class="control-label col-sm-4" for="Productnummer">Nummer:</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="Productnummer" id="nummer">
+                                <input type="text" style="border: 1px solid #949494;" class="form-control" name="Productnummer" id="nummer">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-4" for="Productnaam">Naam:</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="naam" name="productnaam">
+                                <input type="text" style="border: 1px solid #949494;" class="form-control" id="naam" name="productnaam">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-4" for="Productomschrijving">Omschrijving:</label>
                             <div class="col-sm-8">
-                                <input type="text" id="omschrijving" class="form-control" name="Productomschrijving">
+                                <input type="text" style="border: 1px solid #949494;" id="omschrijving" class="form-control" name="Productomschrijving">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-4" for="product_id"></label>
                             <div class="col-sm-8">
-                                <input type="hidden" id="product_id" class="form-control" name="product_id">
+                                <input type="hidden" style="border: 1px solid #949494;" id="product_id" class="form-control" name="product_id">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-4" for="Productprijs">Prijs:</label>
                             <div class="col-sm-4">
-                                <input type="text" id="euro" class="form-control" name="Producteuro">
+                                <input type="text" style="border: 1px solid #949494;" id="euro" class="form-control" name="Producteuro">
                             </div>
                             <div class="col-sm-4">
-                                <input type="text" id="cent" class="form-control" name="Productcent">
+                                <input type="text" style="border: 1px solid #949494;" id="cent" class="form-control" name="Productcent">
                             </div>
                         </div>
-                        <input id="productid" type="hidden" name="productid" value="">
+                        <input id="productid" type="hidden"  name="productid" value="">
 
                 </div>
                 <div class="form-group text-right">

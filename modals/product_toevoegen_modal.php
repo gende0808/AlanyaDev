@@ -37,28 +37,28 @@ include_once "classes/ListOfAdditionGroups.php";
                     <div class="form-group">
                         <label class="control-label col-sm-4" for="Productnummer">Nummer:</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="Productnummer" placeholder="productnummer invullen">
+                            <input type="text" class="form-control" style="border: 1px solid #949494;" name="Productnummer" placeholder="productnummer invullen">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-4" for="Productnaam">Naam:</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="Productnaam" placeholder="productnaam invullen">
+                            <input type="text" class="form-control" style="border: 1px solid #949494;" name="Productnaam" placeholder="productnaam invullen">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-4" for="Productomschrijving">Omschrijving:</label>
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" name="Productomschrijving" placeholder="productomschrijving invullen">
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" style="border: 1px solid #949494;" name="Productomschrijving" placeholder="productomschrijving invullen">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-4" for="Productprijs">Prijs:</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" name="Producteuro" placeholder="Euro">
+                            <input type="text" class="form-control" style="border: 1px solid #949494;" name="Producteuro" placeholder="Euro">
                         </div>
                         <div class="col-sm-4">
-                        <input type="text" class="form-control" name="Productcent" placeholder="Cent">
+                        <input type="text" class="form-control" style="border: 1px solid #949494;" name="Productcent" placeholder="Cent">
                         </div>
                     </div>
 
