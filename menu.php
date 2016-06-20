@@ -85,9 +85,14 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
             </tbody>
         </table>
     </div>
+    <?PHP
+    $currenttime = date('H:i');
+    if($currenttime > '16:45' && $currenttime < "20:45") {
+    ?>
+
     <div id="shoppingcart-container" class="test col-md-4">
-    <?php if(isset($_SESSION['productencart'])) {
-   echo '
+        <?php if (isset($_SESSION['productencart'])) {
+        echo '
        <div id="content">
             <div class="shoppingCart">
                 <summary>
@@ -96,92 +101,102 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
                 </summary>
                 <div class="Content">
                 <ul>';
-    $totaalprijs = "";
-    $prijsvanproduct = "";
-                if(isset($_SESSION['productencart'])) {
-                    foreach ($_SESSION['productencart'] as $key => $cartproduct) {
-                        $product = new Product($DB_con, $cartproduct['productid']);
-                        $actieprijs = check_for_discounts($DB_con,$product->getId(), $product->getCategoryid(), $product->getProductprice());
-                            if (array_key_exists('addable', $cartproduct)) {
-                                $prijsvanaddables = 0;
-                                $prijsvanproduct = $actieprijs;
-                                foreach ($cartproduct['addable'] as $prijs) {
-                                    $adprijs = new ProductAddition($DB_con, $prijs);
-                                    $test = $adprijs->getPrice();
-                                    $prijsvanaddables += $test;
-                                }
-                                $prijsvanproduct += $prijsvanaddables;
-                            } else{
-                                $prijsvanproduct = $actieprijs;
-                            }
-                        $totaalprijs += $prijsvanproduct * $cartproduct["aantal"];
+        $totaalprijs = "";
+        $prijsvanproduct = "";
+        if (isset($_SESSION['productencart'])) {
+            foreach ($_SESSION['productencart'] as $key => $cartproduct) {
+                $product = new Product($DB_con, $cartproduct['productid']);
+                $actieprijs = check_for_discounts($DB_con, $product->getId(), $product->getCategoryid(), $product->getProductprice());
+                if (array_key_exists('addable', $cartproduct)) {
+                    $prijsvanaddables = 0;
+                    $prijsvanproduct = $actieprijs;
+                    foreach ($cartproduct['addable'] as $prijs) {
+                        $adprijs = new ProductAddition($DB_con, $prijs);
+                        $test = $adprijs->getPrice();
+                        $prijsvanaddables += $test;
+                    }
+                    $prijsvanproduct += $prijsvanaddables;
+                } else {
+                    $prijsvanproduct = $actieprijs;
+                }
+                $totaalprijs += $prijsvanproduct * $cartproduct["aantal"];
 
-                        echo '<li>
-                        <span><button class="removalproduct btn-danger glyphicon glyphicon-remove" data-sessid="'.$key.'"></button> ' . $cartproduct["aantal"] . ' x <b>' . $product->getProductname() . '</b></a></span> <strong>&euro;' . number_format((float)$prijsvanproduct, 2, ',', '') . '</strong>
+                echo '<li>
+                        <span><button class="removalproduct btn-danger glyphicon glyphicon-remove" data-sessid="' . $key . '"></button> ' . $cartproduct["aantal"] . ' x <b>' . $product->getProductname() . '</b></a></span> <strong>&euro;' . number_format((float)$prijsvanproduct, 2, ',', '') . '</strong>
                         ';
-                        if (array_key_exists('addable', $cartproduct) || array_key_exists('removable', $cartproduct) || array_key_exists('radio', $cartproduct)) {
-                            if (array_key_exists('addable', $cartproduct)) {
-                                echo '<br><br><span style="color:green"> Extra: <i>';
-                                foreach ($cartproduct['addable'] as $addableaddition) {
-                                    $productaddition = new ProductAddition($DB_con, $addableaddition);
-                                    echo $productaddition->getName();
-                                    echo '<b> + ' . $productaddition->getPriceformatted() . '</b><br>';
-                                }
-                                echo '</span></i>';
-                            }
-                            echo '<br>';
-                            if (array_key_exists('removable', $cartproduct)) {
-                                echo '<br><span style="color:red"> Zonder: <i>';
-                                foreach ($cartproduct['removable'] as $removableaddition) {
-                                    $productremovable = new ProductAdditionRemovable($DB_con, $removableaddition);
-                                    echo $productremovable->getName()."<br>";
-                                }
-                                echo '</span></i>';
-
-                            }
-
-                            echo '<br>';
-                            if (array_key_exists('radio', $cartproduct)) {
-                                echo '<br><span style="color:blue">Keuze: <i>';
-                                $keuze = '';
-                                foreach ($cartproduct['radio'] as $radioaddition) {
-                                    $productradio = new ProductRadioAddition($DB_con, $radioaddition);
-                                    $keuze .= $productradio->getName().', ';
-                                }
-                                echo rtrim($keuze, ', ');
-                                echo '</span></i>';
-                            }
+                if (array_key_exists('addable', $cartproduct) || array_key_exists('removable', $cartproduct) || array_key_exists('radio', $cartproduct)) {
+                    if (array_key_exists('addable', $cartproduct)) {
+                        echo '<br><br><span style="color:green"> Extra: <i>';
+                        foreach ($cartproduct['addable'] as $addableaddition) {
+                            $productaddition = new ProductAddition($DB_con, $addableaddition);
+                            echo $productaddition->getName();
+                            echo '<b> + ' . $productaddition->getPriceformatted() . '</b><br>';
                         }
-                        echo '</li>';
+                        echo '</span></i>';
+                    }
+                    echo '<br>';
+                    if (array_key_exists('removable', $cartproduct)) {
+                        echo '<br><span style="color:red"> Zonder: <i>';
+                        foreach ($cartproduct['removable'] as $removableaddition) {
+                            $productremovable = new ProductAdditionRemovable($DB_con, $removableaddition);
+                            echo $productremovable->getName() . "<br>";
+                        }
+                        echo '</span></i>';
+
+                    }
+
+                    echo '<br>';
+                    if (array_key_exists('radio', $cartproduct)) {
+                        echo '<br><span style="color:blue">Keuze: <i>';
+                        $keuze = '';
+                        foreach ($cartproduct['radio'] as $radioaddition) {
+                            $productradio = new ProductRadioAddition($DB_con, $radioaddition);
+                            $keuze .= $productradio->getName() . ', ';
+                        }
+                        echo rtrim($keuze, ', ');
+                        echo '</span></i>';
                     }
                 }
-                ?>
+                echo '</li>';
+            }
+        }
+        ?>
 
 
         <?php
-        if(!$_SESSION['productencart']) {
+        if (!$_SESSION['productencart']) {
             echo "<br> <h4 style='color: grey'> Er staan momenteel geen producten in de winkelwagen </h4>";
         }
-        if($_SESSION['productencart']) {
-        ?>
+        if ($_SESSION['productencart']) {
+            ?>
             <p>
-                <span></span><span>Totaal: <strong>&euro;<?php echo number_format((float)$totaalprijs, 2, ',', '') . '';?></strong></span>
+                <span></span><span>Totaal: <strong>&euro;<?php echo number_format((float)$totaalprijs, 2, ',', '') . ''; ?></strong></span>
             </p>
-        <?php
-    }
+            <?php
+        }
 
-    ?>
+        ?>
         </details>
 
         </section>
-            </ul>
+        </ul>
 
-        </div>
+    </div>
     <a class="checkout" href="shoppingcart">Bestelling plaatsen</a>
-    <?php } ?>
-    </div>
-    </div>
+<?php } ?>
 </div>
+    </div>
+    </div>
+<?PHP
+}else {
+    echo "<div class=\"col-md-4 text-left alert alert-danger\">
+  <strong></strong> U kunt alleen tussen <strong>16:45 en 20:45</strong><br> 
+  bestellingen plaatsen via de website.<br> 
+  Wij zijn elke dag open vanaf <strong>11:00 tot 21:00 uur</strong><br>en op vrijdag & zaterdag tot <strong>03:00</strong>.<br>
+  Wij zijn tussen deze tijden <strong>wel</strong> telefonisch bereikbaar.
+</div>";
+}
+?>
 </div>
 
 <?php
