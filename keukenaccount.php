@@ -228,7 +228,6 @@ foreach ($listofbestellingen as $bestelling){
         </div>
                <?php
                }
-
                ?>
 
 </div>
@@ -237,6 +236,7 @@ foreach ($listofbestellingen as $bestelling){
 
 <!-- The scroll to top feature -->
 <div class="scroll-top-wrapper ">
+  <span class="scroll-top-inner">
   <span class="scroll-top-inner">
 <i class="fa fa-2x fa-arrow-circle-up"></i>
   </span>
@@ -251,7 +251,7 @@ foreach ($listofbestellingen as $bestelling){
 <script src="js/vendor/jquery.gmap3.min.js"></script>
 <script src="js/plugins.js"></script>
 <script src="js/main.js"></script>
-<script src="js/bootstrap.js"></script>>
+<script src="js/bootstrap.js"></script>
 <script src="js/scrolltop.js"></script>
 <script src="js/checkbox.js"></script>
 <script src="js/modernizr.custom.js"></script>
