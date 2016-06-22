@@ -1,5 +1,7 @@
 <?PHP
-ob_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 include_once "header.php";
 include_once "connection.php";
 include_once "classes/ProductList.php";
@@ -88,7 +90,7 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
     </div>
     <?PHP
     $currenttime = date('H:i');
-    if($currenttime > '16:45' && $currenttime < "20:45") {
+    if($currenttime > '12:45' && $currenttime < "20:45") {
     ?>
 
     <div id="shoppingcart-container" class="test col-md-4">

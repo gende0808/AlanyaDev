@@ -1,5 +1,5 @@
 <?php
-if (!isset($_SESSION)) {
+if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 include_once "interfaces/CRUD.php";
@@ -13,7 +13,7 @@ include_once 'classes/DiscountList.php';
 include_once "functions.php";
 
 $currenttime = date('H:i');
-if($currenttime > '16:45' && $currenttime < "20:45") {
+if($currenttime > '12:45' && $currenttime < "20:45") {
     if (!empty($_POST['changeamount']) && is_numeric($_POST['changeamount']) && ($_POST['changeamount'] % 1 == 0) && isset($_POST['cartproductid'])) {
         if (!empty($_SESSION['productencart'])) {
             $cartproductid = htmlentities($_POST['cartproductid'], ENT_QUOTES);
