@@ -121,7 +121,7 @@ if (isset($_POST["registerbutton"])) {
 						Welkom bij de website van Alanya-Krommenie!<br/>
 						Om uw registratie op www.alanya-krommenie.nl af te ronden, dient u op de onderstaande link te klikken.<br/>
 						<br /><br />
-						<a href='http://localhost/alanyaDev/verify.php?id=" . $gebruikersID . "&code="
+						<a href='http://www.alanya-krommenie.nl/verify.php?id=" . $gebruikersID . "&code="
                                 . $account->getToken() . "'>Klik hier om te activeren</a>
 						<br /><br />
 						Met vriendelijke groet,<br /><br />

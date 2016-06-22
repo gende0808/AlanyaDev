@@ -23,7 +23,8 @@ if (!empty($_GET['id']) && !empty($_GET['code'])) {
         $account->setstatus($statusY);
         $account->update($id);
         $_SESSION['iactivatedmyaccount'] = true;
-        header("Location: http://localhost/alanyadev/index");
+        //veranderen naar localhost als het onderstaande voor een lokale pc moet werken
+        header("Location: http://www.alanya-krommenie.nl/index");
     } else {
         include_once "header.php";
         echo "er is een fout gedetecteerd bij het activeren van het account.";
