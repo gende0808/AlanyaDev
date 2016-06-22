@@ -285,7 +285,6 @@ LEFT JOIN categorie ON categorie.categorieID = actiecategorie.categorieID
      */
     public function update($id)
     {
-        //TODO
     }
 
     /**

@@ -103,7 +103,6 @@ class ProductDiscount implements CRUD
 
     public function update($id){
 
-        //todo waarschijnlijk niet nodig
     }
 
     public function delete($id)

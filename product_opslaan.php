@@ -12,7 +12,6 @@ include_once 'connection.php';
 include_once 'interfaces/CRUD.php';
 include_once 'classes/Product.php';
 
-//TODO IF LEVEL IS HIGH ENOUGH AS ADMIN!
 if (isset($_POST['prodid']))
 {
     $product_id = htmlspecialchars($_POST['prodid']);

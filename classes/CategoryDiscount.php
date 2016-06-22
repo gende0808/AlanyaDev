@@ -101,7 +101,6 @@ class CategoryDiscount implements CRUD
     }
 
     public function update($id){
-        //TODO waarschijnlijk niet nodig
     }
 
     public function delete($id)

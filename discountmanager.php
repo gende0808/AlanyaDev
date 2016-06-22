@@ -46,9 +46,7 @@ if (isset($_GET['actieid']) && isset($_GET['delete'])) {
     include_once "modals/catactie_toevoegen_modal.php";
     ?>
     <div class="col-md-12 col-md-offset-0 text-center" style="margin-top: 50px">
-        <!-- Heb hier een margin top ingegooid zodat er niets onder de header verdwijnt. TODO margin bottom op header! -->
         <?PHP
-        //TODO _________________________________________________________________________________________________________
 
         try {
 
@@ -59,7 +57,6 @@ if (isset($_GET['actieid']) && isset($_GET['delete'])) {
         } catch (Exception $e) {
             echo $e->getMessage();
         }
-        //TODO _________________________________________________________________________________________________________
         ?>
 
         <input type="text" id="search" placeholder="Zoeken..." class="col-md-4 col-md-offset-0 search_box"

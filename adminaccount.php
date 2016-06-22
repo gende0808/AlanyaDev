@@ -56,7 +56,6 @@ if (isset($_GET['productid']) && isset($_GET['delete'])) {
         } catch (Exception $e) {
             echo $e->getMessage();
         }
-        //TODO _________________________________________________________________________________________________________
         ?>
         <input type="text" id="search" placeholder="Zoeken..." class="col-md-4 col-md-offset-0 search_box"
                onkeyup="doSearch()"/>

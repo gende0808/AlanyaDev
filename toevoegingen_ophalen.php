@@ -27,7 +27,6 @@ if(isset($_POST['productid'])) {
             $verwijderlijst = $lijstmettoevoegingen->getremovableadditions();
             $toevoeginglijst = $lijstmettoevoegingen->getaddableadditions();
             $radiolijst = $lijstmettoevoegingen->getradioadditions();
-            //TODO mogelijk een if statement nodig voor als er verwijderbare dingen zijn
             foreach ($verwijderlijst as $verwijdering) {
                 $removable_items[] = array("removalid" => $verwijdering->getId(), "name" => $verwijdering->getName());
             }

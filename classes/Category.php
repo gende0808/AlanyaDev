@@ -34,7 +34,7 @@ class Category implements CRUD
 
     function create()
     {
-        // TODO: Implement create() method.
+        
     }
 
     function read($id)
@@ -63,12 +63,12 @@ class Category implements CRUD
 
     function update($id)
     {
-        // TODO: Implement update() method.
+       
     }
 
     function delete($id)
     {
-        // TODO: Implement delete() method.
+       
     }
     function getcatID()
     {

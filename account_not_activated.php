@@ -1,6 +1,6 @@
 <?PHP
 
-// TODO if user logged in, redirect this page to index.
+
 include_once "header.php";
 include_once "connection.php";
 include_once "classes/ProductList.php";

@@ -150,7 +150,6 @@ if (isset($_POST["registerbutton"])) {
                             }
                         }
                     } else {
-                        //TODO als email al bestaat geef foutmelding dat email al in gebruik is
                     }
                 }
 

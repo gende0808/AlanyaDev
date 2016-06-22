@@ -186,7 +186,7 @@ try {
                                                 }
                                             }
                                         } catch (Exception $e) {
-                                            //TODO ERROR
+                                          echo "Er is iets foutgegaan met de accountgegevens. Probeert u het lager nogmaals of neem contact op met de administrator.";
                                         }
                                         ?>
 
@@ -231,7 +231,7 @@ try {
     </div>
     <?PHP
 } catch (Exception $e) {
-    //TODO error handling voor $account object
+    
 }
 //hier eindigt try/catch voor $account object
 ?>
