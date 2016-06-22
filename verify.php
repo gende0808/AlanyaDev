@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 include_once 'interfaces/CRUD.php';
 include_once "connection.php";
 require_once 'classes/Account.php';

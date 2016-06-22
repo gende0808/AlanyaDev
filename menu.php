@@ -1,4 +1,5 @@
 <?PHP
+ob_start();
 include_once "header.php";
 include_once "connection.php";
 include_once "classes/ProductList.php";
