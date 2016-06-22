@@ -116,13 +116,13 @@ if (isset($_POST["registerbutton"])) {
                             $message = "
 						Beste " . $account->getUserfullname() . ",
 						<br /><br />
-						Welkom bij Alanya-Krommenie!<br/>
-						Om je registratie op www.alanya-krommenie.nl af te ronden kun je op de onderstaande link klikken.<br/>
+						Welkom bij de website van Alanya-Krommenie!<br/>
+						Om uw registratie op www.alanya-krommenie.nl af te ronden, dient u op de onderstaande link te klikken.<br/>
 						<br /><br />
 						<a href='http://localhost/alanyaDev/verify.php?id=" . $gebruikersID . "&code="
-                                . $account->getToken() . "'>klik hier om te activeren</a>
+                                . $account->getToken() . "'>Klik hier om te activeren</a>
 						<br /><br />
-						Met vriendelijke Groet,<br /><br />
+						Met vriendelijke groet,<br /><br />
 
 						Alanya Krommenie";
                             //hieronder is de mailer die gebruik maakt van de PHPMailer Class.
