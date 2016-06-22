@@ -4,7 +4,7 @@ include_once "ordersucces.php";
 include_once "interfaces/CRUD.php";
 include_once "connection.php";
 include_once "classes/Product.php";
-include_once "classes/Productlist.php";
+include_once "classes/ProductList.php";
 include_once "classes/Discount.php";
 include_once "classes/DiscountList.php";
 include_once "functions.php";
