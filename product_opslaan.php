@@ -1,6 +1,6 @@
 <?php
 
-if (session_status() == PHP_SESSION_NONE) {
+if (!isset($_SESSION)) {
     session_start();
 }
 if (isset($_SESSION['logged']) && ($_SESSION['user_info']['userLevel'] == '3')) {
