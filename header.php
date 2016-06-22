@@ -2,6 +2,7 @@
 if (!isset($_SESSION)) {
     session_start();
 }
+ob_start();
 if(isset($_SESSION['user_info']) && $_SESSION['user_info']['userLevel'] == 2){
     header("Location: keukenaccount.php");
 }
